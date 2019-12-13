@@ -52,7 +52,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
   const FORM_HTML = `
     <form action="/chatops/" method="post">
       <label for="chatops">ChatOps: </label>
-      <input id="chatops" type="text" name="chatops" value="Hello, OSS Bot.">
+      <input id="chatops" type="text" name="chatops" value="Hello, BOT5.">
       <input type="submit" value="ChatOps">
     </form>
   `
@@ -62,7 +62,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     if (qrcodeValue) {
 
       html = [
-        `<h1>OSS Bot v${VERSION}</h1>`,
+        `<h1>BOT5 v${VERSION}</h1>`,
         'Scan QR Code: <br />',
         qrcodeValue + '<br />',
         '<a href="http://goqr.me/" target="_blank">http://goqr.me/</a><br />',
@@ -76,13 +76,13 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     } else if (userName) {
 
       html = [
-        `<p> OSS Bot v${VERSION} User ${userName} logined. </p>`,
+        `<p> BOT5 v${VERSION} User ${userName} logined. </p>`,
         FORM_HTML,
       ].join('')
 
     } else {
 
-      html = `OSS Bot v${VERSION} Hello, come back later please.`
+      html = `BOT5 v${VERSION} Hello, come back later please.`
 
     }
     return html

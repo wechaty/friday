@@ -7,8 +7,8 @@ import {
   log,
 }                   from './config'
 
-// const CHATOPS_ROOM_TOPIC = 'OSS Bot ChatOps'
-const CHATOPS_ROOM_ID = '18995691396@chatroom'
+// const CHATOPS_ROOM_TOPIC = 'BOT5 Club ChatOps'
+const CHATOPS_ROOM_ID = '9195068372@chatroom'
 
 let room: Room
 
