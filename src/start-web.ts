@@ -24,7 +24,7 @@ async function chatopsHandler (request: Request, response: ResponseToolkit) {
   return response.redirect('/')
 }
 
-async function githubWebhookHandler (
+export async function githubWebhookHandler (
   request: Request,
   response: ResponseToolkit,
 ) {
@@ -32,7 +32,7 @@ async function githubWebhookHandler (
 
   const payload = request.payload as any
 
-  console.log(payload)
+  log.verbose(JSON.stringify(payload))
 
   return response.response()
 }
