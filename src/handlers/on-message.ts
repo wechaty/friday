@@ -3,7 +3,7 @@ import {
   Message,
   Wechaty,
 }             from 'wechaty'
-import { VoteManager } from '../managers/voteManager'
+import { VoteManager } from '../managers/vote-manager'
 
 export default async function onMessage (
   this    : Wechaty,
