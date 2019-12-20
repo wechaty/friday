@@ -14,7 +14,7 @@ const VOTE_KEY = [
 const DEFAULT_VOTE_THRESHOLD = 3
 
 const MANAGED_ROOM_NAME_PATTERN = [
-  /Wechaty Developer's Home/,
+  /Wechaty Developers' Home/,
 ]
 
 export class VoteManager {
