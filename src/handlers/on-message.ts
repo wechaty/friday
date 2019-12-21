@@ -24,5 +24,5 @@ export default async function onMessage (
   } catch (e) {
     log.error('on-message', 'Failed to check vote for the message:\n', e)
   }
-  
+
 }
