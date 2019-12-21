@@ -3,6 +3,7 @@ import {
   Message,
   Wechaty,
 }             from 'wechaty'
+import { VoteManager } from '../managers/vote-manager'
 
 import { InviteManager } from '../managers/invite-manager'
 
@@ -17,4 +18,11 @@ export default async function onMessage (
   } catch (e) {
     log.error('on-message', 'check invite failed:\n', e)
   }
+
+  try {
+    await VoteManager.checkVote(message)
+  } catch (e) {
+    log.error('on-message', 'Failed to check vote for the message:\n', e)
+  }
+  
 }
