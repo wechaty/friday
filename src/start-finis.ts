@@ -5,6 +5,9 @@ import {
   chatops,
 }             from './chatops'
 import {
+  crontab,
+}             from './plugins'
+import {
   log,
   VERSION,
 }             from './config'
@@ -25,6 +28,7 @@ export async function startFinis (wechaty: Wechaty): Promise<void> {
 
   bot.on('login',   _ => chatops(wechaty, LOGIN_ANNOUNCEMENT))
   bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
+  await crontab(bot)
 }
 
 /**
