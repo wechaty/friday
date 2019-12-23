@@ -28,9 +28,9 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
     ],
     rules: [
       'I\'m trying to invite you into Wechaty Developers\' Home, please read the doc first: Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty is very powerful that it can run over different protocols. You can specify the protocol by set the environment variable WECHATY_PUPPET to different puppet provider. If you cannot use Web protocol, you can apply other protocal following the instruction here: https://github.com/wechaty/wechaty/wiki/Support-Developers',
-      '欢迎加入 Wechaty Developers’ Home, 请务必阅读文档，拒绝伸手党： Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty 支持切换多种协议，除了支持网页协议外，还支持iPad协议，你只需要切换环境变量 WECHATY_PUPPET 即可。 如果你不能用网页协议，按照这里的介绍申请使用iPad协议接入: https://github.com/wechaty/wechaty/wiki/Support-Developers',
+      `欢迎加入 Wechaty Developers' Home, 请务必阅读文档，拒绝伸手党： Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty 支持切换多种协议，除了支持网页协议外，还支持iPad协议，你只需要切换环境变量 WECHATY_PUPPET 即可。 如果你不能用网页协议，按照这里的介绍申请使用iPad协议接入: https://github.com/wechaty/wechaty/wiki/Support-Developers`,
     ],
-    topic: 'Wechaty Developers\' Home',
+    topic: `Wechaty Developers' Home`,
     welcomes: [
       'Welcome to join us!',
     ],
