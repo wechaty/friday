@@ -34,6 +34,7 @@ export class InviteManager {
       let tryRoom = await message.wechaty.Room.find({ topic: config.topic })
       if (!tryRoom) {
         log.verbose('InviteManager', 'Room.find({topic: "%s"}) not found room.', config.topic)
+        await contact.say(`Sorry but we can not find the room with topic "${config.topic}". Please file an issue on Github to help us know this problem at https://github.com/wechaty/wechaty/issues , thank you very much!`)
         return
       }
       const room = tryRoom
