@@ -14,8 +14,8 @@ You can visit the staging system at <http://wechaty.bot5.club/>
 
 ## PMC
 
-- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) [Wechaty](https://github.com/wechaty/wechaty) Author, <zixia@zixia.net>
-- [Rui](https://github.com/lijiarui),[(李佳芮)](https://lijiarui.github.io) [Wechaty](https://github.com/wechaty/wechaty) Co-author, Founder of [JuziBot](https://www.juzi.bot/)
+- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) Co-author of [Wechaty](https://github.com/wechaty/wechaty), <zixia@zixia.net>
+- [Rui](https://github.com/lijiarui) [(李佳芮)](https://lijiarui.github.io) Co-author of [Wechaty](https://github.com/wechaty/wechaty), Founder & CEO of [JuziBot](https://www.juzi.bot/)
 
 ## Commiters
 
