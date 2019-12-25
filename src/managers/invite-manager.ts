@@ -9,6 +9,10 @@ export class InviteManager {
       return
     }
 
+    if (message.self()) {
+      return
+    }
+    
     const contact = message.from()
     if (!contact) {
       return
