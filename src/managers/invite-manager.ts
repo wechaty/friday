@@ -22,11 +22,6 @@ export class InviteManager {
       return
     }
 
-    const contact = message.from()
-    if (!contact) {
-      return
-    }
-
     const text = message.text()
 
     const hasMatchedCipher = (cipher: string) => {
