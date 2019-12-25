@@ -1,6 +1,6 @@
 {
   "name": "bot5",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Friday Bot",
   "main": "index.js",
   "engines": {
