@@ -13,6 +13,11 @@ export class InviteManager {
       return
     }
 
+    const contact = message.from()
+    if (!contact) {
+      return
+    }
+
     if (message.type() !== Message.Type.Text) {
       return
     }
