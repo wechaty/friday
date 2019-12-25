@@ -12,7 +12,7 @@ export class InviteManager {
     if (message.self()) {
       return
     }
-    
+
     const contact = message.from()
     if (!contact) {
       return
