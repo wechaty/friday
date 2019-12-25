@@ -29,7 +29,6 @@ export class VoteManager {
 
     const room = message.room()
     const contact = message.from()
-    const content = message.text()
 
     if (!room || !contact || message.type() !== Message.Type.Text) {
       return
@@ -46,18 +45,8 @@ export class VoteManager {
       return
     }
 
-    const mentionNames = await Promise.all(mentions.map(async member => {
-      const name = member.name()
-      const alias = await room.alias(member)
-      return alias || name
-    }))
-
-    const pureContent = mentionNames.reduce((prev, cur) => {
-      const regex = new RegExp(`@${cur}[\u2005\u0020]`)
-      return prev.replace(regex, '')
-    }, content)
-
-    const isKeyword = VOTE_KEY.includes(pureContent.trim())
+    const pureContent = await message.mentionText()
+    const isKeyword = VOTE_KEY.includes(pureContent)
     if (!isKeyword) {
       return
     }

@@ -1,6 +1,6 @@
 {
   "name": "bot5",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Friday Bot",
   "main": "index.js",
   "engines": {
@@ -37,7 +37,7 @@
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.29.8",
+    "wechaty": "^0.29.16",
     "wechaty-puppet-padplus": "^0.1.0"
   },
   "devDependencies": {

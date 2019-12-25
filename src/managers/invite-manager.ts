@@ -1,27 +1,43 @@
-import { Contact, Message, Room } from 'wechaty'
+import { Contact, Message, Room, log } from 'wechaty'
 
 import { KEYWORD_ROOM_CONFIG } from '../config'
 
 export class InviteManager {
 
   public static async checkInvite (message: Message) {
-    const room = message.room()
-    const contact = message.from()
-    if (!contact || room || message.type() !== Message.Type.Text) {
+    if (message.room()) {
       return
     }
-    const content = message.text()
+
+    const contact = message.from()
+    if (!contact) {
+      return
+    }
+
+    if (message.type() !== Message.Type.Text) {
+      return
+    }
+
+    const text = message.text()
+
+    const inText = (keyword: string) => text.includes(keyword)
+
     for (const config of KEYWORD_ROOM_CONFIG) {
 
-      const matched = !!config.keywords.find(k => content.includes(k))
+      const keywords = config.keywords
+
+      const matched = keywords.some(inText)
       if (!matched) {
         continue
       }
 
-      const room = await message.wechaty.Room.find({ topic: config.topic })
-      if (!room) {
-        continue
+      let tryRoom = await message.wechaty.Room.find({ topic: config.topic })
+      if (!tryRoom) {
+        log.verbose('InviteManager', 'Room.find({topic: "%s"}) not found room.', config.topic)
+        await contact.say(`Sorry but we can not find the room with topic "${config.topic}". Please file an issue on Github to help us know this problem at https://github.com/wechaty/wechaty/issues , thank you very much!`)
+        return
       }
+      const room = tryRoom
 
       // Check whether the member is already in the room
       const members = await room.memberAll()
