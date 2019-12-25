@@ -40,8 +40,8 @@ export class VoteManager {
       return
     }
 
-    const mentions = await message.mention()
-    if (!mentions || mentions.length === 0) {
+    const mentionList = await message.mentionList()
+    if (!mentionList || mentionList.length === 0) {
       return
     }
 
@@ -51,7 +51,7 @@ export class VoteManager {
       return
     }
 
-    for (const mention of mentions) {
+    for (const mention of mentionList) {
       if (mention.id === message.wechaty.self().id) {
         return
       }
