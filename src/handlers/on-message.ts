@@ -28,6 +28,10 @@ export default async function onMessage (
   }
 
   try {
+    if (message.self()) {
+      return
+    }
+
     const room = message.room()
     if (room) {
       const mentionSelf = await message.mentionSelf()

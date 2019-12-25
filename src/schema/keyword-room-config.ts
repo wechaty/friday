@@ -1,5 +1,5 @@
 export interface KeywordRoomConfig {
-  keywords: string[],
+  cipherList: string[],
   topic: string,
   rules: string[],
   welcomes: string[],

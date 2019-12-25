@@ -9,8 +9,7 @@ export class InviteManager {
       return
     }
 
-    const contact = message.from()
-    if (!contact) {
+    if (message.self()) {
       return
     }
 
@@ -18,26 +17,32 @@ export class InviteManager {
       return
     }
 
+    const contact = message.from()
+    if (!contact) {
+      return
+    }
+
     const text = message.text()
 
-    const inText = (keyword: string) => text.includes(keyword)
+    const hasMatchedCipher = (cipher: string) => {
+      const regexp = new RegExp(`^${cipher}$`, 'i')
+      return text.match(regexp)
+    }
 
     for (const config of KEYWORD_ROOM_CONFIG) {
 
-      const keywords = config.keywords
-
-      const matched = keywords.some(inText)
+      const cipherList = config.cipherList
+      const matched = cipherList.some(hasMatchedCipher)
       if (!matched) {
         continue
       }
 
-      let tryRoom = await message.wechaty.Room.find({ topic: config.topic })
-      if (!tryRoom) {
+      let room = await message.wechaty.Room.find({ topic: config.topic })
+      if (!room) {
         log.verbose('InviteManager', 'Room.find({topic: "%s"}) not found room.', config.topic)
         await contact.say(`Sorry but we can not find the room with topic "${config.topic}". Please file an issue on Github to help us know this problem at https://github.com/wechaty/wechaty/issues , thank you very much!`)
-        return
+        continue
       }
-      const room = tryRoom
 
       // Check whether the member is already in the room
       const members = await room.memberAll()

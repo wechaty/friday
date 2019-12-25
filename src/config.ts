@@ -22,9 +22,8 @@ export const CHATOPS_ROOM_ID = '9195068372@chatroom'
 
 export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
   {
-    keywords: [
+    cipherList: [
       'wechaty',
-      'Wechaty',
     ],
     rules: [
       'I\'m trying to invite you into Wechaty Developers\' Home, please read the doc first: Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty is very powerful that it can run over different protocols. You can specify the protocol by set the environment variable WECHATY_PUPPET to different puppet provider. If you cannot use Web protocol, you can apply other protocal following the instruction here: https://github.com/wechaty/wechaty/wiki/Support-Developers',
@@ -35,10 +34,8 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
       'Welcome to join us!',
     ],
   }, {
-    keywords: [
+    cipherList: [
       'aidog',
-      'Aidog',
-      'AiDog',
     ],
     rules: [],
     topic: 'Youth fed the 5th dog',
@@ -47,10 +44,8 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
     ],
   },
   {
-    keywords: [
+    cipherList: [
       'bot5',
-      'BOT5',
-      'Bot5',
       'BotFriday',
     ],
     rules: [

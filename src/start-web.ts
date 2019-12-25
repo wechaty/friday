@@ -56,7 +56,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
       <input type="submit" value="ChatOps">
     </form>
   `
-  const handler = () => {
+  const handler = async () => {
     let html
 
     if (qrcodeValue) {
@@ -74,10 +74,19 @@ export async function startWeb (bot: Wechaty): Promise<void> {
       ].join('')
 
     } else if (userName) {
+      let roomList = await bot.Room.findAll()
+      let roomHtml = `The rooms I have joined are as follows: <ol>`
+      for (let room of roomList) {
+        const topic = await room.topic()
+        const roomId = room.id
+        roomHtml = roomHtml + `<li> ${topic} / ${roomId} </li>\n`
+      }
+      roomHtml = roomHtml + `</ol>`
 
       html = [
         `<p> BOT5 v${VERSION} User ${userName} logined. </p>`,
         FORM_HTML,
+        roomHtml,
       ].join('')
 
     } else {
