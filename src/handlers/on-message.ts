@@ -4,10 +4,14 @@ import {
   Wechaty,
 }             from 'wechaty'
 
+import moment from 'moment'
+
 import { chatops } from '../chatops'
 
 import { VoteManager } from '../managers/vote-manager'
 import { InviteManager } from '../managers/invite-manager'
+
+const BORN_TIME = Date.now()
 
 export default async function onMessage (
   this    : Wechaty,
@@ -46,6 +50,41 @@ export default async function onMessage (
   }
 
   await dingDong.call(this, message)
+  await ctpStatus(this, message)
+}
+
+async function ctpStatus (
+  wechaty: Wechaty,
+  message: Message,
+): Promise<void> {
+  if (message.self()) {
+    return
+  }
+
+  const room = message.room()
+  if (!room) {
+    return
+  }
+
+  // ChatOps - CTP Status
+  const CTP_STATUS_ROOM_ID = '17962906510@chatroom'
+  if (room.id !== CTP_STATUS_ROOM_ID) {
+    return
+  }
+
+  let text = await message.mentionText()
+  let reply
+  if (text.match(/^#ding$/i)) {
+    reply = 'dong'
+  } else if (text.match(/^#uptime$/i)) {
+    const time = moment(BORN_TIME).fromNow()
+    reply = `I'm online ${time}`
+  } else {
+    reply = 'unknown CTP command'
+  }
+
+  await message.say(reply)
+  await wechaty.sleep(1)
 }
 
 async function dingDong (

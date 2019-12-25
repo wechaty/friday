@@ -34,10 +34,11 @@
     "@types/read-pkg-up": "^6.0.0",
     "brolog": "^1.6.5",
     "finis": "^0.4.3",
+    "moment": "^2.24.0",
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.29.16",
+    "wechaty": "^0.29.22",
     "wechaty-puppet-padplus": "^0.1.0"
   },
   "devDependencies": {
