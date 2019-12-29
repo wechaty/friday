@@ -27,14 +27,16 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
     ],
     id: '24113855649@chatroom',
     rules: [
-      'I\'m trying to invite you into Wechaty Developers\' Home, please read the doc first: Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty is very powerful that it can run over different protocols. You can specify the protocol by set the environment variable WECHATY_PUPPET to different puppet provider. If you cannot use Web protocol, you can apply other protocal following the instruction here: https://github.com/wechaty/wechaty/wiki/Support-Developers',
-      `欢迎加入 Wechaty Developers' Home, 请务必阅读文档，拒绝伸手党： Docs: https://docs.chatie.io/ FAQ: https://docs.chatie.io/faq Wechaty 支持切换多种协议，除了支持网页协议外，还支持iPad协议，你只需要切换环境变量 WECHATY_PUPPET 即可。 如果你不能用网页协议，按照这里的介绍申请使用iPad协议接入: https://github.com/wechaty/wechaty/wiki/Support-Developers`,
+      `Thanks for asking me to invite you for joining the "Wechaty Developers' Home"!`,
+      `Wechaty is a Conversational RPA for Wechat, we have a FAQ at https://github.com/wechaty/wechaty/wiki/FAQ`,
+      `Please introduce yourself after you join the room, cheers!`,
     ],
     topic: `Wechaty Developers' Home`,
     welcomes: [
-      'Welcome to join us!',
+      'is joining us as a new Wechaty developer, welcome and please introduce yourself to the community!',
     ],
-  }, {
+  },
+  {
     cipherList: [
       'aidog',
     ],
@@ -50,8 +52,7 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
       'BotFriday',
     ],
     rules: [
-      'I\'m trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer ',
-      '欢迎加入 Bot5, 请务必阅读新人手册： https://www.bot5.club/manuals/newcomer',
+      `I'm trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer `,
     ],
     topic: 'Bot Friday Open Forum - BFOF',
     welcomes: [
