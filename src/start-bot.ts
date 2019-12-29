@@ -34,7 +34,7 @@ export async function startBot (wechaty: Wechaty): Promise<void> {
   }
   const TEN_MINUTES = 10 * 60 * 1000
   setInterval(heartbeat, TEN_MINUTES)
-  await Chatops.instance().heartbeat('💖')
+  wechaty.on('ready', heartbeat)
 
   await crontab()
 }
