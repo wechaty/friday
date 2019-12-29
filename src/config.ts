@@ -27,13 +27,15 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
     ],
     id: '24113855649@chatroom',
     rules: [
-      `Thanks for asking me to invite you for joining the "Wechaty Developers' Home"!`,
-      `Wechaty is a Conversational RPA for Wechat, we have a FAQ at https://github.com/wechaty/wechaty/wiki/FAQ`,
+      `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" Wechat Room!`,
+      `Wechaty is a Conversational RPA for Wechat for connecting Chatbots in ease.`,
+      `You can find our documentation at https://github.com/wechaty/wechaty/blob/master/docs/index.md`,
+      `and FAQ at https://github.com/wechaty/wechaty/wiki/FAQ`,
       `Please introduce yourself after you join the room, cheers!`,
     ],
     topic: `Wechaty Developers' Home`,
     welcomes: [
-      'is joining us as a new Wechaty developer, welcome and please introduce yourself to the community!',
+      `is joining us as a new Wechaty developer! Welcome, and please introduce yourself to the community!`,
     ],
   },
   {
