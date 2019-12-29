@@ -61,7 +61,7 @@ export class Chatops {
 
     await room.say(`${textOrMessage}`)
 
-    if (textOrMessage instanceof Message) {
+    if (textOrMessage instanceof Message && textOrMessage.type() !== Message.Type.Text) {
       switch (textOrMessage.type()) {
         case Message.Type.Image:
           const image = await textOrMessage.toFileBox()

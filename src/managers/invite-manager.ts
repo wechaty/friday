@@ -54,7 +54,7 @@ export class InviteManager {
       const members = await room.memberAll()
       const alreadyInRoom = !!members.find(m => m.id === contact.id)
       if (alreadyInRoom) {
-        await contact.say(`You are already in the room: ${config.topic}.`)
+        await contact.say(`You are already in the room: ${await room.topic()}.`)
         continue
       }
 
