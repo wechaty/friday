@@ -1,15 +1,13 @@
 
 import cron from 'node-cron'
-import {
-  Wechaty,
-} from 'wechaty'
-import { CRON_CONFIG } from '../config'
-import { chatops } from '../chatops'
 
-export async function crontab (bot: Wechaty) {
+import { CRON_CONFIG } from '../config'
+import { Chatops } from '../chatops'
+
+export async function crontab () {
   for (const cronConfig of CRON_CONFIG) {
     cron.schedule(cronConfig.time, async () => {
-      await chatops(bot, cronConfig.reply)
+      await Chatops.instance().say(cronConfig.reply)
     })
   }
 }

@@ -7,8 +7,12 @@ import {
 }               from './config'
 
 import {
-  chatops,
+  Chatops,
 }             from './chatops'
+
+import {
+  crontab,
+}             from './plugins'
 
 export async function startBot (wechaty: Wechaty): Promise<void> {
   log.verbose('startBot', 'startBot(%s)', wechaty)
@@ -26,9 +30,11 @@ export async function startBot (wechaty: Wechaty): Promise<void> {
     .on('room-leave',   './handlers/on-room-leave')
 
   const heartbeat = async () => {
-    await chatops(wechaty, `I'm alive!`)
+    await Chatops.instance().heartbeat('💖')
   }
+  const TEN_MINUTES = 10 * 60 * 1000
+  setInterval(heartbeat, TEN_MINUTES)
+  await Chatops.instance().heartbeat('💖')
 
-  const ONE_HOUR = 60 * 60 * 1000
-  setInterval(heartbeat, ONE_HOUR)
+  await crontab()
 }

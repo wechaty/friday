@@ -6,7 +6,7 @@ import {
 
 import moment from 'moment'
 
-import { chatops } from '../chatops'
+import { Chatops } from '../chatops'
 
 import { VoteManager } from '../managers/vote-manager'
 import { InviteManager } from '../managers/invite-manager'
@@ -40,10 +40,10 @@ export default async function onMessage (
     if (room) {
       const mentionSelf = await message.mentionSelf()
       if (mentionSelf) {
-        await chatops(this, `${message}`)
+        await Chatops.instance().say(message)
       }
     } else {  // direct message
-      await chatops(this, `${message}`)
+      await Chatops.instance().say(message)
     }
   } catch (e) {
     log.error('on-message', 'Failed to chatops for the message: %s', e)

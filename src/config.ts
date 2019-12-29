@@ -17,8 +17,8 @@ export const VERSION = pkg.version
  */
 export const PORT = process.env.PORT || 8788
 
-export const CHATOPS_ROOM_TOPIC = 'ChatOps - BOT5 Wechaty' // 'BOT5 Club ChatOps'
-export const CHATOPS_ROOM_ID = '9195068372@chatroom'
+export const BOT_ROOM_ID       = '9195068372@chatroom'   // 'ChatOps - BOT5 Wechaty'
+export const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat'
 
 export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
   {

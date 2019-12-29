@@ -8,9 +8,8 @@ import {
   PORT,
   VERSION,
 }             from './config'
-import { chatops } from './chatops'
 
-let wechaty: Wechaty
+import { Chatops } from './chatops'
 
 async function chatopsHandler (request: Request, response: ResponseToolkit) {
   log.info('startWeb', 'chatopsHandler()')
@@ -19,7 +18,7 @@ async function chatopsHandler (request: Request, response: ResponseToolkit) {
     chatops: string,
   } = request.payload as any
 
-  await chatops(wechaty, payload.chatops)
+  await Chatops.instance().say(payload.chatops)
 
   return response.redirect('/')
 }
@@ -42,8 +41,6 @@ export async function startWeb (bot: Wechaty): Promise<void> {
 
   let qrcodeValue : undefined | string
   let userName    : undefined | string
-
-  wechaty = bot
 
   const server =  new Hapi.Server({
     port: PORT,
