@@ -34,7 +34,7 @@ export async function startBot (wechaty: Wechaty): Promise<void> {
   }
   const ONE_HOUR = 60 * 60 * 1000
   setInterval(heartbeat('💖'), ONE_HOUR)
-  wechaty.on('ready', heartbeat('🙋‍♂️'))
+  wechaty.on('ready', heartbeat('🙋'))
   wechaty.on('logout', heartbeat('😪'))
 
   await crontab()
