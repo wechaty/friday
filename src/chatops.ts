@@ -1,12 +1,15 @@
 import {
-  Wechaty, Message,
+  Wechaty,
+  Message,
+  UrlLink,
 }             from 'wechaty'
 
 import {
   log,
   BOT_ROOM_ID,
   HEARTBEAT_ROOM_ID,
-}                     from './config'
+  WECHATY_DEVELOPERS_HOME_ID_LIST,
+}                                   from './config'
 
 export class Chatops {
 
@@ -46,9 +49,9 @@ export class Chatops {
 
   private async roomMessage (
     roomId: string,
-    textOrMessage: string | Message,
+    info:   string | Message | UrlLink,
   ): Promise<void> {
-    log.info('Chatops', 'roomMessage(%s, %s)', roomId, textOrMessage)
+    log.info('Chatops', 'roomMessage(%s, %s)', roomId, info)
 
     const online = this.bot.logonoff()
     if (!online) {
@@ -59,25 +62,46 @@ export class Chatops {
     const room = this.bot.Room.load(roomId)
     await room.ready()
 
-    await room.say(`${textOrMessage}`)
-
-    if (textOrMessage instanceof Message && textOrMessage.type() !== Message.Type.Text) {
-      switch (textOrMessage.type()) {
+    if (typeof info === 'string') {
+      await room.say(info)
+    } else if (info instanceof Message) {
+      switch (info.type()) {
+        case Message.Type.Text:
+          await room.say(`${info}`)
+          break
         case Message.Type.Image:
-          const image = await textOrMessage.toFileBox()
+          const image = await info.toFileBox()
           await room.say(image)
           break
         case Message.Type.Url:
-          const urlLink = await textOrMessage.toUrlLink()
+          const urlLink = await info.toUrlLink()
           await room.say(urlLink)
           break
         default:
-          const typeName = Message.Type[textOrMessage.type()]
+          const typeName = Message.Type[info.type()]
           await room.say(`message type: ${typeName}`)
           break
       }
+    } else if (info instanceof UrlLink) {
+      await room.say(info)
+    } else {
+      throw new Error('not supported message.')
     }
 
+  }
+
+  public async homeBraodcast (info: string | UrlLink) {
+    for (const roomId of WECHATY_DEVELOPERS_HOME_ID_LIST) {
+      await this.roomMessage(roomId, info)
+    }
+  }
+
+  public async homeAnnounce (announcement: string) {
+    for (const roomId of WECHATY_DEVELOPERS_HOME_ID_LIST) {
+      const room = this.bot.Room.load(roomId)
+      await room.ready()
+      await room.announce(announcement)
+    }
   }
 
 }

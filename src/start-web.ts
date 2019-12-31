@@ -1,7 +1,11 @@
 import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
 import {
   Wechaty,
+  UrlLink,
 }               from 'wechaty'
+import {
+  UrlLinkPayload,
+}                   from 'wechaty-puppet'
 
 import {
   log,
@@ -10,6 +14,39 @@ import {
 }             from './config'
 
 import { Chatops } from './chatops'
+
+async function webhookHandler (
+  request: Request,
+  h: ResponseToolkit,
+) {
+  log.info('startWeb', 'webhookHandler()')
+
+  let payload: UrlLinkPayload
+
+  switch (request.method) {
+    case 'get':
+      payload = { ...request.query } as any
+      break
+
+    case 'post':
+      payload = request.payload as any
+      break
+
+    default:
+      throw Error(`method is neither get nor post: ${request.method}`)
+  }
+
+  const urlLink = new UrlLink(payload)
+
+  await Chatops.instance().homeBraodcast(urlLink)
+
+  const html = [
+    'webhook succeed!',
+    JSON.stringify(payload),
+  ].join('<hr />')
+
+  return h.response(html)
+}
 
 async function chatopsHandler (request: Request, response: ResponseToolkit) {
   log.info('startWeb', 'chatopsHandler()')
@@ -21,19 +58,6 @@ async function chatopsHandler (request: Request, response: ResponseToolkit) {
   await Chatops.instance().say(payload.chatops)
 
   return response.redirect('/')
-}
-
-export async function githubWebhookHandler (
-  request: Request,
-  response: ResponseToolkit,
-) {
-  log.info('startWeb', 'githubWebhookHandler()')
-
-  const payload = request.payload as any
-
-  log.verbose(JSON.stringify(payload))
-
-  return response.response()
 }
 
 export async function startWeb (bot: Wechaty): Promise<void> {
@@ -53,7 +77,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
       <input type="submit" value="ChatOps">
     </form>
   `
-  const handler = async () => {
+  const rootHandler = async () => {
     let html
 
     if (qrcodeValue) {
@@ -94,17 +118,31 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     return html
   }
 
-  server.route({
-    handler,
+  const rootRoute = {
+    handler: rootHandler,
     method : 'GET',
     path   : '/',
-  })
+  }
 
-  server.route({
+  const chatopsRoute = {
     handler: chatopsHandler,
     method : 'POST',
     path   : '/chatops/',
-  })
+  }
+
+  const webhookRoute = {
+    handler: webhookHandler,
+    method : ['GET', 'POST'],
+    path   : '/webhook/',
+  }
+
+  const routeList = [
+    rootRoute,
+    chatopsRoute,
+    webhookRoute,
+  ]
+
+  server.route(routeList)
 
   bot.on('scan', qrcode => {
     qrcodeValue = qrcode
