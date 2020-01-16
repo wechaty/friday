@@ -28,7 +28,7 @@
   "dependencies": {
     "@chatie/tsconfig": "^0.6.1",
     "@hapi/hapi": "^18.3.1",
-    "@types/hapi__hapi": "^18.2.5",
+    "@types/hapi__hapi": "^19.0.0",
     "@types/node-cron": "^2.0.2",
     "@types/raven": "^2.5.1",
     "@types/read-pkg-up": "^6.0.0",
