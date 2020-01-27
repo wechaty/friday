@@ -19,6 +19,9 @@ You can visit the staging system at <http://wechaty.bot5.club/>
 
 ## Commiters
 
+- [Yuan](https://github.com/windmemory) (高原) Co-founder & CTO of [JuziBot](https://www.juzi.bot/)
+- [Hua](https://github.com/qhduan) (段清华) Founder & CTO of [KDF.ai](https://kdf.ai)
+
 See: <https://github.com/orgs/wechaty/teams/chairs/members>
 
 ## Copyright & License
