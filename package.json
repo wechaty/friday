@@ -38,8 +38,8 @@
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.29.22",
-    "wechaty-puppet-padplus": "^0.2.0"
+    "wechaty": "^0.29.42",
+    "wechaty-puppet-padplus": "^0.3.11"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
