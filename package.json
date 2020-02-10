@@ -39,7 +39,7 @@
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
     "wechaty": "^0.30.9",
-    "wechaty-puppet-padplus": "^0.3.23"
+    "wechaty-puppet-padplus": "^0.4.0"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
