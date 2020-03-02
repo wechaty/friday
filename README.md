@@ -1,8 +1,8 @@
 # bot5
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-blue.svg)](https://github.com/wechaty/wechaty)
-[![Build Status](https://travis-ci.com/wechaty/bot5.svg?branch=master)](https://travis-ci.com/wechaty/bot5)
-[![Greenkeeper badge](https://badges.greenkeeper.io/wechaty/bot5.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/wechaty/friday.svg?branch=master)](https://travis-ci.com/wechaty/friday)
+[![Greenkeeper badge](https://badges.greenkeeper.io/wechaty/friday.svg)](https://greenkeeper.io/)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
