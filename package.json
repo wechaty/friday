@@ -1,6 +1,6 @@
 {
   "name": "bot5",
-  "version": "0.2.20",
+  "version": "0.2.23",
   "description": "Friday Bot",
   "main": "index.js",
   "engines": {
@@ -26,9 +26,9 @@
   },
   "homepage": "https://github.com/wechaty/bot5#readme",
   "dependencies": {
-    "@chatie/tsconfig": "^0.6.1",
     "@hapi/hapi": "^19.0.0",
-    "@types/hapi__hapi": "^18.2.5",
+    "@chatie/tsconfig": "^0.8.0",
+    "@types/hapi__hapi": "^19.0.0",
     "@types/node-cron": "^2.0.2",
     "@types/raven": "^2.5.1",
     "@types/read-pkg-up": "^6.0.0",
@@ -38,8 +38,8 @@
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.29.22",
-    "wechaty-puppet-padplus": "^0.2.0"
+    "wechaty": "^0.32.1",
+    "wechaty-puppet-padplus": "^0.4.0"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
