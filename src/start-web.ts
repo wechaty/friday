@@ -2,10 +2,8 @@ import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
 import {
   Wechaty,
   UrlLink,
-}               from 'wechaty'
-import {
   UrlLinkPayload,
-}                   from 'wechaty-puppet'
+}                   from 'wechaty'
 
 import {
   log,
