@@ -26,9 +26,8 @@
   },
   "homepage": "https://github.com/wechaty/bot5#readme",
   "dependencies": {
-    "@hapi/hapi": "^19.0.0",
     "@chatie/tsconfig": "^0.8.0",
-    "@types/hapi__hapi": "^19.0.0",
+    "@hapi/hapi": "^18.4.1",
     "@types/node-cron": "^2.0.2",
     "@types/raven": "^2.5.1",
     "@types/read-pkg-up": "^6.0.0",
@@ -44,6 +43,7 @@
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
     "@chatie/git-scripts": "^0.2.5",
+    "@types/hapi__hapi": "^18.2.6",
     "tstest": "^0.4.2"
   },
   "git": {
