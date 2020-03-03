@@ -24,6 +24,6 @@ import test  from 'blue-tape'
 
 // import { spy } from 'sinon'
 
-test('smoke testing', async t => {
-  t.ok('to be write')
+test('smoking test', async t => {
+  t.skip('to be written')
 })
