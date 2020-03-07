@@ -4,6 +4,8 @@ import {
   UrlLink,
 }             from 'wechaty'
 
+import { DelayQueueExecutor } from 'rx-queue'
+
 import {
   log,
   BOT_ROOM_ID,
@@ -32,11 +34,12 @@ export class Chatops {
    * --------
    * Instance
    */
+  private delayQueueExecutor: DelayQueueExecutor
 
   private constructor (
     private bot: Wechaty,
   ) {
-    //
+    this.delayQueueExecutor = new DelayQueueExecutor(5 * 1000)  // set delay period time to 5 seconds
   }
 
   public async heartbeat (text: string): Promise<void> {
@@ -102,6 +105,15 @@ export class Chatops {
       await room.ready()
       await room.announce(announcement)
     }
+  }
+
+  public async queue (
+    fn: (() => any),
+    name?: string,
+  ) {
+    log.verbose('Chatops', 'queue(,"%s")', name)
+    await this.delayQueueExecutor.execute(fn, name)
+    log.verbose('Chatops', 'queue(,"%s") done.', name)
   }
 
 }
