@@ -32,21 +32,24 @@ export const WECHATY_DEVELOPERS_HOME_ID_LIST = [
 export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
   {
     cipherList: [
-      'python',
       'python wechaty',
-      'wechaty python',
+      'go wechaty',
+      'java wechaty',
+      'python',
+      'go',
+      'java',
     ],
     id: '19367909379@chatroom',
     rules: [
-      `Thanks for asking me to invite you for joining the "Wechaty Python Developers' Home" WeChat Room!`,
-      `Python Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.`,
+      `Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers' Home" WeChat Room!`,
+      `Python/Go/Java Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.`,
       `If you have any idea about the feature requests, questions, and document, please let us know.`,
-      `Repo address: https://github.com/wechaty/python-wechaty`,
+      `Related issue: https://github.com/wechaty/wechaty/issues/1927`,
       `Please introduce yourself after you join the room, cheers!`,
     ],
-    topic: "Wechaty Python Developers' Home",
+    topic: "Wechaty Python/Go/Java Developers' Home",
     welcomes: [
-      ", welcome to join the Wechaty Python Developer's Home! Please go ahead to introduce yourself to the group.",
+      ", welcome to join the Wechaty Python/Go/Java Developer's Home! Please go ahead to introduce yourself to the group.",
     ],
   },
   {
