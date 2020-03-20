@@ -10,7 +10,7 @@
 
 We are current DevOps the master branch from the repo to Heroku under the protection of Travis CI.
 
-You can visit the staging system at <http://wechaty.bot5.club/>
+You can visit the staging system at <http://friday.bot5.club/>
 
 ## PMC
 
