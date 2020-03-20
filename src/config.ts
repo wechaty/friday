@@ -56,7 +56,7 @@ export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
     cipherList: [
       'wechaty',
     ],
-    id: '24113855649@chatroom',
+    id: '18171595067@chatroom',
     rules: [
       `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" Wechat Room!`,
       `Wechaty is a Conversational RPA for Wechat for connecting Chatbots in ease.`,
