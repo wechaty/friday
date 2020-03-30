@@ -7,7 +7,7 @@
     "node": "10"
   },
   "scripts": {
-    "heroku-postbuild": "wechaty-puppet-install",
+    "heroku-postbuild:skip": "wechaty-puppet-install",
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:ts": "tsc --noEmit",
     "start": "echo -e '\n\nDo not use `npm start` because its buggy with SIGTERM\n\nUse Procfile instead.\n\n' && exit 1",
