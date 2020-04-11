@@ -33,10 +33,10 @@ export async function startBot (wechaty: Wechaty): Promise<void> {
     return () => Chatops.instance().heartbeat(emoji)
   }
   const ONE_HOUR = 60 * 60 * 1000
-  setInterval(heartbeat('💖'), ONE_HOUR)
-  wechaty.on('login', heartbeat('🙋'))
-  wechaty.on('ready', heartbeat('💪'))
-  wechaty.on('logout', heartbeat('😪'))
+  setInterval(heartbeat('[爱心]'), ONE_HOUR)
+  wechaty.on('login', heartbeat(`[太阳] ${wechaty.name()}`))
+  wechaty.on('ready', heartbeat(`[拳头] ${wechaty.name()}`))
+  wechaty.on('logout', heartbeat(`[月亮] ${wechaty.name()}`))
 
   await crontab()
 }

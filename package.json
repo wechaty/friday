@@ -1,13 +1,14 @@
 {
   "name": "bot5",
-  "version": "0.2.29",
+  "version": "0.2.42",
   "description": "Friday Bot",
   "main": "index.js",
   "engines": {
     "node": "10"
   },
   "scripts": {
-    "heroku-postbuild": "wechaty-puppet-install",
+    "build": "tsc",
+    "heroku-postbuild:skip": "wechaty-puppet-install",
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:ts": "tsc --noEmit",
     "start": "echo -e '\n\nDo not use `npm start` because its buggy with SIGTERM\n\nUse Procfile instead.\n\n' && exit 1",
@@ -37,8 +38,7 @@
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.33.1",
-    "wechaty-puppet-padplus": "^0.5.19"
+    "wechaty": "^0.38.4"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
