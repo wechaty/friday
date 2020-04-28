@@ -1,8 +1,9 @@
-import Hapi, { Request, ResponseToolkit }    from '@hapi/hapi'
+import http from 'http'
+
+import express from 'express'
+
 import {
   Wechaty,
-  UrlLink,
-  UrlLinkPayload,
 }                   from 'wechaty'
 
 import {
@@ -13,45 +14,12 @@ import {
 
 import { Chatops } from './chatops'
 
-async function webhookHandler (
-  request: Request,
-  h: ResponseToolkit,
-) {
-  log.info('startWeb', 'webhookHandler()')
-
-  let payload: UrlLinkPayload
-
-  switch (request.method) {
-    case 'get':
-      payload = { ...request.query } as any
-      break
-
-    case 'post':
-      payload = request.payload as any
-      break
-
-    default:
-      throw Error(`method is neither get nor post: ${request.method}`)
-  }
-
-  const urlLink = new UrlLink(payload)
-
-  await Chatops.instance().homeBraodcast(urlLink)
-
-  const html = [
-    'webhook succeed!',
-    JSON.stringify(payload),
-  ].join('<hr />')
-
-  return h.response(html)
-}
-
-async function chatopsHandler (request: Request, response: ResponseToolkit) {
+async function chatopsHandler (request: express.Request, response: express.Response) {
   log.info('startWeb', 'chatopsHandler()')
 
   const payload: {
     chatops: string,
-  } = request.payload as any
+  } = request.params as any
 
   await Chatops.instance().say(payload.chatops)
 
@@ -64,9 +32,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
   let qrcodeValue : undefined | string
   let userName    : undefined | string
 
-  const server =  new Hapi.Server({
-    port: PORT,
-  })
+  const app =  express()
 
   const FORM_HTML = `
     <form action="/chatops/" method="post">
@@ -75,7 +41,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
       <input type="submit" value="ChatOps">
     </form>
   `
-  const rootHandler = async () => {
+  const rootHandler = async (_req: express.Request, res: express.Response) => {
     let html
 
     if (qrcodeValue) {
@@ -113,34 +79,11 @@ export async function startWeb (bot: Wechaty): Promise<void> {
       html = `BOT5 v${VERSION} Hello, come back later please.`
 
     }
-    return html
+    res.end(html)
   }
 
-  const rootRoute = {
-    handler: rootHandler,
-    method : 'GET',
-    path   : '/',
-  }
-
-  const chatopsRoute = {
-    handler: chatopsHandler,
-    method : 'POST',
-    path   : '/chatops/',
-  }
-
-  const webhookRoute = {
-    handler: webhookHandler,
-    method : ['GET', 'POST'],
-    path   : '/webhook/',
-  }
-
-  const routeList = [
-    rootRoute,
-    chatopsRoute,
-    webhookRoute,
-  ]
-
-  server.route(routeList)
+  app.get('/', rootHandler)
+  app.get('/chatops/', chatopsHandler)
 
   bot.on('scan', qrcode => {
     qrcodeValue = qrcode
@@ -154,6 +97,7 @@ export async function startWeb (bot: Wechaty): Promise<void> {
     userName = undefined
   })
 
-  await server.start()
+  http.createServer(app).listen(PORT)
+
   log.info('startWeb', 'startWeb() listening to http://localhost:%d', PORT)
 }
