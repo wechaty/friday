@@ -28,23 +28,23 @@
   "homepage": "https://github.com/wechaty/bot5#readme",
   "dependencies": {
     "@chatie/tsconfig": "^0.8.0",
-    "@hapi/hapi": "^18.4.1",
-    "@types/node-cron": "^2.0.2",
-    "@types/raven": "^2.5.1",
+    "@hapi/hapi": "^19.1.1",
+    "@types/node-cron": "^2.0.3",
+    "@types/raven": "^2.5.3",
     "@types/read-pkg-up": "^6.0.0",
-    "brolog": "^1.6.5",
-    "finis": "^0.4.3",
+    "brolog": "^1.8.3",
+    "finis": "^0.4.4",
     "moment": "^2.24.0",
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
-    "read-pkg-up": "^7.0.0",
-    "wechaty": "^0.37.14"
+    "read-pkg-up": "^7.0.1",
+    "wechaty": "^0.39.17"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
-    "@chatie/git-scripts": "^0.2.5",
-    "@types/hapi__hapi": "^18.2.6",
-    "tstest": "^0.4.2"
+    "@chatie/git-scripts": "^0.6.1",
+    "@types/hapi__hapi": "^19.0.3",
+    "tstest": "^0.4.10"
   },
   "git": {
     "scripts": {
