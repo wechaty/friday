@@ -1,9 +1,9 @@
 import { Friendship } from 'wechaty'
 
 const NEW_FRIEND_GREETING = [
-  `Hi there, I'm Friday BOT. Thank you for adding me as your friend.`,
-  `I'm open-sourced, please feel free to visit https://github.com/wechaty/friday if you want to know me more. Issues and Pull Requests are welcome!`,
-  `Currently, I'm in charge of manage some developers' WeChat group: if you know any secret words, please tell me, so that I can invite you to that room!`,
+  `Hi there, my name is Friday, I'm a Chatbot built by Wechaty and for Wechaty.`,
+  `I'm open-sourced, please feel free to visit https://github.com/wechaty/friday if you want to know me more.`,
+  `Currently, I'm in charge of managing some developers' WeChat group: if you know any secret words, please send to me, then I'll be able to invite you to join!`,
 ]
 
 export class FriendshipManager {
