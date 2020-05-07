@@ -15,6 +15,7 @@ const DEFAULT_VOTE_THRESHOLD = 3
 
 const MANAGED_ROOM_NAME_PATTERN = [
   /Wechaty Developers' Home/,
+  /Youth fed the/,
 ]
 
 export class VoteManager {
