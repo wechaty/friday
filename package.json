@@ -1,7 +1,7 @@
 {
-  "name": "bot5",
+  "name": "friday",
   "version": "0.2.46",
-  "description": "Friday Bot",
+  "description": "Friday Bot for Wechaty Community",
   "main": "index.js",
   "engines": {
     "node": "10"
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wechaty/bot5.git"
+    "url": "git+https://github.com/wechaty/friday.git"
   },
   "author": "Huan LI <zixia@zixia.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wechaty/bot5/issues"
+    "url": "https://github.com/wechaty/friday/issues"
   },
-  "homepage": "https://github.com/wechaty/bot5#readme",
+  "homepage": "https://github.com/wechaty/friday#readme",
   "dependencies": {
     "@chatie/tsconfig": "^0.8.0",
     "@types/node-cron": "^2.0.3",
@@ -38,7 +38,7 @@
     "node-cache": "^5.1.0",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.1",
-    "wechaty": "^0.39.17"
+    "wechaty": "^0.39.27"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
