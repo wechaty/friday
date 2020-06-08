@@ -4,7 +4,7 @@
   "description": "Friday Bot for Wechaty Community",
   "main": "index.js",
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "scripts": {
     "build": "tsc",
