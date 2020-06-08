@@ -1,7 +1,7 @@
 import { getWechaty } from '../../src/get-wechaty'
-import { startBot }   from '../../src/start-bot'
-import { startFinis } from '../../src/start-finis'
-import { startWeb }   from '../../src/start-web'
+import { setupBot }   from '../../src/setup-bot'
+import { setupFinis } from '../../src/setup-finis'
+import { setupWeb }   from '../../src/setup-web'
 
 process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
 
@@ -10,9 +10,9 @@ async function main () {
 
   await Promise.all([
     bot.start(),
-    startBot(bot),
-    startFinis(bot),
-    startWeb(bot),
+    setupBot(bot),
+    setupFinis(bot),
+    setupWeb(bot),
   ])
 
   await bot.stop()
