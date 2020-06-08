@@ -26,7 +26,7 @@ async function chatopsHandler (request: express.Request, response: express.Respo
   return response.redirect('/')
 }
 
-export async function startWeb (bot: Wechaty): Promise<void> {
+export async function setupWeb (bot: Wechaty): Promise<void> {
   log.verbose('startWeb', 'startWeb(%s)', bot)
 
   let qrcodeValue : undefined | string

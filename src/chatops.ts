@@ -8,10 +8,12 @@ import { DelayQueueExecutor } from 'rx-queue'
 
 import {
   log,
-  BOT_ROOM_ID,
-  HEARTBEAT_ROOM_ID,
-  WECHATY_DEVELOPERS_HOME_ID_LIST,
 }                                   from './config'
+import {
+  CHATOPS_ROOM_ID,
+  HEARTBEAT_ROOM_ID,
+  DEVELOPERS_ROOM_ID_LIST,
+}                                   from './rooms-config'
 
 export class Chatops {
 
@@ -47,7 +49,7 @@ export class Chatops {
   }
 
   public async say (textOrMessage: string | Message) {
-    return this.roomMessage(BOT_ROOM_ID, textOrMessage)
+    return this.roomMessage(CHATOPS_ROOM_ID, textOrMessage)
   }
 
   private async roomMessage (
@@ -94,13 +96,13 @@ export class Chatops {
   }
 
   public async homeBraodcast (info: string | UrlLink) {
-    for (const roomId of WECHATY_DEVELOPERS_HOME_ID_LIST) {
+    for (const roomId of DEVELOPERS_ROOM_ID_LIST) {
       await this.roomMessage(roomId, info)
     }
   }
 
   public async homeAnnounce (announcement: string) {
-    for (const roomId of WECHATY_DEVELOPERS_HOME_ID_LIST) {
+    for (const roomId of DEVELOPERS_ROOM_ID_LIST) {
       const room = this.bot.Room.load(roomId)
       await room.ready()
       await room.announce(announcement)

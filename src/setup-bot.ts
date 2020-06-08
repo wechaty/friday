@@ -2,19 +2,32 @@ import {
   Wechaty,
 }                   from 'wechaty'
 
+/**
+ * Wechaty Plugin Support with Kickout Example #1939
+ *  https://github.com/wechaty/wechaty/issues/1939
+ */
+import {
+  QRCodeTerminal,
+  EventLogger,
+  DingDong,
+}                           from 'wechaty-plugin-contrib'
+
 import {
   log,
 }               from './config'
 
 import {
-  Chatops,
-}             from './chatops'
-
-import {
   crontab,
 }             from './plugins'
 
-export async function startBot (wechaty: Wechaty): Promise<void> {
+import {
+  OneToManyPlugin,
+  ManyToOnePlugin,
+  ManyToManyPlugin,
+  Bot5OneToManyPlugin,
+}                     from './room-connector'
+
+export async function setupBot (wechaty: Wechaty): Promise<void> {
   log.verbose('startBot', 'startBot(%s)', wechaty)
 
   wechaty
@@ -29,14 +42,15 @@ export async function startBot (wechaty: Wechaty): Promise<void> {
     .on('room-join',    './handlers/on-room-join')
     .on('room-leave',   './handlers/on-room-leave')
 
-  const heartbeat = (emoji: string) => {
-    return () => Chatops.instance().heartbeat(emoji)
-  }
-  const ONE_HOUR = 60 * 60 * 1000
-  setInterval(heartbeat('[爱心]'), ONE_HOUR)
-  wechaty.on('login', heartbeat(`[太阳] ${wechaty.name()}`))
-  wechaty.on('ready', heartbeat(`[拳头] ${wechaty.name()}`))
-  wechaty.on('logout', heartbeat(`[月亮] ${wechaty.name()}`))
+  wechaty.use(
+    QRCodeTerminal(),
+    EventLogger(),
+    DingDong(),
+    OneToManyPlugin,
+    ManyToOnePlugin,
+    ManyToManyPlugin,
+    Bot5OneToManyPlugin,
+  )
 
   await crontab()
 }
