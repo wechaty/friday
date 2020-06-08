@@ -17,7 +17,7 @@ const EXIT_ANNOUNCEMENT   = `Der! I'm going to exit now, see you, bye!\n${BOT_NA
 
 let bot: undefined | Wechaty
 
-export async function startFinis (wechaty: Wechaty): Promise<void> {
+export async function setupFinis (wechaty: Wechaty): Promise<void> {
   if (bot) {
     throw new Error('startFinis should only init once')
   }
