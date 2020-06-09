@@ -1,7 +1,7 @@
 import readPkgUp from 'read-pkg-up'
 
 import {
-  KeywordRoomConfig,
+  // KeywordRoomConfig,
   CRONConfig,
 }                     from './schema'
 
@@ -16,71 +16,6 @@ export const VERSION = pkg.version
  * Env Vars
  */
 export const PORT = process.env.PORT || 8788
-
-export const KEYWORD_ROOM_CONFIG: KeywordRoomConfig[] = [
-  {
-    cipherList: [
-      'python wechaty',
-      'go wechaty',
-      'java wechaty',
-      'python',
-      'go',
-      'java',
-    ],
-    id: '19367909379@chatroom',
-    rules: [
-      `Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers' Home" WeChat Room!`,
-      `Python/Go/Java Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.`,
-      `If you have any idea about the feature requests, questions, and document, please let us know.`,
-      `Related issue: https://github.com/wechaty/wechaty/issues/1927`,
-      `Please introduce yourself after you join the room, cheers!`,
-    ],
-    topic: "Wechaty Python/Go/Java Developers' Home",
-    welcomes: [
-      ", welcome to join the Wechaty Python/Go/Java Developer's Home! Please go ahead to introduce yourself to the group.",
-    ],
-  },
-  {
-    cipherList: [
-      'wechaty',
-    ],
-    id: '18171595067@chatroom',
-    rules: [
-      `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" Wechat Room!`,
-      `Wechaty is a Conversational RPA for Wechat for connecting Chatbots in ease.`,
-      `You can find our documentation at https://wechaty.js.org`,
-      `Please introduce yourself after you join the room, cheers!`,
-    ],
-    topic: `Wechaty Developers' Home`,
-    welcomes: [
-      `is joining us as a new Wechaty developer! Welcome, and please introduce yourself to the community!`,
-    ],
-  },
-  {
-    cipherList: [
-      'aidog',
-    ],
-    rules: [],
-    topic: 'Youth fed the 5th dog',
-    welcomes: [
-      '禁止在本群测试机器人。 注意：老群已满，此群为AiDog第五个新群',
-    ],
-  },
-  {
-    cipherList: [
-      'bot5',
-      'BotFriday',
-      'friday',
-    ],
-    rules: [
-      `I'm trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer `,
-    ],
-    topic: 'Bot Friday Open Forum - BFOF',
-    welcomes: [
-      'Welcome to join us!',
-    ],
-  },
-]
 
 // 定时任务测试
 // # ┌────────────── second (optional)

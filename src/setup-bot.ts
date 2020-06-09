@@ -10,7 +10,7 @@ import {
   QRCodeTerminal,
   EventLogger,
   DingDong,
-}                           from 'wechaty-plugin-contrib'
+}                    from 'wechaty-plugin-contrib'
 
 import {
   log,
@@ -19,7 +19,8 @@ import {
 import {
   crontab,
 }             from './plugins'
-
+import { VoteOutPlugin } from './plugins/vote-out'
+import { RoomInviterPluginList } from './plugins/room-invitor'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -50,6 +51,8 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     ManyToOnePlugin,
     ManyToManyPlugin,
     Bot5OneToManyPlugin,
+    VoteOutPlugin,
+    ...RoomInviterPluginList,
   )
 
   await crontab()
