@@ -40,7 +40,7 @@
     "read-pkg-up": "^7.0.1",
     "wechaty": "^0.40.1",
     "wechaty-plugin-contrib": "^0.6.15",
-    "wechaty-voteout": "^0.2.2"
+    "wechaty-voteout": "^0.3.1"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",
