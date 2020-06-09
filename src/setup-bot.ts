@@ -21,6 +21,7 @@ import {
 }             from './plugins'
 import { VoteOutPlugin } from './plugins/vote-out'
 import { RoomInviterPluginList } from './plugins/room-invitor'
+import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -53,6 +54,7 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     Bot5OneToManyPlugin,
     VoteOutPlugin,
     ...RoomInviterPluginList,
+    FriendshipAccepterPlugin,
   )
 
   await crontab()
