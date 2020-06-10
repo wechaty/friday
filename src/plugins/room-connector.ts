@@ -36,7 +36,7 @@ const OneToManyPlugin = OneToManyRoomConnector({
 })
 
 const manyToOneMap: RoomConnectorMessageMapFunction = async (message: Message) => {
-  if (message.type() !== Message.Type.Text) { return message}
+  if (message.type() !== Message.Type.Text) { return message }
 
   const displayName = await getSenderRoomDisplayName(message)
   const text        = message.text()
