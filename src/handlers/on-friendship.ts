@@ -4,8 +4,6 @@ import {
   Wechaty,
 }             from 'wechaty'
 
-import { FriendshipManager }  from '../managers/friendship-manager'
-
 import { Chatops }            from '../chatops'
 
 export default async function onFriendship (
@@ -29,9 +27,4 @@ export default async function onFriendship (
     })
   }
 
-  try {
-    await FriendshipManager.autoProcessFriendship(friendship)
-  } catch (e) {
-    log.error(`on-friendship`, `failed to auto process friendship:\n`, e)
-  }
 }

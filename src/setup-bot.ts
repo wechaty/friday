@@ -3,7 +3,7 @@ import {
 }                   from 'wechaty'
 
 /**
- * Wechaty Plugin Support with Kickout Example #1939
+ * Wechaty Plugin Support with KickOut Example #1939
  *  https://github.com/wechaty/wechaty/issues/1939
  */
 import {
@@ -16,16 +16,14 @@ import {
   log,
 }               from './config'
 
-import {
-  crontab,
-}             from './plugins'
-
+import { crontab } from './plugins'
+import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
   ManyToManyPlugin,
   Bot5OneToManyPlugin,
-}                     from './room-connector'
+}                       from './plugins/room-connector'
 
 export async function setupBot (wechaty: Wechaty): Promise<void> {
   log.verbose('startBot', 'startBot(%s)', wechaty)
@@ -50,6 +48,7 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     ManyToOnePlugin,
     ManyToManyPlugin,
     Bot5OneToManyPlugin,
+    FriendshipAccepterPlugin,
   )
 
   await crontab()
