@@ -13,7 +13,7 @@ const config: Partial<VoteOutConfig> = {
     /Wechaty Developers/i,
     /Youth fed the/i,
   ],
-  // Who never be kickedout by voting
+  // Who never be kicked out by voting
   whiteList: [
     'lizhuohuan',
   ],

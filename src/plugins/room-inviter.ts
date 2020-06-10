@@ -12,8 +12,8 @@ const wechatyConfig: RoomInviterConfig = {
   repeat,
   room: '18171595067@chatroom',
   rule: [
-    `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" Wechat Room!`,
-    `Wechaty is a Conversational RPA for Wechat for connecting Chatbots in ease.`,
+    `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" WeChat Room!`,
+    `Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.`,
     `You can find our documentation at https://wechaty.js.org`,
     `Please introduce yourself after you join the room, cheers!`,
   ],
