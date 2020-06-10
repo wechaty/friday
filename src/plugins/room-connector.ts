@@ -11,7 +11,7 @@ import {
 
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
-}                           from './rooms-config'
+}                           from '../rooms-config'
 
 const blacklist = [ async () => true ]
 const whitelist = [ async (message: Message) => message.type() === Message.Type.Text ]
