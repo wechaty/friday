@@ -50,9 +50,9 @@ const aidogConfig: RoomInviterConfig = {
 
 const bot5Config: RoomInviterConfig = {
   password: [
-    /bot5/i,
-    /BotFriday/i,
-    /friday/i,
+    /^bot5$/i,
+    /^BotFriday$/i,
+    /^friday$/i,
   ],
   room: /^Bot Friday Open Forum - BFOF$/i,
   rule: [
