@@ -9,7 +9,6 @@ import moment from 'moment'
 import { Chatops } from '../chatops'
 
 import { VoteManager } from '../managers/vote-manager'
-import { InviteManager } from '../managers/invite-manager'
 
 const BORN_TIME = Date.now()
 
@@ -18,12 +17,6 @@ export default async function onMessage (
   message : Message,
 ): Promise<void> {
   log.info('on-message', 'onMessage(%s)', message)
-
-  try {
-    await InviteManager.checkInvite(message)
-  } catch (e) {
-    log.error('on-message', 'check invite failed: %s', e)
-  }
 
   try {
     await VoteManager.checkVote(message)

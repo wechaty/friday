@@ -10,13 +10,17 @@ import {
   QRCodeTerminal,
   EventLogger,
   DingDong,
-}                           from 'wechaty-plugin-contrib'
+}                    from 'wechaty-plugin-contrib'
 
 import {
   log,
 }               from './config'
 
-import { crontab } from './plugins'
+import {
+  crontab,
+}             from './plugins'
+import { VoteOutPlugin } from './plugins/vote-out'
+import { RoomInviterPluginList } from './plugins/room-invitor'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import {
   OneToManyPlugin,
@@ -48,6 +52,8 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     ManyToOnePlugin,
     ManyToManyPlugin,
     Bot5OneToManyPlugin,
+    VoteOutPlugin,
+    ...RoomInviterPluginList,
     FriendshipAccepterPlugin,
   )
 

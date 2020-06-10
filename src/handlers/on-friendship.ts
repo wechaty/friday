@@ -26,5 +26,4 @@ export default async function onFriendship (
         .catch(e => log.error('on-friendship', 'onFriendship() queue() rejection %s', e))
     })
   }
-
 }
