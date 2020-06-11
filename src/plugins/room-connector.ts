@@ -14,9 +14,6 @@ import {
   BOT5_CLUB_2020_ROOM_ID,
 }                           from '../rooms-config'
 
-const blacklist = [ async () => true ]
-const whitelist = [ async (message: Message) => message.type() === Message.Type.Text ]
-
 const getSenderRoomDisplayName = async (message: Message) => {
   const from = message.from()!
   const room = message.room()
@@ -25,42 +22,67 @@ const getSenderRoomDisplayName = async (message: Message) => {
   return alias || from.name() || 'Noname'
 }
 
-const oneToManyMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
-  if (message.type() !== Message.Type.Text) { return message }
+function getRoomShortNameByRegexp (matcher: RegExp) {
+  return async function getRoomShortName (message: Message): Promise<undefined | string> {
+    const room = message.room()
+    if (!room) {
+      return
+    }
 
-  const displayName = await getSenderRoomDisplayName(message)
-  const text        = message.text()
+    const topic = await room.topic()
+    const matched = topic.match(matcher)
 
-  let homeName = 'Headquarters'
-  return `[${displayName}@${homeName}]: ${text}`
+    if (!matched) {
+      return
+    }
+
+    return matched[1]
+  }
 }
 
+const getWechatyDevelopersRoomName = getRoomShortNameByRegexp(/Developers'\s*(.+)/i)
+
+/**
+ *
+ * Message Mapper for Room Connectors
+ *
+ */
+const unidirectionalMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
+  // Forward all non-Text messages
+  if (message.type() !== Message.Type.Text) { return message }
+
+  const talkerDisplayName = await getSenderRoomDisplayName(message)
+  const roomShortName     = await getWechatyDevelopersRoomName(message) || 'Nowhere'
+
+  const text = message.text()
+
+  return `[${talkerDisplayName}@${roomShortName}]: ${text}`
+}
+
+const bidirectionalMessageMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
+  // Drop all messages if not Text
+  if (message.type() !== Message.Type.Text) { return }
+
+  const talkerDisplayName = await getSenderRoomDisplayName(message)
+  const roomShortName     = await getWechatyDevelopersRoomName(message) || 'Nowhere'
+
+  const text = message.text()
+
+  return `[${talkerDisplayName}@${roomShortName}]: ${text}`
+}
+
+/**
+ *
+ * OneToMany
+ *
+ */
 const OneToManyPlugin = OneToManyRoomConnector({
-  // blacklist,
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
-  map: oneToManyMapper,
+  map: unidirectionalMapper,
   one: HEADQUARTERS_ROOM_ID,
-  // whitelist,
 })
-
-const manyToOneMap: RoomConnectorMessageMapFunction = async (message: Message) => {
-  if (message.type() !== Message.Type.Text) { return message }
-
-  const displayName = await getSenderRoomDisplayName(message)
-  const text        = message.text()
-
-  let homeName = 'Nowhere'
-  const topic = await message.room()?.topic() || 'Nowhere'
-  const regex = /Developers'\s*(.+)/i
-  const match = topic.match(regex)
-  if (match) {
-    homeName = match[1]
-  }
-
-  return `[${displayName}@${homeName}]: ${text}`
-}
 
 /**
  *
@@ -68,43 +90,27 @@ const manyToOneMap: RoomConnectorMessageMapFunction = async (message: Message) =
  *
  */
 const ManyToOnePlugin = ManyToOneRoomConnector({
-  // blacklist,
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
-  map: manyToOneMap,
+  map: unidirectionalMapper,
   one: HEADQUARTERS_ROOM_ID,
-  // whitelist,
 })
-
-const manyToManyMap: RoomConnectorMessageMapFunction = async (message: Message) => {
-  if (message.type() !== Message.Type.Text) { return }
-
-  const displayName = await getSenderRoomDisplayName(message)
-  const text        = message.text()
-
-  let homeName = 'Nowhere'
-  const topic = await message.room()?.topic() || 'Nowhere'
-  const regex = /Developers'\s*(.+)/i
-  const match = topic.match(regex)
-  if (match) {
-    homeName = match[1]
-  }
-
-  return `[${displayName}@${homeName}]: ${text}`
-}
 
 /**
  *
  * Many to Many
  *
  */
+const blacklist = [ async () => true ]
+const whitelist = [ async (message: Message) => message.type() === Message.Type.Text ]
+
 const ManyToManyPlugin = ManyToManyRoomConnector({
   blacklist,
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
-  map: manyToManyMap,
+  map: bidirectionalMessageMapper,
   whitelist,
 })
 
@@ -114,13 +120,11 @@ const ManyToManyPlugin = ManyToManyRoomConnector({
  *
  */
 const Bot5OneToManyPlugin = OneToManyRoomConnector({
-  blacklist,
   many: [
     BOT5_CLUB_2019_ROOM_ID,
   ],
   map: async message => `[${message.from()?.name()}@2020]: ${message.text()}`,
   one: BOT5_CLUB_2020_ROOM_ID,
-  whitelist,
 })
 
 export {
