@@ -25,12 +25,22 @@ const getSenderRoomDisplayName = async (message: Message) => {
   return alias || from.name() || 'Noname'
 }
 
+const oneToManyMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
+  if (message.type() !== Message.Type.Text) { return message }
+
+  const displayName = await getSenderRoomDisplayName(message)
+  const text        = message.text()
+
+  let homeName = 'Headquarters'
+  return `[${displayName}@${homeName}]: ${text}`
+}
+
 const OneToManyPlugin = OneToManyRoomConnector({
   // blacklist,
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
-  // map: async message => `[${message.from()?.name()}@HQ]: ${message.text()}`,
+  map: oneToManyMapper,
   one: HEADQUARTERS_ROOM_ID,
   // whitelist,
 })
