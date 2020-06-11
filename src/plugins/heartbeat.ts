@@ -3,7 +3,9 @@ import {
   HeartbeatConfig,
 }                   from 'wechaty-plugin-contrib'
 
-const room = '17376996519@chatroom' // 'ChatOps - Heartbeat'
+import {
+  HEARTBEAT_ROOM_ID,
+}                         from '../rooms-config'
 
 const config: HeartbeatConfig = {
   emoji: {
@@ -13,7 +15,7 @@ const config: HeartbeatConfig = {
     ready     : '[拳头]',
   },
   intervalSeconds: 60 * 60,       // 1 hour
-  room,
+  room: HEARTBEAT_ROOM_ID,
 }
 
 export const HeartbeatPlugin = Heartbeat(config)

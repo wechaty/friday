@@ -11,7 +11,7 @@ import {
 }                                   from './config'
 import {
   CHATOPS_ROOM_ID,
-  HEARTBEAT_ROOM_ID,
+  // HEARTBEAT_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
 }                                   from './rooms-config'
 
@@ -44,10 +44,6 @@ export class Chatops {
     this.delayQueueExecutor = new DelayQueueExecutor(5 * 1000)  // set delay period time to 5 seconds
   }
 
-  public async heartbeat (text: string): Promise<void> {
-    return this.roomMessage(HEARTBEAT_ROOM_ID, text)
-  }
-
   public async say (textOrMessage: string | Message) {
     return this.roomMessage(CHATOPS_ROOM_ID, textOrMessage)
   }
@@ -70,23 +66,24 @@ export class Chatops {
     if (typeof info === 'string') {
       await room.say(info)
     } else if (info instanceof Message) {
-      switch (info.type()) {
-        case Message.Type.Text:
-          await room.say(`${info}`)
-          break
-        case Message.Type.Image:
-          const image = await info.toFileBox()
-          await room.say(image)
-          break
-        case Message.Type.Url:
-          const urlLink = await info.toUrlLink()
-          await room.say(urlLink)
-          break
-        default:
-          const typeName = Message.Type[info.type()]
-          await room.say(`message type: ${typeName}`)
-          break
-      }
+      await info.forward(room)
+      // switch (info.type()) {
+      //   case Message.Type.Text:
+      //     await room.say(`${info}`)
+      //     break
+      //   case Message.Type.Image:
+      //     const image = await info.toFileBox()
+      //     await room.say(image)
+      //     break
+      //   case Message.Type.Url:
+      //     const urlLink = await info.toUrlLink()
+      //     await room.say(urlLink)
+      //     break
+      //   default:
+      //     const typeName = Message.Type[info.type()]
+      //     await room.say(`message type: ${typeName}`)
+      //     break
+      // }
     } else if (info instanceof UrlLink) {
       await room.say(info)
     } else {
@@ -95,11 +92,11 @@ export class Chatops {
 
   }
 
-  public async homeBraodcast (info: string | UrlLink) {
-    for (const roomId of DEVELOPERS_ROOM_ID_LIST) {
-      await this.roomMessage(roomId, info)
-    }
-  }
+  // public async homeBroadcast (info: string | UrlLink) {
+  //   for (const roomId of DEVELOPERS_ROOM_ID_LIST) {
+  //     await this.roomMessage(roomId, info)
+  //   }
+  // }
 
   public async homeAnnounce (announcement: string) {
     for (const roomId of DEVELOPERS_ROOM_ID_LIST) {
