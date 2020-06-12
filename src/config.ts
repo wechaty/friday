@@ -1,7 +1,6 @@
 import readPkgUp from 'read-pkg-up'
 
 import {
-  // KeywordRoomConfig,
   CRONConfig,
 }                     from './schema'
 
