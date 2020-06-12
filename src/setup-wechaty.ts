@@ -17,14 +17,12 @@ import {
   log,
 }               from './config'
 
-import {
-  crontab,
-}             from './plugins'
-
-import { VoteOutPlugin } from './plugins/vote-out'
-import { RoomInviterPluginList } from './plugins/room-inviter'
+import { VoteOutPlugin }            from './plugins/vote-out'
+import { RoomInviterPluginList }    from './plugins/room-inviter'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
-import { HeartbeatPlugin } from './plugins/heartbeat'
+import { HeartbeatPlugin }          from './plugins/heartbeat'
+import { EventHotHandlerPlugin }    from './plugins/hot-event-handler'
+
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -34,20 +32,8 @@ import {
 
 import { CHATOPS_ROOM_ID } from './rooms-config'
 
-export async function setupBot (wechaty: Wechaty): Promise<void> {
+export function setupWechatyPlugin (wechaty: Wechaty): void {
   log.verbose('startBot', 'startBot(%s)', wechaty)
-
-  wechaty
-    .on('scan',         './handlers/on-scan')
-    .on('error',        './handlers/on-error')
-    .on('friendship',   './handlers/on-friendship')
-    .on('logout',       './handlers/on-logout')
-    .on('login',        './handlers/on-login')
-    .on('message',      './handlers/on-message')
-    .on('room-topic',   './handlers/on-room-topic')
-    .on('room-invite',  './handlers/on-room-invite')
-    .on('room-join',    './handlers/on-room-join')
-    .on('room-leave',   './handlers/on-room-leave')
 
   wechaty.use(
     QRCodeTerminal(),
@@ -62,7 +48,6 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     ...RoomInviterPluginList,
     FriendshipAccepterPlugin,
     HeartbeatPlugin,
+    EventHotHandlerPlugin,
   )
-
-  await crontab()
 }

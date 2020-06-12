@@ -4,7 +4,7 @@ import {
   Wechaty,
 }             from 'wechaty'
 
-import { Chatops }            from '../chatops'
+import { CHATOPS_ROOM_ID }            from '../rooms-config'
 
 export default async function onFriendship (
   this       : Wechaty,
@@ -15,15 +15,13 @@ export default async function onFriendship (
   const contact = await friendship.contact()
   const hello = await friendship.hello()
 
+  let text
   if (friendship.type() === this.Friendship.Type.Receive) {
-    await Chatops.instance().queue(() => {
-      Chatops.instance().say(`recreived friendship from ${contact} with ${hello}`)
-        .catch(e => log.error('on-friendship', 'onFriendship() queue() rejection %s', e))
-    })
+    text = `recreived friendship from ${contact} with ${hello}`
+    await this.Room.load(CHATOPS_ROOM_ID).say(text)
   } else if (friendship.type() === this.Friendship.Type.Confirm) {
-    await Chatops.instance().queue(() => {
-      Chatops.instance().say(`confirmed friendship from ${contact}`)
-        .catch(e => log.error('on-friendship', 'onFriendship() queue() rejection %s', e))
-    })
+    text = `confirmed friendship from ${contact}`
+    await this.Room.load(CHATOPS_ROOM_ID).say(text)
   }
+
 }
