@@ -1,9 +1,5 @@
 import readPkgUp from 'read-pkg-up'
 
-import {
-  CRONConfig,
-}                     from './schema'
-
 export {
   log,
 } from 'wechaty'
@@ -32,3 +28,9 @@ export const CRON_CONFIG: CRONConfig[] = [
     time: '0 0 19 * * 1',
   },
 ]
+
+
+export interface CRONConfig {
+  time: string,
+  reply: string
+}
