@@ -10,6 +10,7 @@ import {
   QRCodeTerminal,
   EventLogger,
   DingDong,
+  ChatOps,
 }                    from 'wechaty-plugin-contrib'
 
 import {
@@ -31,6 +32,8 @@ import {
   Bot5OneToManyPlugin,
 }                       from './plugins/room-connector'
 
+import { CHATOPS_ROOM_ID } from './rooms-config'
+
 export async function setupBot (wechaty: Wechaty): Promise<void> {
   log.verbose('startBot', 'startBot(%s)', wechaty)
 
@@ -50,6 +53,7 @@ export async function setupBot (wechaty: Wechaty): Promise<void> {
     QRCodeTerminal(),
     EventLogger(),
     DingDong(),
+    ChatOps({ room: CHATOPS_ROOM_ID }),
     OneToManyPlugin,
     ManyToOnePlugin,
     ManyToManyPlugin,

@@ -18,7 +18,7 @@ const MANAGED_ROOM_NAME_PATTERN = [
   /Youth fed the/,
 ]
 
-export class VoteManager {
+class VoteManager {
 
   private static cache = new NodeCache()
 
@@ -88,3 +88,5 @@ export class VoteManager {
   }
 
 }
+
+void VoteManager
