@@ -12,5 +12,4 @@ export default async function onRoomJoin (
   inviter     : Contact,
 ): Promise<void> {
   log.info('on-room-join', 'onRoomJoin(%s, %s, %s)', room, inviteeList.join(','), inviter)
-
 }
