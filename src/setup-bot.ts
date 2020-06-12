@@ -19,6 +19,7 @@ import {
 import {
   crontab,
 }             from './plugins'
+
 import { VoteOutPlugin } from './plugins/vote-out'
 import { RoomInviterPluginList } from './plugins/room-inviter'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
