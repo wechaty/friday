@@ -1,6 +1,4 @@
-import {
-  Wechaty,
-}                   from 'wechaty'
+import { Wechaty } from 'wechaty'
 
 /**
  * Wechaty Plugin Support with KickOut Example #1939
@@ -32,7 +30,7 @@ import {
 
 import { CHATOPS_ROOM_ID } from './rooms-config'
 
-export function setupWechatyPlugin (wechaty: Wechaty): void {
+export function setupWechatyPlugins (wechaty: Wechaty): void {
   log.verbose('startBot', 'startBot(%s)', wechaty)
 
   wechaty.use(

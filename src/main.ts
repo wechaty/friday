@@ -2,7 +2,7 @@ import {
   log,
 }                     from './config'
 import { getWechaty } from './get-wechaty'
-import { setupWechatyPlugin }   from './setup-wechaty'
+import { setupWechatyPlugins }   from './setup-wechaty'
 import { setupFinis } from './setup-finis'
 import { setupWeb }   from './setup-web'
 
@@ -12,7 +12,7 @@ async function main () {
   const name = process.env.WECHATY_NAME || 'heroku-wechaty'
 
   const bot = getWechaty(name)
-  setupWechatyPlugin(bot)
+  setupWechatyPlugins(bot)
 
   await Promise.all([
     bot.start(),
