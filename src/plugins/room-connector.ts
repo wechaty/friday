@@ -77,6 +77,9 @@ const bidirectionalMessageMapper: RoomConnectorMessageMapFunction = async (messa
  *
  */
 const OneToManyPlugin = OneToManyRoomConnector({
+  blacklist: [
+    'wxid_a8d806dzznm822',  // Mike BO
+  ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
@@ -90,6 +93,9 @@ const OneToManyPlugin = OneToManyRoomConnector({
  *
  */
 const ManyToOnePlugin = ManyToOneRoomConnector({
+  blacklist: [
+    'wxid_a8d806dzznm822',
+  ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
@@ -102,8 +108,10 @@ const ManyToOnePlugin = ManyToOneRoomConnector({
  * Many to Many
  *
  */
-const blacklist = [ async () => true ]
-const whitelist = [ async (message: Message) => message.type() === Message.Type.Text ]
+const blacklist = [
+  async (message: Message) => message.type() !== Message.Type.Text,
+  'wxid_a8d806dzznm822',
+]
 
 const ManyToManyPlugin = ManyToManyRoomConnector({
   blacklist,
@@ -111,7 +119,6 @@ const ManyToManyPlugin = ManyToManyRoomConnector({
     ...DEVELOPERS_ROOM_ID_LIST,
   ],
   map: bidirectionalMessageMapper,
-  whitelist,
 })
 
 /**
