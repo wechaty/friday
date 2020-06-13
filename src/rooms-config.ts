@@ -4,7 +4,7 @@ const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat'
 const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
 
 const DEVELOPERS_ROOM_ID_LIST = [
-  '18171595067@chatroom',   // Wechaty Developers' Home
+  '18171595067@chatroom',   // Wechaty Developers' Home 7
   '24113855649@chatroom',   // Wechaty Developers' Home 6
   '19112581505@chatroom',   // Wechaty Developers' Home 5
   '22396239792@chatroom',   // Wechaty Developers' Home 4

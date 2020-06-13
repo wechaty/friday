@@ -1,9 +1,16 @@
 import {
+  Contact,
+  Room,
+}                       from 'wechaty'
+import {
   RoomInviter,
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
+import { ContactTalkerOptions } from 'wechaty-plugin-contrib/dist/src/utils/'
 
-const repeat = 'You are already in our room'
+const repeat: ContactTalkerOptions = async (contact: Contact, room?: Room) => {
+  await contact.say('You are already in our room: ' + await room?.topic())
+}
 
 const wechatyConfig: RoomInviterConfig = {
   password : [
