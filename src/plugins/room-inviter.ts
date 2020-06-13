@@ -8,6 +8,8 @@ import {
 }                       from 'wechaty-plugin-contrib'
 import { ContactTalkerOptions } from 'wechaty-plugin-contrib/dist/src/utils/'
 
+import { DEVELOPERS_ROOM_ID_LIST } from '../rooms-config'
+
 const repeat: ContactTalkerOptions = async (contact: Contact, room?: Room) => {
   await contact.say('You are already in our room: ' + await room?.topic())
 }
@@ -17,7 +19,7 @@ const wechatyConfig: RoomInviterConfig = {
     /^wechaty$/i,
   ],
   repeat,
-  room: '18171595067@chatroom',
+  room: DEVELOPERS_ROOM_ID_LIST,
   rule: [
     `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" WeChat Room!`,
     `Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.`,
