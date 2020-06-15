@@ -41,7 +41,6 @@ const config: VoteOutConfig = {
   room: [
     /^Wechaty Developers/i,
     /^Youth fed the/i,
-    /^test/i,
   ],
   threshold: 3,
   kick,
