@@ -42,10 +42,10 @@ export function setupWechatyPlugins (wechaty: Wechaty): void {
     ManyToOnePlugin,
     ManyToManyPlugin,
     Bot5OneToManyPlugin,
-    VoteOutPlugin,
     ...RoomInviterPluginList,
     FriendshipAccepterPlugin,
     HeartbeatPlugin,
     EventHotHandlerPlugin,
+    VoteOutPlugin,
   )
 }

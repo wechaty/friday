@@ -1,7 +1,6 @@
 /* eslint-disable sort-keys */
 import {
-  Contact,
-  Room,
+  Message,
 }                   from 'wechaty'
 import {
   VoteOut,
@@ -15,14 +14,23 @@ const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
   '———————————',
   'The one who has been voted {{ downEmoji }} by {{ threshold }} people will be removed from the room as an unwelcome guest.',
-  '{{#upVoters}}{{ upEmoji }} By {{ upVoters }}{{/upVoters}}',
-  '{{#downVoters}}{{ downEmoji }} By {{ downVoters }}{{/downVoters}}',
+  '{{#upNum}}{{ upEmoji }} By {{ upVoters }}{{/upNum}}',
+  '{{#downNum}}{{ downEmoji }} By {{ downVoters }}{{/downNum}}',
 ].join('\n')
 
-const kick: talkers.RoomTalkerOptions = [
+const kick: talkers.MessageTalkerOptions = [
   'UNWELCOME GUEST CONFIRMED:\n[Dagger] {{ votee }} [Cleaver]\n\nThank you [Rose] {{ downVoters }} [Rose] for voting for the community, we appreciate it.\n\nThanks everyone in this room for respecting our CODE OF CONDUCT.\n',
   'Removing {{ votee }} out to this room ...',
-  (room: Room, contact: Contact) => room.del(contact).then(_ => 'Done.'),
+  async (message: Message) => {
+    const room = message.room()
+    if (room) {
+      const mentionList = await message.mentionList()
+      const votee = mentionList[0]
+      if (votee) {
+        return room.del(votee).then(_ => 'Done.')
+      }
+    }
+  },
 ]
 
 const repeat: talkers.RoomTalkerOptions = [
@@ -35,22 +43,22 @@ const config: VoteOutConfig = {
     /^Youth fed the/i,
     /^test/i,
   ],
-  downEmoji: [
-    '[ThumbsUp]',
-    '[强]',
-    '/:MMStrong',
-    '< img class="qqemoji qqemoji79" text="[强]_web" src="/zh_CN/htmledition/v2/images/spacer.gif”>',
-  ],
+  threshold: 3,
   kick,
   repeat,
-  threshold: 3,
-  upEmoji: [
+  warn,
+  downEmoji: [
     '[ThumbsDown]',
     '[弱]',
     '/:MMWeak',
     '<img class="qqemoji qqemoji80" text="[弱]_web" src="/zh_CN/htmledition/v2/images/spacer.gif" />',
   ],
-  warn,
+  upEmoji: [
+    '[ThumbsUp]',
+    '[强]',
+    '/:MMStrong',
+    '< img class="qqemoji qqemoji79" text="[强]_web" src="/zh_CN/htmledition/v2/images/spacer.gif”>',
+  ],
   whitelist: [
     'lizhuohuan',
   ],
