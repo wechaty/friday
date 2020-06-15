@@ -19,7 +19,7 @@ import { VoteOutPlugin }            from './plugins/vote-out'
 import { RoomInviterPluginList }    from './plugins/room-inviter'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import { HeartbeatPlugin }          from './plugins/heartbeat'
-import { EventHotHandlerPlugin }    from './plugins/hot-event-handler'
+import { EventHotHandlerPlugin }    from './plugins/event-hot-handler'
 
 import {
   OneToManyPlugin,
