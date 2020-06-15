@@ -39,8 +39,8 @@
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.1",
     "wechaty": "^0.41.2",
-    "wechaty-plugin-contrib": "^0.7.10",
-    "wechaty-voteout": "^0.3.3"
+    "wechaty-plugin-contrib": "^0.9.4",
+    "wechaty-voteout": "^0.5.4"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^0.8.1",

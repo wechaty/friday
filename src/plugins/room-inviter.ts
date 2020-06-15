@@ -5,12 +5,12 @@ import {
 import {
   RoomInviter,
   RoomInviterConfig,
+  talkers,
 }                       from 'wechaty-plugin-contrib'
-import { ContactTalkerOptions } from 'wechaty-plugin-contrib/dist/src/utils/'
 
 import { DEVELOPERS_ROOM_ID_LIST } from '../rooms-config'
 
-const repeat: ContactTalkerOptions = async (contact: Contact, room?: Room) => {
+const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Room) => {
   await contact.say('You are already in our room: ' + await room?.topic())
 }
 
