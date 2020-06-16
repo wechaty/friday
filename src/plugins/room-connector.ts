@@ -12,7 +12,9 @@ import {
 
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
-}                           from '../rooms-config'
+
+  MIKE_BO_CONTACT_ID,
+}                           from '../id-config'
 
 const getSenderRoomDisplayName = async (message: Message) => {
   const from = message.from()!
@@ -40,7 +42,7 @@ function getRoomShortNameByRegexp (matcher: RegExp) {
   }
 }
 
-const getWechatyDevelopersRoomName = getRoomShortNameByRegexp(/Developers'\s*(.+)/i)
+const getRoomShortName = getRoomShortNameByRegexp(/\s+(.+)$/i)
 
 /**
  *
@@ -52,7 +54,7 @@ const unidirectionalMapper: RoomConnectorMessageMapFunction = async (message: Me
   if (message.type() !== Message.Type.Text) { return message }
 
   const talkerDisplayName = await getSenderRoomDisplayName(message)
-  const roomShortName     = await getWechatyDevelopersRoomName(message) || 'Nowhere'
+  const roomShortName     = await getRoomShortName(message) || 'Nowhere'
 
   const text = message.text()
 
@@ -64,7 +66,7 @@ const bidirectionalMessageMapper: RoomConnectorMessageMapFunction = async (messa
   if (message.type() !== Message.Type.Text) { return }
 
   const talkerDisplayName = await getSenderRoomDisplayName(message)
-  const roomShortName     = await getWechatyDevelopersRoomName(message) || 'Nowhere'
+  const roomShortName     = await getRoomShortName(message) || 'Nowhere'
 
   const text = message.text()
 
@@ -78,7 +80,7 @@ const bidirectionalMessageMapper: RoomConnectorMessageMapFunction = async (messa
  */
 const OneToManyPlugin = OneToManyRoomConnector({
   blacklist: [
-    'wxid_a8d806dzznm822',  // Mike BO
+    MIKE_BO_CONTACT_ID,
   ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
@@ -94,7 +96,7 @@ const OneToManyPlugin = OneToManyRoomConnector({
  */
 const ManyToOnePlugin = ManyToOneRoomConnector({
   blacklist: [
-    'wxid_a8d806dzznm822',
+    MIKE_BO_CONTACT_ID,
   ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
@@ -110,7 +112,7 @@ const ManyToOnePlugin = ManyToOneRoomConnector({
  */
 const blacklist = [
   async (message: Message) => message.type() !== Message.Type.Text,
-  'wxid_a8d806dzznm822',
+  MIKE_BO_CONTACT_ID,
 ]
 
 const ManyToManyPlugin = ManyToManyRoomConnector({
@@ -130,7 +132,7 @@ const Bot5OneToManyPlugin = OneToManyRoomConnector({
   many: [
     BOT5_CLUB_2019_ROOM_ID,
   ],
-  map: async message => `[${message.from()?.name()}@2020]: ${message.text()}`,
+  map: unidirectionalMapper,
   one: BOT5_CLUB_2020_ROOM_ID,
 })
 

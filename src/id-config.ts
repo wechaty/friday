@@ -21,6 +21,8 @@ const PYTHON_GO_JAVA_ROOM_ID = '19367909379@chatroom'  // Python/Go/Java Wechaty
 const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
 const SUMMER_OF_CODE_ROOM_ID = '17817316202@chatroom'  // Wechaty ISCAS Code of Summer
 
+const MIKE_BO_CONTACT_ID = 'wxid_a8d806dzznm822'  // Mike BO
+
 export {
   CHATOPS_ROOM_ID,
   HEARTBEAT_ROOM_ID,
@@ -35,4 +37,6 @@ export {
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
   BOT5_CLUB_ROOM_ID,
+
+  MIKE_BO_CONTACT_ID,
 }
