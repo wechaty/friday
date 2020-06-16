@@ -17,7 +17,7 @@ export default async function onFriendship (
 
   let text
   if (friendship.type() === this.Friendship.Type.Receive) {
-    text = `recreived friendship from ${contact} with ${hello}`
+    text = `received friendship from ${contact} with ${hello}`
     await this.Room.load(CHATOPS_ROOM_ID).say(text)
   } else if (friendship.type() === this.Friendship.Type.Confirm) {
     text = `confirmed friendship from ${contact}`
