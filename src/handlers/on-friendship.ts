@@ -4,7 +4,7 @@ import {
   Wechaty,
 }             from 'wechaty'
 
-import { CHATOPS_ROOM_ID }            from '../rooms-config'
+import { CHATOPS_ROOM_ID }            from '../id-config'
 
 export default async function onFriendship (
   this       : Wechaty,
