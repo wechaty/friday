@@ -42,7 +42,7 @@ function getRoomShortNameByRegexp (matcher: RegExp) {
   }
 }
 
-const getRoomShortName = getRoomShortNameByRegexp(/\s+([^\s]+)$/)
+const getRoomShortName = getRoomShortNameByRegexp(/\s*([^\s]*\s*[^\s]+)$/)
 
 /**
  *
