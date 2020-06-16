@@ -28,7 +28,7 @@ import {
   Bot5OneToManyPlugin,
 }                       from './plugins/room-connector'
 
-import { CHATOPS_ROOM_ID } from './rooms-config'
+import { CHATOPS_ROOM_ID } from './id-config'
 
 export function setupWechatyPlugins (wechaty: Wechaty): void {
   log.verbose('startBot', 'startBot(%s)', wechaty)

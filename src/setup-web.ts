@@ -13,7 +13,7 @@ import {
 }             from './config'
 
 import { getWechaty } from './get-wechaty'
-import { CHATOPS_ROOM_ID } from './rooms-config'
+import { CHATOPS_ROOM_ID } from './id-config'
 
 async function chatopsHandler (request: express.Request, response: express.Response) {
   log.info('startWeb', 'chatopsHandler()')

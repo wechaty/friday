@@ -5,7 +5,7 @@ import {
   log,
   VERSION,
 }             from './config'
-import { CHATOPS_ROOM_ID } from './rooms-config'
+import { CHATOPS_ROOM_ID } from './id-config'
 
 const BOT_NAME = 'BOT5'
 

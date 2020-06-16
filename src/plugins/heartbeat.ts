@@ -5,7 +5,7 @@ import {
 
 import {
   HEARTBEAT_ROOM_ID,
-}                         from '../rooms-config'
+}                         from '../id-config'
 
 const config: HeartbeatConfig = {
   emoji: {
