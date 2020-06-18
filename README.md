@@ -11,6 +11,17 @@ We are current DevOps the master branch from the repo to Heroku under the protec
 
 You can visit the staging system at <http://friday.bot5.club/>
 
+## Contributors
+
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/0)](https://sourcerer.io/fame/huan/wechaty/friday/links/0)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/1)](https://sourcerer.io/fame/huan/wechaty/friday/links/1)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/2)](https://sourcerer.io/fame/huan/wechaty/friday/links/2)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/3)](https://sourcerer.io/fame/huan/wechaty/friday/links/3)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/4)](https://sourcerer.io/fame/huan/wechaty/friday/links/4)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/5)](https://sourcerer.io/fame/huan/wechaty/friday/links/5)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/6)](https://sourcerer.io/fame/huan/wechaty/friday/links/6)
+[![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/7)](https://sourcerer.io/fame/huan/wechaty/friday/links/7)
+
 ## History
 
 ### v0.4 (Jun 15, 2020)
