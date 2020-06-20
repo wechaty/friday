@@ -42,6 +42,7 @@
     "wechaty": "^0.41.2",
     "wechaty-plugin-contrib": "^0.10.5",
     "wechaty-vorpal": "0.2.2",
+    "wechaty-vorpal-contrib": "^0.2.1",
     "wechaty-voteout": "^0.6.2"
   },
   "devDependencies": {
