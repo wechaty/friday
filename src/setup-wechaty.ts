@@ -20,15 +20,15 @@ import { RoomInviterPluginList }    from './plugins/room-inviter'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import { HeartbeatPlugin }          from './plugins/heartbeat'
 import { EventHotHandlerPlugin }    from './plugins/event-hot-handler'
-
+import { VorpalPlugin }              from './plugins/vorpal'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
   ManyToManyPlugin,
   Bot5OneToManyPlugin,
-}                       from './plugins/room-connector'
+}                           from './plugins/room-connector'
 
-import { CHATOPS_ROOM_ID } from './id-config'
+import { CHATOPS_ROOM_ID }  from './id-config'
 
 export function setupWechatyPlugins (wechaty: Wechaty): void {
   log.verbose('startBot', 'startBot(%s)', wechaty)
@@ -47,5 +47,6 @@ export function setupWechatyPlugins (wechaty: Wechaty): void {
     HeartbeatPlugin,
     EventHotHandlerPlugin,
     VoteOutPlugin,
+    VorpalPlugin,
   )
 }
