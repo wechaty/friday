@@ -4,13 +4,18 @@ import {
 }                         from 'wechaty-vorpal'
 import { CHATOPS_ROOM_ID } from '../id-config'
 
-const hn = require('vorpal-hacker-news')
+const hackerNews = require('vorpal-hacker-news')
 
+const extensionList = [
+  /**
+   * https://github.com/vorpaljs/vorpal-hacker-news
+   *  hacker-news --length 3
+   */
+  hackerNews,
+]
 const config: WechatyVorpalConfig = {
   room: CHATOPS_ROOM_ID,
-  use: [
-    hn,
-  ],
+  use: extensionList,
 }
 
 export const VorpalPlugin = WechatyVorpal(config)
