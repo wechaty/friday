@@ -23,6 +23,8 @@ const SUMMER_OF_CODE_ROOM_ID = '17817316202@chatroom'  // Wechaty ISCAS Code of 
 
 const MIKE_BO_CONTACT_ID = 'wxid_a8d806dzznm822'  // Mike BO
 
+const PUPPET_SERVICE_PROVIDER_ROOM_ID = '18844011263@chatroom'  // Puppet Service Provider (TOKEN)
+
 export {
   CHATOPS_ROOM_ID,
   HEARTBEAT_ROOM_ID,
@@ -33,6 +35,7 @@ export {
 
   PYTHON_GO_JAVA_ROOM_ID,
   SUMMER_OF_CODE_ROOM_ID,
+  PUPPET_SERVICE_PROVIDER_ROOM_ID,
 
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,

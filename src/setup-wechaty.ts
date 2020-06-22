@@ -20,7 +20,8 @@ import { RoomInviterPluginList }    from './plugins/room-inviter'
 import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
 import { HeartbeatPlugin }          from './plugins/heartbeat'
 import { EventHotHandlerPlugin }    from './plugins/event-hot-handler'
-import { VorpalPlugin }              from './plugins/vorpal'
+import { VorpalPlugin }             from './plugins/vorpal'
+import { IntercomPlugin }           from './plugins/intercom'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -48,5 +49,6 @@ export function setupWechatyPlugins (wechaty: Wechaty): void {
     EventHotHandlerPlugin,
     VoteOutPlugin,
     VorpalPlugin,
+    IntercomPlugin,
   )
 }
