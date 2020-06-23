@@ -3,7 +3,7 @@ import {
   OneToManyRoomConnector,
   ManyToOneRoomConnector,
   ManyToManyRoomConnector,
-  RoomConnectorMessageMapFunction,
+  mappers,
 }                                     from 'wechaty-plugin-contrib'
 
 import {
@@ -49,7 +49,7 @@ const getRoomShortName = getRoomShortNameByRegexp(/\s*([^\s]*\s*[^\s]+)$/)
  * Message Mapper for Room Connectors
  *
  */
-const unidirectionalMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
+const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Message) => {
   // Forward all non-Text messages
   if (message.type() !== Message.Type.Text) { return message }
 
@@ -61,7 +61,7 @@ const unidirectionalMapper: RoomConnectorMessageMapFunction = async (message: Me
   return `[${talkerDisplayName}@${roomShortName}]: ${text}`
 }
 
-const bidirectionalMessageMapper: RoomConnectorMessageMapFunction = async (message: Message) => {
+const bidirectionalMessageMapper: mappers.MessageMapperOptions = async (message: Message) => {
   // Drop all messages if not Text
   if (message.type() !== Message.Type.Text) { return }
 
