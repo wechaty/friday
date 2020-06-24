@@ -5,6 +5,7 @@ import {
 import {
   Ding,
   Eval,
+  Cash,
 }                         from 'wechaty-vorpal-contrib'
 
 import { CHATOPS_ROOM_ID } from '../id-config'
@@ -19,6 +20,7 @@ const extensionList = [
   hackerNews,
   Ding(),
   Eval(),
+  Cash(),
 ]
 
 const config: WechatyVorpalConfig = {
