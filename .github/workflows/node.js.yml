@@ -30,4 +30,4 @@ jobs:
         ./node_modules/.bin/ts-node tests/fixtures/smoke-testing.ts
       env:
         CI: true
-        WECHATY_PLUGIN_INTERCOM_TOKEN: ${{ WECHATY_PLUGIN_INTERCOM_TOKEN }}
+        WECHATY_PLUGIN_INTERCOM_TOKEN: ${{ secrets.WECHATY_PLUGIN_INTERCOM_TOKEN }}
