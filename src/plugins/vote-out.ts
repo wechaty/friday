@@ -43,6 +43,7 @@ const config: VoteOutConfig = {
     /^Wechaty Developers/i,
     /^Youth fed the/i,
     /^Wechaty Plugin Developers/i,
+    /^Wechaty Testing$/,
   ],
   threshold: 3,
   kick,
