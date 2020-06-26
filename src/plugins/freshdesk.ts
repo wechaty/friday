@@ -1,13 +1,12 @@
 /* eslint-disable sort-keys */
 import {
-  WechatyIntercom,
-  WechatyIntercomConfig,
-}                           from 'wechaty-plugin-intercom'
+  WechatyFreshdesk,
+  WechatyFreshdeskConfig,
+}                           from 'wechaty-plugin-freshdesk'
 
 import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../id-config'
 
-const config: WechatyIntercomConfig = {
-  at: true,
+const config: WechatyFreshdeskConfig = {
   close: [
     [
       'Thank you for contacting the support of puppet service provider.',
@@ -18,8 +17,9 @@ const config: WechatyIntercomConfig = {
   ],
   room: PUPPET_SERVICE_PROVIDER_ROOM_ID,
 
-  intercomToken   : process.env.WECHATY_PLUGIN_INTERCOM_TOKEN,
-  webhookProxyUrl : process.env.WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL,
+  apiKey          : process.env.WECHATY_PLUGIN_FRESHDESK_API_KEY,
+  portalUrl       : process.env.WECHATY_PLUGIN_FRESHDESK_PORTAL_URL,
+  webhookProxyUrl : process.env.WECHATY_PLUGIN_FRESHDESK_WEBHOOK_PROXY_URL,
 }
 
-export const IntercomPlugin = WechatyIntercom(config)
+export const FreshdeskPlugin = WechatyFreshdesk(config)
