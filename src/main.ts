@@ -20,9 +20,8 @@ async function main () {
     setupWeb(bot),
   ])
 
-  while (bot.state.on()) {
-    await new Promise(resolve => setTimeout(resolve, 1000))
-  }
+  await bot.state.ready('off')
+
   return 0
 }
 
