@@ -15,7 +15,10 @@ const config: WechatyFreshdeskConfig = {
       'Thank you very much, and have a nice day!',
     ].join(' '),
   ],
-  room: PUPPET_SERVICE_PROVIDER_ROOM_ID,
+  room: [
+    PUPPET_SERVICE_PROVIDER_ROOM_ID,
+    /^Wechaty Testing$/,
+  ],
 
   apiKey          : process.env.WECHATY_PLUGIN_FRESHDESK_API_KEY,
   portalUrl       : process.env.WECHATY_PLUGIN_FRESHDESK_PORTAL_URL,
