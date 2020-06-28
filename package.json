@@ -40,7 +40,7 @@
     "read-pkg-up": "^7.0.1",
     "vorpal-hacker-news": "^1.0.6",
     "wechaty": "^0.41.19",
-    "wechaty-plugin-contrib": "^0.11.4",
+    "wechaty-plugin-contrib": "^0.11.8",
     "wechaty-plugin-freshdesk": "^0.2.15",
     "wechaty-plugin-intercom": "^0.2.11",
     "wechaty-vorpal": "0.2.8",
