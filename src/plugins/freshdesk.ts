@@ -15,6 +15,7 @@ const config: WechatyFreshdeskConfig = {
       'Thank you very much, and have a nice day!',
     ].join(' '),
   ],
+  contact: true,
   room: [
     PUPPET_SERVICE_PROVIDER_ROOM_ID,
     /^Wechaty Testing$/,
