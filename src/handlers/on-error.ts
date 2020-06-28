@@ -8,4 +8,6 @@ export default async function onError (
   e    : Error,
 ): Promise<void> {
   log.error('on-error', 'onError(%s)', e)
+  console.error(e)
+  console.error(e.stack)
 }
