@@ -7,6 +7,7 @@ import {
 const config: WechatyQnAMakerConfig = {
   contact: true,
   room: true,
+  at: true,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
