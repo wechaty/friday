@@ -30,5 +30,8 @@ jobs:
         ./node_modules/.bin/ts-node tests/fixtures/smoke-testing.ts
       env:
         CI: true
-        WECHATY_PLUGIN_INTERCOM_TOKEN: ${{ secrets.WECHATY_PLUGIN_INTERCOM_TOKEN }}
-        WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL: ${{ secrets.WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL }}
+        WECHATY_PLUGIN_INTERCOM_TOKEN: dummy_intercom_token
+        WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL: https://smee.io/your_smee_io_proxy_url
+        WECHATY_PLUGIN_FRESHDESK_PORTAL_URL: https://juzibot.freshdesk.com/
+        WECHATY_PLUGIN_FRESHDESK_API_KEY: dummy_freshdesk_key
+        WECHATY_PLUGIN_FRESHDESK_WEBHOOK_PROXY_URL: https://smee.io/your_smee_io_proxy_url
