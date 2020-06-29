@@ -4,9 +4,14 @@ import {
   WechatyQnAMakerConfig,
 }                           from 'wechaty-plugin-qnamaker'
 
+const skipMessage = [
+  'wechaty',
+]
+
 const configEnglish: WechatyQnAMakerConfig = {
   language: ['english'],
 
+  skipMessage,
   contact: true,
   room: true,
   at: true,
@@ -19,6 +24,7 @@ const configEnglish: WechatyQnAMakerConfig = {
 const configChinese: WechatyQnAMakerConfig = {
   language: ['chinese'],
 
+  skipMessage,
   contact: true,
   room: true,
   at: true,
