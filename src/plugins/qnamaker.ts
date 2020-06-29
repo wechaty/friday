@@ -5,7 +5,7 @@ import {
 }                           from 'wechaty-plugin-qnamaker'
 
 const skipMessage = [
-  'wechaty',
+  /^wechaty$/i,
 ]
 
 const configEnglish: WechatyQnAMakerConfig = {
