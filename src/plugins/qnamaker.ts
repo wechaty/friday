@@ -22,7 +22,7 @@ const room = [
   PLUGIN_ROOM_ID,
 ]
 
-const minScore = 50
+const minScore = 80
 
 const configEnglish: WechatyQnAMakerConfig = {
   language: ['english'],
