@@ -4,17 +4,30 @@ import {
   WechatyQnAMakerConfig,
 }                           from 'wechaty-plugin-qnamaker'
 
+import {
+  // DEVELOPERS_ROOM_ID_LIST,
+  PLUGIN_ROOM_ID,
+  PYTHON_GO_JAVA_ROOM_ID,
+  PUPPET_SERVICE_PROVIDER_ROOM_ID,
+}                                   from '../id-config'
+
 const skipMessage = [
   /^wechaty$/i,
+]
+const room = [
+  // ...DEVELOPERS_ROOM_ID_LIST,
+  PYTHON_GO_JAVA_ROOM_ID,
+  PUPPET_SERVICE_PROVIDER_ROOM_ID,
+  PLUGIN_ROOM_ID,
 ]
 
 const configEnglish: WechatyQnAMakerConfig = {
   language: ['english'],
 
   skipMessage,
+  room,
+  at: false,
   contact: true,
-  room: true,
-  at: true,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
@@ -25,9 +38,9 @@ const configChinese: WechatyQnAMakerConfig = {
   language: ['chinese'],
 
   skipMessage,
+  room,
+  at: false,
   contact: true,
-  room: true,
-  at: true,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE,

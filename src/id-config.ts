@@ -17,6 +17,7 @@ const BOT5_CLUB_ROOM_ID      = '18825797159@chatroom'  // BOT Friday Club - BOT5
 const BOT5_CLUB_2020_ROOM_ID = '18095776930@chatroom'  // Bot Friday Open Forum - BFOF
 const BOT5_CLUB_2019_ROOM_ID = '17301175542@chatroom'  // Bot Friday Open Forum - 2019
 
+const PLUGIN_ROOM_ID         = '18490919725@chatroom'  // Wechaty Plugin Developers
 const PYTHON_GO_JAVA_ROOM_ID = '19367909379@chatroom'  // Python/Go/Java Wechaty
 const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
 const SUMMER_OF_CODE_ROOM_ID = '17817316202@chatroom'  // Wechaty ISCAS Code of Summer
@@ -33,6 +34,7 @@ export {
   CONTRIBUTORS_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
 
+  PLUGIN_ROOM_ID,
   PYTHON_GO_JAVA_ROOM_ID,
   SUMMER_OF_CODE_ROOM_ID,
   PUPPET_SERVICE_PROVIDER_ROOM_ID,
