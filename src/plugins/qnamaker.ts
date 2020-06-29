@@ -14,12 +14,15 @@ import {
 const skipMessage = [
   /^wechaty$/i,
 ]
+
 const room = [
   // ...DEVELOPERS_ROOM_ID_LIST,
   PYTHON_GO_JAVA_ROOM_ID,
   PUPPET_SERVICE_PROVIDER_ROOM_ID,
   PLUGIN_ROOM_ID,
 ]
+
+const minScore = 50
 
 const configEnglish: WechatyQnAMakerConfig = {
   language: ['english'],
@@ -28,6 +31,7 @@ const configEnglish: WechatyQnAMakerConfig = {
   room,
   at: false,
   contact: true,
+  minScore,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
@@ -41,6 +45,7 @@ const configChinese: WechatyQnAMakerConfig = {
   room,
   at: false,
   contact: true,
+  minScore,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE,
