@@ -29,8 +29,11 @@ import {
 
 import { CHATOPS_ROOM_ID }  from './id-config'
 
-import { FreshdeskPlugin }           from './plugins/freshdesk'
-import { QnAMakerPlugin }           from './plugins/qnamaker'
+import { FreshdeskPlugin }  from './plugins/freshdesk'
+import {
+  QnAMakerEnglishPlugin,
+  QnAMakerChinesePlugin,
+}                           from './plugins/qnamaker'
 
 export function setupWechatyPlugins (wechaty: Wechaty): void {
   log.verbose('startBot', 'startBot(%s)', wechaty)
@@ -51,6 +54,7 @@ export function setupWechatyPlugins (wechaty: Wechaty): void {
     VoteOutPlugin,
     VorpalPlugin,
     FreshdeskPlugin,
-    QnAMakerPlugin,
+    QnAMakerChinesePlugin,
+    QnAMakerEnglishPlugin,
   )
 }
