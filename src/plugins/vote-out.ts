@@ -20,7 +20,7 @@ const warn: talkers.RoomTalkerOptions = [
 
 const kick: talkers.MessageTalkerOptions = [
   'UNWELCOME GUEST CONFIRMED:\n[Dagger] {{ votee }} [Cleaver]\n\nThank you [Rose] {{ downVoters }} [Rose] for voting for the community, we appreciate it.\n\nThanks everyone in this room for respecting our CODE OF CONDUCT.\n',
-  'Removing {{ votee }} out to this room ...',
+  'Removing {{ votee }} out from this room ...',
   async (message: Message) => {
     const room = message.room()
     if (room) {
