@@ -1,25 +1,23 @@
 import {
   log,
 }                     from './config'
-import { getWechaty } from './get-wechaty'
-import { setupWechatyPlugins }   from './setup-wechaty'
-import { setupFinis } from './setup-finis'
-import { setupWeb }   from './setup-web'
+
+import { getWechaty } from './wechaty/mod'
+import { setupWeb }   from './web/mod'
 
 async function main () {
   log.verbose('main', 'main()')
 
-  const name = process.env.WECHATY_NAME || 'heroku-wechaty'
+  const name = process.env.WECHATY_NAME || 'Friday.BOT'
 
   const bot = getWechaty(name)
-  setupWechatyPlugins(bot)
 
-  await Promise.all([
-    bot.start(),
-    setupFinis(bot),
-    setupWeb(bot),
-  ])
+  await bot.start()
+  await setupWeb(bot)
 
+  /**
+   * Do not return until the bot turned off
+   */
   await bot.state.ready('off')
 
   return 0

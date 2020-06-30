@@ -8,7 +8,7 @@ import {
   Cash,
 }                         from 'wechaty-vorpal-contrib'
 
-import { CHATOPS_ROOM_ID } from '../id-config'
+import { CHATOPS_ROOM_ID } from '../database'
 
 const hackerNews = require('vorpal-hacker-news')
 

@@ -14,7 +14,7 @@ import {
   BOT5_CLUB_2020_ROOM_ID,
 
   MIKE_BO_CONTACT_ID,
-}                           from '../id-config'
+}                           from '../database'
 
 const getSenderRoomDisplayName = async (message: Message) => {
   const from = message.from()!

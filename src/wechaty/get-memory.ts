@@ -1,10 +1,7 @@
 import {
   MemoryCard,
-}                 from 'wechaty'
-
-import {
   log,
-}                 from './config'
+}                 from 'wechaty'
 
 export let memory: MemoryCard
 

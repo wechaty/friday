@@ -1,13 +1,17 @@
 import { finis }    from 'finis'
-import { Wechaty }  from 'wechaty'
+import {
+  Wechaty,
+  log,
+}                   from 'wechaty'
 
 import {
-  log,
   VERSION,
-}             from './config'
-import { CHATOPS_ROOM_ID } from './id-config'
+}                   from '../config'
+import {
+  CHATOPS_ROOM_ID,
+}                   from '../database'
 
-const BOT_NAME = 'BOT5'
+const BOT_NAME = 'Friday.BOT'
 
 const LOGIN_ANNOUNCEMENT  = `Der! I just got online!\n${BOT_NAME} v${VERSION}`
 // const LOGOUT_ANNOUNCEMENT = `Der! I'm going to offline now, see you, bye!\BOT5 v${VERSION}`

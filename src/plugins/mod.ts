@@ -1,8 +1,3 @@
-import {
-  Wechaty,
-  log,
-}           from 'wechaty'
-
 /**
  * Wechaty Plugin Support with KickOut Example #1939
  *  https://github.com/wechaty/wechaty/issues/1939
@@ -14,47 +9,45 @@ import {
   ChatOps,
 }                    from 'wechaty-plugin-contrib'
 
-import { VoteOutPlugin }            from './plugins/vote-out'
-import { RoomInviterPluginList }    from './plugins/room-inviter'
-import { FriendshipAccepterPlugin } from './plugins/friendship-accepter'
-import { HeartbeatPlugin }          from './plugins/heartbeat'
-import { EventHotHandlerPlugin }    from './plugins/event-hot-handler'
-import { VorpalPlugin }             from './plugins/vorpal'
+import { CHATOPS_ROOM_ID }  from '../database'
+
+import { VoteOutPlugin }            from './vote-out'
+import { RoomInviterPluginList }    from './room-inviter'
+import { FriendshipAccepterPlugin } from './friendship-accepter'
+import { HeartbeatPlugin }          from './heartbeat'
+import { EventHotHandlerPlugin }    from './event-hot-handler'
+import { VorpalPlugin }             from './vorpal'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
   ManyToManyPlugin,
   Bot5OneToManyPlugin,
-}                           from './plugins/room-connector'
+}                           from './room-connector'
 
-import { CHATOPS_ROOM_ID }  from './id-config'
-
-import { FreshdeskPlugin }  from './plugins/freshdesk'
+import { FreshdeskPlugin }  from './freshdesk'
 import {
   QnAMakerEnglishPlugin,
   QnAMakerChinesePlugin,
-}                           from './plugins/qnamaker'
+}                           from './qnamaker'
 
-export function setupWechatyPlugins (wechaty: Wechaty): void {
-  log.verbose('startBot', 'startBot(%s)', wechaty)
+const pluginList = [
+  QRCodeTerminal(),
+  EventLogger(),
+  DingDong(),
+  ChatOps({ room: CHATOPS_ROOM_ID }),
+  OneToManyPlugin,
+  ManyToOnePlugin,
+  ManyToManyPlugin,
+  Bot5OneToManyPlugin,
+  ...RoomInviterPluginList,
+  FriendshipAccepterPlugin,
+  HeartbeatPlugin,
+  EventHotHandlerPlugin,
+  VoteOutPlugin,
+  VorpalPlugin,
+  FreshdeskPlugin,
+  QnAMakerChinesePlugin,
+  QnAMakerEnglishPlugin,
+]
 
-  wechaty.use(
-    QRCodeTerminal(),
-    EventLogger(),
-    DingDong(),
-    ChatOps({ room: CHATOPS_ROOM_ID }),
-    OneToManyPlugin,
-    ManyToOnePlugin,
-    ManyToManyPlugin,
-    Bot5OneToManyPlugin,
-    ...RoomInviterPluginList,
-    FriendshipAccepterPlugin,
-    HeartbeatPlugin,
-    EventHotHandlerPlugin,
-    VoteOutPlugin,
-    VorpalPlugin,
-    FreshdeskPlugin,
-    QnAMakerChinesePlugin,
-    QnAMakerEnglishPlugin,
-  )
-}
+export { pluginList }

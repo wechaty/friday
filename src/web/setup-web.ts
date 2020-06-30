@@ -4,16 +4,17 @@ import express from 'express'
 
 import {
   Wechaty,
+  log,
 }                   from 'wechaty'
 
+import { getWechaty } from '../wechaty/mod'
+
 import {
-  log,
   PORT,
   VERSION,
-}             from './config'
+}             from '../config'
 
-import { getWechaty } from './get-wechaty'
-import { CHATOPS_ROOM_ID } from './id-config'
+import { CHATOPS_ROOM_ID } from '../database'
 
 async function chatopsHandler (request: express.Request, response: express.Response) {
   log.info('startWeb', 'chatopsHandler()')

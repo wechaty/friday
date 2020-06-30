@@ -9,7 +9,7 @@ import {
   PLUGIN_ROOM_ID,
   PYTHON_GO_JAVA_ROOM_ID,
   PUPPET_SERVICE_PROVIDER_ROOM_ID,
-}                                   from '../id-config'
+}                                   from '../database'
 
 const skipMessage = [
   /^wechaty$/i,

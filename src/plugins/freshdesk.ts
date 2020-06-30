@@ -4,7 +4,7 @@ import {
   WechatyFreshdeskConfig,
 }                           from 'wechaty-plugin-freshdesk'
 
-import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../id-config'
+import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database'
 
 const config: WechatyFreshdeskConfig = {
   close: [

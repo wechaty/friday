@@ -8,7 +8,7 @@ import {
   talkers,
 }                       from 'wechaty-plugin-contrib'
 
-import { DEVELOPERS_ROOM_ID_LIST } from '../id-config'
+import { DEVELOPERS_ROOM_ID_LIST } from '../database'
 
 const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Room) => {
   await contact.say('You are already in our room: ' + await room?.topic())
