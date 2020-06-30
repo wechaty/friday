@@ -26,7 +26,8 @@ You can visit the staging system at <http://friday.bot5.club/>
 
 ### v0.4 (Jun 15, 2020)
 
-Fully powered by Wechaty Plugins! See: [wechaty-plugin-contrib](https://github.com/wechaty/wechaty-plugin-contrib)
+1. Fully powered by Wechaty Plugins! See: [wechaty-plugin-contrib](https://github.com/wechaty/wechaty-plugin-contrib)
+1. Restructure directories & source code files
 
 ### v0.2 (Dec 25, 2019)
 
