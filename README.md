@@ -1,4 +1,4 @@
-# bot5
+# Friday.BOT
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/wechaty/wechaty)
 [![Node.js CI](https://github.com/wechaty/friday/workflows/Node.js%20CI/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3A%22Node.js+CI%22)
@@ -43,7 +43,7 @@ Friday Bot initialized by BOT5.Club members.
 
 ## PMC
 
-- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) Co-author of [Wechaty](https://github.com/wechaty/wechaty), <zixia@zixia.net>
+- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) Author of [Wechaty](https://github.com/wechaty/wechaty), Tencent TVP of Chatbot, <zixia@zixia.net>
 - [Rui](https://github.com/lijiarui) [(李佳芮)](https://lijiarui.github.io) Co-author of [Wechaty](https://github.com/wechaty/wechaty), Founder & CEO of [JuziBot](https://www.juzi.bot/)
 
 ## Committers
