@@ -35,3 +35,7 @@ jobs:
         WECHATY_PLUGIN_FRESHDESK_PORTAL_URL: https://juzibot.freshdesk.com/
         WECHATY_PLUGIN_FRESHDESK_API_KEY: dummy_freshdesk_key
         WECHATY_PLUGIN_FRESHDESK_WEBHOOK_PROXY_URL: https://smee.io/your_smee_io_proxy_url
+        WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY: dummy
+        WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID: dummy
+        WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY: dummy
+
