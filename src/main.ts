@@ -1,6 +1,4 @@
-import {
-  log,
-}                     from './config'
+import { log } from 'wechaty'
 
 import { getWechaty } from './wechaty/mod'
 import { setupWeb }   from './web/mod'
