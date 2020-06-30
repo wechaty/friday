@@ -60,17 +60,17 @@ export async function setupWeb (bot: Wechaty): Promise<void> {
       ].join('')
 
     } else if (userName) {
-      let roomList = await bot.Room.findAll()
-      let roomHtml = `The rooms I have joined are as follows: <ol>`
-      for (let room of roomList) {
+      const roomList = await bot.Room.findAll()
+      let roomHtml = 'The rooms I have joined are as follows: <ol>'
+      for (const room of roomList) {
         const topic = await room.topic()
         const roomId = room.id
         roomHtml = roomHtml + `<li> ${topic} / ${roomId} </li>\n`
       }
-      roomHtml = roomHtml + `</ol>`
+      roomHtml = roomHtml + '</ol>'
 
       html = [
-        `<p> BOT5 v${VERSION} User ${userName} logined. </p>`,
+        `<p> BOT5 v${VERSION} User ${userName} logged in. </p>`,
         FORM_HTML,
         roomHtml,
       ].join('')

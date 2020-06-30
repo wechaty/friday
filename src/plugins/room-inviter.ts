@@ -21,12 +21,12 @@ const wechatyConfig: RoomInviterConfig = {
   repeat,
   room: DEVELOPERS_ROOM_ID_LIST,
   rule: [
-    `Thanks for asking me to invite you for joining the "Wechaty Developers' Home" WeChat Room!`,
-    `Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.`,
-    `You can find our documentation at https://wechaty.js.org`,
-    `Please introduce yourself after you join the room, cheers!`,
+    'Thanks for asking me to invite you for joining the "Wechaty Developers\' Home" WeChat Room!',
+    'Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.',
+    'You can find our documentation at https://wechaty.js.org',
+    'Please introduce yourself after you join the room, cheers!',
   ],
-  welcome: `is joining us as a new Wechaty developer! Welcome, and please introduce yourself to the community!`,
+  welcome: 'is joining us as a new Wechaty developer! Welcome, and please introduce yourself to the community!',
 }
 
 const wechatyNonTsConfig: RoomInviterConfig = {
@@ -37,11 +37,11 @@ const wechatyNonTsConfig: RoomInviterConfig = {
   repeat,
   room: '19367909379@chatroom',
   rule: [
-    `Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers' Home" WeChat Room!`,
-    `Python/Go/Java Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.`,
-    `If you have any idea about the feature requests, questions, and document, please let us know.`,
-    `Related issue: https://github.com/wechaty/wechaty/issues/1927`,
-    `Please introduce yourself after you join the room, cheers!`,
+    'Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers\' Home" WeChat Room!',
+    'Python/Go/Java Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.',
+    'If you have any idea about the feature requests, questions, and document, please let us know.',
+    'Related issue: https://github.com/wechaty/wechaty/issues/1927',
+    'Please introduce yourself after you join the room, cheers!',
   ],
   welcome: [
     ", welcome to join the Wechaty Python/Go/Java Developer's Home! Please go ahead to introduce yourself to the group.",
@@ -65,7 +65,7 @@ const bot5Config: RoomInviterConfig = {
   ],
   room: /^Bot Friday Open Forum - BFOF$/i,
   rule: [
-    `I'm trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer `,
+    "I'm trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer",
   ],
   welcome: [
     'Welcome to join us!',
