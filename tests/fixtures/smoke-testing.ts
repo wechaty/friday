@@ -1,20 +1,13 @@
-import { getWechaty } from '../../src/get-wechaty'
-import { setupWechatyPlugins }   from '../../src/setup-wechaty'
-import { setupFinis } from '../../src/setup-finis'
-import { setupWeb }   from '../../src/setup-web'
+import { getWechaty } from '../../src/wechaty/mod'
+import { setupWeb }   from '../../src/web/mod'
 
 process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
 
 async function main () {
   const bot = getWechaty('smoke-testing')
 
-  setupWechatyPlugins(bot)
-
-  await Promise.all([
-    bot.start(),
-    setupFinis(bot),
-    setupWeb(bot),
-  ])
+  await bot.start()
+  await setupWeb(bot)
 
   await bot.stop()
 
