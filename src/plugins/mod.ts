@@ -24,7 +24,7 @@ import {
   Bot5OneToManyPlugin,
 }                           from './room-connector'
 
-import { FreshdeskPlugin }  from './freshdesk'
+// import { FreshdeskPlugin }  from './freshdesk'
 import {
   QnAMakerEnglishPlugin,
   QnAMakerChinesePlugin,
@@ -45,7 +45,7 @@ const pluginList = [
   EventHotHandlerPlugin,
   VoteOutPlugin,
   VorpalPlugin,
-  FreshdeskPlugin,
+  // FreshdeskPlugin,
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
 ]
