@@ -1,3 +1,5 @@
+import './config'
+
 import { log } from 'wechaty'
 
 import { getWechaty } from './wechaty/mod'

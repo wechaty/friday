@@ -2,7 +2,6 @@
 
 set -e
 
-export PORT=28788
 LOG_FILE=friday.log
 
 while true
