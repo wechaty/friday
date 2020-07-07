@@ -24,6 +24,7 @@ import {
   Bot5OneToManyPlugin,
 }                           from './room-connector'
 
+// import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
 import {
   QnAMakerEnglishPlugin,
@@ -45,6 +46,7 @@ const pluginList = [
   EventHotHandlerPlugin,
   VoteOutPlugin,
   VorpalPlugin,
+  // IntercomPlugin,
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
