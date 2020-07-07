@@ -10,7 +10,6 @@ import {
 
 import {
   DEVELOPERS_ROOM_ID_LIST,
-  PLUGIN_ROOM_ID,
 }                           from '../database'
 
 const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Room) => {
@@ -51,21 +50,6 @@ const wechatyNonTsConfig: RoomInviterConfig = {
   ],
 }
 
-const wechatyPluginConfig: RoomInviterConfig = {
-  password : [
-    /^plugin$/i,
-  ],
-  repeat,
-  room: PLUGIN_ROOM_ID,
-  rule: [
-    'Thanks for asking me to invite you for joining the "Wechaty Plugin Home" WeChat Room!',
-    'Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.',
-    'You can find our documentation at https://wechaty.js.org',
-    'Please introduce yourself after you join the room, cheers!',
-  ],
-  welcome: 'is joining us as a new Wechaty developer! Welcome, and please introduce yourself to the community!',
-}
-
 const aidogConfig: RoomInviterConfig = {
   password: [
     /^aidog$/i,
@@ -92,14 +76,12 @@ const bot5Config: RoomInviterConfig = {
 
 const WechatyRoomInviter = RoomInviter(wechatyConfig)
 const WechatyNonTsRoomInviter = RoomInviter(wechatyNonTsConfig)
-const WechatyPluginRoomInviter = RoomInviter(wechatyPluginConfig)
 const AidogRoomInviter = RoomInviter(aidogConfig)
 const Bot5RoomInviter = RoomInviter(bot5Config)
 
 export const RoomInviterPluginList = [
   WechatyNonTsRoomInviter,
   WechatyRoomInviter,
-  WechatyPluginRoomInviter,
   AidogRoomInviter,
   Bot5RoomInviter,
 ]

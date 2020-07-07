@@ -6,9 +6,8 @@ import {
 
 import {
   // DEVELOPERS_ROOM_ID_LIST,
-  PLUGIN_ROOM_ID,
+  HEADQUARTERS_ROOM_ID,
   PYTHON_GO_JAVA_ROOM_ID,
-  PUPPET_SERVICE_PROVIDER_ROOM_ID,
 }                                   from '../database'
 
 const skipMessage = [
@@ -18,8 +17,7 @@ const skipMessage = [
 const room = [
   // ...DEVELOPERS_ROOM_ID_LIST,
   PYTHON_GO_JAVA_ROOM_ID,
-  PUPPET_SERVICE_PROVIDER_ROOM_ID,
-  PLUGIN_ROOM_ID,
+  HEADQUARTERS_ROOM_ID,
 ]
 
 const minScore = 30
