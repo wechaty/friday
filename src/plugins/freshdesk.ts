@@ -4,8 +4,6 @@ import {
   WechatyFreshdeskConfig,
 }                           from 'wechaty-plugin-freshdesk'
 
-import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database'
-
 const config: WechatyFreshdeskConfig = {
   close: [
     [
@@ -16,10 +14,7 @@ const config: WechatyFreshdeskConfig = {
     ].join(' '),
   ],
   contact: true,
-  room: [
-    PUPPET_SERVICE_PROVIDER_ROOM_ID,
-    /^Wechaty Testing$/,
-  ],
+  room: false,
 
   apiKey          : process.env.WECHATY_PLUGIN_FRESHDESK_API_KEY,
   portalUrl       : process.env.WECHATY_PLUGIN_FRESHDESK_PORTAL_URL,
