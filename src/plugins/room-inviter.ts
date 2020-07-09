@@ -34,8 +34,8 @@ const wechatyConfig: RoomInviterConfig = {
 
 const wechatyNonTsConfig: RoomInviterConfig = {
   password : [
-    /^(python|go|java|scala) wechaty$/i,
-    /^(python|go|java|scala)$/i,
+    /^(python|go|java|scala|php) wechaty$/i,
+    /^(python|go|java|scala|php)$/i,
   ],
   repeat,
   room: '19367909379@chatroom',
