@@ -19,6 +19,7 @@ const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Roo
 const wechatyConfig: RoomInviterConfig = {
   password : [
     /^wechaty$/i,
+    /^plugin$/i,
   ],
   repeat,
   room: DEVELOPERS_ROOM_ID_LIST,
