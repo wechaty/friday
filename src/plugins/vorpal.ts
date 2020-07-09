@@ -7,6 +7,8 @@ import {
   Eval,
   Cash,
   UrlLink,
+  Announce,
+  Find,
 }                         from 'wechaty-vorpal-contrib'
 
 import { CHATOPS_ROOM_ID } from '../database'
@@ -23,6 +25,8 @@ const extensionList = [
   Eval(),
   Cash(),
   UrlLink(),
+  Announce(),
+  Find(),
 ]
 
 const config: WechatyVorpalConfig = {
