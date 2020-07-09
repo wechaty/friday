@@ -16,7 +16,10 @@ import { RoomInviterPluginList }    from './room-inviter'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
 import { HeartbeatPlugin }          from './heartbeat'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
-import { VorpalPlugin }             from './vorpal'
+import {
+  ChatopsVorpalPlugin,
+  ContributorsVorpalPlugin,
+}                                   from './vorpal'
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -45,7 +48,8 @@ const pluginList = [
   HeartbeatPlugin,
   EventHotHandlerPlugin,
   VoteOutPlugin,
-  VorpalPlugin,
+  ChatopsVorpalPlugin,
+  ContributorsVorpalPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,

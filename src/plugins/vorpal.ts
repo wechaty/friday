@@ -11,27 +11,56 @@ import {
   Find,
 }                         from 'wechaty-vorpal-contrib'
 
-import { CHATOPS_ROOM_ID } from '../database'
+import {
+  CHATOPS_ROOM_ID,
+  CONTRIBUTORS_ROOM_ID,
+}                         from '../database'
 
 const hackerNews = require('vorpal-hacker-news')
 
-const extensionList = [
-  /**
-   * https://github.com/vorpaljs/vorpal-hacker-news
-   *  hacker-news --length 3
-   */
-  hackerNews,
-  Ding(),
-  Eval(),
-  Cash(),
-  UrlLink(),
-  Announce(),
-  Find(),
-]
-
-const config: WechatyVorpalConfig = {
+/*******************************************************
+ *
+ * ChatOps Room
+ *
+ */
+const chatopsConfig: WechatyVorpalConfig = {
+  at: false,
+  contact: false,
   room : CHATOPS_ROOM_ID,
-  use  : extensionList,
+  use  : [
+    /**
+     * https://github.com/vorpaljs/vorpal-hacker-news
+     *  hacker-news --length 3
+     */
+    hackerNews,
+    Ding(),
+    Eval(),
+    Cash(),
+    UrlLink(),
+    Announce(),
+    Find(),
+  ],
 }
 
-export const VorpalPlugin = WechatyVorpal(config)
+/*******************************************************
+ *
+ * Contributors Room
+ *
+ */
+const contributorsConfig: WechatyVorpalConfig = {
+  at: true,
+  contact: false,
+  room : CONTRIBUTORS_ROOM_ID,
+  use  : [
+    UrlLink(),
+    Find(),
+  ],
+}
+
+const ChatopsVorpalPlugin      = WechatyVorpal(chatopsConfig)
+const ContributorsVorpalPlugin = WechatyVorpal(contributorsConfig)
+
+export {
+  ChatopsVorpalPlugin,
+  ContributorsVorpalPlugin,
+}
