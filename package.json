@@ -46,7 +46,7 @@
     "wechaty-plugin-intercom": "^0.2.11",
     "wechaty-plugin-qnamaker": "^0.2.13",
     "wechaty-vorpal": "^0.3.16",
-    "wechaty-vorpal-contrib": "^0.3.3",
+    "wechaty-vorpal-contrib": "^0.4.1",
     "wechaty-voteout": "^0.6.2"
   },
   "devDependencies": {
