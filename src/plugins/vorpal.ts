@@ -9,6 +9,7 @@ import {
   UrlLink,
   Announce,
   Find,
+  MathMaster,
 }                         from 'wechaty-vorpal-contrib'
 
 import {
@@ -39,6 +40,7 @@ const chatopsConfig: WechatyVorpalConfig = {
     UrlLink(),
     Announce(),
     Find(),
+    MathMaster(),
   ],
 }
 
