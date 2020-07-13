@@ -54,7 +54,8 @@
     "@chatie/git-scripts": "^0.6.1",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.6",
-    "tstest": "^0.4.10"
+    "tstest": "^0.4.10",
+    "wechaty-puppet-mock": "^0.25.1"
   },
   "git": {
     "scripts": {
