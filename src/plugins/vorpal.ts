@@ -25,9 +25,10 @@ const hackerNews = require('vorpal-hacker-news')
  *
  */
 const chatopsConfig: WechatyVorpalConfig = {
-  at: false,
   contact: false,
+  mention: false,
   room : CHATOPS_ROOM_ID,
+  silent: true,
   use  : [
     /**
      * https://github.com/vorpaljs/vorpal-hacker-news
@@ -50,9 +51,10 @@ const chatopsConfig: WechatyVorpalConfig = {
  *
  */
 const contributorsConfig: WechatyVorpalConfig = {
-  at: true,
   contact: false,
+  mention: true,
   room : CONTRIBUTORS_ROOM_ID,
+  silent: true,
   use  : [
     UrlLink(),
     Find(),
