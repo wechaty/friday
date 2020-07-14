@@ -2,7 +2,8 @@
 
 LOG_FILE=friday.log
 
-while true do
+while true
+do
   git checkout .
   git pull
   rm -f package-lock.json
