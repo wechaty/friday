@@ -10,6 +10,8 @@ import {
   Announce,
   Find,
   MathMaster,
+  Version,
+  Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
 import {
@@ -42,6 +44,8 @@ const chatopsConfig: WechatyVorpalConfig = {
     Announce(),
     Find(),
     MathMaster(),
+    Whoru(),
+    Version(),
   ],
 }
 
@@ -59,6 +63,8 @@ const contributorsConfig: WechatyVorpalConfig = {
     UrlLink(),
     Find(),
     MathMaster(),
+    Whoru(),
+    Version(),
   ],
 }
 
@@ -73,6 +79,8 @@ const dmConfig: WechatyVorpalConfig = {
   silent: true,
   use  : [
     MathMaster(),
+    Whoru(),
+    Version(),
   ],
 }
 
