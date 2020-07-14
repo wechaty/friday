@@ -58,13 +58,30 @@ const contributorsConfig: WechatyVorpalConfig = {
   use  : [
     UrlLink(),
     Find(),
+    MathMaster(),
   ],
 }
 
-const ChatopsVorpalPlugin      = WechatyVorpal(chatopsConfig)
-const ContributorsVorpalPlugin = WechatyVorpal(contributorsConfig)
+/*******************************************************
+ *
+ * Direct Message
+ *
+ */
+const dmConfig: WechatyVorpalConfig = {
+  contact: true,
+  room : false,
+  silent: true,
+  use  : [
+    MathMaster(),
+  ],
+}
+
+const ChatopsVorpalPlugin       = WechatyVorpal(chatopsConfig)
+const ContributorsVorpalPlugin  = WechatyVorpal(contributorsConfig)
+const DirectMessageVorpalPlugin = WechatyVorpal(dmConfig)
 
 export {
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
+  DirectMessageVorpalPlugin,
 }

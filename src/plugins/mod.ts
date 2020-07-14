@@ -19,6 +19,7 @@ import { EventHotHandlerPlugin }    from './event-hot-handler'
 import {
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
+  DirectMessageVorpalPlugin,
 }                                   from './vorpal'
 import {
   OneToManyPlugin,
@@ -50,6 +51,7 @@ const pluginList = [
   VoteOutPlugin,
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
+  DirectMessageVorpalPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,
