@@ -20,6 +20,7 @@ import {
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
   DirectMessageVorpalPlugin,
+  DonutVorpalPlugin,
 }                                   from './vorpal'
 
 // import { IntercomPlugin }   from './intercom'
@@ -48,6 +49,7 @@ const pluginList = [
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
   DirectMessageVorpalPlugin,
+  DonutVorpalPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,

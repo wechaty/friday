@@ -12,11 +12,13 @@ import {
   MathMaster,
   Version,
   Whoru,
+  Ddr,
 }                         from 'wechaty-vorpal-contrib'
 
 import {
   CHATOPS_ROOM_ID,
   CONTRIBUTORS_ROOM_ID,
+  DONUT_ROOM_ID,
 }                         from '../database'
 
 const hackerNews = require('vorpal-hacker-news')
@@ -70,6 +72,21 @@ const contributorsConfig: WechatyVorpalConfig = {
 
 /*******************************************************
  *
+ * Donut Room
+ *
+ */
+const donutConfig: WechatyVorpalConfig = {
+  contact: false,
+  mention: true,
+  room : DONUT_ROOM_ID,
+  silent: true,
+  use  : [
+    Ddr(),
+  ],
+}
+
+/*******************************************************
+ *
  * Direct Message
  *
  */
@@ -86,10 +103,12 @@ const dmConfig: WechatyVorpalConfig = {
 
 const ChatopsVorpalPlugin       = WechatyVorpal(chatopsConfig)
 const ContributorsVorpalPlugin  = WechatyVorpal(contributorsConfig)
+const DonutVorpalPlugin         = WechatyVorpal(donutConfig)
 const DirectMessageVorpalPlugin = WechatyVorpal(dmConfig)
 
 export {
   ChatopsVorpalPlugin,
   ContributorsVorpalPlugin,
+  DonutVorpalPlugin,
   DirectMessageVorpalPlugin,
 }
