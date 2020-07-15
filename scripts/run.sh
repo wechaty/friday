@@ -1,6 +1,6 @@
 #!/usr/bin/env bash -x
 
-set -e
+set -eo pipefail
 
 function update () {
   git checkout .
