@@ -21,12 +21,6 @@ import {
   ContributorsVorpalPlugin,
   DirectMessageVorpalPlugin,
 }                                   from './vorpal'
-import {
-  OneToManyPlugin,
-  ManyToOnePlugin,
-  ManyToManyPlugin,
-  Bot5OneToManyPlugin,
-}                           from './room-connector'
 
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
@@ -34,16 +28,18 @@ import {
   QnAMakerEnglishPlugin,
   QnAMakerChinesePlugin,
 }                           from './qnamaker'
+import {
+  OneToManyPlugin,
+  ManyToOnePlugin,
+  ManyToManyPlugin,
+  Bot5OneToManyPlugin,
+}                           from './room-connector'
 
 const pluginList = [
   QRCodeTerminal(),
   EventLogger(),
   DingDong(),
   ChatOps({ room: CHATOPS_ROOM_ID }),
-  OneToManyPlugin,
-  ManyToOnePlugin,
-  ManyToManyPlugin,
-  Bot5OneToManyPlugin,
   ...RoomInviterPluginList,
   FriendshipAccepterPlugin,
   HeartbeatPlugin,
@@ -56,6 +52,10 @@ const pluginList = [
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
+  ManyToOnePlugin,
+  ManyToManyPlugin,
+  Bot5OneToManyPlugin,
+  OneToManyPlugin,
 ]
 
 export { pluginList }

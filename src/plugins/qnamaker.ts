@@ -27,7 +27,7 @@ const configEnglish: WechatyQnAMakerConfig = {
 
   skipMessage,
   room,
-  at: false,
+  mention: false,
   contact: true,
   minScore,
 
@@ -41,7 +41,7 @@ const configChinese: WechatyQnAMakerConfig = {
 
   skipMessage,
   room,
-  at: false,
+  mention: false,
   contact: true,
   minScore,
 

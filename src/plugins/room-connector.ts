@@ -42,6 +42,9 @@ function getRoomShortNameByRegexp (matcher: RegExp) {
   }
 }
 
+/**
+ * "Wechaty Developers' Home 8" -> "Home 8"
+ */
 const getRoomShortName = getRoomShortNameByRegexp(/\s*([^\s]*\s*[^\s]+)$/)
 
 /**

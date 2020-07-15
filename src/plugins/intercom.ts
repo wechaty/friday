@@ -7,7 +7,7 @@ import {
 // import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database'
 
 const config: WechatyIntercomConfig = {
-  at: true,
+  mention: true,
   close: [
     [
       'Thank you for contacting the support of puppet service provider.',
