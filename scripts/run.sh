@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
 
-LOG_FILE=friday.log
+set -e
 
-while true
-do
+function update () {
   git checkout .
   git pull
   rm -f package-lock.json
   npm i
   npm run build
-  node dist/src/main.js | tee "$LOG_FILE"
-  sleep 1
-done
+}
+
+function main () {
+  LOG_FILE=friday.log
+
+  while true
+  do
+    if update; then
+      node dist/src/main.js | tee "$LOG_FILE" || true
+    fi
+    sleep 1
+  done
+}
+
+main
