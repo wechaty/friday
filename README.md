@@ -24,6 +24,11 @@ You can visit the staging system at <http://friday.bot5.club/>
 
 ## History
 
+### v0.6 (Jul 18, 2020)
+
+1. Fully powered by [Wechaty Vorpal](https://github.com/wechaty/wechaty-vorpal) and [Wechaty Vorpal Contrib](https://github.com/wechaty/wechaty-vorpa-contrib) commands!
+1. Restructure directories & source code files
+
 ### v0.4 (Jun 15, 2020)
 
 1. Fully powered by Wechaty Plugins! See: [wechaty-plugin-contrib](https://github.com/wechaty/wechaty-plugin-contrib)
