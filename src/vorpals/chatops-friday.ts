@@ -18,11 +18,6 @@ import {
   CHATOPS_ROOM_ID,
 }                         from '../database'
 
-/*******************************************************
- *
- * ChatOps Room
- *
- */
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,

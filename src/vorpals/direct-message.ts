@@ -10,11 +10,6 @@ import {
 
 const hackerNews = require('vorpal-hacker-news')
 
-/*******************************************************
- *
- * Direct Message
- *
- */
 const dmConfig: WechatyVorpalConfig = {
   contact : true,
   room    : false,

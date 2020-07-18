@@ -14,11 +14,6 @@ import {
   CONTRIBUTORS_ROOM_ID,
 }                         from '../database'
 
-/*******************************************************
- *
- * Contributors Room
- *
- */
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : true,
