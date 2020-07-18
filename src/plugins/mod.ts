@@ -16,12 +16,12 @@ import { RoomInviterPluginList }    from './room-inviter'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
 import { HeartbeatPlugin }          from './heartbeat'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
-import {
-  ChatopsVorpalPlugin,
-  ContributorsVorpalPlugin,
-  DirectMessageVorpalPlugin,
-  DonutVorpalPlugin,
-}                                   from './vorpal'
+// import {
+//   ChatopsVorpalPlugin,
+//   ContributorsVorpalPlugin,
+//   DirectMessageVorpalPlugin,
+//   DonutVorpalPlugin,
+// }                                   from './vorpal'
 
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
@@ -46,10 +46,10 @@ const pluginList = [
   HeartbeatPlugin,
   EventHotHandlerPlugin,
   VoteOutPlugin,
-  ChatopsVorpalPlugin,
-  ContributorsVorpalPlugin,
-  DirectMessageVorpalPlugin,
-  DonutVorpalPlugin,
+  // ChatopsVorpalPlugin,
+  // ContributorsVorpalPlugin,
+  // DirectMessageVorpalPlugin,
+  // DonutVorpalPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
   QnAMakerChinesePlugin,

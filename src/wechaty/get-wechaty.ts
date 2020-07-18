@@ -3,7 +3,8 @@ import {
   log,
 }                 from 'wechaty'
 
-import { pluginList } from '../plugins/mod'
+import { pluginList }       from '../plugins/mod'
+import { vorpalPluginList } from '../vorpals/mod'
 
 import { getMemory }  from './get-memory'
 import { setupFinis } from './setup-finis'
@@ -24,7 +25,10 @@ export function getWechaty (name: string): Wechaty {
     /**
      * Initialize Plugins
      */
-    wechaty.use(pluginList)
+    wechaty.use(
+      ...pluginList,
+      ...vorpalPluginList,
+    )
 
     /**
      * Finis Hook

@@ -23,7 +23,8 @@ const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
 const SUMMER_OF_CODE_ROOM_ID = '17817316202@chatroom'  // Wechaty ISCAS Code of Summer
 const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
 
-const MIKE_BO_CONTACT_ID = 'wxid_a8d806dzznm822'  // Mike BO
+const MIKE_BO_CONTACT_ID       = 'wxid_a8d806dzznm822'   // Mike BO
+const PREANGEL_CHATOPS_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel
 
 export {
   CHATOPS_ROOM_ID,
@@ -42,4 +43,5 @@ export {
   BOT5_CLUB_ROOM_ID,
 
   MIKE_BO_CONTACT_ID,
+  PREANGEL_CHATOPS_ROOM_ID,
 }
