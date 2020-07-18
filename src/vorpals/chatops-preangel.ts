@@ -12,7 +12,7 @@ import {
 
 const config: WechatyVorpalConfig = {
   contact : false,
-  mention : true,
+  mention : false,
   room    : PREANGEL_CHATOPS_ROOM_ID,
   silent  : true,
 
