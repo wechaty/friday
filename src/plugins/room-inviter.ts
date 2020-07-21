@@ -41,7 +41,7 @@ const wechatyNonTsConfig: RoomInviterConfig = {
   room: '19367909379@chatroom',
   rule: [
     'Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers\' Home" WeChat Room!',
-    'Python/Go/Java Wechaty is in very early stage, please help the project by submitting issues and sending pull requests.',
+    'Python/Go/Java/Scala/PHP/.NET(C#) Wechaty are all in early stage, please help the project by submitting issues and sending pull requests.',
     'If you have any idea about the feature requests, questions, and document, please let us know.',
     'Related issue: https://github.com/wechaty/wechaty/issues/1927',
     'Please introduce yourself after you join the room, cheers!',
