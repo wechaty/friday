@@ -2,7 +2,7 @@
 import {
   WechatyIntercom,
   WechatyIntercomConfig,
-}                           from 'wechaty-plugin-intercom'
+}                           from 'wechaty-intercom'
 
 // import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database'
 

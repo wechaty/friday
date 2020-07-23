@@ -2,7 +2,7 @@
 import {
   WechatyFreshdesk,
   WechatyFreshdeskConfig,
-}                           from 'wechaty-plugin-freshdesk'
+}                           from 'wechaty-freshdesk'
 
 const config: WechatyFreshdeskConfig = {
   close: [

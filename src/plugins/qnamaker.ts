@@ -2,7 +2,7 @@
 import {
   WechatyQnAMaker,
   WechatyQnAMakerConfig,
-}                           from 'wechaty-plugin-qnamaker'
+}                           from 'wechaty-qnamaker'
 
 import {
   // DEVELOPERS_ROOM_ID_LIST,
