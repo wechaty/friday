@@ -1,4 +1,4 @@
-const CHATOPS_ROOM_ID   = '18131996049@chatroom'  // 'ChatOps - BOT5 Wechaty'
+const FRIDAY_CHATOPS_ROOM_ID   = '18131996049@chatroom'  // 'ChatOps - BOT5 Wechaty'
 const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat'
 
 const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
@@ -25,9 +25,10 @@ const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
 
 const MIKE_BO_CONTACT_ID       = 'wxid_a8d806dzznm822'   // Mike BO
 const PREANGEL_CHATOPS_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel
+const DDR_CHATOPS_ROOM_ID      = '18771413722@chatroom'  // ChatOps - DDR
 
 export {
-  CHATOPS_ROOM_ID,
+  FRIDAY_CHATOPS_ROOM_ID,
   HEARTBEAT_ROOM_ID,
   DONUT_ROOM_ID,
 
@@ -44,4 +45,5 @@ export {
 
   MIKE_BO_CONTACT_ID,
   PREANGEL_CHATOPS_ROOM_ID,
+  DDR_CHATOPS_ROOM_ID,
 }

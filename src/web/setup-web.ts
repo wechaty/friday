@@ -14,7 +14,7 @@ import {
   VERSION,
 }             from '../config'
 
-import { CHATOPS_ROOM_ID } from '../database'
+import { FRIDAY_CHATOPS_ROOM_ID } from '../database'
 
 async function chatopsHandler (request: express.Request, response: express.Response) {
   log.info('startWeb', 'chatopsHandler()')
@@ -23,7 +23,7 @@ async function chatopsHandler (request: express.Request, response: express.Respo
     chatops: string,
   } = request.params as any
 
-  await getWechaty('friday').Room.load(CHATOPS_ROOM_ID).say(payload.chatops)
+  await getWechaty('friday').Room.load(FRIDAY_CHATOPS_ROOM_ID).say(payload.chatops)
 
   return response.redirect('/')
 }
