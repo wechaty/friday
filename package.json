@@ -46,7 +46,7 @@
     "wechaty-freshdesk": "^0.6.6",
     "wechaty-qnamaker": "^0.4.6",
     "wechaty-vorpal": "^0.6.5",
-    "wechaty-vorpal-contrib": "^0.6.39",
+    "wechaty-vorpal-contrib": "^0.6.40",
     "wechaty-voteout": "^0.6.2"
   },
   "devDependencies": {
