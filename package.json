@@ -1,6 +1,6 @@
 {
   "name": "friday",
-  "version": "0.6.7",
+  "version": "0.6.12",
   "description": "Friday Bot is designed for serving the Wechaty community as possible as it can.",
   "main": "index.js",
   "engines": {
@@ -46,7 +46,7 @@
     "wechaty-freshdesk": "^0.6.6",
     "wechaty-qnamaker": "^0.4.6",
     "wechaty-vorpal": "^0.6.5",
-    "wechaty-vorpal-contrib": "^0.6.39",
+    "wechaty-vorpal-contrib": "^0.6.46",
     "wechaty-voteout": "^0.6.2"
   },
   "devDependencies": {

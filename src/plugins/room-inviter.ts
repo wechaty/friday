@@ -75,14 +75,14 @@ const bot5Config: RoomInviterConfig = {
   ],
 }
 
-const WechatyRoomInviter = RoomInviter(wechatyConfig)
 const WechatyNonTsRoomInviter = RoomInviter(wechatyNonTsConfig)
-const AidogRoomInviter = RoomInviter(aidogConfig)
-const Bot5RoomInviter = RoomInviter(bot5Config)
+const WechatyRoomInviter      = RoomInviter(wechatyConfig)
+const AidogRoomInviter        = RoomInviter(aidogConfig)
+const Bot5RoomInviter         = RoomInviter(bot5Config)
 
-export const RoomInviterPluginList = [
+export {
   WechatyNonTsRoomInviter,
   WechatyRoomInviter,
   AidogRoomInviter,
   Bot5RoomInviter,
-]
+}
