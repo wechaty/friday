@@ -1,0 +1,6 @@
+version: '3'
+services:
+  friday:
+    image: "wechaty/friday:latest"
+    env_file: .env
+    expose: [ 80 ]

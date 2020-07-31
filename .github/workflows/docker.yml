@@ -30,7 +30,12 @@ jobs:
       - name: Deploy to Docker Hub
         run: |
           sudo apt-get install -y jq
-          VERSION=$(jq -r .version < package.json  | cut -d. -f1,2)
-          docker tag wechaty/friday "wechaty/friday:$VERSION"
-          docker push "wechaty/friday:$VERSION"
+
+          TAG=$(jq -r .version < package.json  | cut -d. -f1,2)
+          docker tag wechaty/friday "wechaty/friday:$TAG"
+          docker push "wechaty/friday:$TAG"
+
+          TAG=latest
+          docker tag wechaty/friday "wechaty/friday:$TAG"
+          docker push "wechaty/friday:$TAG"
 
