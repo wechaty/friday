@@ -5,7 +5,7 @@ require('dotenv').config()
 /**
  * Env Vars
  */
-const PORT = process.env.PORT || 8788
+const PORT = process.env.PORT || 8080
 
 export {
   VERSION,
