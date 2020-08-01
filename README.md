@@ -64,6 +64,6 @@ See: <https://github.com/orgs/wechaty/teams/chairs/members>
 
 ## Copyright & License
 
-- Code & Docs © 2019 Wechaty Contributors
+- Code & Docs © 2019-now Wechaty Contributors
 - Code released under the Apache-2.0 License
 - Docs released under Creative Commons
