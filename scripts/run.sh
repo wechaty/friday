@@ -3,22 +3,24 @@
 set -x
 set -eo pipefail
 
-function update () {
+function runSource () {
   git checkout .
   git pull
   rm -f package-lock.json
   npm i
   npm run build
+  npm start
+}
+
+function runDocker () {
+  docker pull wechaty/friday
+  docker-compose up
 }
 
 function main () {
-  LOG_FILE=friday.log
-
   while true
   do
-    if update; then
-      node dist/src/main.js | tee "$LOG_FILE" || true
-    fi
+    runDocker
     sleep 1
   done
 }
