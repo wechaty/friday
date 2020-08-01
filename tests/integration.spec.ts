@@ -25,6 +25,15 @@ import { getWechaty }  from '../src/wechaty/mod'
 // import { spy } from 'sinon'
 
 test('smoke testing', async t => {
+  const ORIGINAL_WECHATY_PUPPET = process.env.WECHATY_PUPPET
+
+  process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
   const wechaty = getWechaty('test')
   t.ok(wechaty, 'should instantiated a wecahty successfully')
+
+  await wechaty.start()
+  await wechaty.stop()
+  t.pass('should stop-ed wecahty successfully')
+
+  process.env.WECHATY_PUPPET = ORIGINAL_WECHATY_PUPPET
 })
