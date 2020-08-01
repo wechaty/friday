@@ -55,8 +55,8 @@ Friday Bot initialized by BOT5.Club members.
 
 ## Maintainers
 
-- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) Author of [Wechaty](https://github.com/wechaty/wechaty), Tencent TVP of Chatbot, <zixia@zixia.net>
-- [Rui](https://github.com/lijiarui) [(李佳芮)](https://lijiarui.github.io) Co-author of [Wechaty](https://github.com/wechaty/wechaty), Founder & CEO of [JuziBot](https://www.juzi.bot/)
+- [Huan](https://github.com/huan) [(李卓桓)](http://linkedin.com/in/zixia) Creator of [Wechaty](https://github.com/wechaty/wechaty), Tencent TVP of Chatbot, <zixia@zixia.net>
+- [Rui](https://github.com/lijiarui) [(李佳芮)](https://lijiarui.github.io) Co-creator of [Wechaty](https://github.com/wechaty/wechaty), Founder & CEO of [JuziBot](https://www.juzi.bot/)
 - [Yuan](https://github.com/windmemory) (高原) Co-founder & CTO of [JuziBot](https://www.juzi.bot/)
 - [Hua](https://github.com/qhduan) (段清华) Founder & CTO of [KDF.ai](https://kdf.ai)
 
