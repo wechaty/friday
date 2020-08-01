@@ -37,7 +37,7 @@ const chatopsConfig: WechatyVorpalConfig = {
   ],
 }
 
-const ChatopsVorpalPlugin       = WechatyVorpal(chatopsConfig)
+const ChatopsVorpalPlugin = WechatyVorpal(chatopsConfig)
 
 export {
   ChatopsVorpalPlugin,
