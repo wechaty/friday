@@ -1,6 +1,6 @@
 {
   "name": "friday",
-  "version": "0.6.14",
+  "version": "0.6.15",
   "description": "Friday Bot is designed for serving the Wechaty community purpose.",
   "main": "index.js",
   "engines": {
