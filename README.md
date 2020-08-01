@@ -2,6 +2,7 @@
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/wechaty/wechaty)
 [![Node.js CI](https://github.com/wechaty/friday/workflows/Node.js%20CI/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3A%22Node.js+CI%22)
+[![Docker](https://github.com/wechaty/friday/workflows/Docker/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3ADocker)
 
 Friday Bot is designed for serving the Wechaty community purpose.
 
