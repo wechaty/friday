@@ -20,10 +20,11 @@
 
 import test  from 'blue-tape'
 
-// import { log }  from '../src/config'
+import { getWechaty }  from '../src/wechaty/mod'
 
 // import { spy } from 'sinon'
 
-test('smoking test', async t => {
-  t.skip('to be written')
+test('smoke testing', async t => {
+  const wechaty = getWechaty('test')
+  t.ok(wechaty, 'should instantiated a wecahty successfully')
 })
