@@ -2,13 +2,15 @@ version: '3.7'
 services:
   friday:
     image: wechaty/friday:latest
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     init: true
     env_file: .env
     expose:
       - 80
     container_name: friday
     volumes:
-      - .wechaty:~/.wechaty
+      - .wechaty:/bot/.wechaty
     environment:
       - WEB_PORT=80
       - WECHATY_NAME=Friday
