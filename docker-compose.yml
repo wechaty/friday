@@ -19,6 +19,7 @@ services:
       - WECHATY_PUPPET=wechaty-puppet-hostie
       - VIRTUAL_HOST=friday.chatie.io,friday.bot5.club
       - LETSENCRYPT_HOST=friday.chatie.io,friday.bot5.club
+      - HTTPS_METHOD=noredirect
     healthcheck:
       test: ["CMD", "true"]
       interval: 1m30s
