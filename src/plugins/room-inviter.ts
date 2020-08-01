@@ -10,6 +10,7 @@ import {
 
 import {
   DEVELOPERS_ROOM_ID_LIST,
+  PYTHON_GO_JAVA_ROOM_ID,
 }                           from '../database'
 
 const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Room) => {
@@ -38,7 +39,7 @@ const wechatyNonTsConfig: RoomInviterConfig = {
     /^(python|go|java|scala|php|dotnet)$/i,
   ],
   repeat,
-  room: '19367909379@chatroom',
+  room: PYTHON_GO_JAVA_ROOM_ID,
   rule: [
     'Thanks for asking me to invite you for joining the "Wechaty Python/Go/Java Developers\' Home" WeChat Room!',
     'Python/Go/Java/Scala/PHP/.NET(C#) Wechaty are all in early stage, please help the project by submitting issues and sending pull requests.',

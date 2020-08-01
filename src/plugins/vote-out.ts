@@ -10,6 +10,10 @@ import {
   talkers,
 }                   from 'wechaty-plugin-contrib'
 
+import {
+  PYTHON_GO_JAVA_ROOM_ID,
+}                           from '../database'
+
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
   '———————————',
@@ -44,6 +48,7 @@ const config: VoteOutConfig = {
     /^Youth fed the/i,
     /^Wechaty Plugin Developers/i,
     /^Wechaty Testing$/,
+    PYTHON_GO_JAVA_ROOM_ID,
   ],
   threshold: 3,
   kick,
