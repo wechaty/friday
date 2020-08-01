@@ -3,11 +3,15 @@
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/wechaty/wechaty)
 [![Node.js CI](https://github.com/wechaty/friday/workflows/Node.js%20CI/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3A%22Node.js+CI%22)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Friday Bot is designed for serving the Wechaty community purpose.
+
+![Friday](docs/images/friday.png)
+
+> Image: [Five Dollar Friday](https://www.robsdogs.net.au/product/five-dollar-friday/)
 
 ## Staging
 
-We are current DevOps the master branch from the repo to Heroku under the protection of Travis CI.
+We are current DevOps the master branch from the repo to Heroku under the protection of GitHub Actions.
 
 You can visit the staging system at <http://friday.bot5.club/>
 
@@ -28,6 +32,7 @@ You can visit the staging system at <http://friday.bot5.club/>
 
 1. Fully powered by [Wechaty Vorpal](https://github.com/wechaty/wechaty-vorpal) and [Wechaty Vorpal Contrib](https://github.com/wechaty/wechaty-vorpa-contrib) commands!
 1. Restructure directories & source code files
+1. Add Dockerfile so that we can deploy Friday.BOT with the power of Docker!
 
 ### v0.4 (Jun 15, 2020)
 

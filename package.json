@@ -1,5 +1,5 @@
 {
-  "name": "friday",
+  "name": "friday.bot",
   "version": "0.6.19",
   "description": "Friday Bot is designed for serving the Wechaty community purpose.",
   "main": "index.js",
