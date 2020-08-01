@@ -10,7 +10,7 @@ import {
 import { getWechaty } from '../wechaty/mod'
 
 import {
-  PORT,
+  WEB_PORT,
   VERSION,
 }             from '../config'
 
@@ -99,7 +99,7 @@ export async function setupWeb (bot: Wechaty): Promise<void> {
     userName = undefined
   })
 
-  http.createServer(app).listen(PORT)
+  http.createServer(app).listen(WEB_PORT)
 
-  log.info('startWeb', 'startWeb() listening to http://localhost:%d', PORT)
+  log.info('startWeb', 'startWeb() listening to http://localhost:%d', WEB_PORT)
 }
