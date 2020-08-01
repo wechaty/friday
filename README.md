@@ -14,7 +14,7 @@ Friday Bot is designed for serving the Wechaty community purpose.
 
 We are current DevOps the master branch from the repo to Heroku under the protection of GitHub Actions.
 
-You can visit the staging system at <http://friday.bot5.club/>
+You can visit the staging system at <http://friday.chatie.io/>
 
 ## Contributors
 
