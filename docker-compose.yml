@@ -16,6 +16,8 @@ services:
       - WECHATY_NAME=Friday
       - WECHATY_LOG=verbose
       - WECHATY_PUPPET=wechaty-puppet-hostie
+      - VIRTUAL_HOST=friday.chatie.io,friday.bot5.club
+      - LETSENCRYPT_HOST=friday.chatie.io,friday.bot5.club
     healthcheck:
       test: ["CMD", "true"]
       interval: 1m30s
