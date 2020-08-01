@@ -9,6 +9,7 @@ services:
     expose:
       - 80
     container_name: friday
+    network_mode: bridge
     volumes:
       - .wechaty:/bot/.wechaty
     environment:
