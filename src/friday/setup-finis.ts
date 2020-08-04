@@ -38,8 +38,8 @@ let FINIS_QUITING = false
 
 finis(async (code, signal) => {
   if (!bot) {
-    log.warn('RestartReporter', 'finis() no bot set, NOOP')
-    return
+    log.warn('RestartReporter', 'finis() no bot set, exit')
+    process.exit(1)
   }
 
   if (FINIS_QUITING) {

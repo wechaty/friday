@@ -2,7 +2,7 @@ import './config'
 
 import { log } from 'wechaty'
 
-import { getFriday } from './wechaty/mod'
+// import { getFriday } from './friday/mod'
 import { getBotList } from './bots/mod'
 
 // import { setupWeb }   from './web/mod'
@@ -12,7 +12,10 @@ async function main () {
 
   // const name = process.env.WECHATY_NAME || 'Friday.BOT'
 
-  const botList = getBotList()
+  const botList = [
+    // getFriday('Friday.BOT'),
+    ...getBotList(),
+  ]
 
   for (const bot of botList) {
     await bot.start()
