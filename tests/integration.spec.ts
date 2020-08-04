@@ -20,7 +20,7 @@
 
 import test  from 'blue-tape'
 
-import { getFriday }  from '../src/wechaty/friday-bot'
+import { getFriday }  from '../src/friday/bot'
 
 // import { spy } from 'sinon'
 

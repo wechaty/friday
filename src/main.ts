@@ -2,7 +2,7 @@ import './config'
 
 import { log } from 'wechaty'
 
-// import { getFriday } from './friday/mod'
+// import { getFriday } from './friday/bot'
 import { getBotList } from './bots/mod'
 
 // import { setupWeb }   from './web/mod'
