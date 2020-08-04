@@ -2,18 +2,14 @@ import './config'
 
 import { log } from 'wechaty'
 
-// import { getFriday } from './friday/bot'
+import { getFriday }  from './friday/bot'
 import { getBotList } from './bots/mod'
-
-// import { setupWeb }   from './web/mod'
 
 async function main () {
   log.verbose('main', 'main()')
 
-  // const name = process.env.WECHATY_NAME || 'Friday.BOT'
-
   const botList = [
-    // getFriday('Friday.BOT'),
+    getFriday('Friday.BOT'),
     ...getBotList(),
   ]
 
