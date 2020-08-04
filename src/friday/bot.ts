@@ -5,7 +5,7 @@ import {
 
 import { pluginList }       from '../plugins/mod'
 import { vorpalPluginList } from '../vorpals/mod'
-import { setupWeb }         from '../web/setup-web'
+import { startWeb }         from '../web/setup-web'
 
 import { getMemory }  from './get-memory'
 import { setupFinis } from './setup-finis'
@@ -31,9 +31,10 @@ export function getFriday (name: string): Wechaty {
   /**
    * Setup Web
    */
-  let stopWeb: () => void
-  wechaty.on('start', async () => { stopWeb = await setupWeb(wechaty) })
-  wechaty.on('stop', () => stopWeb && stopWeb())
+  wechaty.on('start', async () => {
+    const stopWeb = await startWeb(wechaty)
+    wechaty.once('stop', () => stopWeb())
+  })
 
   /**
    * Finis Hook

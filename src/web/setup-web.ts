@@ -14,9 +14,9 @@ import {
 
 import { FRIDAY_CHATOPS_ROOM_ID } from '../database'
 
-type Uninstaller = () => void
+type Stopper = () => void
 
-export async function setupWeb (wechaty: Wechaty): Promise<Uninstaller> {
+export async function startWeb (wechaty: Wechaty): Promise<Stopper> {
   log.verbose('startWeb', 'startWeb(%s)', wechaty)
 
   let qrcodeValue : undefined | string

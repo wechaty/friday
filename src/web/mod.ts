@@ -1,1 +1,1 @@
-export { setupWeb } from './setup-web'
+export { startWeb } from './setup-web'
