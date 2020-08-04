@@ -14,7 +14,9 @@ import {
 
 import { FRIDAY_CHATOPS_ROOM_ID } from '../database'
 
-export async function setupWeb (wechaty: Wechaty): Promise<void> {
+type Uninstaller = () => void
+
+export async function setupWeb (wechaty: Wechaty): Promise<Uninstaller> {
   log.verbose('startWeb', 'startWeb(%s)', wechaty)
 
   let qrcodeValue : undefined | string
@@ -85,9 +87,11 @@ export async function setupWeb (wechaty: Wechaty): Promise<void> {
     userName = undefined
   })
 
-  http.createServer(app).listen(WEB_PORT)
+  const server = http.createServer(app).listen(WEB_PORT)
 
   log.info('startWeb', 'startWeb() listening to http://localhost:%d', WEB_PORT)
+
+  return () => server.close()
 
   async function chatopsHandler (request: express.Request, response: express.Response) {
     log.info('startWeb', 'chatopsHandler()')

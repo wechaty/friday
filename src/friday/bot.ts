@@ -31,8 +31,9 @@ export function getFriday (name: string): Wechaty {
   /**
    * Setup Web
    */
-  setupWeb(wechaty)
-    .catch(console.error)
+  let stopWeb: () => void
+  wechaty.on('start', async () => { stopWeb = await setupWeb(wechaty) })
+  wechaty.on('stop', () => stopWeb && stopWeb())
 
   /**
    * Finis Hook
