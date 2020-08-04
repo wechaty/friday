@@ -20,15 +20,15 @@
 
 import test  from 'blue-tape'
 
-import { getWechaty }  from '../src/wechaty/mod'
+import { getFriday }  from '../src/friday/bot'
 
 // import { spy } from 'sinon'
 
-test('smoke testing', async t => {
+test('smoke testing with perfect restart', async t => {
   const ORIGINAL_WECHATY_PUPPET = process.env.WECHATY_PUPPET
 
   process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
-  const wechaty = getWechaty('test')
+  const wechaty = getFriday('test')
   t.ok(wechaty, 'should instantiated a wecahty successfully')
 
   await wechaty.start()

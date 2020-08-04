@@ -29,6 +29,11 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
+### v0.8 (Aug 4, 2020)
+
+1. The first version that managing two Wechaty bots together!
+1. Start using [wechaty-puppet-official-account](https://github.com/wechaty/wechaty-puppet-official-account)
+
 ### v0.6 (Jul 18, 2020)
 
 1. Fully powered by [Wechaty Vorpal](https://github.com/wechaty/wechaty-vorpal) and [Wechaty Vorpal Contrib](https://github.com/wechaty/wechaty-vorpa-contrib) commands!
