@@ -8,12 +8,16 @@ import {
 
 import {
   DDR_CHATOPS_ROOM_ID,
+  DDR2_CHATOPS_ROOM_ID,
 }                         from '../database'
 
 const donutConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
-  room    : DDR_CHATOPS_ROOM_ID,
+  room    : [
+    DDR_CHATOPS_ROOM_ID,
+    DDR2_CHATOPS_ROOM_ID,
+  ],
   silent  : true,
 
   use  : [

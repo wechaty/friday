@@ -26,6 +26,7 @@ const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
 const MIKE_BO_CONTACT_ID       = 'wxid_a8d806dzznm822'   // Mike BO
 const PREANGEL_CHATOPS_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel
 const DDR_CHATOPS_ROOM_ID      = '18771413722@chatroom'  // ChatOps - DDR
+const DDR2_CHATOPS_ROOM_ID     = '9223372041444472301@im.chatroom'  // ChatOps - DDR
 
 export {
   FRIDAY_CHATOPS_ROOM_ID,
@@ -45,5 +46,7 @@ export {
 
   MIKE_BO_CONTACT_ID,
   PREANGEL_CHATOPS_ROOM_ID,
+
   DDR_CHATOPS_ROOM_ID,
+  DDR2_CHATOPS_ROOM_ID,
 }
