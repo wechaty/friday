@@ -8,7 +8,7 @@ const skipMessage = [
   /^wechaty$/i,
 ]
 
-const minScore = 30
+const minScore = 10
 
 const configCeibs: WechatyQnAMakerConfig = {
   language: ['chinese'],
