@@ -4,14 +4,14 @@ set -x
 set -eo pipefail
 
 function update () {
+  docker pull wechaty/friday
   git checkout .
   git pull
-  docker pull wechaty/friday
+  rm -f package-lock.json
+  npm i
 }
 
 function runSource () {
-  rm -f package-lock.json
-  npm i
   npm run build
   npm start
 }
