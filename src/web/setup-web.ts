@@ -7,8 +7,6 @@ import {
   log,
 }                   from 'wechaty'
 
-import { getWechaty } from '../wechaty/mod'
-
 import {
   WEB_PORT,
   VERSION,
@@ -16,20 +14,8 @@ import {
 
 import { FRIDAY_CHATOPS_ROOM_ID } from '../database'
 
-async function chatopsHandler (request: express.Request, response: express.Response) {
-  log.info('startWeb', 'chatopsHandler()')
-
-  const payload: {
-    chatops: string,
-  } = request.params as any
-
-  await getWechaty('friday').Room.load(FRIDAY_CHATOPS_ROOM_ID).say(payload.chatops)
-
-  return response.redirect('/')
-}
-
-export async function setupWeb (bot: Wechaty): Promise<void> {
-  log.verbose('startWeb', 'startWeb(%s)', bot)
+export async function setupWeb (wechaty: Wechaty): Promise<void> {
+  log.verbose('startWeb', 'startWeb(%s)', wechaty)
 
   let qrcodeValue : undefined | string
   let userName    : undefined | string
@@ -61,7 +47,7 @@ export async function setupWeb (bot: Wechaty): Promise<void> {
       ].join('')
 
     } else if (userName) {
-      const roomList = await bot.Room.findAll()
+      const roomList = await wechaty.Room.findAll()
       let roomHtml = 'The rooms I have joined are as follows: <ol>'
       for (const room of roomList) {
         const topic = await room.topic()
@@ -87,19 +73,34 @@ export async function setupWeb (bot: Wechaty): Promise<void> {
   app.get('/', rootHandler)
   app.get('/chatops/', chatopsHandler)
 
-  bot.on('scan', qrcode => {
+  wechaty.on('scan', qrcode => {
     qrcodeValue = qrcode
     userName    = undefined
   })
-  bot.on('login', user => {
+  wechaty.on('login', user => {
     qrcodeValue = undefined
     userName    = user.name()
   })
-  bot.on('logout', () => {
+  wechaty.on('logout', () => {
     userName = undefined
   })
 
   http.createServer(app).listen(WEB_PORT)
 
   log.info('startWeb', 'startWeb() listening to http://localhost:%d', WEB_PORT)
+
+  async function chatopsHandler (request: express.Request, response: express.Response) {
+    log.info('startWeb', 'chatopsHandler()')
+
+    const payload: {
+      chatops: string,
+    } = request.params as any
+
+    if (wechaty) {
+      await wechaty.Room.load(FRIDAY_CHATOPS_ROOM_ID).say(payload.chatops)
+    }
+
+    return response.redirect('/')
+  }
+
 }
