@@ -11,7 +11,7 @@
     "heroku-postbuild:skip": "wechaty-puppet-install",
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:ts": "tsc --noEmit",
-    "start:ts": "ts-node src/main.ts",
+    "ts": "ts-node src/main.ts",
     "start": "node dist/src/main.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "blue-tape -r ts-node/register \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
