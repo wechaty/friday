@@ -3,9 +3,10 @@
 set -x
 set -eo pipefail
 
-function updateGit () {
+function update () {
   git checkout .
   git pull
+  docker pull wechaty/friday
 }
 
 function runSource () {
@@ -16,7 +17,6 @@ function runSource () {
 }
 
 function runDocker () {
-  docker pull wechaty/friday
   docker-compose up
 }
 
@@ -36,7 +36,7 @@ function main () {
 
 case "$2" in
   update)
-    UPDATE_CMD=updateGit
+    UPDATE_CMD=update
     ;;
   *)
     UPDATE_CMD=true
