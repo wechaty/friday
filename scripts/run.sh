@@ -22,7 +22,7 @@ function runDocker () {
 
 function main () {
 
-  case ${1:-docker} in
+  case "$1" in
     source)
       RUN_CMD=runSource
       ;;
@@ -34,7 +34,7 @@ function main () {
       ;;
   esac
 
-case ${2} in
+case "$2" in
   update)
     UPDATE_CMD=updateGit
     ;;
