@@ -6,13 +6,13 @@ import {
   DingDong,
 }                    from 'wechaty-plugin-contrib'
 
-import {
-  QnAMakerCeibsPlugin,
-}                           from './qnamaker'
+// import {
+//   QnAMakerCeibsPlugin,
+// }                           from './qnamaker'
 
 const pluginList = [
   DingDong(),
-  QnAMakerCeibsPlugin,
+  // QnAMakerCeibsPlugin,
 ]
 
 export { pluginList }
