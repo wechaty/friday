@@ -19,10 +19,13 @@ import { EventHotHandlerPlugin }    from './event-hot-handler'
 
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
-import {
-  QnAMakerEnglishPlugin,
-  QnAMakerChinesePlugin,
-}                           from './qnamaker'
+
+//  Huan(202008) Use Vorpal command instead
+// import {
+//   QnAMakerEnglishPlugin,
+//   QnAMakerChinesePlugin,
+// }                           from './qnamaker'
+
 import {
   OneToManyPlugin,
   ManyToOnePlugin,
@@ -42,8 +45,11 @@ const pluginList = [
   VoteOutPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
-  QnAMakerChinesePlugin,
-  QnAMakerEnglishPlugin,
+
+  // Huan(202008): use vorpal command instead
+  // QnAMakerChinesePlugin,
+  // QnAMakerEnglishPlugin,
+
   ManyToOnePlugin,
   ManyToManyPlugin,
   Bot5OneToManyPlugin,

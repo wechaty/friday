@@ -8,14 +8,14 @@ const skipMessage = [
   /^wechaty$/i,
 ]
 
-const minScore = 10
+const scoreThreshold = 10
 
 const configCeibs: WechatyQnAMakerConfig = {
   language: ['chinese'],
 
   skipMessage,
   contact: true,
-  minScore,
+  scoreThreshold,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CEIBS,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS,
@@ -26,4 +26,5 @@ const QnAMakerCeibsPlugin = WechatyQnAMaker(configCeibs)
 
 export {
   QnAMakerCeibsPlugin,
+  configCeibs,
 }

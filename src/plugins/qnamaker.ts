@@ -20,30 +20,30 @@ const room = [
   HEADQUARTERS_ROOM_ID,
 ]
 
-const minScore = 30
+const scoreThreshold = 30
 
-const configEnglish: WechatyQnAMakerConfig = {
+export const configEnglish: WechatyQnAMakerConfig = {
   language: ['english'],
 
   skipMessage,
   room,
   mention: false,
   contact: true,
-  minScore,
+  scoreThreshold,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
   resourceName    : process.env.WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME,
 }
 
-const configChinese: WechatyQnAMakerConfig = {
+export const configChinese: WechatyQnAMakerConfig = {
   language: ['chinese'],
 
   skipMessage,
   room,
   mention: false,
   contact: true,
-  minScore,
+  scoreThreshold,
 
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE,
