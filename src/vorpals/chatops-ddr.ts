@@ -9,6 +9,7 @@ import {
 import {
   DDR_CHATOPS_ROOM_ID,
   DDR2_CHATOPS_ROOM_ID,
+  DDR2_CHATOPS_ROOM_WXWORK_ID,
 }                         from '../database'
 
 const donutConfig: WechatyVorpalConfig = {
@@ -17,6 +18,7 @@ const donutConfig: WechatyVorpalConfig = {
   room    : [
     DDR_CHATOPS_ROOM_ID,
     DDR2_CHATOPS_ROOM_ID,
+    DDR2_CHATOPS_ROOM_WXWORK_ID,
   ],
   silent  : true,
 
