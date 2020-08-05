@@ -23,10 +23,11 @@ const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
 const SUMMER_OF_CODE_ROOM_ID = '17817316202@chatroom'  // Wechaty ISCAS Code of Summer
 const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
 
-const MIKE_BO_CONTACT_ID       = 'wxid_a8d806dzznm822'   // Mike BO
-const PREANGEL_CHATOPS_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel
-const DDR_CHATOPS_ROOM_ID      = '18771413722@chatroom'  // ChatOps - DDR
-const DDR2_CHATOPS_ROOM_ID     = '9223372041444472301@im.chatroom'  // ChatOps - DDR
+const MIKE_BO_CONTACT_ID          = 'wxid_a8d806dzznm822'   // Mike BO
+const PREANGEL_CHATOPS_ROOM_ID    = '17237607145@chatroom'  // ChatOps - PreAngel
+const DDR_CHATOPS_ROOM_ID         = '18771413722@chatroom'  // ChatOps - DDR
+const DDR2_CHATOPS_ROOM_ID        = '9223372041444472301@im.chatroom'  // ChatOps - DDR
+const DDR2_CHATOPS_ROOM_WXWORK_ID = 'R:10696051757177702'  // ChatOps with wxwork - DDR
 
 export {
   FRIDAY_CHATOPS_ROOM_ID,
@@ -49,4 +50,5 @@ export {
 
   DDR_CHATOPS_ROOM_ID,
   DDR2_CHATOPS_ROOM_ID,
+  DDR2_CHATOPS_ROOM_WXWORK_ID,
 }
