@@ -12,7 +12,7 @@ import {
   VERSION,
 }             from '../config'
 
-import { FRIDAY_CHATOPS_ROOM_ID } from '../database'
+import { FRIDAY_ROOM_ID } from '../database'
 
 type Stopper = () => void
 
@@ -101,7 +101,7 @@ export async function startWeb (wechaty: Wechaty): Promise<Stopper> {
     } = request.params as any
 
     if (wechaty) {
-      await wechaty.Room.load(FRIDAY_CHATOPS_ROOM_ID).say(payload.chatops)
+      await wechaty.Room.load(FRIDAY_ROOM_ID).say(payload.chatops)
     }
 
     return response.redirect('/')

@@ -8,7 +8,7 @@ import {
   VERSION,
 }                   from '../config'
 import {
-  FRIDAY_CHATOPS_ROOM_ID,
+  FRIDAY_ROOM_ID,
 }                   from '../database'
 
 const BOT_NAME = 'Friday.BOT'
@@ -25,7 +25,7 @@ export async function setupFinis (wechaty: Wechaty): Promise<void> {
   }
   bot = wechaty
 
-  bot.on('login',   _ => wechaty.Room.load(FRIDAY_CHATOPS_ROOM_ID).say(LOGIN_ANNOUNCEMENT))
+  bot.on('login',   _ => wechaty.Room.load(FRIDAY_ROOM_ID).say(LOGIN_ANNOUNCEMENT))
   bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
 }
 
@@ -54,7 +54,7 @@ finis(async (code, signal) => {
     log.info('RestartReporter', 'finis() announce exiting')
     try {
       // log.level('silly')
-      await bot.Room.load(FRIDAY_CHATOPS_ROOM_ID).say(EXIT_ANNOUNCEMENT)
+      await bot.Room.load(FRIDAY_ROOM_ID).say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() chatops() done')
       await bot.say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() bot.say() done')

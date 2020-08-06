@@ -13,7 +13,7 @@ import {
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
 
-  MIKE_BO_CONTACT_ID,
+  MIKE_CONTACT_ID,
 }                           from '../database'
 
 const getSenderRoomDisplayName = async (message: Message) => {
@@ -83,7 +83,7 @@ const bidirectionalMessageMapper: mappers.MessageMapperOptions = async (message:
  */
 const OneToManyPlugin = OneToManyRoomConnector({
   blacklist: [
-    MIKE_BO_CONTACT_ID,
+    MIKE_CONTACT_ID,
   ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
@@ -99,7 +99,7 @@ const OneToManyPlugin = OneToManyRoomConnector({
  */
 const ManyToOnePlugin = ManyToOneRoomConnector({
   blacklist: [
-    MIKE_BO_CONTACT_ID,
+    MIKE_CONTACT_ID,
   ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
@@ -115,7 +115,7 @@ const ManyToOnePlugin = ManyToOneRoomConnector({
  */
 const blacklist = [
   async (message: Message) => message.type() !== Message.Type.Text,
-  MIKE_BO_CONTACT_ID,
+  MIKE_CONTACT_ID,
 ]
 
 const ManyToManyPlugin = ManyToManyRoomConnector({

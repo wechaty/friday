@@ -7,13 +7,13 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import {
-  PREANGEL_CHATOPS_ROOM_ID,
+  PREANGEL_ROOM_ID,
 }                         from '../database'
 
 const config: WechatyVorpalConfig = {
   contact : false,
   mention : false,
-  room    : PREANGEL_CHATOPS_ROOM_ID,
+  room    : PREANGEL_ROOM_ID,
   silent  : true,
 
   use: [

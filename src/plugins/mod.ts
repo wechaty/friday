@@ -9,7 +9,7 @@ import {
   ChatOps,
 }                    from 'wechaty-plugin-contrib'
 
-import { FRIDAY_CHATOPS_ROOM_ID }  from '../database'
+import { FRIDAY_ROOM_ID }  from '../database'
 
 import { VoteOutPlugin }            from './vote-out'
 import * as roomInviterPluginMod    from './room-inviter'
@@ -37,7 +37,7 @@ const pluginList = [
   QRCodeTerminal(),
   EventLogger(),
   DingDong(),
-  ChatOps({ room: FRIDAY_CHATOPS_ROOM_ID }),
+  ChatOps({ room: FRIDAY_ROOM_ID }),
   ...Object.values(roomInviterPluginMod),
   FriendshipAccepterPlugin,
   HeartbeatPlugin,

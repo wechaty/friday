@@ -15,13 +15,13 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import {
-  FRIDAY_ROOM_ID,
-}                         from '../database'
+  WXWORK_FRIDAY_ROOM_ID,
+}                         from '../../../database'
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
-  room    : FRIDAY_ROOM_ID,
+  room    : WXWORK_FRIDAY_ROOM_ID,
   silent  : true,
 
   use: [

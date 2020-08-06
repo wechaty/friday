@@ -5,6 +5,8 @@ import { log } from 'wechaty'
 import { getFriday }  from './friday/bot'
 import { getBotList } from './bots/mod'
 
+void getFriday
+
 async function main () {
   log.verbose('main', 'main()')
 
@@ -14,7 +16,11 @@ async function main () {
   ]
 
   for (const bot of botList) {
-    await bot.start()
+    try {
+      await bot.start()
+    } catch (e) {
+      log.error('Friday', 'main() bot.start() rejection: %s', e)
+    }
   }
 
   /**

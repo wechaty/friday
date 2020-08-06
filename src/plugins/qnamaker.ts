@@ -7,7 +7,7 @@ import {
 import {
   // DEVELOPERS_ROOM_ID_LIST,
   HEADQUARTERS_ROOM_ID,
-  PYTHON_GO_JAVA_ROOM_ID,
+  MULTI_LANG_ROOM_ID,
 }                                   from '../database'
 
 const skipMessage = [
@@ -16,7 +16,7 @@ const skipMessage = [
 
 const room = [
   // ...DEVELOPERS_ROOM_ID_LIST,
-  PYTHON_GO_JAVA_ROOM_ID,
+  MULTI_LANG_ROOM_ID,
   HEADQUARTERS_ROOM_ID,
 ]
 
