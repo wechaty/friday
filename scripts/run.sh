@@ -13,7 +13,7 @@ function update () {
 
 function runSource () {
   npm run build
-  npm start
+  npm start || true
 }
 
 function runDocker () {
