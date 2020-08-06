@@ -7,27 +7,21 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import {
-  DDR_ROOM_ID,
-  MIXED_DDR_ROOM_ID,
-  // DDR2_CHATOPS_ROOM_WXWORK_ID,
-}                         from '../database'
+  DONUT_ROOM_ID,
+}                         from '../../database'
 
 const donutConfig: WechatyVorpalConfig = {
   contact : false,
-  mention : false,
-  room    : [
-    DDR_ROOM_ID,
-    MIXED_DDR_ROOM_ID,
-    // DDR2_CHATOPS_ROOM_WXWORK_ID,
-  ],
+  mention : true,
+  room    : DONUT_ROOM_ID,
   silent  : true,
 
   use  : [
     Ddr(),
   ],
 }
-const DdrVorpalPlugin = WechatyVorpal(donutConfig)
+const DonutVorpalPlugin         = WechatyVorpal(donutConfig)
 
 export {
-  DdrVorpalPlugin,
+  DonutVorpalPlugin,
 }

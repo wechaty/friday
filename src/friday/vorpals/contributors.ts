@@ -12,7 +12,7 @@ import {
 
 import {
   CONTRIBUTORS_ROOM_ID,
-}                         from '../database'
+}                         from '../../database'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,

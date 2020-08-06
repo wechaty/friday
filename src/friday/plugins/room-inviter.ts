@@ -11,7 +11,7 @@ import {
 import {
   DEVELOPERS_ROOM_ID_LIST,
   MULTI_LANG_ROOM_ID,
-}                           from '../database'
+}                           from '../../database'
 
 const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Room) => {
   await contact.say('You are already in our room: ' + await room?.topic())

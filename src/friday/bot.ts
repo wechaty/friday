@@ -1,15 +1,16 @@
 import {
   Wechaty,
   log,
-}                 from 'wechaty'
+}             from 'wechaty'
 
-import { pluginList }       from '../plugins/mod'
-import { vorpalPluginList } from '../vorpals/mod'
-import { startWeb }         from '../web/setup-web'
+import { startWeb } from '../web/setup-web'
+import { WEB_PORT } from '../config'
+
+import { pluginList }       from './plugins/mod'
+import { vorpalPluginList } from './vorpals/mod'
 
 import { getMemory }  from './get-memory'
 import { setupFinis } from './setup-finis'
-import { WEB_PORT } from '../config'
 
 export function getFriday (name: string): Wechaty {
   log.verbose('getWechaty', 'getFriday(%s)', name)

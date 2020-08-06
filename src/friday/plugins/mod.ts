@@ -9,7 +9,7 @@ import {
   ChatOps,
 }                    from 'wechaty-plugin-contrib'
 
-import { FRIDAY_ROOM_ID }  from '../database'
+import { FRIDAY_ROOM_ID }  from '../../database'
 
 import { VoteOutPlugin }            from './vote-out'
 import * as roomInviterPluginMod    from './room-inviter'

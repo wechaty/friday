@@ -7,7 +7,7 @@ import { Faq  }           from 'wechaty-qnamaker'
 import {
   configChinese,
   configEnglish,
-}                         from '../../../plugins/qnamaker'
+}                         from '../../../friday/plugins/qnamaker'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : true,

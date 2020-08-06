@@ -8,7 +8,7 @@ import {
   // DEVELOPERS_ROOM_ID_LIST,
   HEADQUARTERS_ROOM_ID,
   MULTI_LANG_ROOM_ID,
-}                                   from '../database'
+}                                   from '../../database'
 
 const skipMessage = [
   /^wechaty$/i,

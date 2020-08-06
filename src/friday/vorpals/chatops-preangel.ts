@@ -8,7 +8,7 @@ import {
 
 import {
   PREANGEL_ROOM_ID,
-}                         from '../database'
+}                         from '../../database'
 
 const config: WechatyVorpalConfig = {
   contact : false,

@@ -12,7 +12,7 @@ import {
 
 import {
   MULTI_LANG_ROOM_ID,
-}                           from '../database'
+}                           from '../../database'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
