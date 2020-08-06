@@ -4,7 +4,7 @@ import {
 }                   from 'wechaty-plugin-contrib'
 
 import {
-  MIXED_HEARTBEAT_ROOM_WXWORK_ID,
+  WXWORK_HEARTBEAT_ROOM_ID,
 }                                   from '../../../database'
 
 const config: HeartbeatConfig = {
@@ -15,7 +15,7 @@ const config: HeartbeatConfig = {
     ready     : '[拳头]',
   },
   intervalSeconds: 60 * 60,       // 1 hour
-  room: MIXED_HEARTBEAT_ROOM_WXWORK_ID,
+  room: WXWORK_HEARTBEAT_ROOM_ID,
 }
 
 export const HeartbeatPlugin = Heartbeat(config)

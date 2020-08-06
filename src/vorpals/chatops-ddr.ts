@@ -8,7 +8,7 @@ import {
 
 import {
   DDR_ROOM_ID,
-  MIXED_DDR_ROOM_WEIXIN_ID,
+  MIXED_DDR_ROOM_ID,
   // DDR2_CHATOPS_ROOM_WXWORK_ID,
 }                         from '../database'
 
@@ -17,7 +17,7 @@ const donutConfig: WechatyVorpalConfig = {
   mention : false,
   room    : [
     DDR_ROOM_ID,
-    MIXED_DDR_ROOM_WEIXIN_ID,
+    MIXED_DDR_ROOM_ID,
     // DDR2_CHATOPS_ROOM_WXWORK_ID,
   ],
   silent  : true,
