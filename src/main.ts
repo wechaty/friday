@@ -5,7 +5,7 @@ import { log } from 'wechaty'
 import { getFriday }  from './friday/bot'
 import { getBotList } from './bots/mod'
 
-void getFriday
+// void getFriday
 
 async function main () {
   log.verbose('main', 'main()')
