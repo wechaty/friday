@@ -8,15 +8,15 @@ import {
 }                   from 'wechaty'
 
 import {
-  WEB_PORT,
   VERSION,
 }             from '../config'
 
-import { FRIDAY_ROOM_ID } from '../database'
-
 type Stopper = () => void
 
-export async function startWeb (wechaty: Wechaty): Promise<Stopper> {
+export async function startWeb (
+  wechaty : Wechaty,
+  port    : number,
+): Promise<Stopper> {
   log.verbose('startWeb', 'startWeb(%s)', wechaty)
 
   let qrcodeValue : undefined | string
@@ -73,7 +73,6 @@ export async function startWeb (wechaty: Wechaty): Promise<Stopper> {
   }
 
   app.get('/', rootHandler)
-  app.get('/chatops/', chatopsHandler)
 
   wechaty.on('scan', qrcode => {
     qrcodeValue = qrcode
@@ -87,24 +86,11 @@ export async function startWeb (wechaty: Wechaty): Promise<Stopper> {
     userName = undefined
   })
 
-  const server = http.createServer(app).listen(WEB_PORT)
-
-  log.info('startWeb', 'startWeb() listening to http://localhost:%d', WEB_PORT)
+  const server = http
+    .createServer(app)
+    .listen(port, () => {
+      log.info('startWeb', 'startWeb() listening to http://localhost:%d', (server.address() as { port: number }).port)
+    })
 
   return () => server.close()
-
-  async function chatopsHandler (request: express.Request, response: express.Response) {
-    log.info('startWeb', 'chatopsHandler()')
-
-    const payload: {
-      chatops: string,
-    } = request.params as any
-
-    if (wechaty) {
-      await wechaty.Room.load(FRIDAY_ROOM_ID).say(payload.chatops)
-    }
-
-    return response.redirect('/')
-  }
-
 }

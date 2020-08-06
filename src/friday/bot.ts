@@ -9,6 +9,7 @@ import { startWeb }         from '../web/setup-web'
 
 import { getMemory }  from './get-memory'
 import { setupFinis } from './setup-finis'
+import { WEB_PORT } from '../config'
 
 export function getFriday (name: string): Wechaty {
   log.verbose('getWechaty', 'getFriday(%s)', name)
@@ -32,7 +33,10 @@ export function getFriday (name: string): Wechaty {
    * Setup Web
    */
   wechaty.on('start', async () => {
-    const stopWeb = await startWeb(wechaty)
+    const stopWeb = await startWeb(
+      wechaty,
+      WEB_PORT,
+    )
     wechaty.once('stop', () => stopWeb())
   })
 

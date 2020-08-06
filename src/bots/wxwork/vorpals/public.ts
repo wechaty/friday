@@ -1,36 +1,30 @@
+import { Room } from 'wechaty'
 import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
 import {
   Ding,
-  Eval,
-  Cash,
-  UrlLink,
-  Announce,
-  Find,
   MathMaster,
   Version,
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
 import {
-  WXWORK_FRIDAY_ROOM_ID,
-}                         from '../../../database'
+  MIXED_FRIDAY_ROOM_WEIXIN_ID,
+}                                 from '../../../database'
+
+const roomMatcher = (room: Room) => !([
+  MIXED_FRIDAY_ROOM_WEIXIN_ID,
+].includes(room.id))
 
 const chatopsConfig: WechatyVorpalConfig = {
-  contact : false,
-  mention : false,
-  room    : WXWORK_FRIDAY_ROOM_ID,
+  contact : true,
+  room    : roomMatcher,
   silent  : true,
 
   use: [
     Ding(),
-    Eval(),
-    Cash(),
-    UrlLink(),
-    Announce(),
-    Find(),
     MathMaster(),
     Whoru(),
     Version(),

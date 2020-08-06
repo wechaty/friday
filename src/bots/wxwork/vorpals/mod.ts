@@ -1,8 +1,10 @@
-import * as contrib  from './contrib'
-import * as faq      from './qnamaker'
+import * as chatops from './chatops'
+import * as pub     from './public'
+import * as faq     from './qnamaker'
 
 const vorpalPluginList = [
-  ...Object.values(contrib),
+  ...Object.values(chatops),
+  ...Object.values(pub),
   ...Object.values(faq),
 ]
 

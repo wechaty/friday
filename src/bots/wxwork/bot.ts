@@ -4,6 +4,8 @@ import {
 }                   from 'wechaty'
 import { PuppetHostie }  from 'wechaty-puppet-hostie'
 
+import { startWeb }         from '../../web/mod'
+
 import { pluginList }       from './plugins/mod'
 import { vorpalPluginList } from './vorpals/mod'
 
@@ -23,6 +25,17 @@ function getWxWork (name: string) {
     ...pluginList,
     ...vorpalPluginList,
   ])
+
+  /**
+   * Setup Web
+   */
+  bot.on('start', async () => {
+    const stopWeb = await startWeb(
+      bot,
+      8789,
+    )
+    bot.once('stop', () => stopWeb())
+  })
 
   return bot
 }

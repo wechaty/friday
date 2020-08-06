@@ -4,8 +4,8 @@ import {
 }                   from 'wechaty-plugin-contrib'
 
 import {
-  WXWORK_HEARTBEAT_ROOM_ID,
-}                             from '../../../database'
+  MIXED_HEARTBEAT_ROOM_WXWORK_ID,
+}                                   from '../../../database'
 
 const config: HeartbeatConfig = {
   emoji: {
@@ -15,7 +15,7 @@ const config: HeartbeatConfig = {
     ready     : '[拳头]',
   },
   intervalSeconds: 60 * 60,       // 1 hour
-  room: WXWORK_HEARTBEAT_ROOM_ID,
+  room: MIXED_HEARTBEAT_ROOM_WXWORK_ID,
 }
 
 export const HeartbeatPlugin = Heartbeat(config)

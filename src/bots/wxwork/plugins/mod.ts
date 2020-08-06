@@ -4,15 +4,15 @@
  */
 import {
   DingDong,
+  EventLogger,
 }                 from 'wechaty-plugin-contrib'
 
-import { HeartbeatPlugin }      from './heartbeat'
-import { ChatopsVorpalPlugin }  from './chatops'
+import { HeartbeatPlugin } from './heartbeat'
 
 const pluginList = [
   DingDong(),
+  EventLogger(),
   HeartbeatPlugin,
-  ChatopsVorpalPlugin,
 ]
 
 export { pluginList }
