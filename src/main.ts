@@ -15,14 +15,16 @@ async function main () {
     ...getBotList(),
   ]
 
-  for (const bot of botList) {
-    try {
-      log.info('Friday', 'main() bot.start() starting %s', bot.name())
-      await bot.start()
-      log.info('Friday', 'main() bot.start() bot %s started', bot.name())
-    } catch (e) {
-      log.error('Friday', 'main() bot.start() rejection: %s', e)
-    }
+  const botFutureList = botList.map(async bot => {
+    log.info('Friday', 'main() bot.start() starting %s', bot.name())
+    await bot.start()
+    log.info('Friday', 'main() bot.start() bot %s started', bot.name())
+  })
+
+  try {
+    await Promise.all(botFutureList)
+  } catch (e) {
+    log.error('Friday', 'main() bot.start() rejection: %s', e)
   }
 
   /**
