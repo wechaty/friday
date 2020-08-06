@@ -11,16 +11,16 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import {
-  MIXED_FRIDAY_ROOM_WEIXIN_ID,
+  WXWORK_FRIDAY_ROOM_ID,
 }                                 from '../../../database'
 
-const roomMatcher = (room: Room) => !([
-  MIXED_FRIDAY_ROOM_WEIXIN_ID,
+const isNotChatOpsRoom = (room: Room) => !([
+  WXWORK_FRIDAY_ROOM_ID,
 ].includes(room.id))
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : true,
-  room    : roomMatcher,
+  room    : isNotChatOpsRoom,
   silent  : true,
 
   use: [

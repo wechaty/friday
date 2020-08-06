@@ -32,7 +32,7 @@ const MIXED_HEARTBEAT_ROOM_WXWORK_ID     = 'R:10696051718181051'              //
 const MIXED_HEARTBEAT_ROOM_WEIXIN_ID     = '9223372041384873513@im.chatroom'  // ChatOps - Heartbeat 💖
 const MIXED_FRIDAY_ROOM_WEIXIN_ID = '9223372041407373043@im.chatroom'  // ChatOps - Friday
 const MIXED_DDR_ROOM_WEIXIN_ID    = '9223372041444472301@im.chatroom'  // ChatOps - DDR
-const WXWORK_FRIDAY_ROOM_ID       = 'R:3057039320'  // ChatOps - WXWork
+const WXWORK_FRIDAY_ROOM_ID       = 'R:10696051757179651' // 'R:3057039320'  // ChatOps - WXWork
 
 export {
   FRIDAY_ROOM_ID,
