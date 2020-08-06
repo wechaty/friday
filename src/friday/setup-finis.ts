@@ -43,7 +43,7 @@ finis(async (code, signal) => {
   }
 
   if (FINIS_QUITING) {
-    log.warn('RestartReporter', 'finis(%s, %s) called again when quiting...', code, signal)
+    log.warn('RestartReporter', 'finis(%s, %s) called again when quiting... hard exit', code, signal)
     process.exit(1)
   }
 
@@ -58,7 +58,7 @@ finis(async (code, signal) => {
       log.info('startFinis', 'finis() chatops() done')
       await bot.say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() bot.say() done')
-      await new Promise(resolve => setTimeout(resolve, 10 * 1000))
+      await new Promise(resolve => setTimeout(resolve, 1 * 1000))
       log.info('startFinis', 'finis() sleep 10s done')
     } catch (e) {
       log.error('RestartReporter', 'finis() exception: %s', e)
@@ -70,8 +70,8 @@ finis(async (code, signal) => {
   setTimeout(() => {
     log.info('RestartReporter', 'finis() hard exit')
     setImmediate(() => process.exit(code))
-  }, 10 * 1000)
-  log.info('RestartReporter', 'finis() setTimeoutprocess.exit(), 10 * 1000)')
+  }, 5 * 1000)
+  log.info('RestartReporter', 'finis() setTimeoutprocess.exit(), 5 * 1000)')
 
   try {
     log.info('RestartReporter', 'finis() setTimeout() going to exit with %d', code)
