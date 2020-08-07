@@ -5,8 +5,7 @@ import {
 }                           from 'wechaty-qnamaker'
 
 import {
-  // DEVELOPERS_ROOM_ID_LIST,
-  HEADQUARTERS_ROOM_ID,
+  DEVELOPERS_ROOM_ID_LIST,
   MULTI_LANG_ROOM_ID,
 }                                   from '../../database'
 
@@ -15,36 +14,30 @@ const skipMessage = [
 ]
 
 const room = [
-  // ...DEVELOPERS_ROOM_ID_LIST,
+  ...DEVELOPERS_ROOM_ID_LIST,
   MULTI_LANG_ROOM_ID,
-  HEADQUARTERS_ROOM_ID,
 ]
 
 const scoreThreshold = 30
 
-export const configEnglish: WechatyQnAMakerConfig = {
-  language: ['english'],
-
-  skipMessage,
-  room,
-  mention: false,
+const options = {
   contact: true,
+  mention: true,
+  room,
   scoreThreshold,
-
+  skipMessage,
+}
+export const configEnglish: WechatyQnAMakerConfig = {
+  ...options,
+  language        : ['english'],
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
   resourceName    : process.env.WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME,
 }
 
 export const configChinese: WechatyQnAMakerConfig = {
-  language: ['chinese'],
-
-  skipMessage,
-  room,
-  mention: false,
-  contact: true,
-  scoreThreshold,
-
+  ...options,
+  language        : ['chinese'],
   endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE,
   knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE,
   resourceName    : process.env.WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CHINESE,
