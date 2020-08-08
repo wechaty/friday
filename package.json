@@ -36,7 +36,7 @@
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.1",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.46.2",
+    "wechaty": "^0.47.2",
     "wechaty-freshdesk": "^0.6.7",
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.14.12",
