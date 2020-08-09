@@ -1,6 +1,7 @@
 import {
   Wechaty,
   log,
+  Message,
 }                   from 'wechaty'
 import { PuppetHostie }  from 'wechaty-puppet-hostie'
 
@@ -8,6 +9,8 @@ import { startWeb }         from '../../web/mod'
 
 import { pluginList }       from './plugins/mod'
 import { vorpalPluginList } from './vorpals/mod'
+
+let workBot: undefined | Wechaty
 
 function getWxWork (name: string) {
   log.verbose('getWechaty', 'getWxWork(%s)', name)
@@ -37,7 +40,19 @@ function getWxWork (name: string) {
     bot.once('stop', () => stopWeb())
   })
 
+  workBot = bot
   return bot
 }
 
-export { getWxWork }
+const oaTestChatOps = async (message: Message) => {
+  if (!workBot) { return }
+
+  const ROOM_ID = 'R:10696051746184005' // ChatOps - OA
+  const room = workBot.Room.load(ROOM_ID)
+  await room.say(message.toString())
+}
+
+export {
+  getWxWork,
+  oaTestChatOps,
+}

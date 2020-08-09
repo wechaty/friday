@@ -29,7 +29,7 @@ function getCeibs (name: string) {
     ...vorpalPluginList,
   ])
 
-  bot.on('message', msg => ceibsChatOps(msg))
+  bot.on('message', ceibsChatOps)
 
   return bot
 }

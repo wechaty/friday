@@ -7,6 +7,8 @@ import { PuppetOA }  from 'wechaty-puppet-official-account'
 import { pluginList }       from './plugins/mod'
 import { vorpalPluginList } from './vorpals/mod'
 
+import { oaTestChatOps } from '../wxwork/bot'
+
 function getHuanOa (name: string) {
   log.verbose('getWechaty', 'getHuanOa(%s)', name)
 
@@ -26,6 +28,8 @@ function getHuanOa (name: string) {
     ...pluginList,
     ...vorpalPluginList,
   ])
+
+  bot.on('message', oaTestChatOps)
 
   return bot
 }
