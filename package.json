@@ -40,7 +40,7 @@
     "wechaty-freshdesk": "^0.6.7",
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.14.12",
-    "wechaty-puppet-official-account": "^0.5.2",
+    "wechaty-puppet-official-account": "^0.5.5",
     "wechaty-qnamaker": "^0.6.2",
     "wechaty-vorpal": "^0.6.8",
     "wechaty-vorpal-contrib": "^0.6.49",

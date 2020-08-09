@@ -7,6 +7,8 @@ import { PuppetOA }  from 'wechaty-puppet-official-account'
 import { pluginList }       from './plugins/mod'
 import { vorpalPluginList } from './vorpals/mod'
 
+import { ceibsChatOps } from '../../friday/bot'
+
 function getCeibs (name: string) {
   log.verbose('getWechaty', 'getCeibs(%s)', name)
 
@@ -26,6 +28,8 @@ function getCeibs (name: string) {
     ...pluginList,
     ...vorpalPluginList,
   ])
+
+  bot.on('message', msg => ceibsChatOps(msg))
 
   return bot
 }

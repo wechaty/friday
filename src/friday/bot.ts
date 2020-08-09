@@ -1,6 +1,7 @@
 import {
   Wechaty,
   log,
+  Message,
 }             from 'wechaty'
 
 import { startWeb } from '../web/setup-web'
@@ -12,7 +13,9 @@ import { vorpalPluginList } from './vorpals/mod'
 import { getMemory }  from './get-memory'
 import { setupFinis } from './setup-finis'
 
-export function getFriday (name: string): Wechaty {
+let bot: undefined | Wechaty
+
+function getFriday (name: string): Wechaty {
   log.verbose('getWechaty', 'getFriday(%s)', name)
 
   const memory = getMemory(name)
@@ -49,5 +52,20 @@ export function getFriday (name: string): Wechaty {
       log.error('getWechaty', 'setupFinis() rejection: %s', e)
     })
 
+  bot = wechaty
+
   return wechaty
+}
+
+const ceibsChatOps = async (message: Message) => {
+  if (!bot) { return }
+
+  const ROOM_ID = '19537208917@chatroom'  // ChatOps - OA
+  const room = bot.Room.load(ROOM_ID)
+  await room.say(message.toString())
+}
+
+export {
+  getFriday,
+  ceibsChatOps,
 }
