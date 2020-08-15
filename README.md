@@ -6,7 +6,7 @@
 
 Friday Bot is designed for serving the Wechaty community purpose.
 
-![Friday](docs/images/friday.png)
+![Friday](docs/images/friday.svg)
 
 > Image: [Five Dollar Friday](https://www.robsdogs.net.au/product/five-dollar-friday/)
 
