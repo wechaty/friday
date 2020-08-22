@@ -47,7 +47,7 @@
     "wechaty-voteout": "^0.6.4"
   },
   "devDependencies": {
-    "@chatie/tsconfig": "^0.11.4",
+    "@chatie/tsconfig": "^0.13.0",
     "@types/node-cron": "^2.0.3",
     "@types/raven": "^2.5.3",
     "@types/read-pkg-up": "^6.0.0",
