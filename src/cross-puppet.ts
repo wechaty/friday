@@ -11,10 +11,10 @@ import {
   GITTER_WECHATY_ROOM_ID,
 }                         from './database'
 
-async function connectGitterFriday (args: {
+function connectGitterFriday (args: {
   friday: Wechaty,
   gitter: Wechaty,
-}): Promise<void> {
+}): void {
   const { friday, gitter } = args
 
   const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
