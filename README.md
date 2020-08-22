@@ -29,6 +29,12 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
+### v0.9 (Aug 22, 2020)
+
+[Gitter.im](https://gitter.im/wechaty/wechaty) synced with WeChat rooms!
+
+1. Start using [wechaty-puppet-gitter](https://github.com/wechaty/wechaty-puppet-gitter) to sync message between puppets.
+
 ### v0.8 (Aug 4, 2020)
 
 1. The first version that managing two Wechaty bots together!

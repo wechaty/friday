@@ -3,16 +3,24 @@ import './config'
 import { log } from 'wechaty'
 
 import { getFriday }  from './friday/bot'
-import { getBotList } from './bots/mod'
+import { getBots } from './bots/mod'
+
+import { connectGitterFriday } from './cross-puppet'
 
 void getFriday
 
 async function main () {
   log.verbose('main', 'main()')
 
+  const friday = getFriday('friday')
+  const bots   = getBots()
+
+  const gitter = bots.gitter
+  connectGitterFriday({ friday, gitter })
+
   const botList = [
-    getFriday('Friday.BOT'),
-    ...getBotList(),
+    friday,
+    ...Object.values(bots),
   ]
 
   const botFutureList = botList.map(async bot => {
