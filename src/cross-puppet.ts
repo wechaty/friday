@@ -47,10 +47,11 @@ function connectGitterFriday (args: {
       const roomName  = await getRoomShortName(msg) ?? 'WeChat'
 
       const text = [
+        '[',
         name,
         ' @ ',
         roomName,
-        ' : ',
+        '] : ',
         msg.text(),
       ].join('')
 
@@ -66,8 +67,9 @@ function connectGitterFriday (args: {
       const name = msg.from()!.name()
 
       const text = [
+        '[',
         name,
-        ' @ Gitter : ',
+        ' @ Gitter] : ',
         msg.text(),
       ].join('')
 
