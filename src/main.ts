@@ -15,9 +15,6 @@ async function main () {
   const friday = getFriday('friday')
   const bots   = getBots()
 
-  const gitter = bots.gitter
-  connectGitterFriday({ friday, gitter })
-
   const botList = [
     friday,
     ...Object.values(bots),
@@ -34,6 +31,9 @@ async function main () {
   } catch (e) {
     log.error('Friday', 'main() bot.start() rejection: %s', e)
   }
+
+  const gitter = bots.gitter
+  connectGitterFriday({ friday, gitter })
 
   /**
    * Do not return until the bot turned off

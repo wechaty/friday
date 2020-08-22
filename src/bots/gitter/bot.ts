@@ -20,6 +20,9 @@ function getGitter (name: string) {
     puppet,
   })
 
+  void pluginList
+  void vorpalPluginList
+
   bot.use([
     ...pluginList,
     ...vorpalPluginList,

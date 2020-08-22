@@ -3,10 +3,11 @@ import {
   Message,
 }             from 'wechaty'
 
+import { getRoomShortName } from './friday/plugins/room-connector'
+
 import {
   HEADQUARTERS_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
-  FRIDAY_ROOM_ID,
 
   GITTER_WECHATY_ROOM_ID,
 }                         from './database'
@@ -18,7 +19,18 @@ function connectGitterFriday (args: {
   const { friday, gitter } = args
 
   const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
-  const wechatRoom = friday.Room.load(FRIDAY_ROOM_ID)
+
+  const wechatRoomList = [
+    HEADQUARTERS_ROOM_ID,
+    ...DEVELOPERS_ROOM_ID_LIST,
+  ].map(id => friday.Room.load(id))
+
+  const wechatRoomSay = async (text: string): Promise<void> => {
+    for (const room of wechatRoomList) {
+      await room.say(text)
+      await room.wechaty.sleep(5000)
+    }
+  }
 
   const forwardWechatToGitter = (roomId: string) => {
     friday.on('message', async msg => {
@@ -32,12 +44,12 @@ function connectGitterFriday (args: {
       const talker    = msg.from()!
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
-      const topic     = room.topic()
+      const roomName  = await getRoomShortName(msg) ?? 'WeChat'
 
       const text = [
         name,
         ' @ ',
-        topic,
+        roomName,
         ' : ',
         msg.text(),
       ].join('')
@@ -55,11 +67,11 @@ function connectGitterFriday (args: {
 
       const text = [
         name,
-        ' @ gitter : ',
+        ' @ Gitter : ',
         msg.text(),
       ].join('')
 
-      await wechatRoom.say(text)
+      await wechatRoomSay(text)
     })
   }
 

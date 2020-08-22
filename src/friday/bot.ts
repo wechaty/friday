@@ -25,6 +25,9 @@ function getFriday (name: string): Wechaty {
     name,
   })
 
+  void pluginList
+  void vorpalPluginList
+
   /**
    * Initialize Plugins
    */

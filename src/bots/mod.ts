@@ -5,6 +5,7 @@ import { getGitter } from './gitter/bot'
 
 void getCeibs
 void getWxWork
+void getHuanOa
 
 const getBots = () => ({
   ceibs  : getCeibs('CEIBS.BOT'),
