@@ -10,6 +10,9 @@ import {
   DEVELOPERS_ROOM_ID_LIST,
 
   GITTER_WECHATY_ROOM_ID,
+  MULTI_LANG_ROOM_ID,
+  CONTRIBUTORS_ROOM_ID,
+  SUMMER_OF_CODE_ROOM_ID,
 }                         from './database'
 
 function connectGitterFriday (args: {
@@ -80,6 +83,9 @@ function connectGitterFriday (args: {
   ;[
     ...DEVELOPERS_ROOM_ID_LIST,
     HEADQUARTERS_ROOM_ID,
+    MULTI_LANG_ROOM_ID,
+    CONTRIBUTORS_ROOM_ID,
+    SUMMER_OF_CODE_ROOM_ID,
   ].forEach(forwardWechatToGitter)
 
   forwardGitterToWechat()
