@@ -29,23 +29,29 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
-### v0.8 (Aug 4, 2020)
+### v0.9 (Aug 22, 2020) On Gitter!
+
+[Gitter.im](https://gitter.im/wechaty/wechaty) synced with WeChat rooms!
+
+1. Start using [wechaty-puppet-gitter](https://github.com/wechaty/wechaty-puppet-gitter) to sync message between puppets.
+
+### v0.8 (Aug 4, 2020) On Tecent Official Account Platform!
 
 1. The first version that managing two Wechaty bots together!
 1. Start using [wechaty-puppet-official-account](https://github.com/wechaty/wechaty-puppet-official-account)
 
-### v0.6 (Jul 18, 2020)
+### v0.6 (Jul 18, 2020) Added Wechaty Vorpal CLI Comands!
 
 1. Fully powered by [Wechaty Vorpal](https://github.com/wechaty/wechaty-vorpal) and [Wechaty Vorpal Contrib](https://github.com/wechaty/wechaty-vorpa-contrib) commands!
 1. Restructure directories & source code files
 1. Add Dockerfile so that we can deploy Friday.BOT with the power of Docker!
 
-### v0.4 (Jun 15, 2020)
+### v0.4 (Jun 15, 2020) Refactored with Wechaty Plugin!
 
 1. Fully powered by Wechaty Plugins! See: [wechaty-plugin-contrib](https://github.com/wechaty/wechaty-plugin-contrib)
 1. Restructure directories & source code files
 
-### v0.2 (Dec 25, 2019)
+### v0.2 (Dec 25, 2019) Added Basic Functions
 
 Basic functions like:
 
