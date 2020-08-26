@@ -5,6 +5,7 @@
 import {
   DingDong,
   EventLogger,
+  QRCodeTerminal,
 }                 from 'wechaty-plugin-contrib'
 
 import { HeartbeatPlugin } from './heartbeat'
@@ -13,6 +14,7 @@ const pluginList = [
   DingDong(),
   EventLogger(),
   HeartbeatPlugin,
+  QRCodeTerminal(),
 ]
 
 export { pluginList }
