@@ -1,9 +1,8 @@
 import {
   Wechaty,
   Message,
+  FileBox,
 }             from 'wechaty'
-
-import { getRoomShortName } from './friday/plugins/room-connector'
 
 import {
   HEADQUARTERS_ROOM_ID,
@@ -31,37 +30,48 @@ function connectGitterFriday (args: {
     ...DEVELOPERS_ROOM_ID_LIST,
   ].map(id => friday.Room.load(id))
 
-  const wechatRoomSay = async (text: string): Promise<void> => {
+  const wechatRoomSay = async (textOrFile: string | FileBox): Promise<void> => {
     for (const room of wechatRoomList) {
-      await room.say(text)
+      await room.say(textOrFile as any) // fix me...
       await room.wechaty.sleep(5000)
     }
   }
 
   const forwardWechatToGitter = (roomId: string) => {
-    friday.on('message', async msg => {
+    friday.on('message', async (msg: Message) => {
       const room = msg.room()
 
       if (!room)                              { return }
       if (room.id !== roomId)                 { return }
       if (msg.self())                         { return }
-      if (msg.type() !== Message.Type.Text)   { return }
 
       const talker    = msg.from()!
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
-      const roomName  = await getRoomShortName(msg) ?? 'WeChat'
 
-      const text = [
+      const prefixText = [
         '`',
         name,
-        ' @ ',
-        roomName,
         '`: ',
-        msg.text(),
       ].join('')
 
-      await gitterRoom.say(text)
+      switch (msg.type()) {
+        case Message.Type.Text: {
+          await gitterRoom.say(prefixText + msg.text())
+          break
+        }
+
+        case Message.Type.Image: {
+          const fileBox = await msg.toFileBox()
+          await gitterRoom.say(fileBox)
+          await gitterRoom.say(prefixText + 'sent an image')
+          break
+        }
+
+        default:
+          break
+      }
+
     })
   }
 
@@ -72,14 +82,29 @@ function connectGitterFriday (args: {
 
       const name = msg.from()!.name()
 
-      const text = [
+      const prefixText = [
         '[',
         name,
         ' @ Gitter]: ',
-        msg.text(),
       ].join('')
 
-      await wechatRoomSay(text)
+      switch (msg.type()) {
+        case Message.Type.Text: {
+          await wechatRoomSay(prefixText + msg.text())
+          break
+        }
+        case Message.Type.Image: {
+          const fileBox = await msg.toFileBox()
+          await wechatRoomSay(fileBox)
+          await wechatRoomSay(prefixText + 'sent an image')
+          break
+        }
+
+        default: {
+          break
+        }
+      }
+
     })
   }
 
