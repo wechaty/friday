@@ -67,7 +67,7 @@ function connectGitterFriday (args: {
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await gitterRoom.say(fileBox)
-          await gitterRoom.say(prefixText + 'sent an image')
+          await gitterRoom.say(prefixText)
           break
         }
 
@@ -98,7 +98,7 @@ function connectGitterFriday (args: {
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await wechatRoomSay(fileBox)
-          await wechatRoomSay(prefixText + 'sent an image')
+          await wechatRoomSay(prefixText)
           break
         }
 
