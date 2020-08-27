@@ -80,8 +80,7 @@ function connectGitterFriday (args: {
 
   const forwardGitterToWechat = () => {
     gitterRoom.on('message', async msg => {
-      if (msg.self())                         { return }
-      if (msg.type() !== Message.Type.Text)   { return }
+      if (msg.self()) { return }
 
       const name = msg.from()!.name()
 
