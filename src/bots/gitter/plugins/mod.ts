@@ -4,6 +4,7 @@
  */
 import {
   DingDong,
+  EventLogger,
 }                    from 'wechaty-plugin-contrib'
 
 // import {
@@ -12,6 +13,7 @@ import {
 
 const pluginList = [
   DingDong(),
+  EventLogger(),
   // QnAMakerCeibsPlugin,
 ]
 
