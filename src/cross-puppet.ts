@@ -8,7 +8,7 @@ import {
   HEADQUARTERS_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
 
-  FRIDAY_ROOM_ID,
+  // FRIDAY_ROOM_ID,
 
   GITTER_WECHATY_ROOM_ID,
   MULTI_LANG_ROOM_ID,
@@ -28,9 +28,9 @@ function connectGitterFriday (args: {
   const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
 
   const wechatRoomList = [
-    // HEADQUARTERS_ROOM_ID,
-    // ...DEVELOPERS_ROOM_ID_LIST,
-    FRIDAY_ROOM_ID,
+    HEADQUARTERS_ROOM_ID,
+    ...DEVELOPERS_ROOM_ID_LIST,
+    // FRIDAY_ROOM_ID,
   ].map(id => friday.Room.load(id))
 
   const wechatRoomSay = async (textOrFile: string | FileBox): Promise<void> => {
