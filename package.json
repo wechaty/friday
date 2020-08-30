@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/wechaty/friday#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "finis": "^0.4.4",
@@ -35,6 +36,7 @@
     "node-cache": "^5.1.2",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.1",
+    "tokenizers": "^0.7.0",
     "vorpal-hacker-news": "^1.0.6",
     "wechaty": "^0.48.1",
     "wechaty-freshdesk": "^0.6.9",
