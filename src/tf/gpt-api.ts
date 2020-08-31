@@ -8,10 +8,10 @@ async function gptApi (
   prefix: string,
   length = 20,
 ): Promise<string> {
-
+  const vocabFile = path.join(__dirname, 'clue-vocab.txt')
   const wordPieceTokenizer = await BertWordPieceTokenizer.fromOptions({
     lowercase: true,
-    vocabFile: path.join(__dirname, 'clue-vocab.txt'),
+    vocabFile,
   })
   const wpEncoded = await wordPieceTokenizer.encode(prefix, undefined, {
     addSpecialTokens: false,

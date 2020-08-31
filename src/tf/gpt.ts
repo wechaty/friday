@@ -45,10 +45,15 @@ async function gptAction (
     return 0
   }
 
-  const text = await gptApi(prefix, normalizedOptions.length)
-  this.stdout.next(`GPT: ${text}`)
+  try {
+    const text = await gptApi(prefix, normalizedOptions.length)
+    this.stdout.next(`GPT: ${text}`)
+    return 0
+  } catch (e) {
+    console.error(e)
+    return 1
+  }
 
-  return 0
 }
 
 export { Gpt }
