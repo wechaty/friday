@@ -1,47 +1,54 @@
-// import {
-//   log,
-// }                 from 'wechaty'
-// import {
-//   Vorpal,
-//   CommandContext,
-//   Args,
-// }                           from 'wechaty-vorpal'
+import {
+  log,
+}                 from 'wechaty'
+import {
+  Vorpal,
+  CommandContext,
+  Args,
+}                           from 'wechaty-vorpal'
 
-// import { chatApi } from './chitchat-api'
+import { gptApi } from './gpt-api'
 
-// function Chitchat () {
-//   log.verbose('WechatyVorpalFriday', 'Chitchat()')
+function Gpt () {
+  log.verbose('WechatyVorpalFriday', 'Gpt()')
 
-//   return function ChitchatExtension (vorpal: Vorpal) {
-//     log.verbose('WechatyVorpalFriday', 'ChitchatExtension(vorpal)')
+  return function GptExtension (vorpal: Vorpal) {
+    log.verbose('WechatyVorpalFriday', 'GptExtension(vorpal)')
 
-//     vorpal
-//       .command('chitchat <gossip>', 'Small talk with our chatbot!')
-//       .option('-l --length <number>', 'the maximum reply length')
-//       .action(chitchatAction)
-//   }
-// }
+    vorpal
+      .command('gpt <prefix>', 'Make GPT writing for you.')
+      .option('-l --length <number>', 'the maximum continue writing length')
+      .action(gptAction)
+  }
+}
 
-// interface ChitchatOptions {
-//   length?: number
-// }
+interface GptOptions {
+  length?: number
+}
 
-// async function chitchatAction (
-//   this: CommandContext,
-//   args: Args
-// ): Promise<number> {
-//   log.verbose('WechatyVorpalFriday', 'chitchatAction("%s")', JSON.stringify(args))
+async function gptAction (
+  this: CommandContext,
+  args: Args
+): Promise<number> {
+  log.verbose('WechatyVorpalFriday', 'gptAction("%s")', JSON.stringify(args))
 
-//   const gossip: string = args.gossip as string
-//   const options = args.options as any as ChitchatOptions
+  const prefix: string = args.prefix as string
+  const options = args.options as any as GptOptions
 
-//   const normalizedOptions = {
-//     length: gossip.length + 3,
-//     ...options,
-//   }
+  const normalizedOptions = {
+    length: 20,
+    ...options,
+  }
 
-//   this.stdout.next(`Room<${options.room}> announced.`)
-//   return 0
-// }
+  if (normalizedOptions.length > 100) {
+    this.stderr.next('gpt continue writing can not longer than 100 words due to the resource limitation of our server. Donation is welcome! https://opencollective.com/wechaty')
+    return 0
+  }
 
-// export { Announce }
+  const text = await gptApi(prefix, normalizedOptions.length)
+  this.stdout.next(`GPT: ${text}`)
+
+  return 0
+}
+
+export { Gpt }

@@ -4,6 +4,7 @@ import {
 }                         from 'wechaty-vorpal'
 
 import { Chitchat } from '../../tf/chitchat'
+import { Gpt }      from '../../tf/gpt'
 
 const tfConfig: WechatyVorpalConfig = {
   contact : true,
@@ -13,6 +14,7 @@ const tfConfig: WechatyVorpalConfig = {
 
   use  : [
     Chitchat(),
+    Gpt(),
   ],
 }
 const TfVorpalPlugin = WechatyVorpal(tfConfig)
