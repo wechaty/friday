@@ -1,6 +1,9 @@
 import Axios from 'axios'
+import { log } from 'wechaty'
 
 async function chatApi (gossip: string): Promise<string> {
+  log.verbose('WechatyVorpalFriday', 'chatApi(%s)', gossip)
+
   const gossipTokenList = gossip.split('')
   const json = {
     instances: [{

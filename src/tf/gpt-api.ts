@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { log } from 'wechaty'
 
 import { BertWordPieceTokenizer } from 'tokenizers'
 
@@ -8,6 +9,8 @@ async function gptApi (
   prefix: string,
   length = 20,
 ): Promise<string> {
+  log.verbose('WechatyVorpalFriday', 'gptApi(%s, %s)', prefix, length)
+
   const vocabFile = path.join(__dirname, 'clue-vocab.txt')
   const wordPieceTokenizer = await BertWordPieceTokenizer.fromOptions({
     lowercase: true,
