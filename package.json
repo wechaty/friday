@@ -46,7 +46,7 @@
     "wechaty-puppet-official-account": "^0.5.6",
     "wechaty-qnamaker": "^0.6.2",
     "wechaty-vorpal": "^0.6.11",
-    "wechaty-vorpal-contrib": "^0.6.49",
+    "wechaty-vorpal-contrib": "^0.6.51",
     "wechaty-voteout": "^0.6.4"
   },
   "devDependencies": {
