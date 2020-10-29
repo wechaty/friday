@@ -53,15 +53,21 @@ export const getRoomShortName = getRoomShortNameByRegexp(/\s*([^\s]*\s*[^\s]+)$/
  *
  */
 const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Message) => {
-  // Forward all non-Text messages
-  if (message.type() !== Message.Type.Text) { return message }
-
   const talkerDisplayName = await getSenderRoomDisplayName(message)
   const roomShortName     = await getRoomShortName(message) || 'Nowhere'
 
-  const text = message.text()
+  const prefix = `[${talkerDisplayName}@${roomShortName}]:`
 
-  return `[${talkerDisplayName}@${roomShortName}]: ${text}`
+  // Forward all non-Text messages
+  if (message.type() !== Message.Type.Text) {
+    return [
+      prefix,
+      message,
+    ]
+  }
+
+  const text = message.text()
+  return `${prefix} ${text}`
 }
 
 const bidirectionalMessageMapper: mappers.MessageMapperOptions = async (message: Message) => {
