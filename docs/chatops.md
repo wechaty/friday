@@ -23,8 +23,8 @@ To be fixed: <https://github.com/wechaty/wechaty-vorpal-contrib/issues/21>
 ```ts
 eval
   const topic=/Home 6$/i;
-  const bobName='白菜';
-  const matchName = name => name === bobName;
+  const bobRegex=/这些年。。。。。。。。。。。。。/;
+  const matchName = name => bobRegex.test(name);
   const room = await this.wechaty.Room.find({ topic });
   const memberList = await room.memberAll();
   const bob = memberList.filter(m => matchName(m.name()))[0];
@@ -33,8 +33,8 @@ eval
     await this.wechaty.sleep(3 * 1000)
     await room.del(bob);
     await room.say('done');
-    await this.log('removed ' + bobName + ' from ' + topic);
+    await this.log('removed ' + bobRegex + ' from ' + topic);
   } else {
-    await this.log('not found ' + bobName + ' from ' + topic);
+    await this.log('not found ' + bobRegex + ' from ' + topic);
   }
 ```
