@@ -24,7 +24,7 @@ function startStatusPageMetricUpdater (
 async function countWechatyDevelopersRoomMembers (
   friday: Wechaty,
 ): Promise<number> {
-  const topic = /Wechaty/i
+  const topic = /Wechaty|BOT5/i
   const roomList = await friday.Room.findAll({ topic })
   const memberSet = new Set()
   for (const room of roomList) {
