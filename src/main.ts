@@ -6,6 +6,7 @@ import { getFriday }  from './friday/bot'
 import { getBots } from './bots/mod'
 
 import { connectGitterFriday } from './cross-puppet'
+import { startStatusPageMetricUpdater } from './status-page/updater'
 
 void getFriday
 
@@ -34,6 +35,8 @@ async function main () {
 
   const gitter = bots.gitter
   connectGitterFriday({ friday, gitter })
+
+  startStatusPageMetricUpdater(friday)
 
   /**
    * Do not return until the bot turned off
