@@ -32,8 +32,8 @@ function startStatusPageMetricUpdater (
 async function countWechatyDevelopersRoomMembers (
   bots: MetricBots,
 ): Promise<number> {
-  const memberSet = new Set()
-  const setMember = (member: Contact) => memberSet.add(member.id)
+  const setMember = (set: Set<string>) => (member: Contact) => set.add(member.id)
+  let totalNum = 0
 
   /**
    * Friday
@@ -42,7 +42,13 @@ async function countWechatyDevelopersRoomMembers (
   const roomList = await bots.friday.Room.findAll({ topic })
   for (const room of roomList) {
     const memberList = await room.memberAll()
-    memberList.forEach(setMember)
+    const set = new Set<string>()
+    memberList.forEach(setMember(set))
+    if (set.size > 0) {
+      totalNum += set.size
+    } else {
+      throw new Error('friday.Room return 0 members')
+    }
   }
 
   /**
@@ -50,12 +56,21 @@ async function countWechatyDevelopersRoomMembers (
    */
   const gitterRoom = bots.gitter.Room.load(GITTER_WECHATY_ROOM_ID)
   const gitterRoomMemberList = await gitterRoom.memberAll()
-  gitterRoomMemberList.forEach(setMember)
+  {
+    const set = new Set<string>()
+    gitterRoomMemberList.forEach(setMember(set))
+    if (set.size > 0) {
+      totalNum += set.size
+    } else {
+      // should throw after implemented https://github.com/wechaty/wechaty-puppet-gitter/issues/5
+      // throw new Error('gitter.Room return 0 members')
+    }
+  }
 
   /**
    * Total size
    */
-  return memberSet.size
+  return totalNum
 }
 
 function submitter () {
