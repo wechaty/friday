@@ -1,18 +1,26 @@
 import {
   Wechaty,
   log,
+  Contact,
 }               from 'wechaty'
+
+import { GITTER_WECHATY_ROOM_ID } from '../database'
 
 import { statusPageMetricSubmitter } from './metric-submitter'
 
-function startStatusPageMetricUpdater (
+interface MetricBots {
   friday: Wechaty,
+  gitter: Wechaty,
+}
+
+function startStatusPageMetricUpdater (
+  bots: MetricBots,
 ) {
   const submit = submitter()
 
   setInterval(async () => {
     try {
-      const membersNumber = await countWechatyDevelopersRoomMembers(friday)
+      const membersNumber = await countWechatyDevelopersRoomMembers(bots)
       log.verbose('status-page/updater', 'startUpdater/srtInterval membersNumber: %s', membersNumber)
       await submit(membersNumber)
     } catch (e) {
@@ -22,15 +30,31 @@ function startStatusPageMetricUpdater (
 }
 
 async function countWechatyDevelopersRoomMembers (
-  friday: Wechaty,
+  bots: MetricBots,
 ): Promise<number> {
-  const topic = /Wechaty|BOT5/i
-  const roomList = await friday.Room.findAll({ topic })
   const memberSet = new Set()
+  const setMember = (member: Contact) => memberSet.add(member.id)
+
+  /**
+   * Friday
+   */
+  const topic = /Wechaty|BOT5/i
+  const roomList = await bots.friday.Room.findAll({ topic })
   for (const room of roomList) {
     const memberList = await room.memberAll()
-    memberList.map(m => memberSet.add(m.id))
+    memberList.forEach(setMember)
   }
+
+  /**
+   * Gitter
+   */
+  const gitterRoom = bots.gitter.Room.load(GITTER_WECHATY_ROOM_ID)
+  const gitterRoomMemberList = await gitterRoom.memberAll()
+  gitterRoomMemberList.forEach(setMember)
+
+  /**
+   * Total size
+   */
   return memberSet.size
 }
 
