@@ -3,8 +3,8 @@ const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat' 💖
 
 const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
 
+const DEVELOPERS_ROOM_ID_WXWORK = '9223372041377366127@im.chatroom' // Wechaty Developers' Home 9
 const DEVELOPERS_ROOM_ID_LIST = [
-  // '9223372041377366127@im.chatroom', // Wechaty Developers' Home 9
   '18490919725@chatroom',   // Wechaty Developers' Home 8
   '18171595067@chatroom',   // Wechaty Developers' Home 7
   '24113855649@chatroom',   // Wechaty Developers' Home 6
@@ -47,6 +47,7 @@ export {
   HEADQUARTERS_ROOM_ID,
   CONTRIBUTORS_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
+  DEVELOPERS_ROOM_ID_WXWORK,
 
   MULTI_LANG_ROOM_ID,
   SUMMER_OF_CODE_ROOM_ID,

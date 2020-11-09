@@ -14,6 +14,7 @@ import {
   BOT5_CLUB_2020_ROOM_ID,
 
   MIKE_CONTACT_ID,
+  DEVELOPERS_ROOM_ID_WXWORK,
 }                           from '../../database'
 
 const getSenderRoomDisplayName = async (message: Message) => {
@@ -93,6 +94,7 @@ const OneToManyPlugin = OneToManyRoomConnector({
   ],
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
+    DEVELOPERS_ROOM_ID_WXWORK,
   ],
   map: unidirectionalMapper,
   one: HEADQUARTERS_ROOM_ID,
