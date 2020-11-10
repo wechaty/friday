@@ -61,10 +61,18 @@ const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Messa
 
   // Forward all non-Text messages
   if (message.type() !== Message.Type.Text) {
-    return [
-      prefix,
-      message,
-    ]
+    /**
+     * If message is sent from Headquarters Room,
+     * then we omit the sender information for the destination rooms.
+     */
+    if (message.room()!.id === HEADQUARTERS_ROOM_ID) {
+      return message
+    } else {
+      return [
+        prefix,
+        message,
+      ]
+    }
   }
 
   const text = message.text()
