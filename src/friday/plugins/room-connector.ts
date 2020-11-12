@@ -68,8 +68,9 @@ const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Messa
     if (message.room()!.id === HEADQUARTERS_ROOM_ID) {
       return message
     } else {
+      const type = Message.Type[message.type()]
       return [
-        prefix,
+        prefix + ' ' + type,
         message,
       ]
     }
