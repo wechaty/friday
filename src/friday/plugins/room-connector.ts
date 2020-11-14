@@ -57,27 +57,29 @@ const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Messa
   const talkerDisplayName = await getSenderRoomDisplayName(message)
   const roomShortName     = await getRoomShortName(message) || 'Nowhere'
 
-  const prefix = `[${talkerDisplayName}@${roomShortName}]:`
+  const prefix = `[${talkerDisplayName}@${roomShortName}]`
 
-  // Forward all non-Text messages
-  if (message.type() !== Message.Type.Text) {
-    /**
-     * If message is sent from Headquarters Room,
-     * then we omit the sender information for the destination rooms.
-     */
-    if (message.room()!.id === HEADQUARTERS_ROOM_ID) {
-      return message
-    } else {
-      const type = Message.Type[message.type()]
-      return [
-        prefix + ' ' + type,
-        message,
-      ]
-    }
+  const messageList: (string | Message)[] = []
+
+  switch (message.type()) {
+    case Message.Type.Text:
+      messageList.push(`${prefix}: ${message.text()}`)
+      break
+
+    default:  // Forward all non-Text messages
+      messageList.push(message)
+      /**
+       * If message is not sent from Headquarters Room,
+       * then we add a sender information for the destination rooms.
+       */
+      if (message.room()!.id !== HEADQUARTERS_ROOM_ID) {
+        const type = Message.Type[message.type()]
+        messageList.unshift(`${prefix}: ${type}`)
+      }
+      break
   }
 
-  const text = message.text()
-  return `${prefix} ${text}`
+  return messageList
 }
 
 const bidirectionalMessageMapper: mappers.MessageMapperOptions = async (message: Message) => {
