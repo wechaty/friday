@@ -39,7 +39,7 @@
     "read-pkg-up": "^7.0.1",
     "tokenizers": "^0.7.0",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.50.4",
+    "wechaty": "^0.50.7",
     "wechaty-freshdesk": "^0.6.9",
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.14.15",
@@ -58,9 +58,9 @@
     "@chatie/eslint-config": "^0.12.1",
     "@chatie/git-scripts": "^0.6.2",
     "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.8",
+    "@types/express": "^4.17.9",
     "tstest": "^0.4.10",
-    "wechaty-puppet-mock": "^0.28.1"
+    "wechaty-puppet-mock": "^0.28.2"
   },
   "git": {
     "scripts": {
