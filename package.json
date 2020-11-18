@@ -43,7 +43,7 @@
     "wechaty-freshdesk": "^0.6.9",
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.14.15",
-    "wechaty-puppet-gitter": "0.4.6",
+    "wechaty-puppet-gitter": "0.4.7",
     "wechaty-puppet-official-account": "^0.5.28",
     "wechaty-qnamaker": "^0.6.2",
     "wechaty-vorpal": "^0.6.12",
