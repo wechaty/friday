@@ -14,6 +14,8 @@ const DEVELOPERS_ROOM_ID_LIST = [
   '5729603967@chatroom',    // Wechaty Developers' Home 2
   '7582163093@chatroom',    // Wechaty Developers' Home 1
 ]
+const DEVELOPERS_ROOM_ID_CHINESE = '20766978781@chatroom' // Wechaty Developers' Home Chinese
+const DEVELOPERS_ROOM_ID_ENGLISH = '20517298932@chatroom' // Wechaty Developers' Home English
 
 const BOT5_CLUB_ROOM_ID      = '18825797159@chatroom'  // BOT Friday Club - BOT5
 const BOT5_CLUB_2020_ROOM_ID = '18095776930@chatroom'  // Bot Friday Open Forum - BFOF
@@ -48,6 +50,9 @@ export {
   CONTRIBUTORS_ROOM_ID,
   DEVELOPERS_ROOM_ID_LIST,
   DEVELOPERS_ROOM_ID_WXWORK,
+
+  DEVELOPERS_ROOM_ID_ENGLISH,
+  DEVELOPERS_ROOM_ID_CHINESE,
 
   MULTI_LANG_ROOM_ID,
   SUMMER_OF_CODE_ROOM_ID,

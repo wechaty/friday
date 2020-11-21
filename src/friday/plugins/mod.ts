@@ -25,19 +25,13 @@ import {
   QnAMakerChinesePlugin,
 }                           from './qnamaker'
 
-import {
-  OneToManyPlugin,
-  ManyToOnePlugin,
-  ManyToManyPlugin,
-  Bot5OneToManyPlugin,
-}                           from './room-connector'
+import * as RoomConnectorPluginMod from './room-connectors/mod'
 
 const pluginList = [
   QRCodeTerminal(),
   EventLogger(),
   DingDong(),
   ChatOps({ room: FRIDAY_ROOM_ID }),
-  ...Object.values(roomInviterPluginMod),
   FriendshipAccepterPlugin,
   HeartbeatPlugin,
   EventHotHandlerPlugin,
@@ -48,10 +42,8 @@ const pluginList = [
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
 
-  ManyToOnePlugin,
-  ManyToManyPlugin,
-  Bot5OneToManyPlugin,
-  OneToManyPlugin,
+  ...Object.values(roomInviterPluginMod),
+  ...Object.values(RoomConnectorPluginMod),
 ]
 
 export { pluginList }
