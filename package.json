@@ -33,7 +33,6 @@
     "express": "^4.17.1",
     "finis": "^0.4.4",
     "moment": "^2.29.1",
-    "newrelic": "^7.0.0",
     "node-cache": "^5.1.2",
     "node-cron": "^2.0.3",
     "read-pkg-up": "^7.0.1",

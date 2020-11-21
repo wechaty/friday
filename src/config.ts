@@ -1,7 +1,6 @@
 import { VERSION } from './version'
 
 require('dotenv').config()
-require('newrelic')
 
 /**
  * Env Vars
