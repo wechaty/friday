@@ -32,19 +32,17 @@ const ManyToEnglishPlugin = ManyToOneRoomConnector({
     HEADQUARTERS_ROOM_ID,
   ],
   map: async (message: Message) => {
+    if (message.type() === Message.Type.Text) {
+      if (!matchEnglish(message.text())) {
+        return undefined
+      }
+    }
+
     if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
       return unidirectionalMapper(message)
+    } else {
+      return bidirectionalMapper(message)
     }
-
-    if (message.type() !== Message.Type.Text) {
-      return undefined
-    }
-    if (!matchEnglish(message.text())) {
-      return undefined
-    }
-
-    return bidirectionalMapper(message)
-
   },
   one: DEVELOPERS_ROOM_ID_ENGLISH,
 })
