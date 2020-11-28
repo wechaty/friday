@@ -32,6 +32,10 @@ const ManyToChinesePlugin = ManyToOneRoomConnector({
     HEADQUARTERS_ROOM_ID,
   ],
   map: async (message: Message) => {
+    if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
+      return unidirectionalMapper(message)
+    }
+
     if (message.type() !== Message.Type.Text) {
       return undefined
     }
@@ -39,11 +43,8 @@ const ManyToChinesePlugin = ManyToOneRoomConnector({
       return undefined
     }
 
-    if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
-      return unidirectionalMapper(message)
-    } else {
-      return bidirectionalMapper(message)
-    }
+    return bidirectionalMapper(message)
+
   },
   one: DEVELOPERS_ROOM_ID_CHINESE,
 })
