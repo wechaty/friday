@@ -9,6 +9,7 @@ import {
   MIKE_CONTACT_ID,
   DEVELOPERS_ROOM_ID_WXWORK,
   DEVELOPERS_ROOM_ID_ENGLISH,
+  HEADQUARTERS_ROOM_ID,
 }                             from '../../../../../database'
 
 import { bidirectionalMapper } from '../../bidirectional-mapper'
@@ -27,6 +28,7 @@ const ManyToEnglishPlugin = ManyToOneRoomConnector({
   many: [
     ...DEVELOPERS_ROOM_ID_LIST,
     DEVELOPERS_ROOM_ID_WXWORK,
+    HEADQUARTERS_ROOM_ID,
   ],
   map: async (message: Message) => {
     if (message.type() !== Message.Type.Text) {
