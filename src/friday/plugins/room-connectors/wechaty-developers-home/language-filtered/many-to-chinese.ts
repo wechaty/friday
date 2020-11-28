@@ -12,7 +12,8 @@ import {
   HEADQUARTERS_ROOM_ID,
 }                             from '../../../../../database'
 
-import { bidirectionalMapper } from '../../bidirectional-mapper'
+import { bidirectionalMapper }  from '../../bidirectional-mapper'
+import { unidirectionalMapper } from '../../unidirectional-mapper'
 
 const matchChinese = matchers.languageMatcher('chinese')
 
@@ -37,7 +38,12 @@ const ManyToChinesePlugin = ManyToOneRoomConnector({
     if (!matchChinese(message.text())) {
       return undefined
     }
-    return bidirectionalMapper(message)
+
+    if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
+      return unidirectionalMapper(message)
+    } else {
+      return bidirectionalMapper(message)
+    }
   },
   one: DEVELOPERS_ROOM_ID_CHINESE,
 })

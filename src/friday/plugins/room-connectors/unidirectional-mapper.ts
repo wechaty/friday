@@ -1,7 +1,7 @@
 import { Message }  from 'wechaty'
-import {
-  mappers,
-}                   from 'wechaty-plugin-contrib'
+// import {
+//   mappers,
+// }                   from 'wechaty-plugin-contrib'
 
 import {
   HEADQUARTERS_ROOM_ID,
@@ -15,7 +15,7 @@ import { senderDisplayName }              from './sender-display-name'
  * Message Mapper for Room Connectors
  *
  */
-const unidirectionalMapper: mappers.MessageMapperOptions = async (message: Message) => {
+const unidirectionalMapper = async (message: Message) => {
   const talkerDisplayName = await senderDisplayName(message)
   const roomShortName     = await abbrRoomTopicForDevelopersHome(message) || 'Nowhere'
 
