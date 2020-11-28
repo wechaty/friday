@@ -12,7 +12,6 @@ import {
 import { FRIDAY_ROOM_ID }  from '../../database'
 
 import { VoteOutPlugin }            from './vote-out'
-import * as roomInviterPluginMod    from './room-inviter'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
 import { HeartbeatPlugin }          from './heartbeat'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
@@ -25,7 +24,8 @@ import {
   QnAMakerChinesePlugin,
 }                           from './qnamaker'
 
-import * as RoomConnectorPluginMod from './room-connectors/mod'
+import * as RoomInviterPluginMod    from './room-inviters/mod'
+import * as RoomConnectorPluginMod  from './room-connectors/mod'
 
 const pluginList = [
   QRCodeTerminal(),
@@ -42,7 +42,7 @@ const pluginList = [
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
 
-  ...Object.values(roomInviterPluginMod),
+  ...Object.values(RoomInviterPluginMod),
   ...Object.values(RoomConnectorPluginMod),
 ]
 

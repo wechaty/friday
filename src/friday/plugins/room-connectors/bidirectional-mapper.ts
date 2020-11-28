@@ -1,12 +1,12 @@
 import { Message }  from 'wechaty'
-import {
-  mappers,
-}                   from 'wechaty-plugin-contrib'
+// import {
+//   mappers,
+// }                   from 'wechaty-plugin-contrib'
 
 import { abbrRoomTopicForDevelopersHome } from './abbr-room-topic-by-regex'
 import { senderDisplayName }              from './sender-display-name'
 
-const bidirectionalMapper: mappers.MessageMapperOptions = async (message: Message) => {
+const bidirectionalMapper = async (message: Message) => {
   // Drop all messages if not Text
   if (message.type() !== Message.Type.Text) { return }
 
