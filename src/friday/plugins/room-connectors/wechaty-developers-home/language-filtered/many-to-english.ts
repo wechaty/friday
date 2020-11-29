@@ -36,6 +36,12 @@ const ManyToEnglishPlugin = ManyToOneRoomConnector({
       if (!matchEnglish(message.text())) {
         return undefined
       }
+    } else if (message.type() === Message.Type.Url) {
+      const urlLink = await message.toUrlLink()
+      const text    = urlLink.title() + urlLink.description()
+      if (!matchEnglish(text)) {
+        return undefined
+      }
     }
 
     if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
