@@ -16,6 +16,7 @@ import {
 const wechatyEnglishConfig: RoomInviterConfig = {
   password : [
     /^wechaty english$/i,
+    /^english$/i,
   ],
   repeat,
   room: DEVELOPERS_ROOM_ID_ENGLISH,

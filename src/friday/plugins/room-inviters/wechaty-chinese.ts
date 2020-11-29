@@ -16,6 +16,7 @@ const wechatyChineseConfig: RoomInviterConfig = {
   password : [
     /^wechaty chinese$/i,
     /^wechaty 中文$/i,
+    /^中文$/i,
   ],
   repeat,
   room: DEVELOPERS_ROOM_ID_CHINESE,
