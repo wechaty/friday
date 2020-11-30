@@ -130,7 +130,12 @@ function connectGitterFriday (args: {
     BOT5_CLUB_ROOM_ID,
   ].forEach(forwardWechatToGitter)
 
-  forwardGitterToWechat()
+  /**
+   * Huan(20201130): Friday.BOT has been disabled by Tencent
+   *  See: https://github.com/wechaty/friday/issues/62
+   */
+  // forwardGitterToWechat()
+  void forwardGitterToWechat
 }
 
 export {
