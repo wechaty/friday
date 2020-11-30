@@ -6,10 +6,10 @@ import {
   QRCodeTerminal,
   EventLogger,
   DingDong,
-  ChatOps,
+  // ChatOps,
 }                    from 'wechaty-plugin-contrib'
 
-import { FRIDAY_ROOM_ID }  from '../../database'
+// import { FRIDAY_ROOM_ID }  from '../../database'
 
 import { VoteOutPlugin }            from './vote-out'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
@@ -36,7 +36,6 @@ const pluginList = [
   QRCodeTerminal(),
   EventLogger(),
   DingDong(),
-  ChatOps({ room: FRIDAY_ROOM_ID }),
   FriendshipAccepterPlugin,
   EventHotHandlerPlugin,
   VoteOutPlugin,
@@ -51,6 +50,7 @@ const pluginList = [
    *  See: https://github.com/wechaty/friday/issues/62
    */
   // HeartbeatPlugin,
+  // ChatOps({ room: FRIDAY_ROOM_ID }),
   // ...Object.values(RoomInviterPluginMod),
   // ...Object.values(RoomConnectorPluginMod),
   WechatyDingDongPlugin,
