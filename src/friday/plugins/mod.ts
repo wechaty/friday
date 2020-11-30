@@ -18,10 +18,10 @@ import { EventHotHandlerPlugin }    from './event-hot-handler'
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
 
-import {
-  QnAMakerEnglishPlugin,
-  QnAMakerChinesePlugin,
-}                           from './qnamaker'
+// import {
+//   QnAMakerEnglishPlugin,
+//   QnAMakerChinesePlugin,
+// }                           from './qnamaker'
 
 /**
  * Huan(20201130): Friday.BOT has been disabled by Tencent
@@ -42,8 +42,8 @@ const pluginList = [
   // IntercomPlugin,
   // FreshdeskPlugin,
 
-  QnAMakerChinesePlugin,
-  QnAMakerEnglishPlugin,
+  // QnAMakerChinesePlugin,
+  // QnAMakerEnglishPlugin,
 
   /**
    * Huan(20201130): Friday.BOT has been disabled by Tencent
