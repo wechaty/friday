@@ -38,7 +38,7 @@ const ManyToChinesePlugin = ManyToOneRoomConnector({
       }
     } else if (message.type() === Message.Type.Url) {
       const urlLink = await message.toUrlLink()
-      const text    = urlLink.title() + urlLink.description()
+      const text = urlLink.description() ?? urlLink.title()
       if (!matchChinese(text)) {
         return undefined
       }
