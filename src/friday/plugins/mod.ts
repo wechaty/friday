@@ -13,7 +13,6 @@ import { FRIDAY_ROOM_ID }  from '../../database'
 
 import { VoteOutPlugin }            from './vote-out'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
-import { HeartbeatPlugin }          from './heartbeat'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
 
 // import { IntercomPlugin }   from './intercom'
@@ -24,8 +23,14 @@ import {
   QnAMakerChinesePlugin,
 }                           from './qnamaker'
 
-import * as RoomInviterPluginMod    from './room-inviters/mod'
-import * as RoomConnectorPluginMod  from './room-connectors/mod'
+/**
+ * Huan(20201130): Friday.BOT has been disabled by Tencent
+ *  See: https://github.com/wechaty/friday/issues/62
+ */
+// import { HeartbeatPlugin }          from './heartbeat'
+// import * as RoomInviterPluginMod    from './room-inviters/mod'
+// import * as RoomConnectorPluginMod  from './room-connectors/mod'
+import { WechatyDingDongPlugin } from './ding-dong/mod'
 
 const pluginList = [
   QRCodeTerminal(),
@@ -33,7 +38,6 @@ const pluginList = [
   DingDong(),
   ChatOps({ room: FRIDAY_ROOM_ID }),
   FriendshipAccepterPlugin,
-  HeartbeatPlugin,
   EventHotHandlerPlugin,
   VoteOutPlugin,
   // IntercomPlugin,
@@ -42,8 +46,14 @@ const pluginList = [
   QnAMakerChinesePlugin,
   QnAMakerEnglishPlugin,
 
-  ...Object.values(RoomInviterPluginMod),
-  ...Object.values(RoomConnectorPluginMod),
+  /**
+   * Huan(20201130): Friday.BOT has been disabled by Tencent
+   *  See: https://github.com/wechaty/friday/issues/62
+   */
+  // HeartbeatPlugin,
+  // ...Object.values(RoomInviterPluginMod),
+  // ...Object.values(RoomConnectorPluginMod),
+  WechatyDingDongPlugin,
 ]
 
 export { pluginList }
