@@ -15,13 +15,12 @@ import {
 
 const wechatyNonTsConfig: RoomInviterConfig = {
   password : [
-    /^(python|go|java|scala|php|dotnet) wechaty$/i,
-    /^(python|go|java|scala|php|dotnet)$/i,
+    /^\s*(python|go|java|scala|php|dotnet)?\s*(wechaty)*\s*$/i,
   ],
   repeat,
-  room: MULTI_LANG_ROOM_ID,
-  rule: WECHATY_DEVELOPERS_ROOM_RULES,
-  welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
+  room    : MULTI_LANG_ROOM_ID,
+  rule    : WECHATY_DEVELOPERS_ROOM_RULES,
+  welcome : WECHATY_DEVELOPERS_ROOM_WELCOME,
 }
 
 const WechatyNonTsRoomInviter = RoomInviter(wechatyNonTsConfig)

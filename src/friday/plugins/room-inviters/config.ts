@@ -12,8 +12,8 @@ const repeat: talkers.ContactTalkerOptions = async (contact: Contact, room?: Roo
 
 const WECHATY_DEVELOPERS_ROOM_RULES = [
   'Thanks for asking me to invite you for joining the "Wechaty Developers\' Home" WeChat Room!',
-  'Wechaty is a Conversational RPA for WeChat for connecting Chatbots in ease.',
-  'You can find our documentation at https://wechaty.js.org',
+  'Wechaty is a Conversational SDK for chatbot makers.',
+  'You can find our documentation at https://wechaty.js.org/docs/',
   'Please introduce yourself after you join the room, cheers!',
 ]
 const WECHATY_DEVELOPERS_ROOM_WELCOME = [
