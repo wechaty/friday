@@ -133,8 +133,9 @@ function connectGitterFriday (args: {
   /**
    * Huan(20201130): Friday.BOT has been disabled by Tencent
    *  See: https://github.com/wechaty/friday/issues/62
+   * Huan(20201203): Resolved
    */
-  // forwardGitterToWechat()
+  forwardGitterToWechat()
   void forwardGitterToWechat
 }
 
