@@ -3,7 +3,13 @@ const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat' 💖
 
 const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
 
-const DEVELOPERS_ROOM_ID_WXWORK = '9223372041377366127@im.chatroom' // Wechaty Developers' Home 9
+/**
+ * Huan(20201201): deprecated by Tencent WeChat
+ */
+// const DEVELOPERS_ROOM_ID_WXWORK = '9223372041377366127@im.chatroom' // Wechaty Developers' Home 9
+
+const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' Home 9
+
 const DEVELOPERS_ROOM_ID_LIST = [
   '18490919725@chatroom',   // Wechaty Developers' Home 8
   '18171595067@chatroom',   // Wechaty Developers' Home 7

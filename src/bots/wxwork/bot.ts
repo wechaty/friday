@@ -44,6 +44,11 @@ function getWxWork (name: string) {
   return bot
 }
 
+/**
+ * Huan(20201201): Wechaty Developers' Home 9
+ *  R:10696051635011175
+ */
+
 const oaTestChatOps = async (message: Message) => {
   if (!workBot) { return }
 
