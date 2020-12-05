@@ -6,14 +6,12 @@ import {
   QRCodeTerminal,
   EventLogger,
   DingDong,
-  ChatOps,
 }                    from 'wechaty-plugin-contrib'
-
-import { FRIDAY_ROOM_ID }  from '../../database'
 
 import { VoteOutPlugin }            from './vote-out'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
+import { ChatOpsPlugin }            from './chatops'
 
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
@@ -55,7 +53,8 @@ const pluginList = [
   // WechatyDingDongPlugin,
 
   HeartbeatPlugin,
-  ChatOps({ room: FRIDAY_ROOM_ID }),
+  ChatOpsPlugin,
+
   ...Object.values(RoomInviterPluginMod),
   ...Object.values(RoomConnectorPluginMod),
 ]
