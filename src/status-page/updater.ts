@@ -23,6 +23,7 @@ function startStatusPageMetricUpdater (
 ) {
   Object.values(bots)
     .forEach((bot: Wechaty) => bot.on('message', m => {
+      console.info('XXXXXXXXXXXXXXXXXX', m + ' self: ' + m.self())
       if (m.self()) {
         metrics.mo += 1
       } else {
