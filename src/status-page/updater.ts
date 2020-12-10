@@ -41,7 +41,7 @@ function startStatusPageMetricUpdater (
 
   setInterval(async () => {
     /**
-     * MO / MT
+     * Count MO / MT
      */
     log.verbose('status-page/updater', 'startUpdater/setInterval mo/mt: %s/%s', metrics.mo, metrics.mt)
     const future = Promise.all([
@@ -59,7 +59,7 @@ function startStatusPageMetricUpdater (
     await submitMembersCount(membersNumber)
     log.verbose('status-page/updater', 'startUpdater/setInterval membersNumber: %s', membersNumber)
 
-  }, 60 * 1000)
+  }, 5 * 60 * 1000)
 }
 
 export {
