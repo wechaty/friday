@@ -1,0 +1,1 @@
+export { startStatusPageMetricUpdater } from './updater'

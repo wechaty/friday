@@ -6,7 +6,7 @@ import { getFriday }  from './friday/bot'
 import { getBots } from './bots/mod'
 
 import { connectGitterFriday } from './cross-puppet'
-import { startStatusPageMetricUpdater } from './status-page/updater'
+import { startStatusPageMetricUpdater } from './status-page/mod'
 
 void getFriday
 

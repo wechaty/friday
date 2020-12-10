@@ -4,20 +4,8 @@
  */
 import https from 'https'
 
-export interface StatusPageMetricSubmitterOptions {
-  apiKey: string
-  pageId: string
-  metricId: string
-}
-
-function statusPageMetricSubmitter (options: StatusPageMetricSubmitterOptions) {
+const statusPageMetricSubmitter = (apiKey: string) => (pageId: string) => (metricId: string) => {
   const apiBase = 'https://api.statuspage.io/v1'
-
-  const {
-    apiKey,
-    pageId,
-    metricId,
-  } = options
 
   const url = apiBase + '/pages/' + pageId + '/metrics/' + metricId + '/data.json'
   const authHeader = {
@@ -36,7 +24,7 @@ function statusPageMetricSubmitter (options: StatusPageMetricSubmitterOptions) {
       value,
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       const request = https.request(url, requestOptions, function (res) {
         if (res.statusMessage === 'Unauthorized') {
           const error = new Error('Please ensure that your page code and authorization key are correct.')
