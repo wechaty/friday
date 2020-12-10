@@ -30,11 +30,19 @@ function startStatusPageMetricUpdater (
       }
     }))
 
+  // warm the rooms up
+  countRoomMembers(bots).catch(console.error)
+
+  // debug
+  setInterval(() => {
+    console.info('metrics', metrics)
+  }, 5 * 1000)
+
   setInterval(async () => {
     /**
      * MO / MT
      */
-    log.verbose('status-page/updater', 'startUpdater/srtInterval mo/mt: %s/%s', metrics.mo, metrics.mt)
+    log.verbose('status-page/updater', 'startUpdater/setInterval mo/mt: %s/%s', metrics.mo, metrics.mt)
     const future = Promise.all([
       submitMessagesSentCount(metrics.mo),
       submitMessagesReceivedCount(metrics.mt),
@@ -48,7 +56,7 @@ function startStatusPageMetricUpdater (
      */
     const membersNumber = await countRoomMembers(bots)
     await submitMembersCount(membersNumber)
-    log.verbose('status-page/updater', 'startUpdater/srtInterval membersNumber: %s', membersNumber)
+    log.verbose('status-page/updater', 'startUpdater/setInterval membersNumber: %s', membersNumber)
 
   }, 60 * 1000)
 }
