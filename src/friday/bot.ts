@@ -10,8 +10,9 @@ import { WEB_PORT } from '../config'
 import { pluginList }       from './plugins/mod'
 import { vorpalPluginList } from './vorpals/mod'
 
-import { getMemory }  from './get-memory'
-import { setupFinis } from './setup-finis'
+import { getMemory }   from './get-memory'
+import { setupFinis }  from './setup-finis'
+import { getIoClient } from './get-io-client'
 
 let bot: undefined | Wechaty
 
@@ -36,15 +37,26 @@ function getFriday (name: string): Wechaty {
     ...vorpalPluginList,
   )
 
+  const ioClient = getIoClient(wechaty)
+
   /**
    * Setup Web
    */
   wechaty.on('start', async () => {
+    /**
+     * Web Hook
+     */
     const stopWeb = await startWeb(
       wechaty,
       WEB_PORT,
     )
     wechaty.once('stop', () => stopWeb())
+
+    /**
+     * Io Client Hook
+     */
+    await ioClient.start()
+    wechaty.once('stop', () => ioClient.stop())
   })
 
   /**
