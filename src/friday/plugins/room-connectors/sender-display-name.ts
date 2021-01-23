@@ -1,11 +1,11 @@
 import { Message } from 'wechaty'
 
 const senderDisplayName = async (message: Message) => {
-  const from = message.from()!
+  const talker = message.talker()
   const room = message.room()
 
-  const alias = await room?.alias(from)
-  return alias || from.name() || 'Noname'
+  const alias = await room?.alias(talker)
+  return alias || talker.name() || 'Noname'
 }
 
 export { senderDisplayName }

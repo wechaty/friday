@@ -49,7 +49,7 @@ function connectGitterFriday (args: {
       if (room.id !== roomId)                 { return }
       if (msg.self())                         { return }
 
-      const talker    = msg.from()!
+      const talker    = msg.talker()
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
 
@@ -83,7 +83,7 @@ function connectGitterFriday (args: {
     gitterRoom.on('message', async msg => {
       if (msg.self()) { return }
 
-      const name = msg.from()!.name()
+      const name = msg.talker().name()
 
       const prefixText = [
         '[',
