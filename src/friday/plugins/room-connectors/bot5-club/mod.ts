@@ -5,9 +5,10 @@ import {
 import {
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
+  BOT5_CLUB_2021_ROOM_ID,
 }                             from '../../../../database'
 
-import { unidirectionalMapper }           from '../unidirectional-mapper'
+import { unidirectionalMapper } from '../unidirectional-mapper'
 
 /**
  *
@@ -17,9 +18,10 @@ import { unidirectionalMapper }           from '../unidirectional-mapper'
 const Bot5OneToManyPlugin = OneToManyRoomConnector({
   many: [
     BOT5_CLUB_2019_ROOM_ID,
+    BOT5_CLUB_2020_ROOM_ID,
   ],
   map: unidirectionalMapper,
-  one: BOT5_CLUB_2020_ROOM_ID,
+  one: BOT5_CLUB_2021_ROOM_ID,
 })
 
 export {

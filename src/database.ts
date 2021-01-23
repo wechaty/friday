@@ -23,9 +23,10 @@ const DEVELOPERS_ROOM_ID_LIST = [
 const DEVELOPERS_ROOM_ID_CHINESE = '20766978781@chatroom' // Wechaty Developers' Home Chinese
 const DEVELOPERS_ROOM_ID_ENGLISH = '20517298932@chatroom' // Wechaty Developers' Home English
 
-const BOT5_CLUB_ROOM_ID      = '18825797159@chatroom'  // BOT Friday Club - BOT5
-const BOT5_CLUB_2020_ROOM_ID = '18095776930@chatroom'  // Bot Friday Open Forum - BFOF
-const BOT5_CLUB_2019_ROOM_ID = '17301175542@chatroom'  // Bot Friday Open Forum - 2019
+const BOT5_CLUB_ROOM_ID      = '19244336373@chatroom'  // BOT Friday Club - BOT5
+const BOT5_CLUB_2021_ROOM_ID = '18825797159@chatroom'  // Bot Friday Open Forum - BFOF 2021
+const BOT5_CLUB_2020_ROOM_ID = '18095776930@chatroom'  // Bot Friday Open Forum - Year 2020
+const BOT5_CLUB_2019_ROOM_ID = '17301175542@chatroom'  // Bot Friday Open Forum - Year 2019
 
 const MULTI_LANG_ROOM_ID     = '19367909379@chatroom'  // Python/Go/Java Wechaty
 const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
@@ -65,6 +66,7 @@ export {
 
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
+  BOT5_CLUB_2021_ROOM_ID,
   BOT5_CLUB_ROOM_ID,
 
   MIKE_CONTACT_ID,

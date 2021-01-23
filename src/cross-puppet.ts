@@ -16,6 +16,7 @@ import {
   SUMMER_OF_CODE_ROOM_ID,
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,
+  BOT5_CLUB_2021_ROOM_ID,
   BOT5_CLUB_ROOM_ID,
 }                         from './database'
 
@@ -127,6 +128,7 @@ function connectGitterFriday (args: {
       */
     BOT5_CLUB_2019_ROOM_ID,
     BOT5_CLUB_2020_ROOM_ID,
+    BOT5_CLUB_2021_ROOM_ID,
     BOT5_CLUB_ROOM_ID,
   ].forEach(forwardWechatToGitter)
 
