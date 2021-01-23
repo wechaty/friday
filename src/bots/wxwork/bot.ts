@@ -3,7 +3,7 @@ import {
   log,
   Message,
 }                   from 'wechaty'
-import { PuppetHostie }  from 'wechaty-puppet-hostie'
+import { PuppetService }  from 'wechaty-puppet-service'
 
 import { startWeb }         from '../../web/mod'
 
@@ -15,8 +15,8 @@ let workBot: undefined | Wechaty
 function getWxWork (name: string) {
   log.verbose('getWechaty', 'getWxWork(%s)', name)
 
-  const puppet = new PuppetHostie({
-    token: process.env.WECHATY_PUPPET_HOSTIE_TOKEN_WXWORK,
+  const puppet = new PuppetService({
+    token: process.env.WECHATY_PUPPET_SERVICE_TOKEN_WXWORK,
   })
 
   const bot = new Wechaty({
