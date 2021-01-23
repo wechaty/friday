@@ -15,9 +15,9 @@ function getIoClient (wechaty: Wechaty) {
     throw new Error('token not found: please set WECHATY_TOKEN in environment before start')
   }
 
-  const port = parseInt(process.env.WECHATY_HOSTIE_PORT || '0')
+  const port = parseInt(process.env.WECHATY_PUPPET_SERVER_PORT || '0')
   if (!port) {
-    throw new Error('port not found: please set WECHATY_HOSTIE_PORT in environment before start')
+    throw new Error('port not found: please set WECHATY_PUPPET_SERVER_PORT in environment before start')
   }
 
   const options: IoClientOptions = {
