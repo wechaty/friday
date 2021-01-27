@@ -1,6 +1,10 @@
 import Axios from 'axios'
 import { log } from 'wechaty'
 
+/**
+ * Node.js v14 support:
+ *  https://github.com/huggingface/tokenizers/issues/603
+ */
 import { BertWordPieceTokenizer } from 'tokenizers'
 
 import path from 'path'
