@@ -39,7 +39,7 @@
     "sheet-db": "^1.0.1",
     "tokenizers": "^0.7.0",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.55.1",
+    "wechaty": "^0.56.6",
     "wechaty-freshdesk": "^0.6.9",
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.14.15",
