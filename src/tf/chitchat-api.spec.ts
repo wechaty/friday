@@ -10,5 +10,5 @@ test('chatApi()', async (t) => {
   const GOSSIP = '今天天气不错！'
   const reply = await chatApi(GOSSIP)
 
-  t.true(reply.length > 2, 'should get reply text: ' + reply)
+  t.true(reply.length > 0, 'should get reply text: ' + reply)
 })
