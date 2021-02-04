@@ -51,13 +51,13 @@ function getFriday (name: string): Wechaty {
       WEB_PORT,
     )
     wechaty.once('stop', () => stopWeb())
-
-    /**
-     * Io Client Hook
-     */
-    await ioClient.start()
-    wechaty.once('stop', () => ioClient.stop())
   })
+
+  /**
+   * Io Client Hook
+   */
+  wechaty.on('start', () => ioClient.start())
+  wechaty.on('stop',  () => ioClient.stop())
 
   /**
    * Finis Hook

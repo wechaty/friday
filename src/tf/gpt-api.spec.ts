@@ -6,7 +6,7 @@ import {
   gptApi,
 }                   from './gpt-api'
 
-test('gptApi()', async (t) => {
+test.skip('gptApi()', async (t) => {
   const PREFIX = '天是sky，地是land，云是'
   const LENGTH = 5
   const result = await gptApi(PREFIX, LENGTH)
