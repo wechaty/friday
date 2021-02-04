@@ -27,6 +27,8 @@ jobs:
     - run: npm run build --if-present
     - run: |
         npm test
+        WECHATY_TOKEN=mock_token
+        WECHATY_PUPPET_SERVER_PORT=18788
         ./node_modules/.bin/ts-node tests/fixtures/smoke-testing.ts
       env:
         CI: true

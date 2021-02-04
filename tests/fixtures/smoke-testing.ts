@@ -6,6 +6,7 @@ async function main () {
   const bot = getFriday('smoke-testing')
 
   await bot.start()
+  await new Promise(resolve => setTimeout(resolve, 3000))
   await bot.stop()
 
   return 0
