@@ -17,7 +17,7 @@ const WECHATY_DEVELOPERS_ROOM_RULES = [
   'Please introduce yourself after you join the room, cheers!',
 ]
 const WECHATY_DEVELOPERS_ROOM_WELCOME = [
-  ", welcome to join the Wechaty Python/Go/Java Developer's Home! Please go ahead to introduce yourself to the group.",
+  ", welcome to join the Wechaty Python/Go/Java/PHP/.Net/Scala/Rust Developer's Home! Please go ahead to introduce yourself to the group.",
 ]
 
 const WECHATY_DEVELOPERS_ROOM_RULES_CHINESE = [
