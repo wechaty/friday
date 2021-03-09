@@ -2,7 +2,7 @@
   "name": "friday-bot",
   "description": "Friday Bot",
   "repository": "https://github.com/wechaty/bot5",
-  "logo": "https://wechaty.github.io/wechaty/images/wechaty-icon.png",
+  "logo": "https://wechaty.js.org/img/icon.png",
   "keywords": [
     "wechaty",
     "heroku",
