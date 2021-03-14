@@ -20,7 +20,7 @@ const WECHATY_DEVELOPERS_ROOM_WELCOME = [
   ", welcome to join the Wechaty Python/Go/Java/PHP/.Net/Scala/Rust Developer's Home!",
   'You can find Polyglot Wechaty docs at https://wechaty.js.org/docs/polyglot/ ,',
   'Please go ahead to introduce yourself to the group.',
-]
+].join('\n')
 
 const WECHATY_DEVELOPERS_ROOM_RULES_CHINESE = [
   '欢迎你加入 "Wechaty Developers\' Home" 微信群！',
