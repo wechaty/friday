@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/wechaty/friday#readme",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "finis": "^0.4.4",
@@ -39,10 +39,10 @@
     "sheet-db": "^1.0.1",
     "tokenizers": "^0.7.0",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.56.6",
+    "wechaty": "^0.59.3",
     "wechaty-freshdesk": "^0.6.9",
     "wechaty-intercom": "^0.4.4",
-    "wechaty-plugin-contrib": "^0.14.15",
+    "wechaty-plugin-contrib": "^0.14.17",
     "wechaty-puppet-gitter": "0.4.7",
     "wechaty-puppet-official-account": "^0.5.28",
     "wechaty-qnamaker": "^0.6.2",
@@ -51,16 +51,16 @@
     "wechaty-voteout": "^0.6.4"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^0.12.1",
+    "@chatie/eslint-config": "^0.12.3",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.14.1",
     "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.9",
+    "@types/express": "^4.17.11",
     "@types/node-cron": "^2.0.3",
     "@types/raven": "^2.5.3",
     "@types/read-pkg-up": "^6.0.0",
     "tstest": "^0.4.10",
-    "wechaty-puppet-mock": "^0.28.2"
+    "wechaty-puppet-mock": "^0.28.3"
   },
   "git": {
     "scripts": {
