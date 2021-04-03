@@ -7,7 +7,7 @@
     "node": "12"
   },
   "scripts": {
-    "build": "tsc && cp src/tf/clue-vocab.txt dist/src/tf",
+    "build": "tsc && cp src/ml/clue-vocab.txt dist/src/ml",
     "heroku-postbuild:skip": "wechaty-puppet-install",
     "lint": "npm run lint:es && npm run lint:ts",
     "lint:ts": "tsc --noEmit",
