@@ -5,7 +5,7 @@ import * as friday        from './chatops-friday'
 import * as preangel      from './chatops-preangel'
 import * as ddr           from './chatops-ddr'
 import * as faq           from './qnamaker'
-import * as tf            from './tf'
+import * as ai            from './ai'
 
 const vorpalPluginList = [
   ...Object.values(donut),
@@ -15,7 +15,7 @@ const vorpalPluginList = [
   ...Object.values(dm),
   ...Object.values(ddr),
   ...Object.values(faq),
-  ...Object.values(tf),
+  ...Object.values(ai),
 ]
 
 export { vorpalPluginList }
