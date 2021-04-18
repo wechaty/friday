@@ -12,6 +12,7 @@ import { VoteOutPlugin }            from './vote-out'
 import { FriendshipAccepterPlugin } from './friendship-accepter'
 import { EventHotHandlerPlugin }    from './event-hot-handler'
 import { ChatOpsPlugin }            from './chatops'
+import { RoomInvitationAccepterPlugin } from './room-invitation-accepter'
 
 // import { IntercomPlugin }   from './intercom'
 // import { FreshdeskPlugin }  from './freshdesk'
@@ -39,6 +40,7 @@ const pluginList = [
   FriendshipAccepterPlugin,
   EventHotHandlerPlugin,
   VoteOutPlugin,
+  RoomInvitationAccepterPlugin,
   // IntercomPlugin,
   // FreshdeskPlugin,
 
