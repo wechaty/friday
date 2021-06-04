@@ -4,7 +4,7 @@
   "description": "Friday Bot is designed for serving the Wechaty community purpose.",
   "main": "index.js",
   "engines": {
-    "node": "12"
+    "node": ">=14"
   },
   "scripts": {
     "build": "tsc && cp src/ml/clue-vocab.txt dist/src/ml",
@@ -37,7 +37,6 @@
     "node-cron": "^3.0.0",
     "read-pkg-up": "^7",
     "sheet-db": "^1.0.1",
-    "tokenizers": "^0.7.0",
     "vorpal-hacker-news": "^1.0.6",
     "wechaty": "^0.61.14",
     "wechaty-freshdesk": "^0.6.9",

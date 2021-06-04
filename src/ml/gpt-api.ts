@@ -5,9 +5,9 @@ import { log } from 'wechaty'
  * Node.js v14 support:
  *  https://github.com/huggingface/tokenizers/issues/603
  */
-import { BertWordPieceTokenizer } from 'tokenizers'
+// import { BertWordPieceTokenizer } from 'tokenizers'
 
-import path from 'path'
+// import path from 'path'
 
 async function gptApi (
   prefix: string,
@@ -15,35 +15,37 @@ async function gptApi (
 ): Promise<string> {
   log.verbose('WechatyVorpalFriday', 'gptApi(%s, %s)', prefix, length)
 
-  const vocabFile = path.join(__dirname, 'clue-vocab.txt')
-  const wordPieceTokenizer = await BertWordPieceTokenizer.fromOptions({
-    lowercase: true,
-    vocabFile,
-  })
-  const wpEncoded = await wordPieceTokenizer.encode(prefix, undefined, {
-    addSpecialTokens: false,
-  })
+  return 'disabled'
 
-  const idList = wpEncoded.ids
+  // const vocabFile = path.join(__dirname, 'clue-vocab.txt')
+  // const wordPieceTokenizer = await BertWordPieceTokenizer.fromOptions({
+  //   lowercase: true,
+  //   vocabFile,
+  // })
+  // const wpEncoded = await wordPieceTokenizer.encode(prefix, undefined, {
+  //   addSpecialTokens: false,
+  // })
 
-  const json = {
-    instances: [{
-      inp: idList,
-      length: length,
-    }],
-  }
+  // const idList = wpEncoded.ids
 
-  const ret = await Axios.post(
-    'http://dev.chatie.io:8506/v1/models/gpt:predict',
-    json,
-  )
+  // const json = {
+  //   instances: [{
+  //     inp: idList,
+  //     length: length,
+  //   }],
+  // }
 
-  const prediction = ret.data.predictions[0] as number[]
-  // console.info(prediction)
-  const text = await wordPieceTokenizer.decode(prediction)
-  // console.info(typeof text, text)
+  // const ret = await Axios.post(
+  //   'http://dev.chatie.io:8506/v1/models/gpt:predict',
+  //   json,
+  // )
 
-  return text.replace(/ /g, '')
+  // const prediction = ret.data.predictions[0] as number[]
+  // // console.info(prediction)
+  // const text = await wordPieceTokenizer.decode(prediction)
+  // // console.info(typeof text, text)
+
+  // return text.replace(/ /g, '')
 }
 
 export { gptApi }
