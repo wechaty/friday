@@ -45,7 +45,7 @@
     "wechaty-puppet-gitter": "0.4.7",
     "wechaty-puppet-official-account": "^0.5.28",
     "wechaty-qnamaker": "^0.6.2",
-    "wechaty-vorpal": "^0.6.12",
+    "wechaty-vorpal": "^0.6.14",
     "wechaty-vorpal-contrib": "^0.6.51",
     "wechaty-voteout": "^0.6.4"
   },
