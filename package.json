@@ -35,7 +35,7 @@
     "moment": "^2.29.1",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.0",
-    "read-pkg-up": "^7",
+    "read-pkg-up": "^8",
     "sheet-db": "^1.0.1",
     "vorpal-hacker-news": "^1.0.6",
     "wechaty": "^0.61.14",
