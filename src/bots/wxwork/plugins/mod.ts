@@ -9,8 +9,10 @@ import {
 }                 from 'wechaty-plugin-contrib'
 
 import { HeartbeatPlugin } from './heartbeat'
+import { ChatOpsPlugin } from './chatops'
 
 const pluginList = [
+  ChatOpsPlugin,
   DingDong(),
   EventLogger(),
   HeartbeatPlugin,

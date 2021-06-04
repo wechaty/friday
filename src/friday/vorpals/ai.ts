@@ -3,8 +3,8 @@ import {
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
 
-import { Chitchat }     from '../../ml/chitchat'
-import { Gpt }          from '../../ml/gpt'
+// import { Chitchat }     from '../../ml/chitchat'
+// import { Gpt }          from '../../ml/gpt'
 import { Dreamily }     from '../../ml/dreamily'
 
 const aiConfig: WechatyVorpalConfig = {
@@ -13,9 +13,9 @@ const aiConfig: WechatyVorpalConfig = {
   room    : true,
   silent  : true,
 
-  use  : [
-    Chitchat(),
-    Gpt(),
+  use : [
+    // Chitchat(),
+    // Gpt(),
     Dreamily(),
   ],
 }

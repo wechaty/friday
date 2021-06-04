@@ -20,7 +20,7 @@ function Dreamily () {
     log.verbose('WechatyVorpalFriday', 'DreamilyExtension(vorpal)')
 
     vorpal
-      .command('Dreamily <content>', '彩云小梦 Dreamily 帮你续写小说！')
+      .command('dreamily <content>', '彩云小梦 Dreamily 帮你续写小说！')
       .option('-s --style [style]', 'Style of the story: ' + Object.keys(StoryStyle).join(', '))
       .action(dreamilyAction)
   }
@@ -40,6 +40,16 @@ async function dreamilyAction (
 
   const content = args.content as string
 
+  if (options.style) {
+    if (!(options.style in StoryStyle)) {
+      this.stderr.next([
+        `Error: style "${options.style}" is not supported. `,
+        `Please pict one from ${Object.keys(StoryStyle).join(', ')}`,
+      ].join(''))
+      return -1
+    }
+  }
+
   const style: StoryStyle = options.style
     ? options.style in StoryStyle
       ? options.style
@@ -51,9 +61,9 @@ async function dreamilyAction (
     style,
   }
 
-  this.stdout.next(`Dreamily is continuing to write he novel for you: "${content}" ...`)
+  this.stdout.next(`Please wait... Dreamily is thinking how to continue writing "${content}" ...`)
   const reply = await dreamilyApi(apiOption)
-  this.stdout.next(reply)
+  this.stdout.next(content + '...\n' + reply)
   this.stdout.next('Thanks for ask Dreamily for writing, you are welcome to try more if you like it!')
 
   return 0

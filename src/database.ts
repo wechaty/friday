@@ -1,5 +1,7 @@
 const FRIDAY_ROOM_ID    = '18131996049@chatroom'  // 'ChatOps - BOT5 Wechaty'
-const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // 'ChatOps - Heartbeat' 💖
+
+// const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖
+const HEARTBEAT_ROOM_ID = '24980472405@chatroom'  // WeCom: ChatOps - Heartbeat' 💖
 
 const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
 
