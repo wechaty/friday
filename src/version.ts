@@ -1,6 +1,6 @@
-import { readPackageUpSync } from 'read-pkg-up'
+import readPkgUp from 'read-pkg-up'
 
-const pkg = readPackageUpSync({ cwd: __dirname })!.packageJson
+const pkg = readPkgUp.sync({ cwd: __dirname })!.package
 const VERSION = pkg.version
 
 export { VERSION }
