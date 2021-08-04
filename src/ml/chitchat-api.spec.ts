@@ -6,7 +6,7 @@ import {
   chatApi,
 }                   from './chitchat-api'
 
-test('chatApi()', async (t) => {
+test.skip('chatApi()', async (t) => {
   const GOSSIP = '今天天气不错！'
   const reply = await chatApi(GOSSIP)
 
