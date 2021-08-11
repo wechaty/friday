@@ -39,7 +39,7 @@ const unidirectionalMapper = async (message: Message) => {
        */
       const room = message.room()
       // if (message.room()!.id !== HEADQUARTERS_ROOM_ID) {
-      if (wechatyDevelopersHome.headquarters.includes(room.id)) {
+      if (room && wechatyDevelopersHome.headquarters.includes(room.id)) {
         const type = Message.Type[message.type()]
         messageList.unshift(`${prefix}: ${type}`)
       }
