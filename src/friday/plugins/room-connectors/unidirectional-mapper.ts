@@ -3,9 +3,12 @@ import { Message }  from 'wechaty'
 //   mappers,
 // }                   from 'wechaty-plugin-contrib'
 
+// import {
+//   HEADQUARTERS_ROOM_ID,
+// }                           from '../../../database'
 import {
-  HEADQUARTERS_ROOM_ID,
-}                           from '../../../database'
+  wechatyDevelopersHome,
+}                           from '../../../database/mod'
 
 import { abbrRoomTopicForDevelopersHome } from './abbr-room-topic-by-regex'
 import { senderDisplayName }              from './sender-display-name'
@@ -34,7 +37,9 @@ const unidirectionalMapper = async (message: Message) => {
        * If message is not sent from Headquarters Room,
        * then we add a sender information for the destination rooms.
        */
-      if (message.room()!.id !== HEADQUARTERS_ROOM_ID) {
+      const room = message.room()
+      // if (message.room()!.id !== HEADQUARTERS_ROOM_ID) {
+      if (wechatyDevelopersHome.headquarters.includes(room.id)) {
         const type = Message.Type[message.type()]
         messageList.unshift(`${prefix}: ${type}`)
       }

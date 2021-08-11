@@ -3,14 +3,14 @@ const FRIDAY_ROOM_ID    = '18131996049@chatroom'  // 'ChatOps - BOT5 Wechaty'
 // const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖
 const HEARTBEAT_ROOM_ID = '24980472405@chatroom'  // WeCom: ChatOps - Heartbeat' 💖
 
-const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
+// const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - WDHQ
 
 /**
  * Huan(20201201): deprecated by Tencent WeChat
  */
 // const DEVELOPERS_ROOM_ID_WXWORK = '9223372041377366127@im.chatroom' // Wechaty Developers' Home 9
 
-const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' Home 0
+// const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' Home 0
 
 // const DEVELOPERS_ROOM_ID_LIST = [
 //   '18490919725@chatroom',   // Wechaty Developers' Home 8
@@ -22,19 +22,19 @@ const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' 
 //   '5729603967@chatroom',    // Wechaty Developers' Home 2
 //   '7582163093@chatroom',    // Wechaty Developers' Home 1
 // ]
-const DEVELOPERS_ROOM_ID_CHINESE = '20766978781@chatroom' // Wechaty Developers' Home Chinese
-const DEVELOPERS_ROOM_ID_ENGLISH = '20517298932@chatroom' // Wechaty Developers' Home English
+// const DEVELOPERS_ROOM_ID_CHINESE = '20766978781@chatroom' // Wechaty Developers' Home Chinese
+// const DEVELOPERS_ROOM_ID_ENGLISH = '20517298932@chatroom' // Wechaty Developers' Home English
 
 const BOT5_CLUB_ROOM_ID      = '19244336373@chatroom'  // BOT Friday Club - BOT5
 const BOT5_CLUB_2021_ROOM_ID = '18825797159@chatroom'  // Bot Friday Open Forum - BFOF 2021
 const BOT5_CLUB_2020_ROOM_ID = '18095776930@chatroom'  // Bot Friday Open Forum - Year 2020
 const BOT5_CLUB_2019_ROOM_ID = '17301175542@chatroom'  // Bot Friday Open Forum - Year 2019
 
-const MULTI_LANG_ROOM_ID     = '19367909379@chatroom'  // Python/Go/Java Wechaty
-const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
+// const MULTI_LANG_ROOM_ID     = '19367909379@chatroom'  // Python/Go/Java Wechaty
+// const CONTRIBUTORS_ROOM_ID   = '6719192413@chatroom'   // Wechaty Contributors
 
-const SUMMER_OF_CODE_ROOM_ID = '18324919941@chatroom'  // Wechaty ISCAS Code of Summer
-const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
+// const SUMMER_OF_CODE_ROOM_ID = '18324919941@chatroom'  // Wechaty ISCAS Code of Summer
+// const DONUT_ROOM_ID          = '17962906510@chatroom'  // ChatOps - Donut
 
 const MIKE_CONTACT_ID  = 'wxid_a8d806dzznm822'   // Mike BO
 const PREANGEL_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel
@@ -53,18 +53,18 @@ const GITTER_WECHATY_ROOM_ID = '573324fcc43b8c60197242bf' // 'https://gitter.im/
 export {
   FRIDAY_ROOM_ID,
   HEARTBEAT_ROOM_ID,
-  DONUT_ROOM_ID,
+  // DONUT_ROOM_ID,
 
-  HEADQUARTERS_ROOM_ID,
-  CONTRIBUTORS_ROOM_ID,
+  // HEADQUARTERS_ROOM_ID,
+  // CONTRIBUTORS_ROOM_ID,
   // DEVELOPERS_ROOM_ID_LIST,
-  DEVELOPERS_ROOM_ID_WXWORK,
+  // DEVELOPERS_ROOM_ID_WXWORK,
 
-  DEVELOPERS_ROOM_ID_ENGLISH,
-  DEVELOPERS_ROOM_ID_CHINESE,
+  // DEVELOPERS_ROOM_ID_ENGLISH,
+  // DEVELOPERS_ROOM_ID_CHINESE,
 
-  MULTI_LANG_ROOM_ID,
-  SUMMER_OF_CODE_ROOM_ID,
+  // MULTI_LANG_ROOM_ID,
+  // SUMMER_OF_CODE_ROOM_ID,
 
   BOT5_CLUB_2019_ROOM_ID,
   BOT5_CLUB_2020_ROOM_ID,

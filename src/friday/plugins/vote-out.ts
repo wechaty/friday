@@ -10,9 +10,12 @@ import {
   talkers,
 }                   from 'wechaty-plugin-contrib'
 
+// import {
+//   MULTI_LANG_ROOM_ID,
+// }                           from '../../database'
 import {
-  MULTI_LANG_ROOM_ID,
-}                           from '../../database'
+  polyglotWechaty,
+}                           from '../../database/mod'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
@@ -48,7 +51,7 @@ const config: VoteOutConfig = {
     /^Youth fed the/i,
     /^Wechaty Plugin Developers/i,
     /^Wechaty Testing$/,
-    MULTI_LANG_ROOM_ID,
+    ...Object.values(polyglotWechaty).flat(), // MULTI_LANG_ROOM_ID,
   ],
   threshold: 3,
   kick,

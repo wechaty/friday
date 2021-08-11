@@ -10,14 +10,17 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
+// import {
+//   CONTRIBUTORS_ROOM_ID,
+// }                         from '../../database'
 import {
-  CONTRIBUTORS_ROOM_ID,
-}                         from '../../database'
+  wechatyDevelopersHome,
+}                         from '../../database/mod'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : true,
-  room    : CONTRIBUTORS_ROOM_ID,
+  room    : wechatyDevelopersHome.contributors, // CONTRIBUTORS_ROOM_ID,
   silent  : true,
 
   use  : [
