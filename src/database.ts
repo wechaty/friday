@@ -10,18 +10,18 @@ const HEADQUARTERS_ROOM_ID = '17275396976@chatroom' // Wechaty Developers' HQ - 
  */
 // const DEVELOPERS_ROOM_ID_WXWORK = '9223372041377366127@im.chatroom' // Wechaty Developers' Home 9
 
-const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' Home 9
+const DEVELOPERS_ROOM_ID_WXWORK = '24394489499@chatroom' // Wechaty Developers' Home 0
 
-const DEVELOPERS_ROOM_ID_LIST = [
-  '18490919725@chatroom',   // Wechaty Developers' Home 8
-  '18171595067@chatroom',   // Wechaty Developers' Home 7
-  '24113855649@chatroom',   // Wechaty Developers' Home 6
-  '19112581505@chatroom',   // Wechaty Developers' Home 5
-  '22396239792@chatroom',   // Wechaty Developers' Home 4
-  '4335801863@chatroom',    // Wechaty Developers' Home 3
-  '5729603967@chatroom',    // Wechaty Developers' Home 2
-  '7582163093@chatroom',    // Wechaty Developers' Home 1
-]
+// const DEVELOPERS_ROOM_ID_LIST = [
+//   '18490919725@chatroom',   // Wechaty Developers' Home 8
+//   '18171595067@chatroom',   // Wechaty Developers' Home 7
+//   '24113855649@chatroom',   // Wechaty Developers' Home 6
+//   '19112581505@chatroom',   // Wechaty Developers' Home 5
+//   '22396239792@chatroom',   // Wechaty Developers' Home 4
+//   '4335801863@chatroom',    // Wechaty Developers' Home 3
+//   '5729603967@chatroom',    // Wechaty Developers' Home 2
+//   '7582163093@chatroom',    // Wechaty Developers' Home 1
+// ]
 const DEVELOPERS_ROOM_ID_CHINESE = '20766978781@chatroom' // Wechaty Developers' Home Chinese
 const DEVELOPERS_ROOM_ID_ENGLISH = '20517298932@chatroom' // Wechaty Developers' Home English
 
@@ -57,7 +57,7 @@ export {
 
   HEADQUARTERS_ROOM_ID,
   CONTRIBUTORS_ROOM_ID,
-  DEVELOPERS_ROOM_ID_LIST,
+  // DEVELOPERS_ROOM_ID_LIST,
   DEVELOPERS_ROOM_ID_WXWORK,
 
   DEVELOPERS_ROOM_ID_ENGLISH,

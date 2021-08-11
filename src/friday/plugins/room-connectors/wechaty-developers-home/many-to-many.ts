@@ -4,9 +4,12 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  DEVELOPERS_ROOM_ID_LIST,
+  // DEVELOPERS_ROOM_ID_LIST,
   MIKE_CONTACT_ID,
 }                             from '../../../../database'
+import {
+  wechatyDevelopersHome,
+}                             from '../../../../database/mod'
 
 import { bidirectionalMapper }            from '../bidirectional-mapper'
 
@@ -23,7 +26,7 @@ const blacklist = [
 const ManyToManyPlugin = ManyToManyRoomConnector({
   blacklist,
   many: [
-    ...DEVELOPERS_ROOM_ID_LIST,
+    ...wechatyDevelopersHome.home, // DEVELOPERS_ROOM_ID_LIST,
   ],
   map: bidirectionalMapper,
 })
