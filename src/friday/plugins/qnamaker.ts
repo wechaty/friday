@@ -4,18 +4,23 @@ import {
   WechatyQnAMakerConfig,
 }                           from 'wechaty-qnamaker'
 
+// import {
+//   DEVELOPERS_ROOM_ID_LIST,
+//   MULTI_LANG_ROOM_ID,
+// }                                   from '../../database'
+
 import {
-  DEVELOPERS_ROOM_ID_LIST,
-  MULTI_LANG_ROOM_ID,
-}                                   from '../../database'
+  polyglotWechaty,
+  wechatyDevelopersHome,
+}                             from '../../database/mod'
 
 const skipMessage = [
   /^wechaty$/i,
 ]
 
 const room = [
-  ...DEVELOPERS_ROOM_ID_LIST,
-  MULTI_LANG_ROOM_ID,
+  ...wechatyDevelopersHome.home,            // DEVELOPERS_ROOM_ID_LIST,
+  ...Object.values(polyglotWechaty).flat(), // MULTI_LANG_ROOM_ID,
 ]
 
 const scoreThreshold = 30

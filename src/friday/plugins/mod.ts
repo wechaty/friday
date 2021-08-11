@@ -57,7 +57,7 @@ const pluginList = [
   HeartbeatPlugin,
   ChatOpsPlugin,
 
-  ...Object.values(RoomInviterPluginMod),
+  ...Object.values(RoomInviterPluginMod).flat(),
   ...Object.values(RoomConnectorPluginMod),
 ]
 

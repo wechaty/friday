@@ -4,8 +4,8 @@ import {
 }                       from 'wechaty-plugin-contrib'
 
 import {
-  DEVELOPERS_ROOM_ID_LIST,
-}                             from '../../../database'
+  wechatyDevelopersHome,
+}                             from '../../../database/mod'
 
 import {
   repeat,
@@ -19,7 +19,7 @@ const wechatyConfig: RoomInviterConfig = {
     /^plugin$/i,
   ],
   repeat,
-  room: DEVELOPERS_ROOM_ID_LIST,
+  room: wechatyDevelopersHome.home,
   rule: WECHATY_DEVELOPERS_ROOM_RULES,
   welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
 }

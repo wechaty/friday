@@ -5,12 +5,15 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  DEVELOPERS_ROOM_ID_LIST,
+  // DEVELOPERS_ROOM_ID_LIST,
   MIKE_CONTACT_ID,
-  DEVELOPERS_ROOM_ID_WXWORK,
-  DEVELOPERS_ROOM_ID_ENGLISH,
-  HEADQUARTERS_ROOM_ID,
+  // DEVELOPERS_ROOM_ID_WXWORK,
+  // DEVELOPERS_ROOM_ID_ENGLISH,
+  // HEADQUARTERS_ROOM_ID,
 }                             from '../../../../../database'
+import {
+  wechatyDevelopersHome,
+}                             from '../../../../../database/mod'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper'
 import { unidirectionalMapper } from '../../unidirectional-mapper'
@@ -27,9 +30,9 @@ const ManyToEnglishPlugin = ManyToOneRoomConnector({
     MIKE_CONTACT_ID,
   ],
   many: [
-    ...DEVELOPERS_ROOM_ID_LIST,
-    DEVELOPERS_ROOM_ID_WXWORK,
-    HEADQUARTERS_ROOM_ID,
+    ...wechatyDevelopersHome.home, // DEVELOPERS_ROOM_ID_LIST,
+    ...wechatyDevelopersHome.monitor, // DEVELOPERS_ROOM_ID_WXWORK,
+    ...wechatyDevelopersHome.headquarters, // HEADQUARTERS_ROOM_ID,
   ],
   map: async (message: Message) => {
     if (message.type() === Message.Type.Text) {
@@ -44,13 +47,16 @@ const ManyToEnglishPlugin = ManyToOneRoomConnector({
       }
     }
 
-    if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
+    const room = message.room()
+    // if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
+    if (room && wechatyDevelopersHome.headquarters.includes(room.id)) {
       return unidirectionalMapper(message)
     } else {
       return bidirectionalMapper(message)
     }
   },
-  one: DEVELOPERS_ROOM_ID_ENGLISH,
+  // Huan(202108): use array in the future
+  one: wechatyDevelopersHome.english[0], // DEVELOPERS_ROOM_ID_ENGLISH,
 })
 
 export {
