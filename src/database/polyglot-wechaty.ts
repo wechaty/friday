@@ -32,6 +32,10 @@ const scala = [
   '21366491788@chatroom', // Scala Wechaty User Group
 ]
 
+const typescript = [
+  '21148500489@chatroom', // TypeScript Wechaty User Group
+]
+
 export {
   dotnet,
   go,
@@ -41,4 +45,5 @@ export {
   python,
   rust,
   scala,
+  typescript,
 }

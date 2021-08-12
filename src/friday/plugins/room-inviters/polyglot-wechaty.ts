@@ -54,9 +54,21 @@ const config = (language: keyof typeof polyglotWechaty) => ({
   welcome : welcome(language),
 })
 
-const InviterPluginList = (Object.keys(polyglotWechaty) as (keyof typeof polyglotWechaty)[])
-  .map(config)
-  .map(RoomInviter)
+const InviterPluginList = []
+
+for (const language of Object.keys(polyglotWechaty)) {
+  const configObj = config(polyglotWechaty[language])
+  /**
+   * Alias JavaScript -> TypeScript
+   */
+  if (language === 'typescript') {
+    configObj.password.push(
+      new RegExp(`^\\s*javascript\\s*(wechaty)*\\s*$`, 'i'),
+    )
+  }
+  const InviterPlugin = RoomInviter(configObj)
+  InviterPluginList.push(InviterPlugin)
+}
 
 export {
   InviterPluginList,
