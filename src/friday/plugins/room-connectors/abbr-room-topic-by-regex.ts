@@ -25,7 +25,7 @@ const abbrRoomTopicForDevelopersHome = abbrRoomTopicByRegex(/\s*([^\s]*\s*[^\s]+
 /**
  * "Python Wechaty User Group" -> "Python"
  */
-const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)[^\s]+Wechaty User Group$/)
+const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)\s+Wechaty User Group$/)
 
 const abbrRoomTopicForAll = async (message: Message) => {
   const topic = await abbrRoomTopicForPolyglot(message)
