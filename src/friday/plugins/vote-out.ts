@@ -14,7 +14,7 @@ import {
 //   MULTI_LANG_ROOM_ID,
 // }                           from '../../database'
 import {
-  polyglotWechaty,
+  polyglotWechatyUserGroup,
 }                           from '../../database/mod'
 
 const warn: talkers.RoomTalkerOptions = [
@@ -51,7 +51,7 @@ const config: VoteOutConfig = {
     /^Youth fed the/i,
     /^Wechaty Plugin Developers/i,
     /^Wechaty Testing$/,
-    ...Object.values(polyglotWechaty).flat(), // MULTI_LANG_ROOM_ID,
+    ...Object.values(polyglotWechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
   ],
   threshold: 3,
   kick,

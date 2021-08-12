@@ -18,8 +18,8 @@ import {
 }                         from './database'
 
 import {
-  wechatyDevelopersHome,
-  polyglotWechaty,
+  wechatyDevelopers,
+  polyglotWechatyUserGroup,
 }                         from './database/mod'
 
 function connectGitterFriday (args: {
@@ -31,9 +31,8 @@ function connectGitterFriday (args: {
   const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
 
   const wechatRoomList = [
-    ...wechatyDevelopersHome.headquarters,  // HEADQUARTERS_ROOM_ID,
-    ...wechatyDevelopersHome.home,          // DEVELOPERS_ROOM_ID_LIST,
-    // FRIDAY_ROOM_ID,
+    ...wechatyDevelopers.headquarters,
+    ...wechatyDevelopers.home,
   ].map(id => friday.Room.load(id))
 
   const wechatRoomSay = async (textOrFile: string | FileBox): Promise<void> => {
@@ -114,16 +113,15 @@ function connectGitterFriday (args: {
   }
 
   ;[
-    ...wechatyDevelopersHome.home,          // ...DEVELOPERS_ROOM_ID_LIST,
-    ...wechatyDevelopersHome.headquarters,     // HEADQUARTERS_ROOM_ID,
-
-    ...Object.values(polyglotWechaty).flat(),  // MULTI_LANG_ROOM_ID,
-    ...wechatyDevelopersHome.contributors,     // CONTRIBUTORS_ROOM_ID,
+    ...wechatyDevelopers.home,
+    ...wechatyDevelopers.headquarters,
+    ...wechatyDevelopers.contributors,
+    ...Object.values(polyglotWechatyUserGroup).flat(),
 
     /**
      * Summer of Code
      */
-    ...wechatyDevelopersHome.summer, // SUMMER_OF_CODE_ROOM_ID,
+    ...wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
 
     /**
       * BOT5.Club

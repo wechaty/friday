@@ -4,7 +4,7 @@ import {
 }                       from 'wechaty-plugin-contrib'
 
 import {
-  wechatyDevelopersHome,
+  wechatyDevelopers,
 }                             from '../../../database/mod'
 
 import {
@@ -19,7 +19,7 @@ const wechatyEnglishConfig: RoomInviterConfig = {
     /^english$/i,
   ],
   repeat,
-  room: wechatyDevelopersHome.english,
+  room: wechatyDevelopers.english,
   rule: WECHATY_DEVELOPERS_ROOM_RULES,
   welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
 }

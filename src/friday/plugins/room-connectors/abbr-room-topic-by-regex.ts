@@ -22,8 +22,21 @@ function abbrRoomTopicByRegex (matcher: RegExp) {
  * "Wechaty Developers' Home 8" -> "Home 8"
  */
 const abbrRoomTopicForDevelopersHome = abbrRoomTopicByRegex(/\s*([^\s]*\s*[^\s]+)$/)
+/**
+ * "Python Wechaty User Group" -> "Python"
+ */
+const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)[^\s]+Wechaty User Group$/)
+
+const abbrRoomTopicForAll = async (message: Message) => {
+  const topic = await abbrRoomTopicForDevelopersHome(message)
+  if (topic) {
+    return topic
+  }
+  return abbrRoomTopicForPolyglot(message)
+}
 
 export {
   abbrRoomTopicByRegex,
   abbrRoomTopicForDevelopersHome,
+  abbrRoomTopicForAll,
 }

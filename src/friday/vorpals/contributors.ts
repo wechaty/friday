@@ -14,13 +14,13 @@ import {
 //   CONTRIBUTORS_ROOM_ID,
 // }                         from '../../database'
 import {
-  wechatyDevelopersHome,
+  wechatyDevelopers,
 }                         from '../../database/mod'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : true,
-  room    : wechatyDevelopersHome.contributors, // CONTRIBUTORS_ROOM_ID,
+  room    : wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
   silent  : true,
 
   use  : [

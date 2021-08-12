@@ -1,7 +1,7 @@
-import * as polyglotWechaty       from './polyglot-wechaty'
-import * as wechatyDevelopersHome from './wechaty-developers-home'
+import * as polyglotWechatyUserGroup  from './polyglot-wechaty-user-group'
+import * as wechatyDevelopers         from './wechaty-developers'
 
 export {
-  polyglotWechaty,
-  wechatyDevelopersHome,
+  polyglotWechatyUserGroup,
+  wechatyDevelopers,
 }

@@ -3,13 +3,11 @@ import {
 }                       from 'wechaty-plugin-contrib'
 
 import {
-  polyglotWechaty,
+  polyglotWechatyUserGroup,
 }                             from '../../../database/mod'
 
 import {
   repeat,
-  // WECHATY_DEVELOPERS_ROOM_RULES,
-  // WECHATY_DEVELOPERS_ROOM_WELCOME,
 }                                       from './config'
 
 // const wechatyNonTsConfig: RoomInviterConfig = {
@@ -43,13 +41,13 @@ const welcome = (language: string) => [
   'Please go ahead to introduce yourself to the group.',
 ].join('\n')
 
-const config = (language: keyof typeof polyglotWechaty) => ({
+const config = (language: keyof typeof polyglotWechatyUserGroup) => ({
   password : [
     new RegExp(`^\\s*${language.toLowerCase()}\\s*(wechaty)*\\s*$`, 'i'),
     // /^\s*python\s*(wechaty)*\s*$/i,
   ],
   repeat,
-  room    : polyglotWechaty[language],
+  room    : polyglotWechatyUserGroup[language],
   rule    : rule(language),
   welcome : welcome(language),
 })
@@ -57,16 +55,15 @@ const config = (language: keyof typeof polyglotWechaty) => ({
 const InviterPluginList = []
 
 for (const language of (
-    Object.keys(polyglotWechaty) as (keyof typeof polyglotWechaty)[]
-  )
-) {
+  Object.keys(polyglotWechatyUserGroup) as (keyof typeof polyglotWechatyUserGroup)[]
+)) {
   const configObj = config(language)
   /**
    * Alias JavaScript -> TypeScript
    */
   if (language === 'typescript') {
     configObj.password.push(
-      new RegExp(`^\\s*javascript\\s*(wechaty)*\\s*$`, 'i'),
+      /^\s*javascript\s*(wechaty)*\s*$/i,
     )
   }
   const InviterPlugin = RoomInviter(configObj)

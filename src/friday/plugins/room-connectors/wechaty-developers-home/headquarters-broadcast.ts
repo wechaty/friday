@@ -1,5 +1,5 @@
 import {
-  OneToManyRoomConnector,
+  SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
 import {
@@ -9,7 +9,8 @@ import {
   // DEVELOPERS_ROOM_ID_WXWORK,
 }                             from '../../../../database'
 import {
-  wechatyDevelopersHome,
+  polyglotWechatyUserGroup,
+  wechatyDevelopers,
 }                             from '../../../../database/mod'
 
 import { unidirectionalMapper }           from '../unidirectional-mapper'
@@ -19,16 +20,19 @@ import { unidirectionalMapper }           from '../unidirectional-mapper'
  * OneToMany
  *
  */
-const OneToManyPlugin = OneToManyRoomConnector({
+const OneToManyPlugin = SourceToTargetRoomConnector({
   blacklist: [
     MIKE_CONTACT_ID,
   ],
-  many: [
-    ...wechatyDevelopersHome.home, // DEVELOPERS_ROOM_ID_LIST,
-    ...wechatyDevelopersHome.monitor, // DEVELOPERS_ROOM_ID_WXWORK,
-  ],
   map: unidirectionalMapper,
-  one: wechatyDevelopersHome.headquarters[0], // HEADQUARTERS_ROOM_ID,
+  source: [
+    ...wechatyDevelopers.headquarters, // HEADQUARTERS_ROOM_ID,
+  ],
+  target: [
+    ...wechatyDevelopers.home,
+    ...wechatyDevelopers.monitor,
+    ...Object.values(polyglotWechatyUserGroup).flat(),
+  ],
 })
 
 export {

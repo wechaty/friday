@@ -7,10 +7,10 @@ import { Message }  from 'wechaty'
 //   HEADQUARTERS_ROOM_ID,
 // }                           from '../../../database'
 import {
-  wechatyDevelopersHome,
+  wechatyDevelopers,
 }                           from '../../../database/mod'
 
-import { abbrRoomTopicForDevelopersHome } from './abbr-room-topic-by-regex'
+import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex'
 import { senderDisplayName }              from './sender-display-name'
 
 /**
@@ -20,7 +20,7 @@ import { senderDisplayName }              from './sender-display-name'
  */
 const unidirectionalMapper = async (message: Message) => {
   const talkerDisplayName = await senderDisplayName(message)
-  const roomShortName     = await abbrRoomTopicForDevelopersHome(message) || 'Nowhere'
+  const roomShortName     = await abbrRoomTopicForAll(message) || 'Nowhere'
 
   const prefix = `[${talkerDisplayName}@${roomShortName}]`
 
@@ -33,15 +33,16 @@ const unidirectionalMapper = async (message: Message) => {
 
     default:  // Forward all non-Text messages
       messageList.push(message)
-      /**
-       * If message is not sent from Headquarters Room,
-       * then we add a sender information for the destination rooms.
-       */
-      const room = message.room()
-      // if (message.room()!.id !== HEADQUARTERS_ROOM_ID) {
-      if (room && wechatyDevelopersHome.headquarters.includes(room.id)) {
-        const type = Message.Type[message.type()]
-        messageList.unshift(`${prefix}: ${type}`)
+      {
+        const room = message.room()
+        /**
+         * If message is not sent from Headquarters Room,
+         * then we add a sender information for the destination rooms.
+         */
+        if (room && !wechatyDevelopers.headquarters.includes(room.id)) {
+          const type = Message.Type[message.type()]
+          messageList.unshift(`${prefix}: ${type}`)
+        }
       }
       break
   }

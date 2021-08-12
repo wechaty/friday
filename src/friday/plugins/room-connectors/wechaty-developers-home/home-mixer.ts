@@ -8,7 +8,7 @@ import {
   MIKE_CONTACT_ID,
 }                             from '../../../../database'
 import {
-  wechatyDevelopersHome,
+  wechatyDevelopers,
 }                             from '../../../../database/mod'
 
 import { bidirectionalMapper }            from '../bidirectional-mapper'
@@ -26,7 +26,7 @@ const blacklist = [
 const ManyToManyPlugin = ManyToManyRoomConnector({
   blacklist,
   many: [
-    ...wechatyDevelopersHome.home, // DEVELOPERS_ROOM_ID_LIST,
+    ...wechatyDevelopers.home,
   ],
   map: bidirectionalMapper,
 })

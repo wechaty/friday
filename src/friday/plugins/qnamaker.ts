@@ -10,8 +10,8 @@ import {
 // }                                   from '../../database'
 
 import {
-  polyglotWechaty,
-  wechatyDevelopersHome,
+  polyglotWechatyUserGroup,
+  wechatyDevelopers,
 }                             from '../../database/mod'
 
 const skipMessage = [
@@ -19,8 +19,8 @@ const skipMessage = [
 ]
 
 const room = [
-  ...wechatyDevelopersHome.home,            // DEVELOPERS_ROOM_ID_LIST,
-  ...Object.values(polyglotWechaty).flat(), // MULTI_LANG_ROOM_ID,
+  ...wechatyDevelopers.home,            // DEVELOPERS_ROOM_ID_LIST,
+  ...Object.values(polyglotWechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
 ]
 
 const scoreThreshold = 30

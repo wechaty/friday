@@ -13,7 +13,7 @@ import {
   // CONTRIBUTORS_ROOM_ID,
 }                         from '../../database'
 import {
-  wechatyDevelopersHome,
+  wechatyDevelopers,
 }                         from '../../database/mod'
 
 const faqConfig: WechatyVorpalConfig = {
@@ -21,7 +21,7 @@ const faqConfig: WechatyVorpalConfig = {
   mention : false,
   room    : [
     FRIDAY_ROOM_ID,
-    ...wechatyDevelopersHome.contributors, // CONTRIBUTORS_ROOM_ID,
+    ...wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
   ],
   silent  : true,
 

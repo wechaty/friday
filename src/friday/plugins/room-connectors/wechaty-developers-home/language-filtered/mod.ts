@@ -1,4 +1,3 @@
-export * from './chinese-to-many'
-export * from './english-to-many'
-export * from './many-to-chinese'
-export * from './many-to-english'
+export * from './all-to-home'
+export * from './home-to-chinese'
+export * from './home-to-english'
