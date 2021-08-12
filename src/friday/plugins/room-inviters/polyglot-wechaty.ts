@@ -56,8 +56,11 @@ const config = (language: keyof typeof polyglotWechaty) => ({
 
 const InviterPluginList = []
 
-for (const language of Object.keys(polyglotWechaty)) {
-  const configObj = config(polyglotWechaty[language])
+for (const language of (
+    Object.keys(polyglotWechaty) as (keyof typeof polyglotWechaty)[]
+  )
+) {
+  const configObj = config(language)
   /**
    * Alias JavaScript -> TypeScript
    */
