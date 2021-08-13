@@ -6,7 +6,6 @@ import {
   MIKE_CONTACT_ID,
 }                             from '../../../../database'
 import {
-  polyglotWechatyUserGroup,
   wechatyDevelopers,
 }                             from '../../../../database/mod'
 
