@@ -1,3 +1,4 @@
+import { Message } from 'wechaty'
 import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
@@ -17,10 +18,10 @@ import { unidirectionalMapper }           from '../unidirectional-mapper'
 
 /**
  *
- * OneToMany
+ * Broadcast text and url link
  *
  */
-const OneToManyPlugin = SourceToTargetRoomConnector({
+const BroadcastToHomePlugin = SourceToTargetRoomConnector({
   blacklist: [
     MIKE_CONTACT_ID,
   ],
@@ -31,10 +32,28 @@ const OneToManyPlugin = SourceToTargetRoomConnector({
   target: [
     ...wechatyDevelopers.home,
     ...wechatyDevelopers.monitor,
+  ],
+})
+
+/**
+ *
+ * Broadcast text and url link
+ *
+ */
+const BroadcastToPolyglotPlugin = SourceToTargetRoomConnector({
+  blacklist: [
+    MIKE_CONTACT_ID,
+  ],
+  map: (msg) => msg.type() === Message.Type.Text ? unidirectionalMapper(msg) : [],
+  source: [
+    ...wechatyDevelopers.headquarters,
+  ],
+  target: [
     ...Object.values(polyglotWechatyUserGroup).flat(),
   ],
 })
 
 export {
-  OneToManyPlugin,
+  BroadcastToHomePlugin,
+  BroadcastToPolyglotPlugin,
 }
