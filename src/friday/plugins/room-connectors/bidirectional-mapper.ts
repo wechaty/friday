@@ -3,15 +3,15 @@ import { Message }  from 'wechaty'
 //   mappers,
 // }                   from 'wechaty-plugin-contrib'
 
-import { abbrRoomTopicForDevelopersHome } from './abbr-room-topic-by-regex'
-import { senderDisplayName }              from './sender-display-name'
+import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex'
+import { senderDisplayName }   from './sender-display-name'
 
 const bidirectionalMapper = async (message: Message) => {
   // Drop all messages if not Text
   if (message.type() !== Message.Type.Text) { return }
 
   const talkerDisplayName = await senderDisplayName(message)
-  const roomShortName     = await abbrRoomTopicForDevelopersHome(message) || 'Nowhere'
+  const roomShortName     = await abbrRoomTopicForAll(message) || 'Nowhere'
 
   const text = message.text()
 
