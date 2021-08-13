@@ -1,12 +1,10 @@
 import {
-  OneToManyRoomConnector,
+  SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  BOT5_CLUB_2019_ROOM_ID,
-  BOT5_CLUB_2020_ROOM_ID,
-  BOT5_CLUB_2021_ROOM_ID,
-}                             from '../../../../database'
+  bot5Club,
+}                             from '../../../../database/mod'
 
 import { unidirectionalMapper } from '../unidirectional-mapper'
 
@@ -15,13 +13,21 @@ import { unidirectionalMapper } from '../unidirectional-mapper'
  * BOT5 Club
  *
  */
-const Bot5OneToManyPlugin = OneToManyRoomConnector({
-  many: [
-    BOT5_CLUB_2019_ROOM_ID,
-    BOT5_CLUB_2020_ROOM_ID,
-  ],
+const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
   map: unidirectionalMapper,
-  one: BOT5_CLUB_2021_ROOM_ID,
+  source: [
+    /**
+     * The first club room in the array is the latest room (current year)
+     */
+    bot5Club.member[0],
+  ],
+  target: [
+    /**
+     * The second club room in the array (and all the following)
+     *  is the previous room (previous year).
+     */
+    ...bot5Club.member.slice(1),
+  ],
 })
 
 export {

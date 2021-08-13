@@ -5,21 +5,13 @@ import {
 }             from 'wechaty'
 
 import {
-  // HEADQUARTERS_ROOM_ID,
-  // DEVELOPERS_ROOM_ID_LIST,
-
-  // FRIDAY_ROOM_ID,
-
   GITTER_WECHATY_ROOM_ID,
-  BOT5_CLUB_2019_ROOM_ID,
-  BOT5_CLUB_2020_ROOM_ID,
-  BOT5_CLUB_2021_ROOM_ID,
-  BOT5_CLUB_ROOM_ID,
 }                         from './database'
 
 import {
   wechatyDevelopers,
   polyglotWechatyUserGroup,
+  bot5Club,
 }                         from './database/mod'
 
 function connectGitterFriday (args: {
@@ -126,10 +118,8 @@ function connectGitterFriday (args: {
     /**
       * BOT5.Club
       */
-    BOT5_CLUB_2019_ROOM_ID,
-    BOT5_CLUB_2020_ROOM_ID,
-    BOT5_CLUB_2021_ROOM_ID,
-    BOT5_CLUB_ROOM_ID,
+    ...bot5Club.member,
+    ...bot5Club.chair,
   ].forEach(forwardWechatToGitter)
 
   /**

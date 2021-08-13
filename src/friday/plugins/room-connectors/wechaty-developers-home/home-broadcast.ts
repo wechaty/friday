@@ -26,7 +26,6 @@ const ManyToOnePlugin = SourceToTargetRoomConnector({
     ...wechatyDevelopers.home,
     ...wechatyDevelopers.chinese,
     ...wechatyDevelopers.english,
-    ...Object.values(polyglotWechatyUserGroup).flat(),
   ],
   target: [
     ...wechatyDevelopers.headquarters,
