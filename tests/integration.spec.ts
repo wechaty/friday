@@ -27,7 +27,7 @@ import { getFriday }  from '../src/friday/bot'
 test('smoke testing with perfect restart', async t => {
   const ORIGINAL_WECHATY_PUPPET = process.env.WECHATY_PUPPET
 
-  process.env.WECHATY_TOKEN  = 'mock_token'
+  process.env.WECHATY_TOKEN = 'mock_token'
   process.env.WECHATY_PUPPET_SERVER_PORT = '18788'
 
   process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
