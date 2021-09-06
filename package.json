@@ -52,7 +52,7 @@
   "devDependencies": {
     "@chatie/eslint-config": "^0.12.4",
     "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^0.16.2",
+    "@chatie/tsconfig": "^0.20.2",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node-cron": "^2.0.4",
