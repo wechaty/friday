@@ -10,7 +10,6 @@ import {
 
 import { VoteOutPlugin }            from './vote-out.js'
 import { FriendshipAccepterPlugin } from './friendship-accepter.js'
-import { EventHotHandlerPlugin }    from './event-hot-handler.js'
 import { ChatOpsPlugin }            from './chatops.js'
 import { RoomInvitationAccepterPlugin } from './room-invitation-accepter.js'
 
@@ -38,7 +37,6 @@ const pluginList = [
   EventLogger(),
   // DingDong(),  // Huan(202108): disable ding/dong for stop 张三
   FriendshipAccepterPlugin,
-  EventHotHandlerPlugin,
   VoteOutPlugin,
   RoomInvitationAccepterPlugin,
   // IntercomPlugin,

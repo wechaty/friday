@@ -13,6 +13,7 @@ import { vorpalPluginList } from './vorpals/mod.js'
 import { getMemory }   from './get-memory.js'
 import { setupFinis }  from './setup-finis.js'
 import { getIoClient } from './get-io-client.js'
+import { setHandlers } from './set-handlers.js'
 
 let bot: undefined | Wechaty
 
@@ -25,6 +26,8 @@ function getFriday (name: string): Wechaty {
     memory,
     name,
   })
+
+  setHandlers(wechaty)
 
   // void pluginList
   // void vorpalPluginList
