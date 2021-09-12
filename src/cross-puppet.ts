@@ -6,13 +6,13 @@ import {
 
 import {
   GITTER_WECHATY_ROOM_ID,
-}                         from './database'
+}                         from './database.js'
 
 import {
   wechatyDevelopers,
   polyglotWechatyUserGroup,
   bot5Club,
-}                         from './database/mod'
+}                         from './database/mod.js'
 
 function connectGitterFriday (args: {
   friday: Wechaty,
@@ -23,7 +23,7 @@ function connectGitterFriday (args: {
   const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
 
   const wechatRoomList = [
-    ...wechatyDevelopers.headquarters,
+    ...wechatyDevelopers.homeHq,
     ...wechatyDevelopers.home,
   ].map(id => friday.Room.load(id))
 
@@ -106,7 +106,7 @@ function connectGitterFriday (args: {
 
   ;[
     ...wechatyDevelopers.home,
-    ...wechatyDevelopers.headquarters,
+    ...wechatyDevelopers.homeHq,
     ...wechatyDevelopers.contributors,
     ...Object.values(polyglotWechatyUserGroup).flat(),
 

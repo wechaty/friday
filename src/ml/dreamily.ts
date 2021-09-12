@@ -1,7 +1,7 @@
 import {
   log,
 }                 from 'wechaty'
-import {
+import type {
   Vorpal,
   CommandContext,
   Args,
@@ -11,7 +11,7 @@ import {
   dreamilyApi,
   DreamilyApiOptions,
   StoryStyle,
-}                       from './dreamily-api'
+}                       from './dreamily-api.js'
 
 function Dreamily () {
   log.verbose('WechatyVorpalFriday', 'Dreamily()')
@@ -38,7 +38,7 @@ async function dreamilyAction (
 
   const options = args.options as any as DreamilyOptions
 
-  const content = args.content as string
+  const content = args['content'] as string
 
   if (options.style) {
     if (!(options.style in StoryStyle)) {

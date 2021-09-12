@@ -1,6 +1,6 @@
-import * as chatops from './chatops'
-import * as pub     from './public'
-import * as faq     from './qnamaker'
+import * as chatops from './chatops.js'
+import * as pub     from './public.js'
+import * as faq     from './qnamaker.js'
 
 const vorpalPluginList = [
   ...Object.values(chatops),

@@ -1,4 +1,4 @@
-import { getFriday } from '../../src/friday/bot'
+import { getFriday } from '../../src/friday/bot.js'
 
 process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
 

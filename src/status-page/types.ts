@@ -1,4 +1,4 @@
-import { Wechaty } from 'wechaty'
+import type { Wechaty } from 'wechaty'
 
 export interface MetricBots {
   friday: Wechaty,

@@ -6,12 +6,12 @@ import {
 import {
   // DEVELOPERS_ROOM_ID_LIST,
   MIKE_CONTACT_ID,
-}                             from '../../../../database'
+}                             from '../../../../database.js'
 import {
   wechatyDevelopers,
-}                             from '../../../../database/mod'
+}                             from '../../../../database/mod.js'
 
-import { bidirectionalMapper }            from '../bidirectional-mapper'
+import { bidirectionalMapper }            from '../bidirectional-mapper.js'
 
 /**
  *

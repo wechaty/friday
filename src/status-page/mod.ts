@@ -1,1 +1,1 @@
-export { startStatusPageMetricUpdater } from './updater'
+export { startStatusPageMetricUpdater } from './updater.js'

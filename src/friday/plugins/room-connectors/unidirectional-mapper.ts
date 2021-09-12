@@ -5,13 +5,13 @@ import { Message }  from 'wechaty'
 
 // import {
 //   HEADQUARTERS_ROOM_ID,
-// }                           from '../../../database'
+// }                           from '../../../database.js'
 import {
   wechatyDevelopers,
-}                           from '../../../database/mod'
+}                           from '../../../database/mod.js'
 
-import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex'
-import { senderDisplayName }              from './sender-display-name'
+import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
+import { senderDisplayName }              from './sender-display-name.js'
 
 /**
  *
@@ -39,7 +39,7 @@ const unidirectionalMapper = async (message: Message) => {
          * If message is not sent from Headquarters Room,
          * then we add a sender information for the destination rooms.
          */
-        if (room && !wechatyDevelopers.headquarters.includes(room.id)) {
+        if (room && !wechatyDevelopers.homeHq.includes(room.id)) {
           const type = Message.Type[message.type()]
           messageList.unshift(`${prefix}: ${type}`)
         }

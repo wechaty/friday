@@ -1,4 +1,4 @@
-import { finis }    from 'finis'
+import finis        from 'finis'
 import {
   Wechaty,
   log,
@@ -6,10 +6,10 @@ import {
 
 import {
   VERSION,
-}                   from '../config'
+}                   from '../config.js'
 import {
   FRIDAY_ROOM_ID,
-}                   from '../database'
+}                   from '../database.js'
 
 const BOT_NAME = 'Friday.BOT'
 

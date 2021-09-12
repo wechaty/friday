@@ -1,10 +1,10 @@
 #!/usr/bin/env ts-node
 
-import test  from 'tstest'
+import { test }  from 'tstest'
 
 import {
   gptApi,
-}                   from './gpt-api'
+}                   from './gpt-api.js'
 
 test.skip('gptApi()', async (t) => {
   const PREFIX = '天是sky，地是land，云是'

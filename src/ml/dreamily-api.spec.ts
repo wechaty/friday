@@ -1,11 +1,11 @@
 #!/usr/bin/env ts-node
 
-import test  from 'tstest'
+import { test }  from 'tstest'
 
 import {
   StoryStyle,
   dreamilyApi,
-}                   from './dreamily-api'
+}                   from './dreamily-api.js'
 
 test('Dreamily API', async (t) => {
   const PAYLOAD = {
@@ -18,5 +18,5 @@ test('Dreamily API', async (t) => {
   const text = await dreamilyApi(PAYLOAD)
 
   console.info('text:', text)
-  t.skip('tbw')
+  await t.skip('tbw')
 })

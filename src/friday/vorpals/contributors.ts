@@ -12,10 +12,10 @@ import {
 
 // import {
 //   CONTRIBUTORS_ROOM_ID,
-// }                         from '../../database'
+// }                         from '../../database.js'
 import {
   wechatyDevelopers,
-}                         from '../../database/mod'
+}                         from '../../database/mod.js'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,

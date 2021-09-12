@@ -1,7 +1,7 @@
 const FRIDAY_ROOM_ID    = '18131996049@chatroom'  // 'ChatOps - BOT5 Wechaty'
 
 // const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖
-const HEARTBEAT_ROOM_ID = '24980472405@chatroom'  // WeCom: ChatOps - Heartbeat' 💖
+const HEARTBEAT_ROOM_ID = '24980472405@chatroom'  // ChatOps - Heartbeat' MIX 💖
 
 const MIKE_CONTACT_ID  = 'wxid_a8d806dzznm822'   // Mike BO
 const PREANGEL_ROOM_ID = '17237607145@chatroom'  // ChatOps - PreAngel

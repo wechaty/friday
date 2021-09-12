@@ -1,8 +1,8 @@
-import { Contact } from 'wechaty'
+import type { Contact } from 'wechaty'
 
-import { GITTER_WECHATY_ROOM_ID } from '../database'
+import { GITTER_WECHATY_ROOM_ID } from '../database.js'
 
-import { MetricBots } from './types'
+import type { MetricBots } from './types.js'
 
 async function countRoomMembers (
   bots: MetricBots,

@@ -8,7 +8,7 @@ import {
 
 // import {
 //   QnAMakerCeibsPlugin,
-// }                           from './qnamaker'
+// }                           from './qnamaker.js'
 
 const pluginList = [
   DingDong(),

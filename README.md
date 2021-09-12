@@ -29,7 +29,11 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
-### v0.9 (Aug 22, 2020) On Gitter!
+### master v0.11
+
+1. ES Module support
+
+### v0.9 (Aug 22, 2020) On Gitter
 
 [Gitter.im](https://gitter.im/wechaty/wechaty) synced with WeChat rooms!
 

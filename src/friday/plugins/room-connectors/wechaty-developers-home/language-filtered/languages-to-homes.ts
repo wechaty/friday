@@ -4,12 +4,12 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../database'
+}                             from '../../../../../database.js'
 import {
   wechatyDevelopers,
-}                             from '../../../../../database/mod'
+}                             from '../../../../../database/mod.js'
 
-import { bidirectionalMapper } from '../../bidirectional-mapper'
+import { bidirectionalMapper } from '../../bidirectional-mapper.js'
 
 const LanguageToHomePlugin = SourceToTargetRoomConnector({
   blacklist: [
@@ -21,7 +21,8 @@ const LanguageToHomePlugin = SourceToTargetRoomConnector({
     ...wechatyDevelopers.english,
   ],
   target: [
-    ...wechatyDevelopers.home, // DEVELOPERS_ROOM_ID_LIST,
+    ...wechatyDevelopers.home,
+    ...wechatyDevelopers.homeHq,
   ],
 })
 

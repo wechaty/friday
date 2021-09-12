@@ -1,3 +1,3 @@
-export * from './all-to-home'
-export * from './home-to-chinese'
-export * from './home-to-english'
+export * from './languages-to-homes.js'
+export * from './homes-to-chinese.js'
+export * from './homes-to-english.js'
