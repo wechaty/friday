@@ -10,8 +10,13 @@ void getHuanOa
 const getBots = () => ({
   ceibs  : getCeibs('CEIBS.BOT'),
   gitter : getGitter('Gitter'),
-  oa     : getHuanOa('Huan.OA'),
-  wxwork : getWxWork('WxWork.BOT'),
+  /**
+   * Huan(202109):
+   *  1. OA has a flash-store conflict issue
+   *  2. wxwork is non-TLS
+   */
+  // oa     : getHuanOa('Huan.OA'),
+  // wxwork : getWxWork('WxWork.BOT'),
 })
 
 export { getBots }
