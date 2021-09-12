@@ -5,7 +5,7 @@
 import {
   QRCodeTerminal,
   EventLogger,
-  // DingDong,
+  DingDong,
 }                    from 'wechaty-plugin-contrib'
 
 import { VoteOutPlugin }            from './vote-out.js'
@@ -35,7 +35,7 @@ import * as RoomConnectorPluginMod  from './room-connectors/mod.js'
 const pluginList = [
   QRCodeTerminal(),
   EventLogger(),
-  // DingDong(),  // Huan(202108): disable ding/dong for stop 张三
+  DingDong(),
   FriendshipAccepterPlugin,
   VoteOutPlugin,
   RoomInvitationAccepterPlugin,
