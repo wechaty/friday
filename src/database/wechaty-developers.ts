@@ -1,4 +1,4 @@
-const broadcast = [
+const broadcastStation = [
   '20504723205@chatroom', // Wechaty Broadcasting
 ]
 
@@ -42,7 +42,7 @@ export {
   chinese,
   contributors,
   english,
-  broadcast,
+  broadcastStation,
   home,
   homeHq,
   monitor,

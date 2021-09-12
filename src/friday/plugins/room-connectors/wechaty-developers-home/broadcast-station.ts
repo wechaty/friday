@@ -14,16 +14,16 @@ import { unidirectionalMapper } from '../unidirectional-mapper.js'
  * Announcement
  *
  */
-const exceptBroadcastingStation = (roomId: string) => !wechatyDevelopers.broadcast.includes(roomId)
+const exceptBroadcastStation = (roomId: string) => !wechatyDevelopers.broadcastStation.includes(roomId)
 
 const allUserGroups = Object.values(polyglotWechatyUserGroup).flat()
 const allHomes      = Object.values(wechatyDevelopers).flat()
-  .filter(exceptBroadcastingStation)
+  .filter(exceptBroadcastStation)
 
-const HeadquartersBroadcastingPlugin = SourceToTargetRoomConnector({
+const HeadquartersBroadcastStationPlugin = SourceToTargetRoomConnector({
   map: unidirectionalMapper,
   source: [
-    ...wechatyDevelopers.broadcast,
+    ...wechatyDevelopers.broadcastStation,
   ],
   target: [
     ...allUserGroups,
@@ -32,5 +32,5 @@ const HeadquartersBroadcastingPlugin = SourceToTargetRoomConnector({
 })
 
 export {
-  HeadquartersBroadcastingPlugin,
+  HeadquartersBroadcastStationPlugin,
 }
