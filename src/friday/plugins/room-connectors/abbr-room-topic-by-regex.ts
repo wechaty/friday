@@ -28,7 +28,7 @@ const abbrRoomTopicForDevelopersHome = abbrRoomTopicByRegex(/^Wechaty\s+.*?([^\s
 const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)\s+Wechaty User Group$/)
 
 const abbrRoomTopicForAll = async (message: Message) => {
-  let topic = await abbrRoomTopicForPolyglot(message)
+  const topic = await abbrRoomTopicForPolyglot(message)
   if (topic) {
     return topic
   }
