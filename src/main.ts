@@ -21,16 +21,10 @@ async function main () {
     ...Object.values(bots),
   ]
 
-  const botFutureList = botList.map(async bot => {
+  for (const bot of botList) {
     log.info('Friday', 'main() bot.start() starting %s', bot.name())
     await bot.start()
     log.info('Friday', 'main() bot.start() bot %s started', bot.name())
-  })
-
-  try {
-    await Promise.all(botFutureList)
-  } catch (e) {
-    log.error('Friday', 'main() bot.start() rejection: %s', e)
   }
 
   const gitter = bots.gitter
