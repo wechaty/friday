@@ -4,11 +4,11 @@ import {
 
 import {
   polyglotWechatyUserGroup,
-}                             from '../../../database/mod'
+}                             from '../../../database/mod.js'
 
 import {
   repeat,
-}                                       from './config'
+}                                       from './config.js'
 
 // const wechatyNonTsConfig: RoomInviterConfig = {
 //   password : [

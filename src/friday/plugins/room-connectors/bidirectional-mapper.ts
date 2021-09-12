@@ -3,8 +3,8 @@ import { Message }  from 'wechaty'
 //   mappers,
 // }                   from 'wechaty-plugin-contrib'
 
-import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex'
-import { senderDisplayName }   from './sender-display-name'
+import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
+import { senderDisplayName }   from './sender-display-name.js'
 
 const bidirectionalMapper = async (message: Message) => {
   // Drop all messages if not Text

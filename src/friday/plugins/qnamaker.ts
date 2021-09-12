@@ -7,12 +7,12 @@ import {
 // import {
 //   DEVELOPERS_ROOM_ID_LIST,
 //   MULTI_LANG_ROOM_ID,
-// }                                   from '../../database'
+// }                                   from '../../database.js'
 
 import {
   polyglotWechatyUserGroup,
   wechatyDevelopers,
-}                             from '../../database/mod'
+}                             from '../../database/mod.js'
 
 const skipMessage = [
   /^wechaty$/i,
@@ -35,17 +35,17 @@ const options = {
 export const configEnglish: WechatyQnAMakerConfig = {
   ...options,
   language        : ['english'],
-  endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY,
-  knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID,
-  resourceName    : process.env.WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME,
+  endpointKey     : process.env['WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY'],
+  knowledgeBaseId : process.env['WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID'],
+  resourceName    : process.env['WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME'],
 }
 
 export const configChinese: WechatyQnAMakerConfig = {
   ...options,
   language        : ['chinese'],
-  endpointKey     : process.env.WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE,
-  knowledgeBaseId : process.env.WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE,
-  resourceName    : process.env.WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CHINESE,
+  endpointKey     : process.env['WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CHINESE'],
+  knowledgeBaseId : process.env['WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CHINESE'],
+  resourceName    : process.env['WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CHINESE'],
 }
 
 const QnAMakerEnglishPlugin = WechatyQnAMaker(configEnglish)

@@ -6,9 +6,9 @@ import {
 
 // import moment from 'moment'
 
-// import { Chatops } from '../chatops'
+// import { Chatops } from '../chatops.js'
 
-// import { VoteManager } from '../managers/vote-manager'
+// import { VoteManager } from '../managers/vote-manager.js'
 
 // const BORN_TIME = Date.now()
 

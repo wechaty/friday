@@ -1,17 +1,17 @@
-import './config'
-
 import { log } from 'wechaty'
 
-import { getFriday }  from './friday/bot'
-import { getBots } from './bots/mod'
+import { VERSION } from './config.js'
 
-import { connectGitterFriday } from './cross-puppet'
-import { startStatusPageMetricUpdater } from './status-page/mod'
+import { getFriday }  from './friday/bot.js'
+import { getBots } from './bots/mod.js'
+
+import { connectGitterFriday } from './cross-puppet.js'
+import { startStatusPageMetricUpdater } from './status-page/mod.js'
 
 void getFriday
 
 async function main () {
-  log.verbose('main', 'main()')
+  log.verbose('main', 'main() v%s', VERSION)
 
   const friday = getFriday('friday')
   const bots   = getBots()

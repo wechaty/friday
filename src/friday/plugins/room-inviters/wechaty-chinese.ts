@@ -5,15 +5,15 @@ import {
 
 // import {
 //   DEVELOPERS_ROOM_ID_CHINESE,
-// }                             from '../../../database'
+// }                             from '../../../database.js'
 import {
   wechatyDevelopers,
-}                             from '../../../database/mod'
+}                             from '../../../database/mod.js'
 
 import {
   repeat,
   WECHATY_DEVELOPERS_ROOM_RULES_CHINESE,
-}                                         from './config'
+}                                         from './config.js'
 
 const wechatyChineseConfig: RoomInviterConfig = {
   password : [

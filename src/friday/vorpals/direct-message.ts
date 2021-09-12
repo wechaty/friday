@@ -8,7 +8,7 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-const hackerNews = require('vorpal-hacker-news')
+import hackerNews from 'vorpal-hacker-news'
 
 const dmConfig: WechatyVorpalConfig = {
   contact : true,

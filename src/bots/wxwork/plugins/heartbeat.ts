@@ -5,7 +5,7 @@ import {
 
 import {
   WXWORK_HEARTBEAT_ROOM_ID,
-}                                   from '../../../database'
+}                                   from '../../../database.js'
 
 const config: HeartbeatConfig = {
   emoji: {

@@ -9,7 +9,7 @@ import {
 
 import {
   VERSION,
-}             from '../config'
+}             from '../config.js'
 
 type Stopper = () => void
 

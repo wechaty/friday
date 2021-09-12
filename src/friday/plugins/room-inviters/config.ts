@@ -1,8 +1,8 @@
-import {
+import type {
   Contact,
   Room,
 }                     from 'wechaty'
-import {
+import type {
   talkers,
 }                     from 'wechaty-plugin-contrib'
 

@@ -1,13 +1,13 @@
 import {
   log,
 }                 from 'wechaty'
-import {
+import type {
   Vorpal,
   CommandContext,
   Args,
 }                           from 'wechaty-vorpal'
 
-import { gptApi } from './gpt-api'
+import { gptApi } from './gpt-api.js'
 
 function Gpt () {
   log.verbose('WechatyVorpalFriday', 'Gpt()')
@@ -32,7 +32,7 @@ async function gptAction (
 ): Promise<number> {
   log.verbose('WechatyVorpalFriday', 'gptAction("%s")', JSON.stringify(args))
 
-  const prefix: string = args.prefix as string
+  const prefix: string = args['prefix'] as string
   const options = args.options as any as GptOptions
 
   const normalizedOptions = {

@@ -1,7 +1,7 @@
-import { getCeibs } from './ceibs/bot'
-import { getWxWork } from './wxwork/bot'
-import { getHuanOa } from './huan-oa/bot'
-import { getGitter } from './gitter/bot'
+import { getCeibs } from './ceibs/bot.js'
+import { getWxWork } from './wxwork/bot.js'
+import { getHuanOa } from './huan-oa/bot.js'
+import { getGitter } from './gitter/bot.js'
 
 void getCeibs
 void getWxWork

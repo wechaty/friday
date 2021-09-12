@@ -3,9 +3,9 @@ import {
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
 
-// import { Chitchat }     from '../../ml/chitchat'
-// import { Gpt }          from '../../ml/gpt'
-import { Dreamily }     from '../../ml/dreamily'
+// import { Chitchat }     from '../../ml/chitchat.js'
+// import { Gpt }          from '../../ml/gpt.js'
+import { Dreamily }     from '../../ml/dreamily.js'
 
 const aiConfig: WechatyVorpalConfig = {
   contact : true,

@@ -1,4 +1,4 @@
-import { Message } from 'wechaty'
+import type { Message } from 'wechaty'
 
 function abbrRoomTopicByRegex (matcher: RegExp) {
   return async function abbrRoomTopic (message: Message): Promise<undefined | string> {

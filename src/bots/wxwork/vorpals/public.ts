@@ -1,4 +1,4 @@
-import { Room } from 'wechaty'
+import type { Room } from 'wechaty'
 import {
   WechatyVorpal,
   WechatyVorpalConfig,
@@ -12,7 +12,7 @@ import {
 
 import {
   WXWORK_FRIDAY_ROOM_ID,
-}                                 from '../../../database'
+}                                 from '../../../database.js'
 
 const isNotChatOpsRoom = (room: Room) => !([
   WXWORK_FRIDAY_ROOM_ID,

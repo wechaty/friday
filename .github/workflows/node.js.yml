@@ -12,22 +12,26 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        node-version: [ 12 ]
+        os:
+          - ubuntu-latest
+        node-version:
+          - 16
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
 
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+        cache: npm
+        cache-dependency-path: package.json
     - run: npm install
     - run: npm run build --if-present
     - run: |
         npm test
-        ./node_modules/.bin/ts-node tests/fixtures/smoke-testing.ts
+        npx cross-env NODE_OPTIONS='--no-warnings --loader=ts-node/esm' node tests/fixtures/smoke-testing.ts
       env:
         CI: true
         WECHATY_PLUGIN_INTERCOM_TOKEN: dummy_intercom_token

@@ -8,8 +8,8 @@ import {
   QRCodeTerminal,
 }                 from 'wechaty-plugin-contrib'
 
-import { HeartbeatPlugin } from './heartbeat'
-import { ChatOpsPlugin } from './chatops'
+import { HeartbeatPlugin } from './heartbeat.js'
+import { ChatOpsPlugin } from './chatops.js'
 
 const pluginList = [
   ChatOpsPlugin,

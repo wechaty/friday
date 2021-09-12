@@ -10,13 +10,13 @@ import {
   // DEVELOPERS_ROOM_ID_WXWORK,
   // DEVELOPERS_ROOM_ID_ENGLISH,
   // HEADQUARTERS_ROOM_ID,
-}                             from '../../../../../database'
+}                             from '../../../../../database.js'
 import {
   wechatyDevelopers,
-}                             from '../../../../../database/mod'
+}                             from '../../../../../database/mod.js'
 
-import { bidirectionalMapper }  from '../../bidirectional-mapper'
-import { unidirectionalMapper } from '../../unidirectional-mapper'
+import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
+import { unidirectionalMapper } from '../../unidirectional-mapper.js'
 
 const matchEnglish = matchers.languageMatcher('english')
 
@@ -44,7 +44,7 @@ const HomeToEnglishPlugin = SourceToTargetRoomConnector({
 
     const room = message.room()
     // if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
-    if (room && wechatyDevelopers.headquarters.includes(room.id)) {
+    if (room && wechatyDevelopers.homeHq.includes(room.id)) {
       return unidirectionalMapper(message)
     } else {
       return bidirectionalMapper(message)
@@ -52,7 +52,7 @@ const HomeToEnglishPlugin = SourceToTargetRoomConnector({
   },
   source: [
     ...wechatyDevelopers.home, // DEVELOPERS_ROOM_ID_LIST,
-    ...wechatyDevelopers.headquarters, // HEADQUARTERS_ROOM_ID,
+    ...wechatyDevelopers.homeHq, // HEADQUARTERS_ROOM_ID,
   ],
   target: [
     ...wechatyDevelopers.english, // DEVELOPERS_ROOM_ID_ENGLISH,

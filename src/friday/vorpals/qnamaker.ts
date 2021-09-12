@@ -7,14 +7,14 @@ import { Faq  }           from 'wechaty-qnamaker'
 import {
   configChinese,
   configEnglish,
-}                         from '../plugins/qnamaker'
+}                         from '../plugins/qnamaker.js'
 import {
   FRIDAY_ROOM_ID,
   // CONTRIBUTORS_ROOM_ID,
-}                         from '../../database'
+}                         from '../../database.js'
 import {
   wechatyDevelopers,
-}                         from '../../database/mod'
+}                         from '../../database/mod.js'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : false,

@@ -3,7 +3,7 @@ import {
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
 
-import { repeat } from './config'
+import { repeat } from './config.js'
 
 const aidogConfig: RoomInviterConfig = {
   password: [
