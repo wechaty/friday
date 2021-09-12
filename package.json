@@ -7,7 +7,7 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "tsc && tsc -p tsconfig.cjs.json",
+    "build": "tsc",
     "clean": "shx rm -fr dist/*",
     "dist": "npm-run-all clean build dist:copy",
     "dist:copy": "tsc && cp src/ml/clue-vocab.txt dist/src/ml",
@@ -63,6 +63,7 @@
     "@types/read-pkg-up": "^6.0.0",
     "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
+    "shx": "^0.3.3",
     "tstest": "^0.5.16",
     "wechaty-puppet-mock": "^0.28.3"
   },

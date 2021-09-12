@@ -1,6 +1,6 @@
-import './config'
-
 import { log } from 'wechaty'
+
+import { VERSION } from './config.js'
 
 import { getFriday }  from './friday/bot.js'
 import { getBots } from './bots/mod.js'
@@ -11,7 +11,7 @@ import { startStatusPageMetricUpdater } from './status-page/mod.js'
 void getFriday
 
 async function main () {
-  log.verbose('main', 'main()')
+  log.verbose('main', 'main() v%s', VERSION)
 
   const friday = getFriday('friday')
   const bots   = getBots()
