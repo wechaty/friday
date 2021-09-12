@@ -2,7 +2,7 @@
 
 set -e
 
-WECHATY_IMAGE=wechaty/wechaty:next
+WECHATY_IMAGE=wechaty/wechaty:0.68
 docker pull "$WECHATY_IMAGE"
 
 docker run \
