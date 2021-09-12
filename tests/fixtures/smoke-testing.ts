@@ -1,6 +1,6 @@
 import { getFriday } from '../../src/friday/bot.js'
 
-process.env.WECHATY_PUPPET = 'wechaty-puppet-mock'
+process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
 
 async function main () {
   const bot = getFriday('smoke-testing')
