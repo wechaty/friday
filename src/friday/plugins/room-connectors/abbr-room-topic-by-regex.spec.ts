@@ -28,7 +28,7 @@ test('abbrRoomTopicForAll()', async t => {
     ["Wechaty Developers' Home 8", 'Home 8'],
     ["Wechaty Developers' Home", 'Home'],
     ['Python Wechaty User Group', 'Python'],
-    ['Wechaty Broadcasting', 'Broadcasting'],
+    ['Wechaty Broadcast Station', 'Station'],
   ]
 
   for (const [topic, expected] of FIXTURES as [string, string][]) {
