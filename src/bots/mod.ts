@@ -15,7 +15,7 @@ const getBots = () => ({
    *  1. OA has a flash-store conflict issue
    *  2. wxwork is non-TLS
    */
-  // oa     : getHuanOa('Huan.OA'),
+  oa: getHuanOa('Huan.OA'),
   // wxwork : getWxWork('WxWork.BOT'),
 })
 

@@ -46,10 +46,10 @@
     "wechaty-intercom": "^0.4.4",
     "wechaty-plugin-contrib": "^0.15.6",
     "wechaty-puppet-gitter": "0.5.4",
-    "wechaty-puppet-official-account": "^0.7.5",
+    "wechaty-puppet-official-account": "^0.7.6",
     "wechaty-qnamaker": "^0.6.2",
-    "wechaty-vorpal": "^0.6.17",
-    "wechaty-vorpal-contrib": "^0.6.52",
+    "wechaty-vorpal": "^0.7.4",
+    "wechaty-vorpal-contrib": "^0.7.3",
     "wechaty-voteout": "^0.6.5"
   },
   "devDependencies": {
