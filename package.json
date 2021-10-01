@@ -58,7 +58,7 @@
     "@chatie/tsconfig": "^0.20.2",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
-    "@types/node-cron": "^2.0.4",
+    "@types/node-cron": "^3.0.0",
     "@types/raven": "^2.5.4",
     "@types/read-pkg-up": "^6.0.0",
     "cross-env": "^7.0.3",
