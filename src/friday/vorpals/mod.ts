@@ -1,10 +1,10 @@
-import * as contributors  from './contributors'
-import * as dm            from './direct-message'
-import * as friday        from './chatops-friday'
-import * as preangel      from './chatops-preangel'
-import * as ddr           from './chatops-ddr'
-import * as faq           from './qnamaker'
-import * as ai            from './ai'
+import * as contributors  from './contributors.js'
+import * as dm            from './direct-message.js'
+import * as friday        from './chatops-friday.js'
+import * as preangel      from './chatops-preangel.js'
+import * as ddr           from './chatops-ddr.js'
+import * as faq           from './qnamaker.js'
+import * as ai            from './ai.js'
 
 const vorpalPluginList = [
   ...Object.values(friday),

@@ -1,21 +1,21 @@
 /* eslint-disable sort-keys */
-import {
+import type {
   Message,
 }                   from 'wechaty'
 import {
   VoteOut,
   VoteOutConfig,
 }                   from 'wechaty-voteout'
-import {
+import type {
   talkers,
 }                   from 'wechaty-plugin-contrib'
 
 // import {
 //   MULTI_LANG_ROOM_ID,
-// }                           from '../../database'
+// }                           from '../../database.js'
 import {
   polyglotWechatyUserGroup,
-}                           from '../../database/mod'
+}                           from '../../database/mod.js'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',

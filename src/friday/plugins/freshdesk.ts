@@ -16,9 +16,9 @@ const config: WechatyFreshdeskConfig = {
   contact: true,
   room: false,
 
-  apiKey          : process.env.WECHATY_PLUGIN_FRESHDESK_API_KEY,
-  portalUrl       : process.env.WECHATY_PLUGIN_FRESHDESK_PORTAL_URL,
-  webhookProxyUrl : process.env.WECHATY_PLUGIN_FRESHDESK_WEBHOOK_PROXY_URL,
+  apiKey          : process.env['WECHATY_PLUGIN_FRESHDESK_API_KEY'],
+  portalUrl       : process.env['WECHATY_PLUGIN_FRESHDESK_PORTAL_URL'],
+  webhookProxyUrl : process.env['WECHATY_PLUGIN_FRESHDESK_WEBHOOK_PROXY_URL'],
 }
 
 export const FreshdeskPlugin = WechatyFreshdesk(config)

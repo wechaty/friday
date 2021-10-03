@@ -5,13 +5,13 @@ import {
 
 import {
   wechatyDevelopers,
-}                             from '../../../database/mod'
+}                             from '../../../database/mod.js'
 
 import {
   repeat,
   WECHATY_DEVELOPERS_ROOM_RULES,
   WECHATY_DEVELOPERS_ROOM_WELCOME,
-}                                       from './config'
+}                                       from './config.js'
 
 const wechatyEnglishConfig: RoomInviterConfig = {
   password : [

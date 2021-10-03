@@ -1,13 +1,13 @@
 import {
   log,
 }                 from 'wechaty'
-import {
+import type {
   Vorpal,
   CommandContext,
   Args,
 }                           from 'wechaty-vorpal'
 
-import { chatApi } from './chitchat-api'
+import { chatApi } from './chitchat-api.js'
 
 function Chitchat () {
   log.verbose('WechatyVorpalFriday', 'Chitchat()')
@@ -35,7 +35,7 @@ async function chitchatAction (
   const options = args.options as any as ChitchatOptions
   void options
 
-  const gossip: string = args.gossip as string
+  const gossip: string = args['gossip'] as string
   const reply = await chatApi(gossip)
   this.stdout.next(reply)
 

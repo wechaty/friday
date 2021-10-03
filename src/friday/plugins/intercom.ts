@@ -4,7 +4,7 @@ import {
   WechatyIntercomConfig,
 }                           from 'wechaty-intercom'
 
-// import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database'
+// import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database.js'
 
 const config: WechatyIntercomConfig = {
   mention: true,
@@ -18,8 +18,8 @@ const config: WechatyIntercomConfig = {
   ],
   room: false,
 
-  intercomToken   : process.env.WECHATY_PLUGIN_INTERCOM_TOKEN,
-  webhookProxyUrl : process.env.WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL,
+  intercomToken   : process.env['WECHATY_PLUGIN_INTERCOM_TOKEN'],
+  webhookProxyUrl : process.env['WECHATY_PLUGIN_INTERCOM_WEBHOOK_PROXY_URL'],
 }
 
 export const IntercomPlugin = WechatyIntercom(config)

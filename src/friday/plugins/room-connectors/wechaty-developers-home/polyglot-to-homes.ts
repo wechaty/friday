@@ -5,9 +5,9 @@ import {
 import {
   polyglotWechatyUserGroup,
   wechatyDevelopers,
-}                             from '../../../../database/mod'
+}                             from '../../../../database/mod.js'
 
-import { bidirectionalMapper }           from '../bidirectional-mapper'
+import { bidirectionalMapper }           from '../bidirectional-mapper.js'
 
 /**
  *
@@ -20,7 +20,7 @@ const SourceToTargetPlugin = SourceToTargetRoomConnector({
     ...Object.values(polyglotWechatyUserGroup).flat(),
   ],
   target: [
-    ...wechatyDevelopers.headquarters,
+    ...wechatyDevelopers.homeHq,
     ...wechatyDevelopers.home,
   ],
 })

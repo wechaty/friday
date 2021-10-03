@@ -6,7 +6,7 @@
  */
 const chair = [
   '19244336373@chatroom',  // BOT Friday Club - BOT5
-]
+] as const
 
 /**
  * Huan(202108): club[0] must be the latest club room
@@ -16,7 +16,7 @@ const member = [
   '18825797159@chatroom',  // Bot Friday Open Forum - BFOF 2021
   '18095776930@chatroom',  // Bot Friday Open Forum - Year 2020
   '17301175542@chatroom',  // Bot Friday Open Forum - Year 2019
-]
+] as const
 
 export {
   chair,

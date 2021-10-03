@@ -1,4 +1,8 @@
-const headquarters = [
+const broadcastStation = [
+  '20504723205@chatroom', // Wechaty Broadcasting
+]
+
+const homeHq = [
   '17275396976@chatroom', // Wechaty Developers' HQ - WDHQ
 ]
 
@@ -35,11 +39,12 @@ const summer = [
 ]
 
 export {
-  headquarters,
-  english,
   chinese,
-  summer,
   contributors,
+  english,
+  broadcastStation,
   home,
+  homeHq,
   monitor,
+  summer,
 }

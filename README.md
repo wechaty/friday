@@ -3,6 +3,7 @@
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://wechaty.js.org)
 [![Node.js CI](https://github.com/wechaty/friday/workflows/Node.js%20CI/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3A%22Node.js+CI%22)
 [![Docker](https://github.com/wechaty/friday/workflows/Docker/badge.svg)](https://github.com/wechaty/friday/actions?query=workflow%3ADocker)
+[![ES Modules](https://img.shields.io/badge/ES-Modules-brightgreen)](https://github.com/Chatie/tsconfig/issues/16)
 
 Friday Bot is designed for serving the Wechaty community purpose.
 
@@ -29,7 +30,11 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
-### v0.9 (Aug 22, 2020) On Gitter!
+### master v0.11
+
+1. ES Module support
+
+### v0.9 (Aug 22, 2020) On Gitter
 
 [Gitter.im](https://gitter.im/wechaty/wechaty) synced with WeChat rooms!
 

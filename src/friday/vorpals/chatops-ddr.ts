@@ -10,7 +10,7 @@ import {
   DDR_ROOM_ID,
   MIXED_DDR_ROOM_ID,
   // DDR2_CHATOPS_ROOM_WXWORK_ID,
-}                         from '../../database'
+}                         from '../../database.js'
 
 const donutConfig: WechatyVorpalConfig = {
   contact : false,

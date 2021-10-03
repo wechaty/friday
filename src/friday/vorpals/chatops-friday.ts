@@ -16,7 +16,7 @@ import {
 
 import {
   FRIDAY_ROOM_ID,
-}                         from '../../database'
+}                         from '../../database.js'
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,

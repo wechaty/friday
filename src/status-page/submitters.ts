@@ -1,12 +1,12 @@
-import { statusPageMetricSubmitter } from './metric-submitter'
+import { statusPageMetricSubmitter } from './metric-submitter.js'
 
-const apiKey          = process.env.STATUS_PAGE_API_KEY
-const pageId          = process.env.STATUS_PAGE_PAGE_ID
+const apiKey          = process.env['STATUS_PAGE_API_KEY']
+const pageId          = process.env['STATUS_PAGE_PAGE_ID']
 
 const metricIds = {
-  members          : process.env.STATUS_PAGE_METRIC_ID_MEMBERS,
-  receivedMessages : process.env.STATUS_PAGE_METRIC_ID_RECEIVED_MESSAGES,
-  sentMessages     : process.env.STATUS_PAGE_METRIC_ID_SENT_MESSAGES,
+  members          : process.env['STATUS_PAGE_METRIC_ID_MEMBERS'],
+  receivedMessages : process.env['STATUS_PAGE_METRIC_ID_RECEIVED_MESSAGES'],
+  sentMessages     : process.env['STATUS_PAGE_METRIC_ID_SENT_MESSAGES'],
 }
 
 if (!apiKey || !pageId) {

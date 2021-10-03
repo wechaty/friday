@@ -4,15 +4,16 @@ import {
   Message,
 }             from 'wechaty'
 
-import { startWeb } from '../web/setup-web'
-import { WEB_PORT } from '../config'
+import { startWeb } from '../web/setup-web.js'
+import { WEB_PORT } from '../config.js'
 
-import { pluginList }       from './plugins/mod'
-import { vorpalPluginList } from './vorpals/mod'
+import { pluginList }       from './plugins/mod.js'
+import { vorpalPluginList } from './vorpals/mod.js'
 
-import { getMemory }   from './get-memory'
-import { setupFinis }  from './setup-finis'
-import { getIoClient } from './get-io-client'
+import { getMemory }   from './get-memory.js'
+import { setupFinis }  from './setup-finis.js'
+import { getIoClient } from './get-io-client.js'
+import { setHandlers } from './set-handlers.js'
 
 let bot: undefined | Wechaty
 
@@ -25,6 +26,8 @@ function getFriday (name: string): Wechaty {
     memory,
     name,
   })
+
+  setHandlers(wechaty)
 
   // void pluginList
   // void vorpalPluginList

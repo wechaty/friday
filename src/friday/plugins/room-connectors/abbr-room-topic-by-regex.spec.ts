@@ -19,29 +19,26 @@
  */
 
 import { test } from 'tstest'
+import type { Message } from 'wechaty'
 
-import { getFriday }  from '../src/friday/bot.js'
+import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
 
-// import { spy } from 'sinon'
+test('abbrRoomTopicForAll()', async t => {
+  const FIXTURES = [
+    ["Wechaty Developers' Home 8", 'Home 8'],
+    ["Wechaty Developers' Home", 'Home'],
+    ['Python Wechaty User Group', 'Python'],
+    ['Wechaty Broadcast Station', 'Station'],
+    ['BOT5 Club Open Forum - BFOF 2021', 'BOT5'],
+    ['BOT Friday Club - BOT5', 'BOT5'],
+  ]
 
-test('smoke testing with perfect restart', async t => {
-  const ORIGINAL_WECHATY_PUPPET = process.env['WECHATY_PUPPET']
-
-  process.env['WECHATY_TOKEN'] = 'mock_token'
-  process.env['WECHATY_PUPPET_SERVER_PORT'] = '18788'
-
-  process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
-
-  const wechaty = getFriday('test')
-  t.ok(wechaty, 'should instantiated a wecahty successfully')
-
-  await wechaty.start()
-
-  // Error: WebSocket was closed before the connection was established
-  await new Promise(resolve => setTimeout(resolve, 3000))
-
-  await wechaty.stop()
-  t.pass('should stop-ed wecahty successfully')
-
-  process.env['WECHATY_PUPPET'] = ORIGINAL_WECHATY_PUPPET
+  for (const [topic, expected] of FIXTURES as [string, string][]) {
+    const actual = await abbrRoomTopicForAll({
+      room: () => ({
+        topic: () => topic,
+      }),
+    } as any as Message)
+    t.equal(actual, expected, `should convert "${topic}" => "${expected}"`)
+  }
 })

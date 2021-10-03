@@ -20,28 +20,9 @@
 
 import { test } from 'tstest'
 
-import { getFriday }  from '../src/friday/bot.js'
+import { VERSION } from './version.js'
 
-// import { spy } from 'sinon'
-
-test('smoke testing with perfect restart', async t => {
-  const ORIGINAL_WECHATY_PUPPET = process.env['WECHATY_PUPPET']
-
-  process.env['WECHATY_TOKEN'] = 'mock_token'
-  process.env['WECHATY_PUPPET_SERVER_PORT'] = '18788'
-
-  process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
-
-  const wechaty = getFriday('test')
-  t.ok(wechaty, 'should instantiated a wecahty successfully')
-
-  await wechaty.start()
-
-  // Error: WebSocket was closed before the connection was established
-  await new Promise(resolve => setTimeout(resolve, 3000))
-
-  await wechaty.stop()
-  t.pass('should stop-ed wecahty successfully')
-
-  process.env['WECHATY_PUPPET'] = ORIGINAL_WECHATY_PUPPET
+test('version', async t => {
+  t.ok(VERSION, 'should have VERSION')
+  t.ok(VERSION.length > 0, 'should not be empty string')
 })

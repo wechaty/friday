@@ -3,15 +3,15 @@ import {
   log,
 }               from 'wechaty'
 
-import { countRoomMembers } from './count-room-members'
+import { countRoomMembers } from './count-room-members.js'
 
-import { MetricBots } from './types'
+import type { MetricBots } from './types.js'
 
 import {
   submitMessagesSentCount,
   submitMessagesReceivedCount,
   submitMembersCount,
-}                               from './submitters'
+}                               from './submitters.js'
 
 const metrics = {
   mo: 0,

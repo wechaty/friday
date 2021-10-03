@@ -1,12 +1,14 @@
-import { VERSION } from './version'
+/// <reference path="./typings.d.ts" />
+import { VERSION } from './version.js'
 
-require('dotenv').config()
+// https://github.com/motdotla/dotenv/issues/89#issuecomment-596083057
+import 'dotenv/config.js'
 
 /**
  * Env Vars
  */
-const WEB_PORT = process.env.WEB_PORT
-  ? parseInt(process.env.WEB_PORT)
+const WEB_PORT = process.env['WEB_PORT']
+  ? parseInt(process.env['WEB_PORT'])
   : 8788
 
 export {

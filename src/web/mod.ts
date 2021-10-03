@@ -1,1 +1,1 @@
-export { startWeb } from './setup-web'
+export { startWeb } from './setup-web.js'

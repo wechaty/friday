@@ -4,7 +4,7 @@ import {
 }                        from 'wechaty-vorpal'
 import { Faq  }           from 'wechaty-qnamaker'
 
-import { configCeibs } from '../plugins/qnamaker'
+import { configCeibs } from '../plugins/qnamaker.js'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : true,

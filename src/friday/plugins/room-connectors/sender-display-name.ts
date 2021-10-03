@@ -1,4 +1,4 @@
-import { Message } from 'wechaty'
+import type { Message } from 'wechaty'
 
 const senderDisplayName = async (message: Message) => {
   const talker = message.talker()
