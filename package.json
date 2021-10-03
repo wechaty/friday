@@ -17,8 +17,8 @@
     "ts": "cross-env NODE_OPTIONS='--no-warnings --loader=ts-node/esm' node src/main.ts",
     "start": "node dist/src/main.js",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "cross-env NODE_OPTIONS='--no-warnings --loader=ts-node/esm' tap \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
-    "lint:es": "eslint --ignore-pattern node_modules/ --ignore-pattern fixtures/ '{bin,examples,src,scripts,tests}/**/*.ts'"
+    "test:unit": "cross-env NODE_OPTIONS=\"--no-warnings --loader=ts-node/esm\" tap \"src/**/*.spec.ts\" \"src/*.spec.ts\" \"tests/*.spec.ts\" \"tests/**/*.spec.ts\"",
+    "lint:es": "eslint --ignore-pattern node_modules/ --ignore-pattern fixtures/ \"{bin,examples,src,scripts,tests}/**/*.ts\""
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/wechaty/friday#readme",
   "dependencies": {
-    "axios": "^0.21.4",
+    "axios": "^0.22.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "finis": "^0.4.4",
@@ -58,7 +58,7 @@
     "@chatie/tsconfig": "^0.20.2",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
-    "@types/node-cron": "^2.0.4",
+    "@types/node-cron": "^3.0.0",
     "@types/raven": "^2.5.4",
     "@types/read-pkg-up": "^6.0.0",
     "cross-env": "^7.0.3",
