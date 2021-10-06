@@ -66,6 +66,15 @@ for (const language of (
       /^\s*javascript\s*(wechaty)*\s*$/i,
     )
   }
+  /**
+   * Alias gRPC -> Puppet
+   */
+  if (language === 'grpc') {
+    configObj.password.push(
+      /^\s*puppet\s*(wechaty)*\s*$/i,
+    )
+  }
+
   const InviterPlugin = RoomInviter(configObj)
   InviterPluginList.push(InviterPlugin)
 }

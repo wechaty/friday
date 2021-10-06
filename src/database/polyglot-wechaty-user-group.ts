@@ -36,9 +36,14 @@ const typescript = [
   '21148500489@chatroom', // TypeScript Wechaty User Group
 ]
 
+const grpc = [
+  '18000948607@chatroom', // Puppet Wechaty User Group
+]
+
 export {
   dotnet,
   go,
+  grpc,
   java,
   openapi,
   php,

@@ -1,11 +1,5 @@
 import { Message }  from 'wechaty'
-// import {
-//   mappers,
-// }                   from 'wechaty-plugin-contrib'
 
-// import {
-//   HEADQUARTERS_ROOM_ID,
-// }                           from '../../../database.js'
 import {
   wechatyDevelopers,
 }                           from '../../../database/mod.js'
@@ -13,6 +7,10 @@ import {
 import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
 import { senderDisplayName }              from './sender-display-name.js'
 
+const skipRoomList = [
+  ...wechatyDevelopers.homeHq,
+  ...wechatyDevelopers.broadcastStation,
+]
 /**
  *
  * Message Mapper for Room Connectors
@@ -39,7 +37,7 @@ const unidirectionalMapper = async (message: Message) => {
          * If message is not sent from Headquarters Room,
          * then we add a sender information for the destination rooms.
          */
-        if (room && !wechatyDevelopers.homeHq.includes(room.id)) {
+        if (room && !skipRoomList.includes(room.id)) {
           const type = Message.Type[message.type()]
           messageList.unshift(`${prefix}: ${type}`)
         }

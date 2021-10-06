@@ -17,7 +17,9 @@ async function chatApi (gossip: string): Promise<string> {
     }],
   }
 
-  const ret = await Axios.post(
+  const ret = await Axios.post<typeof json & {
+    predictions?: any
+  }>(
     'http://dev.chatie.io:8501/v1/models/chat:predict',
     json,
   )

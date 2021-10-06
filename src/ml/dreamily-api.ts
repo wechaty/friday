@@ -37,7 +37,9 @@ async function dreamilyApi (options: DreamilyApiOptions): Promise<string> {
   }
   // console.info('payload:', payload)
 
-  const response = await Axios.post(
+  const response = await Axios.post<typeof payload & {
+    data?: any
+  }>(
     DREAMILY_ENDPOINT + UID + '/novel_ai',
     payload,
   )
@@ -76,7 +78,9 @@ async function xidResult (payload: XidPayload): Promise<XidResult[]> {
 
     // 获取结果
 
-    const response = await Axios.post(
+    const response = await Axios.post<typeof payload & {
+      data?: any
+    }>(
       DREAMILY_ENDPOINT + UID + '/novel_dream_loop',
       payload,
     )
