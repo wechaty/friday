@@ -53,7 +53,7 @@
     "wechaty-voteout": "^0.6.5"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^0.14.1",
+    "@chatie/eslint-config": "^0.16.2",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^0.20.2",
     "@types/dotenv": "^8.2.0",
