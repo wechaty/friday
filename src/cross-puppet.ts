@@ -72,8 +72,8 @@ function connectGitterFriday (args: {
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
 
-      const prefixMdWechatName = prefixMd()(name)
-      const prefixStrWechatName = prefixStr()(name)
+      const prefixMdWechatName = prefixMd('WeChat')(name)
+      const prefixStrWechatName = prefixStr('WeChat')(name)
 
       switch (msg.type()) {
         case Message.Type.Text: {
