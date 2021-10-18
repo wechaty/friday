@@ -47,7 +47,7 @@
     "wechaty-plugin-contrib": "^0.19.4",
     "wechaty-puppet-gitter": "^0.7",
     "wechaty-puppet-official-account": "^0.9",
-    "wechaty-puppet-oicq": "^0.3.3",
+    "wechaty-puppet-oicq": "^0.3.5",
     "wechaty-qnamaker": "^0.7.2",
     "wechaty-vorpal": "^0.9",
     "wechaty-vorpal-contrib": "^0.9",
