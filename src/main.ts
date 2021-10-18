@@ -43,8 +43,8 @@ async function main () {
    */
   await Promise.all(
     botList.map(
-      bot => bot.state.ready('off')
-    )
+      bot => (bot as any).state.ready('off'),
+    ),
   )
 
   return 0

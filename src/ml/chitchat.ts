@@ -28,7 +28,7 @@ interface ChitchatOptions {
 
 async function chitchatAction (
   this: CommandContext,
-  args: Args
+  args: Args,
 ): Promise<number> {
   log.verbose('WechatyVorpalFriday', 'chitchatAction("%s")', JSON.stringify(args))
 

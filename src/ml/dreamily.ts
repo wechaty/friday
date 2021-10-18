@@ -32,7 +32,7 @@ interface DreamilyOptions {
 
 async function dreamilyAction (
   this: CommandContext,
-  args: Args
+  args: Args,
 ): Promise<number> {
   log.verbose('WechatyVorpalFriday', 'dreamilyAction("%s")', JSON.stringify(args))
 

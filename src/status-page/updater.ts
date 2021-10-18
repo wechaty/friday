@@ -39,6 +39,7 @@ function startStatusPageMetricUpdater (
     console.info('metrics', metrics)
   }, 5 * 1000)
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   setInterval(async () => {
     /**
      * Count MO / MT

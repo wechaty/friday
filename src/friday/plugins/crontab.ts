@@ -29,7 +29,7 @@ const CRON_CONFIG: CRONConfig[] = [
  */
 export async function crontab () {
   for (const cronConfig of CRON_CONFIG) {
-    cron.schedule(cronConfig.time, async () => {
+    cron.schedule(cronConfig.time, () => {
       // await Chatops.instance().say(cronConfig.reply)
     })
   }

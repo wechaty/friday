@@ -28,7 +28,7 @@ interface GptOptions {
 
 async function gptAction (
   this: CommandContext,
-  args: Args
+  args: Args,
 ): Promise<number> {
   log.verbose('WechatyVorpalFriday', 'gptAction("%s")', JSON.stringify(args))
 

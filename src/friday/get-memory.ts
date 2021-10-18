@@ -3,7 +3,7 @@ import {
   log,
 }                 from 'wechaty'
 
-export let memory: MemoryCard
+export let memory: undefined | MemoryCard
 
 export function getMemory (name: string): MemoryCard {
   log.verbose('getMemory', 'getMemory(%s)', name)
