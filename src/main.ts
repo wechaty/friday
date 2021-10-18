@@ -28,9 +28,12 @@ async function main () {
   }
 
   const gitter = bots.gitter
+  const qq = bots.qq
+
   connectGitterFriday({
     friday,
     gitter,
+    qq,
   })
 
   startStatusPageMetricUpdater({

@@ -1,7 +1,8 @@
-import { getCeibs } from './ceibs/bot.js'
-import { getWxWork } from './wxwork/bot.js'
-import { getHuanOa } from './huan-oa/bot.js'
-import { getGitter } from './gitter/bot.js'
+import { getCeibs }   from './ceibs/bot.js'
+import { getWxWork }  from './wxwork/bot.js'
+import { getHuanOa }  from './huan-oa/bot.js'
+import { getGitter }  from './gitter/bot.js'
+import { getQQ }      from './qq/bot.js'
 
 void getCeibs
 void getWxWork
@@ -17,6 +18,7 @@ const getBots = () => ({
    */
   oa: getHuanOa('Huan.OA'),
   // wxwork : getWxWork('WxWork.BOT'),
+  qq: getQQ('QQ'),
 })
 
 export { getBots }

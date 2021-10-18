@@ -3,16 +3,17 @@ import {
   log,
 }             from 'wechaty'
 
-import { PuppetGitter }  from 'wechaty-puppet-gitter'
+import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { pluginList }       from './plugins/mod.js'
 import { vorpalPluginList } from './vorpals/mod.js'
 
-function getGitter (name: string) {
-  log.verbose('getWechaty', 'getGitter(%s)', name)
+function getQQ (name: string) {
+  log.verbose('getWechaty', 'getQQ(%s)', name)
 
-  const puppet = new PuppetGitter({
-    token: process.env['WECHATY_PUPPET_GITTER_TOKEN'],
+  const qq = Number(process.env['WECHATY_PUPPET_OICQ_QQ'])
+  const puppet = new PuppetOICQ({
+    qq,
   })
 
   const bot = new Wechaty({
@@ -31,4 +32,4 @@ function getGitter (name: string) {
   return bot
 }
 
-export { getGitter }
+export { getQQ }

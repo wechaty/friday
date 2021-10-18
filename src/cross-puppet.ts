@@ -6,6 +6,7 @@ import {
 
 import {
   GITTER_WECHATY_ROOM_ID,
+  QQ_WECHATY_ROOM_ID,
 }                         from './database.js'
 
 import {
@@ -15,12 +16,14 @@ import {
 }                         from './database/mod.js'
 
 function connectGitterFriday (args: {
-  friday: Wechaty,
-  gitter: Wechaty,
+  friday : Wechaty,
+  gitter : Wechaty,
+  qq     : Wechaty,
 }): void {
-  const { friday, gitter } = args
+  const { friday, gitter, qq } = args
 
-  const gitterRoom = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
+  const gitterRoom  = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
+  const qqRoom      = qq.Room.load(QQ_WECHATY_ROOM_ID)
 
   const wechatRoomList = [
     ...wechatyDevelopers.homeHq,
@@ -34,7 +37,7 @@ function connectGitterFriday (args: {
     }
   }
 
-  const forwardWechatToGitter = (roomId: string) => {
+  const forwardWechatToGitterQQ = (roomId: string) => {
     friday.on('message', async (msg: Message) => {
       const room = msg.room()
 
@@ -55,6 +58,7 @@ function connectGitterFriday (args: {
       switch (msg.type()) {
         case Message.Type.Text: {
           await gitterRoom.say(prefixText + msg.text())
+          await qqRoom.say(prefixText + msg.text())
           break
         }
 
@@ -72,7 +76,7 @@ function connectGitterFriday (args: {
     })
   }
 
-  const forwardGitterToWechat = () => {
+  const forwardGitterToWechatQQ = () => {
     gitterRoom.on('message', async msg => {
       if (msg.self()) { return }
 
@@ -87,12 +91,51 @@ function connectGitterFriday (args: {
       switch (msg.type()) {
         case Message.Type.Text: {
           await wechatRoomSay(prefixText + msg.text())
+          await qqRoom.say(prefixText + msg.text())
           break
         }
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await wechatRoomSay(fileBox)
           await wechatRoomSay(prefixText)
+          break
+        }
+
+        default: {
+          break
+        }
+      }
+
+    })
+  }
+
+  const forwardQQToWechatGitter = () => {
+    qqRoom.on('message', async msg => {
+      if (msg.self()) { return }
+
+      const name = msg.talker().name()
+
+      const prefixText = [
+        '[',
+        name,
+        ' @ QQ]: ',
+      ].join('')
+
+      switch (msg.type()) {
+        case Message.Type.Text: {
+          await wechatRoomSay(prefixText + msg.text())
+          await gitterRoom.say(prefixText + msg.text())
+          break
+        }
+        case Message.Type.Image: {
+          const fileBox = await msg.toFileBox()
+
+          await wechatRoomSay(fileBox)
+          await wechatRoomSay(prefixText)
+
+          await gitterRoom.say(fileBox)
+          await gitterRoom.say(prefixText)
+
           break
         }
 
@@ -120,15 +163,17 @@ function connectGitterFriday (args: {
       */
     ...bot5Club.member,
     ...bot5Club.chair,
-  ].forEach(forwardWechatToGitter)
+  ].forEach(forwardWechatToGitterQQ)
 
   /**
    * Huan(20201130): Friday.BOT has been disabled by Tencent
    *  See: https://github.com/wechaty/friday/issues/62
    * Huan(20201203): Resolved
    */
-  forwardGitterToWechat()
-  void forwardGitterToWechat
+  // void forwardGitterToWechatQQ
+  forwardGitterToWechatQQ()
+
+  forwardQQToWechatGitter()
 }
 
 export {
