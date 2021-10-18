@@ -2,6 +2,7 @@ import {
   Wechaty,
   Message,
   FileBox,
+  log,
 }             from 'wechaty'
 
 import {
@@ -37,6 +38,18 @@ function connectGitterFriday (args: {
     }
   }
 
+  const prefixStrText = (name: string) => [
+    '[',
+    name,
+    ' @ Gitter]: ',
+  ].join('')
+
+  const prefixMdText = (name: string) => [
+    '`',
+    name,
+    '`: ',
+  ].join('')
+
   const forwardWechatToGitterQQ = (roomId: string) => {
     friday.on('message', async (msg: Message) => {
       const room = msg.room()
@@ -49,23 +62,17 @@ function connectGitterFriday (args: {
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
 
-      const prefixText = [
-        '`',
-        name,
-        '`: ',
-      ].join('')
-
       switch (msg.type()) {
         case Message.Type.Text: {
-          await gitterRoom.say(prefixText + msg.text())
-          await qqRoom.say(prefixText + msg.text())
+          await gitterRoom.say(prefixMdText(name) + msg.text())
+          await qqRoom.say(prefixStrText(name) + msg.text())
           break
         }
 
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await gitterRoom.say(fileBox)
-          await gitterRoom.say(prefixText)
+          await gitterRoom.say(prefixMdText(name))
           break
         }
 
@@ -82,22 +89,16 @@ function connectGitterFriday (args: {
 
       const name = msg.talker().name()
 
-      const prefixText = [
-        '[',
-        name,
-        ' @ Gitter]: ',
-      ].join('')
-
       switch (msg.type()) {
         case Message.Type.Text: {
-          await wechatRoomSay(prefixText + msg.text())
-          await qqRoom.say(prefixText + msg.text())
+          await wechatRoomSay(prefixStrText(name) + msg.text())
+          await qqRoom.say(prefixStrText(name) + msg.text())
           break
         }
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await wechatRoomSay(fileBox)
-          await wechatRoomSay(prefixText)
+          await wechatRoomSay(prefixStrText(name))
           break
         }
 
@@ -110,7 +111,11 @@ function connectGitterFriday (args: {
   }
 
   const forwardQQToWechatGitter = () => {
+    log.verbose('cross-puppet', 'forwardQQToWechatGitter()')
+
     qqRoom.on('message', async msg => {
+      log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) %s', msg)
+
       if (msg.self()) { return }
 
       const name = msg.talker().name()
@@ -121,8 +126,12 @@ function connectGitterFriday (args: {
         ' @ QQ]: ',
       ].join('')
 
+      log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) type %s', msg.type())
+
       switch (msg.type()) {
         case Message.Type.Text: {
+          log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) forwarding message: "%s"', msg.text())
+
           await wechatRoomSay(prefixText + msg.text())
           await gitterRoom.say(prefixText + msg.text())
           break
@@ -140,6 +149,8 @@ function connectGitterFriday (args: {
         }
 
         default: {
+          log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) unknown message type: "%s"', msg.type())
+
           break
         }
       }
