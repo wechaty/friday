@@ -38,17 +38,27 @@ function connectGitterFriday (args: {
     }
   }
 
-  const prefixStrText = (name: string) => [
-    '[',
-    name,
-    ' @ Gitter]: ',
-  ].join('')
-
-  const prefixMdText = (name: string) => [
-    '`',
-    name,
-    '`: ',
-  ].join('')
+  const prefixStr = (from?: string) => (name: string) => {
+    return from
+      ? [
+          '[',
+          name,
+          ` @ ${from}`,
+          ']: ',
+        ].join('')
+      : `[${name}]: `
+  }
+  const prefixMd = (from?: string) => (name: string) => {
+    return from
+      ? [
+          '`',
+          name,
+          ' @ ',
+          from,
+          '`: ',
+        ].join('')
+      : '`' + name + '`: '
+  }
 
   const forwardWechatToGitterQQ = (roomId: string) => {
     friday.on('message', async (msg: Message) => {
@@ -62,17 +72,20 @@ function connectGitterFriday (args: {
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
 
+      const prefixMdWechatName = prefixMd()(name)
+      const prefixStrWechatName = prefixStr()(name)
+
       switch (msg.type()) {
         case Message.Type.Text: {
-          await gitterRoom.say(prefixMdText(name) + msg.text())
-          await qqRoom.say(prefixStrText(name) + msg.text())
+          await gitterRoom.say(prefixMdWechatName + msg.text())
+          await qqRoom.say(prefixStrWechatName + msg.text())
           break
         }
 
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await gitterRoom.say(fileBox)
-          await gitterRoom.say(prefixMdText(name))
+          await gitterRoom.say(prefixMdWechatName)
           break
         }
 
@@ -88,17 +101,18 @@ function connectGitterFriday (args: {
       if (msg.self()) { return }
 
       const name = msg.talker().name()
+      const prefixStrGitterName = prefixStr('Gitter')(name)
 
       switch (msg.type()) {
         case Message.Type.Text: {
-          await wechatRoomSay(prefixStrText(name) + msg.text())
-          await qqRoom.say(prefixStrText(name) + msg.text())
+          await wechatRoomSay(prefixStrGitterName + msg.text())
+          await qqRoom.say(prefixStrGitterName + msg.text())
           break
         }
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
           await wechatRoomSay(fileBox)
-          await wechatRoomSay(prefixStrText(name))
+          await wechatRoomSay(prefixStrGitterName)
           break
         }
 
@@ -119,12 +133,8 @@ function connectGitterFriday (args: {
       if (msg.self()) { return }
 
       const name = msg.talker().name()
-
-      const prefixText = [
-        '[',
-        name,
-        ' @ QQ]: ',
-      ].join('')
+      const prefixMdQQName  = prefixMd('QQ')(name)
+      const prefixStrQQName = prefixStr('QQ')(name)
 
       log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) type %s', msg.type())
 
@@ -132,18 +142,18 @@ function connectGitterFriday (args: {
         case Message.Type.Text: {
           log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) forwarding message: "%s"', msg.text())
 
-          await wechatRoomSay(prefixText + msg.text())
-          await gitterRoom.say(prefixText + msg.text())
+          await wechatRoomSay(prefixStrQQName + msg.text())
+          await gitterRoom.say(prefixMdQQName + msg.text())
           break
         }
         case Message.Type.Image: {
           const fileBox = await msg.toFileBox()
 
           await wechatRoomSay(fileBox)
-          await wechatRoomSay(prefixText)
+          await wechatRoomSay(prefixStrQQName)
 
           await gitterRoom.say(fileBox)
-          await gitterRoom.say(prefixText)
+          await gitterRoom.say(prefixMdQQName)
 
           break
         }
