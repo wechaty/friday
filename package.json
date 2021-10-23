@@ -41,7 +41,7 @@
     "read-pkg-up": "~9",
     "sheet-db": "^1.0.1",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.77.20",
+    "wechaty": "^0.77.22",
     "wechaty-freshdesk": "^1",
     "wechaty-intercom": "^1",
     "wechaty-plugin-contrib": "^1.0.9",
@@ -51,7 +51,7 @@
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.0.3",
     "wechaty-vorpal-contrib": "^1.0.2",
-    "wechaty-voteout": "^0.6.5"
+    "wechaty-voteout": "^1.0.3"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^1.0.2",
