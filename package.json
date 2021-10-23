@@ -41,7 +41,7 @@
     "read-pkg-up": "~9",
     "sheet-db": "^1.0.1",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.77.22",
+    "wechaty": "^0.77.24",
     "wechaty-freshdesk": "^1",
     "wechaty-intercom": "^1",
     "wechaty-plugin-contrib": "^1.0.9",
