@@ -25,7 +25,7 @@ export async function setupFinis (wechaty: Wechaty): Promise<void> {
   }
   bot = wechaty
 
-  bot.on('login',   _ => wechaty.Room.load(FRIDAY_ROOM_ID).say(LOGIN_ANNOUNCEMENT))
+  bot.on('login',   wechaty.wrapAsync(() => wechaty.Room.load(FRIDAY_ROOM_ID).say(LOGIN_ANNOUNCEMENT)))
   bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
 }
 

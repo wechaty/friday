@@ -1,5 +1,5 @@
 import {
-  Wechaty,
+  WechatyBuilder,
   log,
 }             from 'wechaty'
 
@@ -15,10 +15,10 @@ function getGitter (name: string) {
     token: process.env['WECHATY_PUPPET_GITTER_TOKEN'],
   })
 
-  const bot = new Wechaty({
+  const bot = new WechatyBuilder().options({
     name,
     puppet,
-  })
+  }).build()
 
   void pluginList
   void vorpalPluginList

@@ -1,4 +1,7 @@
-import { Message }  from 'wechaty'
+import {
+  Message,
+  type,
+}             from 'wechaty'
 
 import {
   wechatyDevelopers,
@@ -25,7 +28,7 @@ const unidirectionalMapper = async (message: Message) => {
   const messageList: (string | Message)[] = []
 
   switch (message.type()) {
-    case Message.Type.Text:
+    case type.Message.Text:
       messageList.push(`${prefix}: ${message.text()}`)
       break
 
@@ -38,8 +41,8 @@ const unidirectionalMapper = async (message: Message) => {
          * then we add a sender information for the destination rooms.
          */
         if (room && !skipRoomList.includes(room.id)) {
-          const type = Message.Type[message.type()]
-          messageList.unshift(`${prefix}: ${type}`)
+          const msgType = type.Message[message.type()]
+          messageList.unshift(`${prefix}: ${msgType}`)
         }
       }
       break

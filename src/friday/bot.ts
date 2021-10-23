@@ -1,5 +1,6 @@
 import {
   Wechaty,
+  WechatyBuilder,
   log,
   Message,
 }             from 'wechaty'
@@ -22,10 +23,10 @@ function getFriday (name: string): Wechaty {
 
   const memory = getMemory(name)
 
-  const wechaty = new Wechaty({
+  const wechaty = new WechatyBuilder().options({
     memory,
     name,
-  })
+  }).build()
 
   setHandlers(wechaty)
 

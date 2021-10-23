@@ -1,4 +1,7 @@
-import { Message }  from 'wechaty'
+import {
+  Message,
+  type,
+}             from 'wechaty'
 // import {
 //   mappers,
 // }                   from 'wechaty-plugin-contrib'
@@ -8,7 +11,7 @@ import { senderDisplayName }   from './sender-display-name.js'
 
 const bidirectionalMapper = async (message: Message) => {
   // Drop all messages if not Text
-  if (message.type() !== Message.Type.Text) { return }
+  if (message.type() !== type.Message.Text) { return }
 
   const talkerDisplayName = await senderDisplayName(message)
   const roomShortName     = await abbrRoomTopicForAll(message) || 'Nowhere'

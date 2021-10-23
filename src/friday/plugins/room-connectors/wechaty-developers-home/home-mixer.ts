@@ -1,4 +1,7 @@
-import { Message } from 'wechaty'
+import {
+  Message,
+  type,
+}             from 'wechaty'
 import {
   ManyToManyRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
@@ -19,7 +22,7 @@ import { bidirectionalMapper }            from '../bidirectional-mapper.js'
  *
  */
 const blacklist = [
-  async (message: Message) => message.type() !== Message.Type.Text,
+  async (message: Message) => message.type() !== type.Message.Text,
   MIKE_CONTACT_ID,
 ]
 

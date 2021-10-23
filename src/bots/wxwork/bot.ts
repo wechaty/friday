@@ -1,5 +1,6 @@
 import {
   Wechaty,
+  WechatyBuilder,
   log,
   Message,
 }                   from 'wechaty'
@@ -19,10 +20,10 @@ function getWxWork (name: string) {
     token: process.env['WECHATY_PUPPET_SERVICE_TOKEN_WXWORK'],
   })
 
-  const bot = new Wechaty({
+  const bot = new WechatyBuilder().options({
     name,
     puppet,
-  })
+  }).build()
 
   bot.use([
     ...pluginList,

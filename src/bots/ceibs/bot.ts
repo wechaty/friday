@@ -1,5 +1,5 @@
 import {
-  Wechaty,
+  WechatyBuilder,
   log,
 }                   from 'wechaty'
 import { PuppetOA }  from 'wechaty-puppet-official-account'
@@ -19,10 +19,10 @@ function getCeibs (name: string) {
     webhookProxyUrl : process.env['CEIBS_WEBHOOK_PROXY_URL'],
   })
 
-  const bot = new Wechaty({
+  const bot = new WechatyBuilder().options({
     name,
     puppet: oa,
-  })
+  }).build()
 
   bot.use([
     ...pluginList,

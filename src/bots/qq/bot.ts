@@ -1,5 +1,5 @@
 import {
-  Wechaty,
+  WechatyBuilder,
   log,
 }             from 'wechaty'
 
@@ -16,10 +16,10 @@ function getQQ (name: string) {
     qq,
   })
 
-  const bot = new Wechaty({
+  const bot = new WechatyBuilder().options({
     name,
     puppet,
-  })
+  }).build()
 
   void pluginList
   void vorpalPluginList

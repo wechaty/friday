@@ -1,5 +1,6 @@
 import {
   log,
+  type,
   Message,
   Wechaty,
 }             from 'wechaty'
@@ -24,15 +25,15 @@ export default async function onMessage (
   //   log.error('on-message', 'Failed to check vote for the message: %s', e)
   // }
 
-  const type = message.type()
-  const text = message.text()
+  const msgType = message.type()
+  const text    = message.text()
 
   try {
     if (message.self()) {
       return
     }
 
-    if (type === Message.Type.Text) {
+    if (msgType === type.Message.Text) {
       if (text.match(/^#ding$/i)) {
         await message.say('dong')
       }
@@ -117,7 +118,7 @@ export default async function onMessage (
 //     console.info('mentionText', text)
 //   }
 
-//   if (type === Message.Type.Text) {
+//   if (type === type.Message.Text) {
 //     if (text.match(/^#ding$/i)) {
 //       await message.say('dong')
 //     }
