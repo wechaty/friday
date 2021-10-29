@@ -50,7 +50,7 @@
     "wechaty-puppet-oicq": "^1.0.1",
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.0.5",
-    "wechaty-vorpal-contrib": "^1.0.2",
+    "wechaty-vorpal-contrib": "^1.0.3",
     "wechaty-voteout": "^1.0.3"
   },
   "devDependencies": {
