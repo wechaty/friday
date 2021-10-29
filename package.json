@@ -44,7 +44,7 @@
     "wechaty": "^1.0.3",
     "wechaty-freshdesk": "^1",
     "wechaty-intercom": "^1",
-    "wechaty-plugin-contrib": "^1.0.13",
+    "wechaty-plugin-contrib": "^1.0.15",
     "wechaty-puppet-gitter": "^0.7",
     "wechaty-puppet-official-account": "^1.0.1",
     "wechaty-puppet-oicq": "^1.0.1",
