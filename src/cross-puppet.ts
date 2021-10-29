@@ -1,10 +1,10 @@
 import {
   Wechaty,
   Message,
-  FileBox,
   log,
   type,
 }             from 'wechaty'
+import type { FileBoxInterface } from 'file-box'
 
 import {
   GITTER_WECHATY_ROOM_ID,
@@ -32,7 +32,7 @@ function connectGitterFriday (args: {
     ...wechatyDevelopers.home,
   ].map(id => friday.Room.load(id))
 
-  const wechatRoomSay = async (textOrFile: string | FileBox): Promise<void> => {
+  const wechatRoomSay = async (textOrFile: string | FileBoxInterface): Promise<void> => {
     for (const room of wechatRoomList) {
       await room.say(textOrFile as any) // fix me...
       await room.wechaty.sleep(5000)

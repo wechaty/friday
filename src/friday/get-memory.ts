@@ -1,7 +1,9 @@
 import {
-  MemoryCard,
   log,
 }                 from 'wechaty'
+import {
+  MemoryCard,
+}                 from 'memory-card'
 
 export let memory: undefined | MemoryCard
 

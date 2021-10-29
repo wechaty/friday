@@ -1,8 +1,10 @@
 import {
   log,
   Wechaty,
-  ScanStatus,
 }               from 'wechaty'
+import {
+  ScanStatus,
+}               from 'wechaty-puppet/types'
 
 export default async function onScan (
   this   : Wechaty,

@@ -41,13 +41,13 @@
     "read-pkg-up": "~9",
     "sheet-db": "^1.0.1",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^0.78.8",
+    "wechaty": "^1.0.1",
     "wechaty-freshdesk": "^1",
     "wechaty-intercom": "^1",
     "wechaty-plugin-contrib": "^1.0.13",
     "wechaty-puppet-gitter": "^0.7",
-    "wechaty-puppet-official-account": "^0.9",
-    "wechaty-puppet-oicq": "^0.3.5",
+    "wechaty-puppet-official-account": "^1.0.1",
+    "wechaty-puppet-oicq": "^1.0.1",
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.0.3",
     "wechaty-vorpal-contrib": "^1.0.2",
@@ -65,7 +65,7 @@
     "npm-run-all": "^4.1.5",
     "shx": "^0.3.3",
     "tstest": "^1.0.1",
-    "wechaty-puppet-mock": "^0.36.1"
+    "wechaty-puppet-mock": "^1.0.1"
   },
   "git": {
     "scripts": {
