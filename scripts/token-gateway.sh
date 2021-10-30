@@ -4,7 +4,7 @@ set -e
 
 export $(grep -v ^\# .env | xargs)
 
-WECHATY_IMAGE=wechaty/wechaty:0.77
+WECHATY_IMAGE=wechaty/wechaty:1.0
 docker pull "$WECHATY_IMAGE"
 
 docker run \
