@@ -46,7 +46,7 @@ async function main () {
    */
   await Promise.all(
     botList.map(
-      bot => (bot as any).state.ready('off'),
+      bot => bot.state.stable('inactive'),
     ),
   )
 
