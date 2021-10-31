@@ -27,6 +27,19 @@ function connectGitterFriday (args: {
   const gitterRoom  = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
   const qqRoom      = qq.Room.load(QQ_WECHATY_ROOM_ID)
 
+  const qqRoomSay = async (msg: string): Promise<void> => {
+    if (!qq.logonoff()) {
+      return
+    }
+
+    const room = await qq.Room.find(QQ_WECHATY_ROOM_ID)
+    if (!room) {
+      return
+    }
+
+    await room.say(msg)
+  }
+
   const wechatRoomList = [
     ...wechatyDevelopers.homeHq,
     ...wechatyDevelopers.home,
@@ -79,7 +92,7 @@ function connectGitterFriday (args: {
       switch (msg.type()) {
         case type.Message.Text: {
           await gitterRoom.say(prefixMdWechatName + msg.text())
-          await qqRoom.say(prefixStrWechatName + msg.text())
+          await qqRoomSay(prefixStrWechatName + msg.text())
           break
         }
 
@@ -107,7 +120,7 @@ function connectGitterFriday (args: {
       switch (msg.type()) {
         case type.Message.Text: {
           await wechatRoomSay(prefixStrGitterName + msg.text())
-          await qqRoom.say(prefixStrGitterName + msg.text())
+          await qqRoomSay(prefixStrGitterName + msg.text())
           break
         }
         case type.Message.Image: {
