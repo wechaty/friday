@@ -16,7 +16,7 @@ const WXWORK_HEARTBEAT_ROOM_ID = 'R:10696051718181051'  // ChatOps - Heartbeat ð
 const WXWORK_FRIDAY_ROOM_ID    = 'R:10696051757179651'  // 'R:3057039320'  // ChatOps - WXWork
 
 const GITTER_WECHATY_ROOM_ID = '573324fcc43b8c60197242bf' // 'https://gitter.im/wechaty/wechaty'
-const QQ_WECHATY_ROOM_ID = '696864249' // Wechaty Developers' Home QQ
+const QQ_WECHATY_ROOM_ID = 'group_696864249' // Wechaty Developers' Home QQ
 
 export {
   FRIDAY_ROOM_ID,
