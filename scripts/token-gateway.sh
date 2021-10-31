@@ -4,7 +4,12 @@ set -e
 
 export $(grep -v ^\# .env | xargs)
 
-WECHATY_IMAGE=wechaty/wechaty:1.0
+#
+# Huan(202110): the latest version that Puppet PadLocal@0.4 is compatible with is wechaty@0.78
+#
+#   PadLocal must adaported with Wechaty Puppet API v1.0 before it can be used with Wechaty 1.0
+#
+WECHATY_IMAGE=wechaty/wechaty:0.78
 docker pull "$WECHATY_IMAGE"
 
 docker run \
