@@ -14,8 +14,8 @@ services:
       - .wechaty:/bot/.wechaty
     environment:
       - WEB_PORT=80
-      - VIRTUAL_HOST=friday.chatie.io,friday.bot5.club
-      - LETSENCRYPT_HOST=friday.chatie.io,friday.bot5.club
+      - VIRTUAL_HOST=friday.chatie.io,friday.bot5.ml
+      - LETSENCRYPT_HOST=friday.chatie.io,friday.bot5.ml
       - HTTPS_METHOD=noredirect
     healthcheck:
       test: ["CMD", "true"]
