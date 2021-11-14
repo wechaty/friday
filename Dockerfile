@@ -1,15 +1,16 @@
 # FROM wechaty/onbuild:next
 FROM wechaty/wechaty:next
 
-ONBUILD ARG NODE_ENV
-ONBUILD ENV NODE_ENV $NODE_ENV
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
 
-ONBUILD WORKDIR /bot
+WORKDIR /bot
 
-ONBUILD COPY package.json .
-ONBUILD RUN jq 'del(.dependencies.wechaty)' package.json | sponge package.json \
+COPY package.json .
+RUN jq 'del(.dependencies.wechaty)' package.json | sponge package.json \
+    && rm -fr node_modules package-lock.json \
     && npm install \
     && sudo rm -fr /tmp/* ~/.npm
-ONBUILD COPY . .
+COPY . .
 
 CMD [ "npm", "start" ]
