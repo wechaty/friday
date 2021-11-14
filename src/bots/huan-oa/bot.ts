@@ -19,10 +19,10 @@ function getHuanOa (name: string) {
     webhookProxyUrl : process.env['HUAN_WEBHOOK_PROXY_URL'],
   })
 
-  const bot = new WechatyBuilder().options({
+  const bot = WechatyBuilder.build({
     name,
     puppet: oa,
-  }).build()
+  })
 
   bot.use([
     ...pluginList,

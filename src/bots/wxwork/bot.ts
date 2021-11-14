@@ -20,10 +20,10 @@ function getWxWork (name: string) {
     token: process.env['WECHATY_PUPPET_SERVICE_TOKEN_WXWORK'],
   })
 
-  const bot = new WechatyBuilder().options({
+  const bot = WechatyBuilder.build({
     name,
     puppet,
-  }).build()
+  })
 
   bot.use([
     ...pluginList,
@@ -54,7 +54,10 @@ const oaTestChatOps = async (message: Message) => {
   if (!workBot) { return }
 
   const ROOM_ID = 'R:10696051746184005' // ChatOps - OA
-  const room = workBot.Room.load(ROOM_ID)
+  const room = await workBot.Room.find({ id: ROOM_ID })
+  if (!room) {
+    throw new Error('Room id: ' + ROOM_ID + ' not found')
+  }
   await room.say(message.toString())
 }
 

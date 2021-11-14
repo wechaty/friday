@@ -15,10 +15,10 @@ function getGitter (name: string) {
     token: process.env['WECHATY_PUPPET_GITTER_TOKEN'],
   })
 
-  const bot = new WechatyBuilder().options({
+  const bot = WechatyBuilder.build({
     name,
     puppet,
-  }).build()
+  })
 
   void pluginList
   void vorpalPluginList

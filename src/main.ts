@@ -30,7 +30,7 @@ async function main () {
   const gitter = bots.gitter
   const qq = bots.qq
 
-  connectGitterFriday({
+  await connectGitterFriday({
     friday,
     gitter,
     qq,

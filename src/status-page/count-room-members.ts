@@ -32,7 +32,10 @@ async function countRoomMembers (
   /**
    * Gitter
    */
-  const gitterRoom = bots.gitter.Room.load(GITTER_WECHATY_ROOM_ID)
+  const gitterRoom = await bots.gitter.Room.find({ id: GITTER_WECHATY_ROOM_ID })
+  if (!gitterRoom) {
+    throw new Error('Gitter room id: ' + GITTER_WECHATY_ROOM_ID + 'not found')
+  }
   const gitterRoomMemberList = await gitterRoom.memberAll()
   const gitterSet = new Set<string>()
   gitterRoomMemberList.forEach(setMember(gitterSet))

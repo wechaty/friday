@@ -16,10 +16,10 @@ function getQQ (name: string) {
     qq,
   })
 
-  const bot = new WechatyBuilder().options({
+  const bot = WechatyBuilder.build({
     name,
     puppet,
-  }).build()
+  })
 
   void pluginList
   void vorpalPluginList

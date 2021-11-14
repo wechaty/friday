@@ -34,7 +34,7 @@ const kick: talkers.MessageTalkerOptions = [
       const mentionList = await message.mentionList()
       const votee = mentionList[0]
       if (votee) {
-        await room.del(votee).then(_ => 'Done.')
+        await room.remove(votee).then(_ => 'Done.')
       }
     }
     return undefined

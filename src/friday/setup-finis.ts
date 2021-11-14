@@ -25,7 +25,13 @@ export async function setupFinis (wechaty: Wechaty): Promise<void> {
   }
   bot = wechaty
 
-  bot.on('login',   wechaty.wrapAsync(() => wechaty.Room.load(FRIDAY_ROOM_ID).say(LOGIN_ANNOUNCEMENT)))
+  bot.on('login',   wechaty.wrapAsync(async () => {
+    const room = await wechaty.Room.find({ id: FRIDAY_ROOM_ID })
+    if (!room) {
+      throw new Error('room id: ' + FRIDAY_ROOM_ID + ' not found')
+    }
+    await room.say(LOGIN_ANNOUNCEMENT)
+  }))
   bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
 }
 
@@ -54,7 +60,11 @@ finis(async (code, signal) => {
     log.info('RestartReporter', 'finis() announce exiting')
     try {
       // log.level('silly')
-      await bot.Room.load(FRIDAY_ROOM_ID).say(EXIT_ANNOUNCEMENT)
+      const room = await bot.Room.find({ id: FRIDAY_ROOM_ID })
+      if (!room) {
+        throw new Error('room id: ' + FRIDAY_ROOM_ID + ' not found')
+      }
+      await room.say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() chatops() done')
       await bot.say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() bot.say() done')

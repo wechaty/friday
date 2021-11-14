@@ -23,10 +23,10 @@ function getFriday (name: string): Wechaty {
 
   const memory = getMemory(name)
 
-  const wechaty = new WechatyBuilder().options({
+  const wechaty = WechatyBuilder.build({
     memory,
     name,
-  }).build()
+  })
 
   setHandlers(wechaty)
 
@@ -80,7 +80,10 @@ const ceibsChatOps = async (message: Message) => {
   if (!bot) { return }
 
   const ROOM_ID = '19537208917@chatroom'  // ChatOps - OA
-  const room = bot.Room.load(ROOM_ID)
+  const room = await bot.Room.find({ id: ROOM_ID })
+  if (!room) {
+    throw new Error('room id: ' + ROOM_ID + ' not found')
+  }
   await room.say(message.toString())
 }
 

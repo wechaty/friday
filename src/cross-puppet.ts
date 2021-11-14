@@ -3,6 +3,7 @@ import {
   Message,
   log,
   type,
+  Room,
 }             from 'wechaty'
 import type { FileBoxInterface } from 'file-box'
 
@@ -17,15 +18,22 @@ import {
   bot5Club,
 }                         from './database/mod.js'
 
-function connectGitterFriday (args: {
+async function connectGitterFriday (args: {
   friday : Wechaty,
   gitter : Wechaty,
   qq     : Wechaty,
-}): void {
+}): Promise<void> {
   const { friday, gitter, qq } = args
 
-  const gitterRoom  = gitter.Room.load(GITTER_WECHATY_ROOM_ID)
-  const qqRoom      = qq.Room.load(QQ_WECHATY_ROOM_ID)
+  const gitterRoom  = await gitter.Room.find({ id: GITTER_WECHATY_ROOM_ID })
+  const qqRoom      = await qq.Room.find({ id: QQ_WECHATY_ROOM_ID })
+
+  if (!gitterRoom) {
+    throw new Error('Gitter Room with id: ' + GITTER_WECHATY_ROOM_ID + ' not found')
+  }
+  if (!qqRoom) {
+    throw new Error('QQ Group with id: ' + QQ_WECHATY_ROOM_ID + ' not found')
+  }
 
   const qqRoomSay = async (msg: string): Promise<void> => {
     if (!qq.logonoff()) {
@@ -40,10 +48,15 @@ function connectGitterFriday (args: {
     await room.say(msg)
   }
 
-  const wechatRoomList = [
-    ...wechatyDevelopers.homeHq,
-    ...wechatyDevelopers.home,
-  ].map(id => friday.Room.load(id))
+  const wechatRoomListAll = await Promise.all(
+    [
+      ...wechatyDevelopers.homeHq,
+      ...wechatyDevelopers.home,
+    ].map(
+      id => friday.Room.find({ id }),
+    ),
+  )
+  const wechatRoomList = wechatRoomListAll.filter(Boolean) as Room[]
 
   const wechatRoomSay = async (textOrFile: string | FileBoxInterface): Promise<void> => {
     for (const room of wechatRoomList) {

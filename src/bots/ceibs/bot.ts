@@ -19,10 +19,10 @@ function getCeibs (name: string) {
     webhookProxyUrl : process.env['CEIBS_WEBHOOK_PROXY_URL'],
   })
 
-  const bot = new WechatyBuilder().options({
+  const bot = WechatyBuilder.build({
     name,
     puppet: oa,
-  }).build()
+  })
 
   bot.use([
     ...pluginList,
