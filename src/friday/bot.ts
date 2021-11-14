@@ -46,10 +46,25 @@ function getFriday (name: string): Wechaty {
   /**
    * Setup Web
    */
-  startWeb(
+
+  /**
+   * Workaround with https://github.com/padlocal/wechaty-puppet-padlocal/issues/116
+   */
+  let stopWeb: undefined | ReturnType<typeof startWeb> = startWeb(
     wechaty,
     WEB_PORT,
-  ).catch(console.error)
+  )
+
+  wechaty.on('start', () => {
+    if (stopWeb) {
+      stopWeb()
+    }
+    stopWeb = startWeb(
+      wechaty,
+      WEB_PORT,
+    )
+    wechaty.once('stop', stopWeb)
+  })
 
   // wechaty.once('stop', () => stopWeb())
 
