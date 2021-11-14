@@ -5,7 +5,7 @@ import {
   Message,
 }             from 'wechaty'
 
-import { startWeb } from '../web/setup-web.js'
+import { startWeb } from '../web/mod.js'
 import { WEB_PORT } from '../config.js'
 
 import { pluginList }       from './plugins/mod.js'
@@ -46,16 +46,12 @@ function getFriday (name: string): Wechaty {
   /**
    * Setup Web
    */
-  wechaty.on('start', async () => {
-    /**
-     * Web Hook
-     */
-    const stopWeb = await startWeb(
-      wechaty,
-      WEB_PORT,
-    )
-    wechaty.once('stop', () => stopWeb())
-  })
+  startWeb(
+    wechaty,
+    WEB_PORT,
+  ).catch(console.error)
+
+  // wechaty.once('stop', () => stopWeb())
 
   /**
    * Io Client Hook

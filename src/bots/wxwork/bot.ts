@@ -6,8 +6,6 @@ import {
 }                   from 'wechaty'
 import { PuppetService }  from 'wechaty-puppet-service'
 
-import { startWeb }         from '../../web/mod.js'
-
 import { pluginList }       from './plugins/mod.js'
 import { vorpalPluginList } from './vorpals/mod.js'
 
@@ -29,17 +27,6 @@ function getWxWork (name: string) {
     ...pluginList,
     ...vorpalPluginList,
   ])
-
-  /**
-   * Setup Web
-   */
-  bot.on('start', async () => {
-    const stopWeb = await startWeb(
-      bot,
-      8789,
-    )
-    bot.once('stop', () => stopWeb())
-  })
 
   workBot = bot
   return bot
