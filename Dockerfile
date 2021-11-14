@@ -12,5 +12,6 @@ RUN jq 'del(.dependencies.wechaty)' package.json | sponge package.json \
     && npm install \
     && sudo rm -fr /tmp/* ~/.npm
 COPY . .
+RUN npm run build
 
 CMD [ "npm", "start" ]
