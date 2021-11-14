@@ -13,10 +13,10 @@ import {
 
 type Stopper = () => void
 
-export async function startWeb (
+export function startWeb (
   wechaty : Wechaty,
   port    : number,
-): Promise<Stopper> {
+): Stopper {
   log.verbose('startWeb', 'startWeb(%s)', wechaty)
 
   let qrcodeValue : undefined | string
