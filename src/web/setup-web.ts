@@ -73,7 +73,14 @@ const wechatyHtml = async (wechaty: Wechaty): Promise<string> => {
   return html
 }
 
-const rootHandlerAsync = async (_req: express.Request, res: express.Response) => {
+const rootHandlerAsync = async (req: express.Request, res: express.Response) => {
+  log.verbose('Web', 'setup-web rootHandlerAsync({path: %s})', req.path)
+
+  log.verbose('Web', 'setup-web rootHandlerAsync() wechaty count: %s, %s',
+    wechatySet.size,
+    [...wechatySet].map(String).join(', '),
+  )
+
   const htmlList = await Promise.all(
     [...wechatySet].map(wechatyHtml),
   )
