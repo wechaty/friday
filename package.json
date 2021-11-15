@@ -49,7 +49,7 @@
     "wechaty-plugin-contrib": "^1.0.18",
     "wechaty-puppet-gitter": "^1.0.2",
     "wechaty-puppet-official-account": "^1.7.1",
-    "wechaty-puppet-oicq": "^1.7.0",
+    "wechaty-puppet-oicq": "^1.7.1",
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.0.5",
     "wechaty-vorpal-contrib": "^1.0.4",
