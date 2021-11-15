@@ -34,11 +34,10 @@ const FORM_HTML = `
 
 const wechatyHtml = async (wechaty: Wechaty): Promise<string> => {
 
-  let html: string
+  let html = `<h1>BOT5 v${VERSION} ${wechaty} v${wechaty.version()}</h1>`
 
   if (wechaty.authQrCode) {
-    html = [
-      `<h1>BOT5 v${VERSION}</h1>`,
+    html += [
       'Scan QR Code: <br />',
       wechaty.authQrCode + '<br />',
       '<a href="http://goqr.me/" target="_blank">http://goqr.me/</a><br />',
@@ -59,15 +58,15 @@ const wechatyHtml = async (wechaty: Wechaty): Promise<string> => {
     }
     roomHtml = roomHtml + '</ol>'
 
-    html = [
-      `<p> BOT Friday v${VERSION} User ${wechaty.currentUser()} logged in. </p>`,
+    html += [
+      `<p> User ${wechaty.currentUser()} logged in. </p>`,
       FORM_HTML,
-      roomHtml,
+      `<div>${roomHtml}</div>`,
     ].join('')
 
   } else {
 
-    html = `BOT Friday v${VERSION} Hello, I'm currently not logged in, but I have no auth qr code to show for you. Please come back later.`
+    html += "Hello, I'm currently not logged in, but I have no auth qr code to show for you. Please come back later."
 
   }
 
