@@ -5,9 +5,6 @@ import {
   Message,
 }             from 'wechaty'
 
-import { startWeb } from '../web/mod.js'
-import { WEB_PORT } from '../config.js'
-
 import { pluginList }       from './plugins/mod.js'
 import { vorpalPluginList } from './vorpals/mod.js'
 
@@ -42,31 +39,6 @@ function getFriday (name: string): Wechaty {
   )
 
   const ioClient = getIoClient(wechaty)
-
-  /**
-   * Setup Web
-   */
-
-  /**
-   * Workaround with https://github.com/padlocal/wechaty-puppet-padlocal/issues/116
-   */
-  let stopWeb: undefined | ReturnType<typeof startWeb> = startWeb(
-    wechaty,
-    WEB_PORT,
-  )
-
-  wechaty.on('start', () => {
-    if (stopWeb) {
-      stopWeb()
-    }
-    stopWeb = startWeb(
-      wechaty,
-      WEB_PORT,
-    )
-    wechaty.once('stop', stopWeb)
-  })
-
-  // wechaty.once('stop', () => stopWeb())
 
   /**
    * Io Client Hook

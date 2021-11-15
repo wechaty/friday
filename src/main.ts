@@ -1,12 +1,20 @@
 import { log } from 'wechaty'
 
-import { VERSION } from './config.js'
+import { getBots }                from './bots/mod.js'
+import * as WebManager            from './web/mod.js'
+import {
+  startStatusPageMetricUpdater,
+}                                 from './status-page/mod.js'
 
-import { getFriday }  from './friday/bot.js'
-import { getBots } from './bots/mod.js'
+import { getFriday }              from './friday/bot.js'
 
-import { connectGitterFriday } from './cross-puppet.js'
-import { startStatusPageMetricUpdater } from './status-page/mod.js'
+import {
+  connectGitterFriday,
+}                       from './cross-puppet.js'
+import {
+  VERSION,
+  WEB_PORT,
+}                       from './config.js'
 
 void getFriday
 
@@ -15,6 +23,19 @@ async function main () {
 
   const friday = getFriday('friday')
   const bots   = getBots()
+
+  /**
+   * Setup Web
+   */
+  WebManager.addWechaty(friday)
+  if ('qq' in bots) {
+    WebManager.addWechaty(bots.qq)
+  }
+
+  /**
+   * Workaround with https://github.com/padlocal/wechaty-puppet-padlocal/issues/116
+   */
+  const stopWeb = WebManager.startWeb(WEB_PORT)
 
   const botList = [
     friday,
@@ -49,6 +70,8 @@ async function main () {
       bot => bot.state.stable('inactive'),
     ),
   )
+
+  stopWeb()
 
   return 0
 }

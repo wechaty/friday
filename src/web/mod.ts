@@ -1,1 +1,4 @@
-export { startWeb } from './setup-web.js'
+export {
+  startWeb,
+  addWechaty,
+}               from './setup-web.js'

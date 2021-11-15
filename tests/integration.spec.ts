@@ -19,6 +19,7 @@
  */
 
 import { test } from 'tstest'
+import 'dotenv/config'
 
 import { getFriday }  from '../src/friday/bot.js'
 
