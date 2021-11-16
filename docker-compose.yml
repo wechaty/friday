@@ -12,6 +12,7 @@ services:
     network_mode: bridge
     volumes:
       - .wechaty:/bot/.wechaty
+      - data:/bot/data
     environment:
       - WEB_PORT=80
       - VIRTUAL_HOST=friday.chatie.io,friday.bot5.ml
