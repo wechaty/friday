@@ -56,7 +56,7 @@ finis(async (code, signal) => {
   FINIS_QUITING = true
   log.info('RestartReporter', 'finis(%s, %s)', code, signal)
 
-  if (bot.logonoff()) {
+  if (bot.isLoggedIn) {
     log.info('RestartReporter', 'finis() announce exiting')
     try {
       // log.level('silly')

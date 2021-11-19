@@ -48,7 +48,7 @@ const wechatyHtml = async (wechaty: Wechaty): Promise<string> => {
       '">',
     ].join('')
 
-  } else if (wechaty.logonoff()) {
+  } else if (wechaty.isLoggedIn) {
     const roomList = await wechaty.Room.findAll()
     let roomHtml = 'The rooms I have joined are as follows: <ol>'
     for (const room of roomList) {
@@ -59,7 +59,7 @@ const wechatyHtml = async (wechaty: Wechaty): Promise<string> => {
     roomHtml = roomHtml + '</ol>'
 
     html += [
-      `<p> User ${wechaty.currentUser()} logged in. </p>`,
+      `<p> User ${wechaty.currentUser} logged in. </p>`,
       FORM_HTML,
       `<div>${roomHtml}</div>`,
     ].join('')

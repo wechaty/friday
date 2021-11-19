@@ -36,7 +36,7 @@ async function connectGitterFriday (args: {
   }
 
   const qqRoomSay = async (msg: string): Promise<void> => {
-    if (!qq.logonoff()) {
+    if (!qq.isLoggedIn) {
       return
     }
 

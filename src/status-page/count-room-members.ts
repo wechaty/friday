@@ -16,7 +16,7 @@ async function countRoomMembers (
   const topic = /Wechaty|BOT5/i
   const fridaySet = new Set<string>()
 
-  if (bots.friday.logonoff()) {
+  if (bots.friday.isLoggedIn) {
     const roomList = await bots.friday.Room.findAll({ topic })
     for (const room of roomList) {
       const memberList = await room.memberAll()
