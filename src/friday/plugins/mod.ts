@@ -37,7 +37,10 @@ const pluginList = [
   Bot5AssistantPlugin,
   QRCodeTerminal(),
   EventLogger(),
-  DingDong(),
+  DingDong({
+    contact: contact =>
+      contact.id !== 'wxid_5nmxxj32x1qz22', // 张三
+  }),
   FriendshipAccepterPlugin,
   VoteOutPlugin,
   RoomInvitationAccepterPlugin,
