@@ -35,21 +35,22 @@
   "dependencies": {
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "finis": "^0.4.5",
     "moment": "^2.29.1",
     "node-cron": "^3.0.0",
     "read-pkg-up": "^9.0.0",
     "sheet-db": "^1.0.1",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^1.9.5",
+    "wechaty": "^1.11.27",
     "wechaty-bot5-assistant": "^0.2.14",
     "wechaty-freshdesk": "^1.0.2",
     "wechaty-intercom": "^1.0.1",
     "wechaty-plugin-contrib": "^1.0.18",
-    "wechaty-puppet-gitter": "^1.7.1",
-    "wechaty-puppet-official-account": "^1.7.1",
-    "wechaty-puppet-oicq": "^1.7.1",
+    "wechaty-puppet-gitter": "^1.10.1",
+    "wechaty-puppet-official-account": "^1.10.2",
+    "wechaty-puppet-oicq": "^1.10.2",
+    "wechaty-puppet-service": "^1.11.2",
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.0.5",
     "wechaty-vorpal-contrib": "^1.0.4",
@@ -58,12 +59,12 @@
   "devDependencies": {
     "@chatie/eslint-config": "^1.0.4",
     "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^4.5.1",
+    "@chatie/tsconfig": "^4.6.2",
     "@types/express": "^4.17.13",
     "@types/node-cron": "^3.0.0",
     "@types/raven": "^2.5.4",
     "@types/read-pkg-up": "^6.0.0",
-    "wechaty-puppet-mock": "^1.9.1"
+    "wechaty-puppet-mock": "^1.10.2"
   },
   "git": {
     "scripts": {
