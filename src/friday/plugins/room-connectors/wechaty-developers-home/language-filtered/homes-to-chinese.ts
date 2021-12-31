@@ -1,6 +1,6 @@
 import {
   Message,
-  type,
+  types,
 }               from 'wechaty'
 import {
   SourceToTargetRoomConnector,
@@ -30,11 +30,11 @@ const HomeToChinesePlugin = SourceToTargetRoomConnector({
     MIKE_CONTACT_ID,
   ],
   map: async (message: Message) => {
-    if (message.type() === type.Message.Text) {
+    if (message.type() === types.Message.Text) {
       if (!matchChinese(message.text())) {
         return undefined
       }
-    } else if (message.type() === type.Message.Url) {
+    } else if (message.type() === types.Message.Url) {
       const urlLink = await message.toUrlLink()
       const text = urlLink.description() ?? urlLink.title()
       if (!matchChinese(text)) {

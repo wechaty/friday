@@ -1,6 +1,6 @@
 import {
   log,
-  type,
+  types,
   Message,
   Wechaty,
 }             from 'wechaty'
@@ -33,7 +33,7 @@ export default async function onMessage (
       return
     }
 
-    if (msgType === type.Message.Text) {
+    if (msgType === types.Message.Text) {
       if (text.match(/^#ding$/i)) {
         await message.say('dong')
       }

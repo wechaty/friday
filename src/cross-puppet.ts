@@ -2,7 +2,7 @@ import {
   Wechaty,
   Message,
   log,
-  type,
+  types,
   Room,
 }             from 'wechaty'
 import type { FileBoxInterface } from 'file-box'
@@ -103,13 +103,13 @@ async function connectGitterFriday (args: {
       const prefixStrWechatName = prefixStr('WeChat')(name)
 
       switch (msg.type()) {
-        case type.Message.Text: {
+        case types.Message.Text: {
           await gitterRoom.say(prefixMdWechatName + msg.text())
           await qqRoomSay(prefixStrWechatName + msg.text())
           break
         }
 
-        case type.Message.Image: {
+        case types.Message.Image: {
           const fileBox = await msg.toFileBox()
           await gitterRoom.say(fileBox)
           await gitterRoom.say(prefixMdWechatName)
@@ -131,12 +131,12 @@ async function connectGitterFriday (args: {
       const prefixStrGitterName = prefixStr('Gitter')(name)
 
       switch (msg.type()) {
-        case type.Message.Text: {
+        case types.Message.Text: {
           await wechatRoomSay(prefixStrGitterName + msg.text())
           await qqRoomSay(prefixStrGitterName + msg.text())
           break
         }
-        case type.Message.Image: {
+        case types.Message.Image: {
           const fileBox = await msg.toFileBox()
           await wechatRoomSay(fileBox)
           await wechatRoomSay(prefixStrGitterName)
@@ -166,14 +166,14 @@ async function connectGitterFriday (args: {
       log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) type %s', msg.type())
 
       switch (msg.type()) {
-        case type.Message.Text: {
+        case types.Message.Text: {
           log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) forwarding message: "%s"', msg.text())
 
           await wechatRoomSay(prefixStrQQName + msg.text())
           await gitterRoom.say(prefixMdQQName + msg.text())
           break
         }
-        case type.Message.Image: {
+        case types.Message.Image: {
           const fileBox = await msg.toFileBox()
 
           await wechatRoomSay(fileBox)
