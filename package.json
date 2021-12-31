@@ -46,7 +46,7 @@
     "wechaty-bot5-assistant": "^0.2.14",
     "wechaty-freshdesk": "^1.0.2",
     "wechaty-intercom": "^1.0.1",
-    "wechaty-plugin-contrib": "^1.0.18",
+    "wechaty-plugin-contrib": "^1.11.1",
     "wechaty-puppet-gitter": "^1.10.1",
     "wechaty-puppet-official-account": "^1.10.2",
     "wechaty-puppet-oicq": "^1.10.2",
