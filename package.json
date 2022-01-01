@@ -54,7 +54,7 @@
     "wechaty-qnamaker": "^1.0.2",
     "wechaty-vorpal": "^1.11.4",
     "wechaty-vorpal-contrib": "^1.11.5",
-    "wechaty-voteout": "^1.0.3"
+    "wechaty-voteout": "^1.11.1"
   },
   "devDependencies": {
     "@chatie/eslint-config": "^1.0.4",

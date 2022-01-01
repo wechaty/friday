@@ -1,5 +1,13 @@
 import { log } from 'wechaty'
 
+/**
+ * Load .env first
+ */
+import {
+  VERSION,
+  WEB_PORT,
+}                                 from './config.js'
+
 import { getBots }                from './bots/mod.js'
 import * as WebManager            from './web/mod.js'
 import {
@@ -11,10 +19,6 @@ import { getFriday }              from './friday/bot.js'
 import {
   connectGitterFriday,
 }                       from './cross-puppet.js'
-import {
-  VERSION,
-  WEB_PORT,
-}                       from './config.js'
 
 void getFriday
 
