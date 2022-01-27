@@ -35,6 +35,9 @@ async function main () {
   if ('qq' in bots) {
     WebManager.addWechaty(bots.qq)
   }
+  if ('whatsapp' in bots) {
+    WebManager.addWechaty(bots.whatsapp)
+  }
 
   /**
    * Workaround with https://github.com/padlocal/wechaty-puppet-padlocal/issues/116
