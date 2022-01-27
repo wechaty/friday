@@ -19,12 +19,12 @@ import { unidirectionalMapper } from '../unidirectional-mapper.js'
  * - second club room in the array (and all the following)
  *    is the previous room (previous year).
  */
-const [current, ...previous] =  bot5Club.member
+const [next, current, ...previous] =  bot5Club.rooms
 
 const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
   map: unidirectionalMapper,
   source: [
-    ...bot5Club.chair,
+    next,
     current,
   ],
   target: [

@@ -209,8 +209,7 @@ async function connectGitterFriday (args: {
     /**
       * BOT5.Club
       */
-    ...bot5Club.member,
-    ...bot5Club.chair,
+    ...bot5Club.rooms,
   ].forEach(forwardWechatToGitterQQ)
 
   /**

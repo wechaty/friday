@@ -1,24 +1,24 @@
 /**
- * Chair room is only for those who has given their talk to the club
- *  in the current year
- *
- * It will be rotated to be the club room after each year.
+ * [nextYear, current, ...previous] rooms
  */
-const chair = [
-  '19244336373@chatroom',  // BOT Friday Club - BOT5
-] as const
+const rooms = [
+  /**
+   * [0]: Chair room (for the next year)
+   *  is only for those who has given their talk to the club in the current year
+   */
+  '18013756151@chatroom', // BOT Friday Club Alumni 2023
 
-/**
- * Huan(202108): club[0] must be the latest club room
- *  because all messages in the latest room will be brodcasted to other rooms
- */
-const member = [
-  '18825797159@chatroom',  // Bot Friday Open Forum - BFOF 2021
-  '18095776930@chatroom',  // Bot Friday Open Forum - Year 2020
-  '17301175542@chatroom',  // Bot Friday Open Forum - Year 2019
+  /**
+   * [1]: Member room (for the current year)
+   *  all messages in the latest room will be brodcasted to other rooms
+   */
+  '19244336373@chatroom', // BOT Friday Club Alumni 2022
+
+  '18825797159@chatroom', // BOT Friday Club Alumni 2021
+  '18095776930@chatroom', // BOT Friday Club Alumni 2020
+  '17301175542@chatroom', // BOT Friday Club Alumni 2019
 ] as const
 
 export {
-  chair,
-  member,
+  rooms,
 }

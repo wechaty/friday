@@ -4,10 +4,12 @@ import {
 
 import * as BOT5 from '../../database/bot5.js'
 
+const [_next, current, ..._previous] = BOT5.rooms
+
 const Bot5AssistantPlugin = Bot5Assistant({
   room: [
-    BOT5.member[0], // room id
-    /^BOT5 /,       // room topic
+    current,
+    /^BOT5 Assistant/i,       // room topic
   ],
 })
 
