@@ -12,7 +12,7 @@ import { VoteOutPlugin }                  from './vote-out.js'
 import { FriendshipAccepterPlugin }       from './friendship-accepter.js'
 import { ChatOpsPlugin }                  from './chatops.js'
 import { RoomInvitationAccepterPlugin }   from './room-invitation-accepter.js'
-import { Bot5AssistantPlugin }            from './bot5-assistant.js'
+// import { Bot5AssistantPlugin }            from './bot5-assistant.js'
 
 // import { IntercomPlugin }   from './intercom.js'
 // import { FreshdeskPlugin }  from './freshdesk.js'
@@ -34,7 +34,7 @@ import * as RoomInviterPluginMod    from './room-inviters/mod.js'
 import * as RoomConnectorPluginMod  from './room-connectors/mod.js'
 
 const pluginList = [
-  Bot5AssistantPlugin,
+  // Bot5AssistantPlugin,
   QRCodeTerminal(),
   EventLogger(),
   DingDong({
