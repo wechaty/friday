@@ -51,6 +51,7 @@
     "wechaty-puppet-official-account": "^1.10.3",
     "wechaty-puppet-oicq": "^1.10.2",
     "wechaty-puppet-service": "^1.11.2",
+    "wechaty-puppet-whatsapp": "^1.11.3",
     "wechaty-qnamaker": "^1.11.1",
     "wechaty-vorpal": "^1.11.4",
     "wechaty-vorpal-contrib": "^1.11.5",
