@@ -30,7 +30,11 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
-### master v0.11
+### master v1.13 Jan 29, 2022
+
+Use [NestJS](https://docs.nestjs.com/recipes/cqrs) to build the server.
+
+## v0.11 (Dec 2021)
 
 1. ES Module support
 
