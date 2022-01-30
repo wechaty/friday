@@ -6,6 +6,8 @@ import { CommandHandlers } from './commands/handlers/index.js'
 import { EventHandlers } from './events/handlers/index.js'
 import { QueryHandlers } from './queries/handlers/index.js'
 
+import { WechatyBotsModule } from './bots/mod.js'
+
 import { BotsSagas } from './sagas/bots.sagas.js'
 
 import { HeroesGameController } from './friday.controller.js'
@@ -14,7 +16,10 @@ import { BotRepository } from './repository/bot.repository.js'
 import { FridayConfig } from './config/mod.js'
 
 @Module({
-  imports: [CqrsModule],
+  imports: [
+    CqrsModule,
+    WechatyBotsModule,
+  ],
   controllers: [HeroesGameController],
   providers: [
     BotRepository,

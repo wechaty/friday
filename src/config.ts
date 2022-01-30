@@ -1,5 +1,5 @@
 /// <reference path="./typings.d.ts" />
-import { VERSION } from './version.js'
+import { VERSION } from './legacy/version.js'
 
 // https://github.com/motdotla/dotenv/issues/89#issuecomment-596083057
 import 'dotenv/config.js'

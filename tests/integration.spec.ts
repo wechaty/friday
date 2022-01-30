@@ -21,7 +21,7 @@
 import { test } from 'tstest'
 import 'dotenv/config'
 
-import { getFriday }  from '../src/friday/bot.js'
+import { getFriday }  from '../src/friday/bots/wechat/wechat-builder.js'
 
 // import { spy } from 'sinon'
 

@@ -6,19 +6,13 @@ import {
   Ddr,
 }                         from 'wechaty-vorpal-contrib'
 
-import {
-  DDR_ROOM_ID,
-  MIXED_DDR_ROOM_ID,
-  // DDR2_CHATOPS_ROOM_WXWORK_ID,
-}                         from '../../../config/legacy/database.js'
+import { fridayConfig } from '../../deprecated.js'
 
 const donutConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
   room    : [
-    DDR_ROOM_ID,
-    MIXED_DDR_ROOM_ID,
-    // DDR2_CHATOPS_ROOM_WXWORK_ID,
+    fridayConfig.wechat.chatops.ddr,
   ],
   silent  : true,
 

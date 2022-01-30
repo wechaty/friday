@@ -3,57 +3,50 @@ import { Brolog } from 'brolog'
 
 import { Bot } from '../models/bot.model.js'
 
-import { getCeibs }   from '../bots/ceibs/bot.js'
-import { getWxWork }  from '../bots/wxwork/wxwork-builder.js'
-import { getHuanOa }  from '../bots/oa/oa-builder.js'
-import { getGitter }  from '../bots/gitter/gitter-builder.js'
-import { getQQ }      from '../bots/oicq/oicq-builder.js'
-import { getWhatsapp } from '../bots/whatsapp/whatsapp-builder.js'
-import { getFriday } from '../bots/wechat/wechat-builder.js'
-import type { WechatyInterface } from 'wechaty/impls'
+import {
+  GitterBuilder,
+  OABuilder,
+  OicqBuilder,
+  WeChatBuilder,
+  WhatsappBuilder,
+  WXWorkBuilder,
+}                     from '../bots/mod.js'
 
-export enum BotName {
-  Ceibs    = 'Ceibs',
-  Gitter   = 'Gitter',
-  HuanOa   = 'HuanOa',
-  QQ       = 'QQ',
-  WeChat   = 'WeChat',
-  WhatsApp = 'WhatsApp',
-  WxWork   = 'WxWork',
-}
+import type { FridayConfig } from '../config/friday-config.js'
+
+type FridayConfigInstance = InstanceType<typeof FridayConfig>
+type FridayBotName = FridayConfigInstance[keyof FridayConfigInstance]['name']
 
 @Injectable()
 export class BotRepository {
 
-  bots: { [key in BotName]: Bot }
+  protected bots: Bot[]
 
   constructor (
-    public log: Brolog,
-    public ceibsBot: CeibsBot,
-    public gitterBot: GitterBot,
-    public huanOaBot: HuanOaBot,
-    public qqBot: QQBot,
-    public wechatyBot: BotName,
-    public whatsappBot: WhatsappBot,
-    public wxworkBot: WxworkBot,
+    protected log: Brolog,
+    protected gitterBuilder   : GitterBuilder,
+    protected oaBuilder       : OABuilder,
+    protected oicqBuilder     : OicqBuilder,
+    protected wechatBuilder   : WeChatBuilder,
+    protected whatsappBuilder : WhatsappBuilder,
+    protected wxworkBuilder   : WXWorkBuilder,
   ) {
-    this.bots = {
-      [CeibsBot.wechaty.name]    : new Bot(CeibsBot.wechaty),
-      [BotName.Gitter]   : new Bot(GitterBot.wechaty),
-      [BotName.HuanOa]   : new Bot(HuanOaBot.wechaty),
-      [BotName.QQ]       : new Bot(QQBot.wechaty),
-      [BotName.WeChat]   : new Bot(FridayBot.wechaty),
-      [BotName.WhatsApp] : new Bot(WhatsappBot.wechaty),
-      [BotName.WxWork]   : new Bot(WxWorkBot.wechaty),
-    } as const
+    this.bots = [
+      new Bot(gitterBuilder.build()),
+      new Bot(oaBuilder.build()),
+      new Bot(oicqBuilder.build()),
+      new Bot(wechatBuilder.build()),
+      new Bot(whatsappBuilder.build()),
+      new Bot(wxworkBuilder.build()),
+    ]
   }
 
-  async find (name: BotName): Promise<Bot> {
-    return this.bots[name]
+  async find (name: FridayBotName): Promise<undefined | Bot> {
+    return this.bots.filter(bot => bot.wechaty.name() === name)[0]
   }
 
   async findAll (): Promise<Bot[]> {
-    return Object.values(this.bots)
+    return this.bots
   }
 
 }

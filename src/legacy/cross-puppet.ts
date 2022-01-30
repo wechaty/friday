@@ -10,7 +10,7 @@ import type { FileBoxInterface } from 'file-box'
 import {
   GITTER_WECHATY_ROOM_ID,
   QQ_WECHATY_ROOM_ID,
-}                         from './database.js'
+}                         from '../friday/config/legacy/database.js'
 
 import {
   wechatyDevelopers,

@@ -9,7 +9,7 @@ import { HeroKilledDragonEvent } from '../events/impl/hero-killed-dragon.event.j
 
 export class Bot extends AggregateRoot {
 
-  log: Logger
+  protected log: Logger
 
   constructor (
     public readonly wechaty: WechatyInterface,

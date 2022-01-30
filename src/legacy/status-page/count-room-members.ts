@@ -1,7 +1,7 @@
 import type { Contact } from 'wechaty'
 import { log } from 'wechaty'
 
-import { GITTER_WECHATY_ROOM_ID } from '../database.js'
+import { GITTER_WECHATY_ROOM_ID } from '../../friday/config/legacy/database.js'
 
 import type { MetricBots } from './types.js'
 
