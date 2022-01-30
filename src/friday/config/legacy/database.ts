@@ -8,9 +8,6 @@ const MIKE_CONTACT_ID  = 'wxid_a8d806dzznm822'   // Mike BO
 const MIXED_HEARTBEAT_ROOM_ID = '9223372041384873513@im.chatroom'  // ChatOps - Heartbeat 💖
 const MIXED_FRIDAY_ROOM_ID    = '9223372041407373043@im.chatroom'  // ChatOps - Friday
 
-const GITTER_WECHATY_ROOM_ID = '573324fcc43b8c60197242bf' // 'https://gitter.im/wechaty/wechaty'
-const QQ_WECHATY_ROOM_ID = 'group_696864249' // Wechaty Developers' Home QQ
-
 export {
   HEARTBEAT_ROOM_ID,
 
@@ -18,7 +15,4 @@ export {
 
   MIXED_FRIDAY_ROOM_ID,
   MIXED_HEARTBEAT_ROOM_ID,
-
-  GITTER_WECHATY_ROOM_ID,
-  QQ_WECHATY_ROOM_ID,
 }

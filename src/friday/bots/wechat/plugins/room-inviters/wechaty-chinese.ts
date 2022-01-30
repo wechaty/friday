@@ -6,7 +6,7 @@ import {
 // import {
 //   DEVELOPERS_ROOM_ID_CHINESE,
 // }                             from '../../../database.js'
-import { fridayConfig } from '../../deprecated.js'
+import { fridayConfig } from '../../../../config/deprecated.js'
 
 import {
   repeat,

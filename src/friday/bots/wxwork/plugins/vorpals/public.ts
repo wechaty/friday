@@ -10,7 +10,7 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridayConfig } from '../../../wechat/deprecated.js'
+import { fridayConfig } from '../../../../config/deprecated.js'
 
 const isNotChatOpsRoom = (room: Room) => !([
   fridayConfig.wxwork.chatOpsRoomId,

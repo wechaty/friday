@@ -9,7 +9,7 @@ import {
 //   MULTI_LANG_ROOM_ID,
 // }                                   from '../../database.js'
 
-import { fridayConfig } from '../deprecated.js'
+import { fridayConfig } from '../../../config/deprecated.js'
 
 const skipMessage = [
   /^wechaty$/i,

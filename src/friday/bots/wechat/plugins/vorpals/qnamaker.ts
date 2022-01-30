@@ -9,7 +9,7 @@ import {
   configEnglish,
 }                         from '../qnamaker.js'
 
-import { fridayConfig } from '../../deprecated.js'
+import { fridayConfig } from '../../../../config/deprecated.js'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : false,

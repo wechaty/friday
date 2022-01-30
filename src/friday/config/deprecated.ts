@@ -1,4 +1,4 @@
-import { FridayConfig } from '../../config/mod.js'
+import { FridayConfig } from './mod.js'
 
 /**
  * Huan(202201): This is a temporary solution to pass config

@@ -14,7 +14,7 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridayConfig } from '../../deprecated.js'
+import { fridayConfig } from '../../../../config/deprecated.js'
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,

@@ -2,7 +2,7 @@ import {
   Bot5Assistant,
 }                 from 'wechaty-bot5-assistant'
 
-import { fridayConfig } from '../deprecated.js'
+import { fridayConfig } from '../../../config/deprecated.js'
 
 const [_next, current, ..._previous] = fridayConfig.wechat.bot5Club.rooms
 

@@ -3,7 +3,7 @@ import {
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
 
-import { fridayConfig } from '../../deprecated.js'
+import { fridayConfig } from '../../../../config/deprecated.js'
 
 const bot5Config: RoomInviterConfig = {
   password: [

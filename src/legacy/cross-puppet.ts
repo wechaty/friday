@@ -7,16 +7,7 @@ import {
 }             from 'wechaty'
 import type { FileBoxInterface } from 'file-box'
 
-import {
-  GITTER_WECHATY_ROOM_ID,
-  QQ_WECHATY_ROOM_ID,
-}                         from '../friday/config/legacy/database.js'
-
-import {
-  wechatyDevelopers,
-  polyglotWechatyUserGroup,
-  bot5Club,
-}                         from './database/mod.js'
+import { fridayConfig } from '../friday/config/deprecated.js'
 
 async function connectGitterFriday (args: {
   friday : Wechaty,
@@ -25,14 +16,14 @@ async function connectGitterFriday (args: {
 }): Promise<void> {
   const { friday, gitter, qq } = args
 
-  const gitterRoom  = await gitter.Room.find({ id: GITTER_WECHATY_ROOM_ID })
-  const qqRoom      = await qq.Room.find({ id: QQ_WECHATY_ROOM_ID })
+  const gitterRoom  = await gitter.Room.find({ id: fridayConfig.gitter.wechatyRoomId })
+  const qqRoom      = await qq.Room.find({ id: fridayConfig.oicq.wechatyRoomId })
 
   if (!gitterRoom) {
-    throw new Error('Gitter Room with id: ' + GITTER_WECHATY_ROOM_ID + ' not found')
+    throw new Error('Gitter Room with id: ' + fridayConfig.gitter.wechatyRoomId + ' not found')
   }
   if (!qqRoom) {
-    throw new Error('QQ Group with id: ' + QQ_WECHATY_ROOM_ID + ' not found')
+    throw new Error('QQ Group with id: ' + fridayConfig.oicq.wechatyRoomId + ' not found')
   }
 
   const qqRoomSay = async (msg: string): Promise<void> => {
@@ -40,7 +31,7 @@ async function connectGitterFriday (args: {
       return
     }
 
-    const room = await qq.Room.find(QQ_WECHATY_ROOM_ID)
+    const room = await qq.Room.find({ id: fridayConfig.oicq.wechatyRoomId })
     if (!room) {
       return
     }
@@ -50,8 +41,8 @@ async function connectGitterFriday (args: {
 
   const wechatRoomListAll = await Promise.all(
     [
-      ...wechatyDevelopers.homeHq,
-      ...wechatyDevelopers.home,
+      ...fridayConfig.wechat.wechatyDevelopers.homeHq,
+      ...fridayConfig.wechat.wechatyDevelopers.home,
     ].map(
       id => friday.Room.find({ id }),
     ),
@@ -196,20 +187,20 @@ async function connectGitterFriday (args: {
   }
 
   ;[
-    ...wechatyDevelopers.home,
-    ...wechatyDevelopers.homeHq,
-    ...wechatyDevelopers.contributors,
-    ...Object.values(polyglotWechatyUserGroup).flat(),
+    ...fridayConfig.wechat.wechatyDevelopers.home,
+    ...fridayConfig.wechat.wechatyDevelopers.homeHq,
+    ...fridayConfig.wechat.wechatyDevelopers.contributors,
+    ...Object.values(fridayConfig.wechat.wechatyUserGroup).flat(),
 
     /**
      * Summer of Code
      */
-    ...wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
+    ...fridayConfig.wechat.wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
 
     /**
       * BOT5.Club
       */
-    ...bot5Club.rooms,
+    ...fridayConfig.wechat.bot5Club.rooms,
   ].forEach(forwardWechatToGitterQQ)
 
   /**

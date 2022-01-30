@@ -5,7 +5,7 @@ import {
 import {
   MIKE_CONTACT_ID,
 }                             from '../../../../../config/legacy/database.js'
-import { fridayConfig } from '../../../deprecated.js'
+import { fridayConfig } from '../../../../../config/deprecated.js'
 
 import { unidirectionalMapper }           from '../unidirectional-mapper.js'
 

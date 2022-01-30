@@ -14,7 +14,7 @@ import {
   // DEVELOPERS_ROOM_ID_ENGLISH,
   // HEADQUARTERS_ROOM_ID,
 }                             from '../../../../../../config/legacy/database.js'
-import { fridayConfig } from '../../../../deprecated.js'
+import { fridayConfig } from '../../../../../../config/deprecated.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
 import { unidirectionalMapper } from '../../unidirectional-mapper.js'
