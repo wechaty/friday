@@ -1,7 +1,7 @@
 import type { Contact } from 'wechaty'
 import { log } from 'wechaty'
 
-import { fridayConfig } from '../../friday/config/deprecated.js'
+import { fridayConfig } from '../../config/deprecated.js'
 
 import type { MetricBots } from './types.js'
 

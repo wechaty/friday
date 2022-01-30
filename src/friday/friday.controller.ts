@@ -3,7 +3,7 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
 import { ChatopsCommand } from './commands/impl/chatops.command.js'
-import type { FridayConfig } from './config/friday-config.js'
+import type { FridayConfig } from '../config/friday-config.js'
 import type { ChatopsDto } from './interfaces/chatops-dto.interface.js'
 import type { Bot } from './models/bot.model.js'
 import { GetBotsQuery } from './queries/impl/mod.js'

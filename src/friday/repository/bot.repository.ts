@@ -1,4 +1,7 @@
-import { Injectable } from '@nestjs/common'
+import {
+  Injectable,
+  OnModuleInit,
+}                 from '@nestjs/common'
 import { Brolog } from 'brolog'
 
 import { Bot } from '../models/bot.model.js'
@@ -10,15 +13,15 @@ import {
   WeChatBuilder,
   WhatsappBuilder,
   WXWorkBuilder,
-}                     from '../bots/mod.js'
+}                     from '../../bots/mod.js'
 
-import type { FridayConfig } from '../config/friday-config.js'
+import type { FridayConfig } from '../../config/friday-config.js'
 
 type FridayConfigInstance = InstanceType<typeof FridayConfig>
 type FridayBotName = FridayConfigInstance[keyof FridayConfigInstance]['name']
 
 @Injectable()
-export class BotRepository {
+export class BotRepository implements OnModuleInit {
 
   protected bots: Bot[]
 
@@ -39,6 +42,15 @@ export class BotRepository {
       new Bot(whatsappBuilder.build()),
       new Bot(wxworkBuilder.build()),
     ]
+  }
+
+  async onModuleInit () {
+    this.log.verbose('BotRepository', 'onModuleInit()')
+    for (const bot of this.bots) {
+      this.log.info('BotRepository', 'onModuleInit() bot.start() starting %s', bot.wechaty.name())
+      await bot.wechaty.start()
+      this.log.info('BotRepository', 'onModuleInit() bot.start() bot %s started', bot.wechaty.name())
+    }
   }
 
   async find (name: FridayBotName): Promise<undefined | Bot> {
