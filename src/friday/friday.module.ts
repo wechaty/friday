@@ -2,9 +2,9 @@
 import { Module } from '@nestjs/common'
 
 import { CqrsModule } from '@nestjs/cqrs'
-import { CommandHandlers } from './commands/handlers/index.js'
-import { EventHandlers } from './events/handlers/index.js'
-import { QueryHandlers } from './queries/handlers/index.js'
+import { CommandHandlers } from './commands/mod.js'
+import { EventHandlers } from './events/mod.js'
+import { QueryHandlers } from './queries/mod.js'
 
 import { WechatyBotsModule } from './bots/mod.js'
 

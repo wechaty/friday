@@ -10,12 +10,10 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import {
-  WXWORK_FRIDAY_ROOM_ID,
-}                                 from '../../../../config/legacy/database.js'
+import { fridayConfig } from '../../../wechat/deprecated.js'
 
 const isNotChatOpsRoom = (room: Room) => !([
-  WXWORK_FRIDAY_ROOM_ID,
+  fridayConfig.wxwork.chatOpsRoomId,
 ].includes(room.id))
 
 const chatopsConfig: WechatyVorpalConfig = {
