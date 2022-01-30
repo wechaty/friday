@@ -5,7 +5,7 @@ import type {
 }           from 'brolog'
 
 import { HeroFoundItemEvent } from '../events/impl/hero-found-item.event.js'
-import { HeroKilledDragonEvent } from '../events/impl/hero-killed-dragon.event.js'
+import { ChatopsEvent } from '../events/impl/chatops.event.js'
 
 export class Bot extends AggregateRoot {
 
@@ -18,10 +18,27 @@ export class Bot extends AggregateRoot {
     this.log = wechaty.log
   }
 
+  async chatops (
+    roomId: string,
+    text: string,
+  ) {
+    // logic
+    console.info('roomId/text', roomId, text)
+
+    const room = await this.wechaty.Room.find({ id: roomId })
+    if (room) {
+      await room.say(text)
+    }
+
+    this.apply(
+      new ChatopsEvent(this.wechaty.puppet.id, roomId, text),
+    )
+  }
+
   killEnemy (enemyId: string) {
     // logic
     console.info('enemyId', enemyId)
-    this.apply(new HeroKilledDragonEvent(this.id, enemyId))
+    this.apply(new ChatopsEvent(this.id, enemyId))
   }
 
   addItem (itemId: string) {

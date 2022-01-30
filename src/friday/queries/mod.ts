@@ -1,3 +1,3 @@
-import { GetHeroesHandler } from './handlers/get-heroes.handler.js'
+import { GetBotsHandler } from './handlers/get-bots.handler.js'
 
-export const QueryHandlers = [GetHeroesHandler]
+export const QueryHandlers = [GetBotsHandler]
