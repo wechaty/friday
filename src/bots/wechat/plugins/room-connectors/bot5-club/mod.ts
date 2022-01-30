@@ -2,7 +2,7 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import { fridayConfig } from '../../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../../setting/deprecated.js'
 
 import { unidirectionalMapper } from '../unidirectional-mapper.js'
 
@@ -17,7 +17,7 @@ import { unidirectionalMapper } from '../unidirectional-mapper.js'
  * - second club room in the array (and all the following)
  *    is the previous room (previous year).
  */
-const [next, current, ...previous] =  fridayConfig.wechat.bot5Club.rooms
+const [next, current, ...previous] =  fridaySetting.wechat.bot5Club.rooms
 
 const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
   map: unidirectionalMapper,

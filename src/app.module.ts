@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { FridayModule } from './friday/friday.module.js'
-import { BotRepository } from './friday/repository/bot.repository.js'
+import { FridayModule } from './cqrs/friday.module.js'
+import { BotRepository } from './cqrs/repositories/bot.repository.js'
 
 @Module({
   imports: [FridayModule],

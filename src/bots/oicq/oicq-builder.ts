@@ -4,7 +4,7 @@ import { Brolog } from 'brolog'
 
 import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
-import type { FridayConfig } from '../../config/friday-config.js'
+import type { FridaySetting } from '../../setting/friday-setting.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
@@ -14,7 +14,7 @@ class OicqBuilder implements WECHATY.BuilderInterface {
   protected name: string
 
   constructor (
-    protected config: FridayConfig,
+    protected config: FridaySetting,
     protected log: Brolog,
   ) {
     this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',

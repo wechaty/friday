@@ -9,7 +9,7 @@ import { Brolog } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
-import type { FridayConfig } from '../../config/friday-config.js'
+import type { FridaySetting } from '../../setting/friday-setting.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
@@ -19,7 +19,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
   protected name: string
 
   constructor (
-    protected config: FridayConfig,
+    protected config: FridaySetting,
     protected log: Brolog,
   ) {
     this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',

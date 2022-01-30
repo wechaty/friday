@@ -3,7 +3,7 @@ import {
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
 
-import { fridayConfig } from '../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../setting/deprecated.js'
 
 const bot5Config: RoomInviterConfig = {
   password: [
@@ -12,7 +12,7 @@ const bot5Config: RoomInviterConfig = {
     /^Bot Friday$/i,
     /^friday$/i,
   ],
-  room: fridayConfig.wechat.bot5Club.rooms[1],  // <- [1] is the current year member room
+  room: fridaySetting.wechat.bot5Club.rooms[1],  // <- [1] is the current year member room
   rule: [
     "I'm trying to invite you into Bot5, please read the manual first: https://www.bot5.club/manuals/newcomer",
   ],

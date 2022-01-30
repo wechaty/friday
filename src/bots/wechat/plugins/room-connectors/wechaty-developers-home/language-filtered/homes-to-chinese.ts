@@ -9,9 +9,9 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../../config/legacy/database.js'
+}                             from '../../../../../../setting/legacy/database.js'
 
-import { fridayConfig } from '../../../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../../../setting/deprecated.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
 import { unidirectionalMapper } from '../../unidirectional-mapper.js'
@@ -42,18 +42,18 @@ const HomeToChinesePlugin = SourceToTargetRoomConnector({
 
     const room = message.room()
     // if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
-    if (room && fridayConfig.wechat.wechatyDevelopers.homeHq.includes(room.id)) {
+    if (room && fridaySetting.wechat.wechatyDevelopers.homeHq.includes(room.id)) {
       return unidirectionalMapper(message)
     } else {
       return bidirectionalMapper(message)
     }
   },
   source: [
-    ...fridayConfig.wechat.wechatyDevelopers.home,  // DEVELOPERS_ROOM_ID_LIST,
-    ...fridayConfig.wechat.wechatyDevelopers.homeHq, // HEADQUARTERS_ROOM_ID,
+    ...fridaySetting.wechat.wechatyDevelopers.home,  // DEVELOPERS_ROOM_ID_LIST,
+    ...fridaySetting.wechat.wechatyDevelopers.homeHq, // HEADQUARTERS_ROOM_ID,
   ],
   target: [
-    ...fridayConfig.wechat.wechatyDevelopers.chinese, // DEVELOPERS_ROOM_ID_CHINESE,
+    ...fridaySetting.wechat.wechatyDevelopers.chinese, // DEVELOPERS_ROOM_ID_CHINESE,
   ],
 })
 

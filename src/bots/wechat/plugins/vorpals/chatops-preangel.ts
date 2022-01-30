@@ -6,12 +6,12 @@ import {
   UrlLink,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridayConfig } from '../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../setting/deprecated.js'
 
 const config: WechatyVorpalConfig = {
   contact : false,
   mention : false,
-  room    : fridayConfig.wechat.chatops.preangel,
+  room    : fridaySetting.wechat.chatops.preangel,
   silent  : true,
 
   use: [

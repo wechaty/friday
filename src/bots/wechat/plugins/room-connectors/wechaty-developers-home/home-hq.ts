@@ -4,8 +4,8 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../config/legacy/database.js'
-import { fridayConfig } from '../../../../../config/deprecated.js'
+}                             from '../../../../../setting/legacy/database.js'
+import { fridaySetting } from '../../../../../setting/deprecated.js'
 
 import { unidirectionalMapper }           from '../unidirectional-mapper.js'
 
@@ -20,10 +20,10 @@ const HomeHqCollectingPlugin = SourceToTargetRoomConnector({
   ],
   map: unidirectionalMapper,
   source: [
-    ...fridayConfig.wechat.wechatyDevelopers.home,
+    ...fridaySetting.wechat.wechatyDevelopers.home,
   ],
   target: [
-    ...fridayConfig.wechat.wechatyDevelopers.homeHq,
+    ...fridaySetting.wechat.wechatyDevelopers.homeHq,
   ],
 })
 
@@ -38,11 +38,11 @@ const HomeHqAnnouncingPlugin = SourceToTargetRoomConnector({
   ],
   map: unidirectionalMapper,
   source: [
-    ...fridayConfig.wechat.wechatyDevelopers.homeHq,
+    ...fridaySetting.wechat.wechatyDevelopers.homeHq,
   ],
   target: [
-    ...fridayConfig.wechat.wechatyDevelopers.home,
-    ...fridayConfig.wechat.wechatyDevelopers.monitor,
+    ...fridaySetting.wechat.wechatyDevelopers.home,
+    ...fridaySetting.wechat.wechatyDevelopers.monitor,
   ],
 })
 

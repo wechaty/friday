@@ -14,12 +14,12 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridayConfig } from '../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../setting/deprecated.js'
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
-  room    : fridayConfig.wechat.chatops.bot5,
+  room    : fridaySetting.wechat.chatops.bot5,
   silent  : true,
 
   use: [

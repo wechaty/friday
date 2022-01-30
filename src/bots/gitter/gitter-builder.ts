@@ -7,7 +7,7 @@ import { Brolog } from 'brolog'
 import { PuppetGitter }  from 'wechaty-puppet-gitter'
 import type * as WECHATY from 'wechaty'
 
-import type { FridayConfig } from '../../config/friday-config.js'
+import type { FridaySetting } from '../../setting/friday-setting.js'
 
 import { getPlugins } from './plugins/mod.js'
 
@@ -18,7 +18,7 @@ class GitterBuilder implements WECHATY.BuilderInterface {
   protected name: string
 
   constructor (
-    protected config: FridayConfig,
+    protected config: FridaySetting,
     protected log: Brolog,
   ) {
     this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s})',

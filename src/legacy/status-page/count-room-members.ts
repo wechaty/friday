@@ -1,7 +1,7 @@
 import type { Contact } from 'wechaty'
 import { log } from 'wechaty'
 
-import { fridayConfig } from '../../config/deprecated.js'
+import { fridaySetting } from '../../setting/deprecated.js'
 
 import type { MetricBots } from './types.js'
 
@@ -32,9 +32,9 @@ async function countRoomMembers (
   /**
    * Gitter
    */
-  const gitterRoom = await bots.gitter.Room.find({ id: fridayConfig.gitter.wechatyRoomId })
+  const gitterRoom = await bots.gitter.Room.find({ id: fridaySetting.gitter.wechatyRoomId })
   if (!gitterRoom) {
-    throw new Error('Gitter room id: ' + fridayConfig.gitter.wechatyRoomId + 'not found')
+    throw new Error('Gitter room id: ' + fridaySetting.gitter.wechatyRoomId + 'not found')
   }
   const gitterRoomMemberList = await gitterRoom.memberAll()
   const gitterSet = new Set<string>()

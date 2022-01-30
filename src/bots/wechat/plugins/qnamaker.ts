@@ -9,15 +9,15 @@ import {
 //   MULTI_LANG_ROOM_ID,
 // }                                   from '../../database.js'
 
-import { fridayConfig } from '../../../config/deprecated.js'
+import { fridaySetting } from '../../../setting/deprecated.js'
 
 const skipMessage = [
   /^wechaty$/i,
 ]
 
 const room = [
-  ...fridayConfig.wechat.wechatyDevelopers.home,            // DEVELOPERS_ROOM_ID_LIST,
-  ...Object.values(fridayConfig.wechat.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
+  ...fridaySetting.wechat.wechatyDevelopers.home,            // DEVELOPERS_ROOM_ID_LIST,
+  ...Object.values(fridaySetting.wechat.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
 ]
 
 const scoreThreshold = 30

@@ -4,8 +4,8 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../../config/legacy/database.js'
-import { fridayConfig } from '../../../../../../config/deprecated.js'
+}                             from '../../../../../../setting/legacy/database.js'
+import { fridaySetting } from '../../../../../../setting/deprecated.js'
 
 import { bidirectionalMapper } from '../../bidirectional-mapper.js'
 
@@ -15,12 +15,12 @@ const LanguageToHomePlugin = SourceToTargetRoomConnector({
   ],
   map: bidirectionalMapper,
   source: [
-    ...fridayConfig.wechat.wechatyDevelopers.chinese,
-    ...fridayConfig.wechat.wechatyDevelopers.english,
+    ...fridaySetting.wechat.wechatyDevelopers.chinese,
+    ...fridaySetting.wechat.wechatyDevelopers.english,
   ],
   target: [
-    ...fridayConfig.wechat.wechatyDevelopers.home,
-    ...fridayConfig.wechat.wechatyDevelopers.homeHq,
+    ...fridaySetting.wechat.wechatyDevelopers.home,
+    ...fridaySetting.wechat.wechatyDevelopers.homeHq,
   ],
 })
 

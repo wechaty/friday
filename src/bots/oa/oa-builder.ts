@@ -8,7 +8,7 @@ import { PuppetOA }  from 'wechaty-puppet-official-account'
 
 import type * as WECHATY from 'wechaty'
 
-import type { FridayConfig } from '../../config/friday-config.js'
+import type { FridaySetting } from '../../setting/friday-setting.js'
 
 import { getPlugins } from './plugins/mod.js'
 
@@ -22,7 +22,7 @@ class OABuilder implements WECHATY.BuilderInterface {
   protected webhookProxyUrl : string
 
   constructor (
-    protected config: FridayConfig,
+    protected config: FridaySetting,
     protected log: Brolog,
   ) {
     this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s})',

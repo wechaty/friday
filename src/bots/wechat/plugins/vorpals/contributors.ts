@@ -13,12 +13,12 @@ import {
 // import {
 //   CONTRIBUTORS_ROOM_ID,
 // }                         from '../../database.js'
-import { fridayConfig } from '../../../../config/deprecated.js'
+import { fridaySetting } from '../../../../setting/deprecated.js'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : true,
-  room    : fridayConfig.wechat.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+  room    : fridaySetting.wechat.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
   silent  : true,
 
   use  : [
