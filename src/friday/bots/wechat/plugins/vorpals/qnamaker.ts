@@ -1,18 +1,23 @@
 import {
   WechatyVorpal,
   WechatyVorpalConfig,
-}                        from 'wechaty-vorpal'
+}                         from 'wechaty-vorpal'
 import { Faq  }           from 'wechaty-qnamaker'
 
 import {
   configChinese,
   configEnglish,
-}                         from '../../../wechat/plugins/qnamaker.js'
+}                         from '../qnamaker.js'
+
+import { fridayConfig } from '../../deprecated.js'
 
 const faqConfig: WechatyVorpalConfig = {
-  contact : true,
-  mention : true,
-  room    : true,
+  contact : false,
+  mention : false,
+  room    : [
+    fridayConfig.wechat.chatops.bot5,
+    ...fridayConfig.wechat.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+  ],
   silent  : true,
 
   use: [

@@ -13,7 +13,7 @@ import type { FridayConfig } from '../../config/friday-config.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
-class OaBuilder implements WECHATY.BuilderInterface {
+class OABuilder implements WECHATY.BuilderInterface {
 
   protected name            : string
   protected appId           : string
@@ -25,7 +25,7 @@ class OaBuilder implements WECHATY.BuilderInterface {
     protected config: FridayConfig,
     protected log: Brolog,
   ) {
-    this.log.verbose('OaBuilder', 'constructor({name: %s, webhookProxyUrl: %s})',
+    this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s})',
       config.oa.name,
       config.oa.webhookProxyUrl,
     )
@@ -38,7 +38,7 @@ class OaBuilder implements WECHATY.BuilderInterface {
   }
 
   build () {
-    this.log.verbose('OaBuilder', 'build()')
+    this.log.verbose('OABuilder', 'build()')
 
     const name = this.name
 
@@ -62,5 +62,5 @@ class OaBuilder implements WECHATY.BuilderInterface {
 }
 
 export {
-  OaBuilder,
+  OABuilder,
 }

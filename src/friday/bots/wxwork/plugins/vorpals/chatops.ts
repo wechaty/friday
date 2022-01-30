@@ -16,7 +16,7 @@ import {
 
 import {
   WXWORK_FRIDAY_ROOM_ID,
-}                                       from '../../../config/legacy/database.js'
+}                                       from '../../../../config/legacy/database.js'
 
 const chatopsConfig: WechatyVorpalConfig = {
   contact : false,

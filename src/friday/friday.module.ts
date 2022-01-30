@@ -11,11 +11,14 @@ import { BotsSagas } from './sagas/bots.sagas.js'
 import { HeroesGameController } from './friday.controller.js'
 import { BotRepository } from './repository/bot.repository.js'
 
+import { FridayConfig } from './config/mod.js'
+
 @Module({
   imports: [CqrsModule],
   controllers: [HeroesGameController],
   providers: [
     BotRepository,
+    FridayConfig,
     ...CommandHandlers,
     ...EventHandlers,
     ...QueryHandlers,
