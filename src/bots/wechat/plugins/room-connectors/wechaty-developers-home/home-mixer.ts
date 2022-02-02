@@ -7,10 +7,9 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  // DEVELOPERS_ROOM_ID_LIST,
+  weChatSettings,
   MIKE_CONTACT_ID,
-}                             from '../../../../../settings/legacy/database.js'
-import { fridaySetting } from '../../../../../settings/deprecated.js'
+}                         from '../../../../../settings/deprecated.js'
 
 import { bidirectionalMapper }            from '../bidirectional-mapper.js'
 
@@ -27,7 +26,7 @@ const blacklist = [
 const ManyToManyPlugin = ManyToManyRoomConnector({
   blacklist,
   many: [
-    ...fridaySetting.wechat.wechatyDevelopers.home,
+    ...weChatSettings.rooms.wechatyDevelopers.home,
   ],
   map: bidirectionalMapper,
 })

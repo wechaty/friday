@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common'
 import type { Brolog } from 'brolog'
 
 import type { NamedSetting } from '../named-setting.js'
 
+@Injectable()
 class WhatsAppSettings implements NamedSetting {
 
   constructor (

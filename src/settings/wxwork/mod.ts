@@ -1,8 +1,10 @@
 import * as envVar from 'env-var'
 import type { Brolog } from 'brolog'
+import { Injectable } from '@nestjs/common'
 
 import type { NamedSetting } from '../named-setting.js'
 
+@Injectable()
 class WxWorkSettings implements NamedSetting {
 
   constructor (

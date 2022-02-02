@@ -3,9 +3,6 @@ import {
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
 
-// import {
-//   DEVELOPERS_ROOM_ID_CHINESE,
-// }                             from '../../../database.js'
 import { fridaySetting } from '../../../../settings/deprecated.js'
 
 import {

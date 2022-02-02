@@ -4,8 +4,6 @@ import {
   WechatyIntercomConfig,
 }                           from 'wechaty-intercom'
 
-// import { PUPPET_SERVICE_PROVIDER_ROOM_ID } from '../database.js'
-
 const config: WechatyIntercomConfig = {
   mention: true,
   close: [

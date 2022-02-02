@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
-import type { FridaySetting } from './settings/friday-setting.js'
+import type { FridaySettings } from './settings/friday-settings.js'
 
 import * as CQRS from './cqrs/mod.js'
 
@@ -18,7 +18,7 @@ export class FridayController {
   constructor (
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
-    private readonly fridayConfig: FridaySetting,
+    private readonly fridayConfig: FridaySettings,
   ) {}
 
   @Post('chatops/:roomId')

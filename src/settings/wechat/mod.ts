@@ -1,5 +1,6 @@
 import * as envVar from 'env-var'
 import type { Brolog } from 'brolog'
+import { Injectable } from '@nestjs/common'
 
 import type { NamedSetting } from '../named-setting.js'
 
@@ -8,6 +9,7 @@ import * as wechatyDevelopers   from './wechaty-developers.js'
 import * as bot5Club            from './bot5.js'
 import * as chatops             from './chatops.js'
 
+@Injectable()
 class WeChatSettings implements NamedSetting {
 
   constructor (
@@ -25,7 +27,7 @@ class WeChatSettings implements NamedSetting {
       chatops,
       wechatyDevelopers,
       wechatyUserGroup,
-    },
+    } as const,
 
   ) {
     this.log.verbose('WeChatSettings', 'constructor(%s) token=%s', this.name, token)
