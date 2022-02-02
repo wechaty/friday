@@ -9,9 +9,9 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../../setting/legacy/database.js'
+}                             from '../../../../../../settings/legacy/database.js'
 
-import { fridaySetting } from '../../../../../../setting/deprecated.js'
+import { fridaySetting } from '../../../../../../settings/deprecated.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
 import { unidirectionalMapper } from '../../unidirectional-mapper.js'

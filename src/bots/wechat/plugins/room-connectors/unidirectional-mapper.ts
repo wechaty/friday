@@ -3,7 +3,7 @@ import {
   types,
 }             from 'wechaty'
 
-import { fridaySetting } from '../../../../setting/deprecated.js'
+import { fridaySetting } from '../../../../settings/deprecated.js'
 
 import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
 import { senderDisplayName }              from './sender-display-name.js'

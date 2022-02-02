@@ -13,8 +13,8 @@ import {
   // DEVELOPERS_ROOM_ID_WXWORK,
   // DEVELOPERS_ROOM_ID_ENGLISH,
   // HEADQUARTERS_ROOM_ID,
-}                             from '../../../../../../setting/legacy/database.js'
-import { fridaySetting } from '../../../../../../setting/deprecated.js'
+}                             from '../../../../../../settings/legacy/database.js'
+import { fridaySetting } from '../../../../../../settings/deprecated.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
 import { unidirectionalMapper } from '../../unidirectional-mapper.js'

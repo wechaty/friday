@@ -5,9 +5,9 @@ import { CqrsModule } from '@nestjs/cqrs'
 import * as CQRS from './cqrs/mod.js'
 
 import { WechatyBotsModule }  from './bots/mod.js'
+import { settings }           from './settings/mod.js'
 
 import { FridayController }   from './friday.controller.js'
-import { FridaySetting }      from './setting/mod.js'
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { FridaySetting }      from './setting/mod.js'
   ],
   controllers: [FridayController],
   providers: [
-    FridaySetting,
+    ...settings,
     CQRS.repositories.BotRepository,
     CQRS.sagas.BotsSagas,
     ...CQRS.commands.CommandHandlers,

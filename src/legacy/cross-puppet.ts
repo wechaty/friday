@@ -7,7 +7,7 @@ import {
 }             from 'wechaty'
 import type { FileBoxInterface } from 'file-box'
 
-import { fridaySetting } from '../setting/deprecated.js'
+import { fridaySetting } from '../settings/deprecated.js'
 
 async function connectGitterFriday (args: {
   friday : Wechaty,

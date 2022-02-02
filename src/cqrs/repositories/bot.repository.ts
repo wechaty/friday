@@ -15,7 +15,7 @@ import {
   WXWorkBuilder,
 }                     from '../../bots/mod.js'
 
-import type { FridaySetting } from '../../setting/friday-setting.js'
+import type { FridaySetting } from '../../settings/friday-setting.js'
 
 type FridayConfigInstance = InstanceType<typeof FridaySetting>
 type FridayBotName = FridayConfigInstance[keyof FridayConfigInstance]['name']

@@ -2,7 +2,7 @@ import {
   RoomInviter,
 }                       from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../../setting/deprecated.js'
+import { fridaySetting } from '../../../../settings/deprecated.js'
 
 import {
   repeat,

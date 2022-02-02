@@ -3,7 +3,7 @@ import {
   HeartbeatConfig,
 }                   from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../setting/deprecated.js'
+import { fridaySetting } from '../../../settings/deprecated.js'
 
 const config: HeartbeatConfig = {
   emoji: {

@@ -3,7 +3,7 @@ import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 import { PuppetService } from 'wechaty-puppet-service'
 
-import type { FridaySetting } from '../../setting/friday-setting.js'
+import type { WxWorkSettings } from '../../settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
@@ -15,18 +15,18 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
   protected chatOpsRoom: string
 
   constructor (
-    protected config: FridaySetting,
+    protected settings: WxWorkSettings,
     protected log: Brolog,
   ) {
     this.log.verbose('WXWorkBuilder', 'constructor(%s, %s)',
-      config.wxwork.name,
-      config.wxwork.token,
+      settings.name,
+      settings.token,
     )
 
-    this.name = config.wxwork.name
-    this.token = config.wxwork.token
-    this.heartbeatRoom = config.wxwork.heartbeatRoomId
-    this.chatOpsRoom = config.wxwork.chatOpsRoomId
+    this.name = settings.name
+    this.token = settings.token
+    this.heartbeatRoom = settings.heartbeatRoomId
+    this.chatOpsRoom = settings.chatOpsRoomId
   }
 
   build () {

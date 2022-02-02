@@ -7,7 +7,7 @@ import {
 import {
   VERSION,
 }                   from '../../config.js'
-import { fridaySetting } from '../../setting/deprecated.js'
+import { fridaySetting } from '../../settings/deprecated.js'
 
 const BOT_NAME = 'Friday.BOT'
 

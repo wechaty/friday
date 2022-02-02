@@ -13,7 +13,7 @@ import {
 // import {
 //   CONTRIBUTORS_ROOM_ID,
 // }                         from '../../database.js'
-import { fridaySetting } from '../../../../setting/deprecated.js'
+import { fridaySetting } from '../../../../settings/deprecated.js'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,

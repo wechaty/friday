@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
-import type { FridaySetting } from './setting/friday-setting.js'
+import type { FridaySetting } from './settings/friday-setting.js'
 
 import * as CQRS from './cqrs/mod.js'
 

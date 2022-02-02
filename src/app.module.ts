@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { FridayModule } from './cqrs/friday.module.js'
+import { FridayModule } from './friday.module.js'
 import { BotRepository } from './cqrs/repositories/bot.repository.js'
 
 @Module({

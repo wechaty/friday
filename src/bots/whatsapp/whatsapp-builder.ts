@@ -3,7 +3,7 @@ import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 import { PuppetWhatsapp } from 'wechaty-puppet-whatsapp'
 
-import type { FridaySetting } from '../../setting/friday-setting.js'
+import type { WhatsAppSettings } from '../../settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
@@ -12,14 +12,14 @@ class WhatsappBuilder implements WECHATY.BuilderInterface {
   protected name: string
 
   constructor (
-    protected config: FridaySetting,
+    protected settings: WhatsAppSettings,
     protected log: Brolog,
   ) {
     this.log.verbose('WhatsappBuilder', 'constructor(%s)',
-      config.whatsapp.name,
+      settings.name,
     )
 
-    this.name = config.whatsapp.name
+    this.name = settings.name
   }
 
   build () {

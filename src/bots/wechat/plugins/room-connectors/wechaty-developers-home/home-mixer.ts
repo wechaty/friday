@@ -9,8 +9,8 @@ import {
 import {
   // DEVELOPERS_ROOM_ID_LIST,
   MIKE_CONTACT_ID,
-}                             from '../../../../../setting/legacy/database.js'
-import { fridaySetting } from '../../../../../setting/deprecated.js'
+}                             from '../../../../../settings/legacy/database.js'
+import { fridaySetting } from '../../../../../settings/deprecated.js'
 
 import { bidirectionalMapper }            from '../bidirectional-mapper.js'
 

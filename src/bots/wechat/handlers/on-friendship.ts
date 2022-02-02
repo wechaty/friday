@@ -4,7 +4,7 @@ import {
   Wechaty,
 }             from 'wechaty'
 
-import { FRIDAY_ROOM_ID }            from '../../../setting/legacy/database.js'
+import { FRIDAY_ROOM_ID }            from '../../../settings/legacy/database.js'
 
 export default async function onFriendship (
   this       : Wechaty,

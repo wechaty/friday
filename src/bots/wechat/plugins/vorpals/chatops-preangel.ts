@@ -6,7 +6,7 @@ import {
   UrlLink,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridaySetting } from '../../../../setting/deprecated.js'
+import { fridaySetting } from '../../../../settings/deprecated.js'
 
 const config: WechatyVorpalConfig = {
   contact : false,

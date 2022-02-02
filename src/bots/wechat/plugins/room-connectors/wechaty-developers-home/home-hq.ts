@@ -4,8 +4,8 @@ import {
 
 import {
   MIKE_CONTACT_ID,
-}                             from '../../../../../setting/legacy/database.js'
-import { fridaySetting } from '../../../../../setting/deprecated.js'
+}                             from '../../../../../settings/legacy/database.js'
+import { fridaySetting } from '../../../../../settings/deprecated.js'
 
 import { unidirectionalMapper }           from '../unidirectional-mapper.js'
 

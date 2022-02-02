@@ -10,7 +10,7 @@ import type {
   talkers,
 }                   from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../setting/deprecated.js'
+import { fridaySetting } from '../../../settings/deprecated.js'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
