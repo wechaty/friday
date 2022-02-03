@@ -1,6 +1,5 @@
 import { log } from 'wechaty-puppet'
 import {
-  FridaySettings,
   WeChatSettings,
 }                   from './mod.js'
 
@@ -10,11 +9,9 @@ import {
  *             It should be removed once we can use injection.
  * @deprecated: use injection in the future
  */
-const fridaySetting = new FridaySettings()
-/**
- * @deprecated: use injection in the future
- */
-const weChatSettings = new WeChatSettings(log)
+const botSettings = {
+  weChat: new WeChatSettings(log),
+}
 
 // const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖
 /**
@@ -45,6 +42,5 @@ export {
 
   MIXED_FRIDAY_ROOM_ID,
   MIXED_HEARTBEAT_ROOM_ID,
-  fridaySetting,
-  weChatSettings,
+  botSettings,
 }

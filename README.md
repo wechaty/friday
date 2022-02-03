@@ -34,6 +34,13 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 Use [NestJS](https://docs.nestjs.com/recipes/cqrs) to build the server.
 
+#### DDD & CQS
+
+- Effective Aggregate Design
+  - [Part I: Modeling a Single Aggregate](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_1.pdf)
+  - [Part II: Making Aggregates Work Together](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_2.pdf)
+  - [Part III: Gining Insight Through Discovery](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_3.pdf)
+
 ## v0.11 (Dec 2021)
 
 1. ES Module support
