@@ -2,13 +2,13 @@ import {
   ChatOps,
 }             from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../settings/deprecated.js'
+import { botSettings } from '../../../bot-settings/deprecated.js'
 
 const ChatOpsPlugin = ChatOps({
   blacklist: [
     'bot-sentry',
   ],
-  room: fridaySetting.wechat.chatops.bot5,
+  room: botSettings.weChat.rooms.chatops.friday,
 })
 
 export {

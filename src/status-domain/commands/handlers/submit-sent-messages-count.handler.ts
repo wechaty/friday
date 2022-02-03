@@ -1,7 +1,7 @@
 import { Brolog } from 'brolog'
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 
-import {  SubmitSentMessagesCountCommand } from '../impls/submit-sent-messages-counter.command.js'
+import {  SubmitSentMessagesCountCommand } from '../impls/submit-sent-messages-count.command.js'
 import type { StatusPageSettings } from '../../settings.js'
 
 import { statusPageMetricSubmitter } from './status-page.api.js'

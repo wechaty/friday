@@ -3,7 +3,7 @@ import {
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 import {
   repeat,
@@ -17,7 +17,7 @@ const wechatyConfig: RoomInviterConfig = {
     /^plugin$/i,
   ],
   repeat,
-  room: fridaySetting.wechat.wechatyDevelopers.home,
+  room: botSettings.weChat.rooms.wechatyDevelopers.home,
   rule: WECHATY_DEVELOPERS_ROOM_RULES,
   welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
 }

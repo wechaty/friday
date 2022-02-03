@@ -2,7 +2,7 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../../../settings/deprecated.js'
+import { botSettings } from '../../../../../bot-settings/deprecated.js'
 
 import { unidirectionalMapper } from '../unidirectional-mapper.js'
 
@@ -11,16 +11,16 @@ import { unidirectionalMapper } from '../unidirectional-mapper.js'
  * Announcement
  *
  */
-const exceptBroadcastStation = (roomId: string) => !fridaySetting.wechat.wechatyDevelopers.broadcastStation.includes(roomId)
+const exceptBroadcastStation = (roomId: string) => !botSettings.weChat.rooms.wechatyDevelopers.broadcastStation.includes(roomId)
 
-const allUserGroups = Object.values(fridaySetting.wechat.wechatyUserGroup).flat()
-const allHomes      = Object.values(fridaySetting.wechat.wechatyDevelopers).flat()
+const allUserGroups = Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat()
+const allHomes      = Object.values(botSettings.weChat.rooms.wechatyDevelopers).flat()
   .filter(exceptBroadcastStation)
 
 const HeadquartersBroadcastStationPlugin = SourceToTargetRoomConnector({
   map: unidirectionalMapper,
   source: [
-    ...fridaySetting.wechat.wechatyDevelopers.broadcastStation,
+    ...botSettings.weChat.rooms.wechatyDevelopers.broadcastStation,
   ],
   target: [
     ...allUserGroups,

@@ -5,7 +5,7 @@ import { Brolog } from 'brolog'
 import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { getPlugins } from './plugins/mod.js'
-import type { OicqSettings } from '../../settings/mod.js'
+import type { OicqSettings } from '../../bot-settings/mod.js'
 
 @Injectable()
 class OicqBuilder implements WECHATY.BuilderInterface {

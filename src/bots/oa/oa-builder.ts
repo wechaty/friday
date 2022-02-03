@@ -8,7 +8,7 @@ import { PuppetOA }  from 'wechaty-puppet-official-account'
 
 import type * as WECHATY from 'wechaty'
 
-import type { OaSettings } from '../../settings/mod.js'
+import type { OaSettings } from '../../bot-settings/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
 

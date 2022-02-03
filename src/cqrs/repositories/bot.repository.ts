@@ -15,11 +15,6 @@ import {
   WXWorkBuilder,
 }                     from '../../bots/mod.js'
 
-import type { FridaySettings } from '../../settings/friday-settings.js'
-
-type FridayConfigInstance = InstanceType<typeof FridaySettings>
-type FridayBotName = FridayConfigInstance[keyof FridayConfigInstance]['name']
-
 @Injectable()
 export class BotRepository implements OnModuleInit {
 
@@ -53,7 +48,7 @@ export class BotRepository implements OnModuleInit {
     }
   }
 
-  async find (name: FridayBotName): Promise<undefined | Bot> {
+  async find (name: string): Promise<undefined | Bot> {
     return this.bots.filter(bot => bot.wechaty.name() === name)[0]
   }
 

@@ -8,7 +8,7 @@ import { PuppetGitter }  from 'wechaty-puppet-gitter'
 import type * as WECHATY from 'wechaty'
 
 import { getPlugins } from './plugins/mod.js'
-import type { GitterSettings } from '../../settings/gitter/mod.js'
+import type { GitterSettings } from '../../bot-settings/gitter/mod.js'
 
 @Injectable()
 class GitterBuilder implements WECHATY.BuilderInterface {

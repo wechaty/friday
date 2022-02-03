@@ -1,6 +1,7 @@
 import { log } from 'wechaty-puppet'
 import {
   WeChatSettings,
+  WxWorkSettings,
 }                   from './mod.js'
 
 /**
@@ -11,6 +12,7 @@ import {
  */
 const botSettings = {
   weChat: new WeChatSettings(log),
+  wxWork: new WxWorkSettings(log),
 }
 
 // const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖

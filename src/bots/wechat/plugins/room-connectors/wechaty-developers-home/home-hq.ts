@@ -3,9 +3,9 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  weChatSettings,
+  botSettings,
   MIKE_CONTACT_ID,
-}                     from '../../../../../settings/deprecated.js'
+}                     from '../../../../../bot-settings/deprecated.js'
 
 import { unidirectionalMapper }           from '../unidirectional-mapper.js'
 
@@ -20,10 +20,10 @@ const HomeHqCollectingPlugin = SourceToTargetRoomConnector({
   ],
   map: unidirectionalMapper,
   source: [
-    ...weChatSettings.rooms.wechatyDevelopers.home,
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,
   ],
   target: [
-    ...weChatSettings.rooms.wechatyDevelopers.homeHq,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
   ],
 })
 
@@ -38,11 +38,11 @@ const HomeHqAnnouncingPlugin = SourceToTargetRoomConnector({
   ],
   map: unidirectionalMapper,
   source: [
-    ...weChatSettings.rooms.wechatyDevelopers.homeHq,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
   ],
   target: [
-    ...weChatSettings.rooms.wechatyDevelopers.home,
-    ...weChatSettings.rooms.wechatyDevelopers.monitor,
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,
+    ...botSettings.weChat.rooms.wechatyDevelopers.monitor,
   ],
 })
 

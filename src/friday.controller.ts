@@ -2,8 +2,6 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
-import type { FridaySettings } from './settings/friday-settings.js'
-
 import * as CQRS from './cqrs/mod.js'
 
 // import { ChatopsCommand } from './cqrs/commands/impl/chatops.command.js'
@@ -11,6 +9,7 @@ import * as CQRS from './cqrs/mod.js'
 // import type { Bot } from './cqrs/models/bot.model.js'
 // import { GetBotsQuery } from './cqrs/queries/impl/mod.js'
 import { VERSION } from './config.js'
+import type { WeChatSettings } from './bot-settings/mod.js'
 
 @Controller('/')
 export class FridayController {
@@ -18,7 +17,7 @@ export class FridayController {
   constructor (
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
-    private readonly fridayConfig: FridaySettings,
+    private readonly weChatSettings: WeChatSettings,
   ) {}
 
   @Post('chatops/:roomId')
@@ -29,7 +28,7 @@ export class FridayController {
     console.info(dto)
 
     if (!roomId) {
-      roomId = this.fridayConfig.wechat.chatops.bot5
+      roomId = this.weChatSettings.rooms.chatops.friday
     }
 
     return this.commandBus.execute(

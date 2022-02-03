@@ -1,11 +1,11 @@
-import { SubmitCommunityMembersCounterHandler } from './submit-community-members-counter.handler.js'
-import { SubmitReceivedMessagesCounterHandler } from './submit-received-messages-counter.handler.js'
-import { SubmitSentMessagesCounterHandler }     from './submit-sent-messages-counter.handler.js'
+import { SubmitCommunityMembersCounterHandler } from './submit-community-members-count.handler.js'
+import { SubmitReceivedMessagesCounterHandler } from './submit-received-messages-count.handler.js'
+import { SubmitSentMessagesCountHandler }     from './submit-sent-messages-count.handler.js'
 
 const CommandHandlers = [
   SubmitCommunityMembersCounterHandler,
   SubmitReceivedMessagesCounterHandler,
-  SubmitSentMessagesCounterHandler,
+  SubmitSentMessagesCountHandler,
 ]
 
 export {

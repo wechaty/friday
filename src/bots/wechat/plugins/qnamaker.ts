@@ -4,15 +4,15 @@ import {
   WechatyQnAMakerConfig,
 }                           from 'wechaty-qnamaker'
 
-import { weChatSettings } from '../../../settings/deprecated.js'
+import { botSettings } from '../../../bot-settings/deprecated.js'
 
 const skipMessage = [
   /^wechaty$/i,
 ]
 
 const room = [
-  ...weChatSettings.rooms.wechatyDevelopers.home,            // DEVELOPERS_ROOM_ID_LIST,
-  ...Object.values(weChatSettings.rooms.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
+  ...botSettings.weChat.rooms.wechatyDevelopers.home,            // DEVELOPERS_ROOM_ID_LIST,
+  ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
 ]
 
 const scoreThreshold = 30

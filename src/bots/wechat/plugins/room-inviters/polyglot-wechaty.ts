@@ -2,7 +2,7 @@ import {
   RoomInviter,
 }                       from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 import {
   repeat,
@@ -39,13 +39,13 @@ const welcome = (language: string) => [
   'Please go ahead to introduce yourself to the group.',
 ].join('\n')
 
-const config = (language: keyof typeof fridaySetting.wechat.wechatyUserGroup) => ({
+const config = (language: keyof typeof botSettings.weChat.rooms.wechatyUserGroup) => ({
   password : [
     new RegExp(`^\\s*${language.toLowerCase()}\\s*(wechaty)*\\s*$`, 'i'),
     // /^\s*python\s*(wechaty)*\s*$/i,
   ],
   repeat,
-  room    : fridaySetting.wechat.wechatyUserGroup[language],
+  room    : botSettings.weChat.rooms.wechatyUserGroup[language],
   rule    : rule(language),
   welcome : welcome(language),
 })
@@ -53,7 +53,7 @@ const config = (language: keyof typeof fridaySetting.wechat.wechatyUserGroup) =>
 const InviterPluginList = []
 
 for (const language of (
-  Object.keys(fridaySetting.wechat.wechatyUserGroup) as (keyof typeof fridaySetting.wechat.wechatyUserGroup)[]
+  Object.keys(botSettings.weChat.rooms.wechatyUserGroup) as (keyof typeof botSettings.weChat.rooms.wechatyUserGroup)[]
 )) {
   const configObj = config(language)
   /**

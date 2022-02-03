@@ -9,7 +9,7 @@ import { Brolog } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
-import type { WeChatSettings } from '../../settings/mod.js'
+import type { WeChatSettings } from '../../bot-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()

@@ -1,13 +1,13 @@
 import { Brolog } from 'brolog'
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 
-import { SubmitCommunityMembersCounterCommand } from '../impls/submit-members-counter.command.js'
-import type { StatusPageSettings } from '../../status-page.settings.js'
+import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
+import type { StatusPageSettings } from '../../settings.js'
 
 import { statusPageMetricSubmitter } from './status-page.api.js'
 
-@CommandHandler(SubmitCommunityMembersCounterCommand)
-export class SubmitCommunityMembersCounterHandler implements ICommandHandler<SubmitCommunityMembersCounterCommand> {
+@CommandHandler(SubmitCommunityMembersCountCommand)
+export class SubmitCommunityMembersCounterHandler implements ICommandHandler<SubmitCommunityMembersCountCommand> {
 
   submit: (value: number) => Promise<void>
 
@@ -23,7 +23,7 @@ export class SubmitCommunityMembersCounterHandler implements ICommandHandler<Sub
     )
   }
 
-  async execute (command: SubmitCommunityMembersCounterCommand) {
+  async execute (command: SubmitCommunityMembersCountCommand) {
     this.log.verbose('SubmitCommunityMembersCounterHandler', 'execute(%d)', command.counter)
     await this.submit(command.counter)
   }

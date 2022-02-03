@@ -9,14 +9,14 @@ import {
   configEnglish,
 }                         from '../qnamaker.js'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
   room    : [
-    fridaySetting.wechat.chatops.bot5,
-    ...fridaySetting.wechat.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+    botSettings.weChat.rooms.chatops.friday,
+    ...botSettings.weChat.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
   ],
   silent  : true,
 

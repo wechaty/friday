@@ -6,13 +6,13 @@ import {
   Ddr,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 const donutConfig: WechatyVorpalConfig = {
   contact : false,
   mention : false,
   room    : [
-    fridaySetting.wechat.chatops.ddr,
+    botSettings.weChat.rooms.chatops.ddr,
   ],
   silent  : true,
 

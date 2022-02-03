@@ -10,12 +10,12 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import { weChatSettings } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 const contributorsConfig: WechatyVorpalConfig = {
   contact : false,
   mention : true,
-  room    : weChatSettings.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+  room    : botSettings.weChat.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
   silent  : true,
 
   use  : [

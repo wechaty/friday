@@ -4,7 +4,7 @@ import {
   Wechaty,
 }             from 'wechaty'
 
-import { weChatSettings }            from '../../../settings/deprecated.js'
+import { botSettings }            from '../../../bot-settings/deprecated.js'
 
 export default async function onFriendship (
   this       : Wechaty,
@@ -24,9 +24,9 @@ export default async function onFriendship (
     throw new Error('unknown friendship type: ' + friendship.type())
   }
 
-  const room = await this.Room.find({ id: weChatSettings.rooms.chatops.friday })
+  const room = await this.Room.find({ id: botSettings.weChat.rooms.chatops.friday })
   if (!room) {
-    throw new Error('room id: ' + weChatSettings.rooms.chatops.friday + ' not found')
+    throw new Error('room id: ' + botSettings.weChat.rooms.chatops.friday + ' not found')
   }
   await room.say(text)
 

@@ -1,13 +1,13 @@
 import { Brolog } from 'brolog'
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 
-import { SubmitReceivedMessagesCounterCommand } from '../impls/submit-received-messages-counter.command.js'
-import type { StatusPageSettings } from '../../status-page.settings.js'
+import { SubmitReceivedMessagesCountCommand } from '../impls/submit-received-messages-count.command.js'
+import type { StatusPageSettings } from '../../settings.js'
 
 import { statusPageMetricSubmitter } from './status-page.api.js'
 
-@CommandHandler(SubmitReceivedMessagesCounterCommand)
-export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitReceivedMessagesCounterCommand> {
+@CommandHandler(SubmitReceivedMessagesCountCommand)
+export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitReceivedMessagesCountCommand> {
 
   submit: (value: number) => Promise<void>
 
@@ -23,7 +23,7 @@ export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<Sub
     )
   }
 
-  async execute (command: SubmitReceivedMessagesCounterCommand) {
+  async execute (command: SubmitReceivedMessagesCountCommand) {
     this.log.verbose('SubmitReceivedMessagesCounterHandler', 'execute(%d)', command.counter)
     await this.submit(command.counter)
   }

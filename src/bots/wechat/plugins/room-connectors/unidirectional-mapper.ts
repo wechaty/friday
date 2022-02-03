@@ -3,14 +3,14 @@ import {
   types,
 }             from 'wechaty'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
 import { senderDisplayName }              from './sender-display-name.js'
 
 const skipRoomList = [
-  ...fridaySetting.wechat.wechatyDevelopers.homeHq,
-  ...fridaySetting.wechat.wechatyDevelopers.broadcastStation,
+  ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
+  ...botSettings.weChat.rooms.wechatyDevelopers.broadcastStation,
 ]
 /**
  *

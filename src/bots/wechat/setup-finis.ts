@@ -7,7 +7,7 @@ import {
 import {
   VERSION,
 }                   from '../../config.js'
-import { fridaySetting } from '../../settings/deprecated.js'
+import { botSettings } from '../../bot-settings/deprecated.js'
 
 const BOT_NAME = 'Friday.BOT'
 
@@ -24,9 +24,9 @@ export async function setupFinis (wechaty: Wechaty): Promise<void> {
   bot = wechaty
 
   bot.on('login',   wechaty.wrapAsync(async () => {
-    const room = await wechaty.Room.find({ id: fridaySetting.wechat.chatops.bot5 })
+    const room = await wechaty.Room.find({ id: botSettings.weChat.rooms.chatops.friday })
     if (!room) {
-      throw new Error('room id: ' + fridaySetting.wechat.chatops.bot5 + ' not found')
+      throw new Error('room id: ' + botSettings.weChat.rooms.chatops.friday + ' not found')
     }
     await room.say(LOGIN_ANNOUNCEMENT)
   }))
@@ -58,9 +58,9 @@ finis(async (code, signal) => {
     log.info('RestartReporter', 'finis() announce exiting')
     try {
       // log.level('silly')
-      const room = await bot.Room.find({ id: fridaySetting.wechat.chatops.bot5 })
+      const room = await bot.Room.find({ id: botSettings.weChat.rooms.chatops.friday })
       if (!room) {
-        throw new Error('room id: ' + fridaySetting.wechat.chatops.bot5 + ' not found')
+        throw new Error('room id: ' + botSettings.weChat.rooms.chatops.friday + ' not found')
       }
       await room.say(EXIT_ANNOUNCEMENT)
       log.info('startFinis', 'finis() chatops() done')

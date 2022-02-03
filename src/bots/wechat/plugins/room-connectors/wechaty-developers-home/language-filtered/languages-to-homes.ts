@@ -3,9 +3,9 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  weChatSettings,
+  botSettings,
   MIKE_CONTACT_ID,
-}                   from '../../../../../../settings/deprecated.js'
+}                   from '../../../../../../bot-settings/deprecated.js'
 
 import { bidirectionalMapper } from '../../bidirectional-mapper.js'
 
@@ -15,12 +15,12 @@ const LanguageToHomePlugin = SourceToTargetRoomConnector({
   ],
   map: bidirectionalMapper,
   source: [
-    ...weChatSettings.rooms.wechatyDevelopers.chinese,
-    ...weChatSettings.rooms.wechatyDevelopers.english,
+    ...botSettings.weChat.rooms.wechatyDevelopers.chinese,
+    ...botSettings.weChat.rooms.wechatyDevelopers.english,
   ],
   target: [
-    ...weChatSettings.rooms.wechatyDevelopers.home,
-    ...weChatSettings.rooms.wechatyDevelopers.homeHq,
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
   ],
 })
 

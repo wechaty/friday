@@ -10,7 +10,7 @@ import type {
   talkers,
 }                   from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../settings/deprecated.js'
+import { botSettings } from '../../../bot-settings/deprecated.js'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
@@ -46,7 +46,7 @@ const config: VoteOutConfig = {
     /^Youth fed the/i,
     /^Wechaty Plugin Developers/i,
     /^Wechaty Testing$/,
-    ...Object.values(fridaySetting.wechat.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
+    ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
   ],
   threshold: 3,
   kick,

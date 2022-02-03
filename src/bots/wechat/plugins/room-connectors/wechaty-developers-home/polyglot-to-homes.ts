@@ -2,7 +2,7 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../../../settings/deprecated.js'
+import { botSettings } from '../../../../../bot-settings/deprecated.js'
 
 import { bidirectionalMapper }           from '../bidirectional-mapper.js'
 
@@ -14,11 +14,11 @@ import { bidirectionalMapper }           from '../bidirectional-mapper.js'
 const SourceToTargetPlugin = SourceToTargetRoomConnector({
   map: bidirectionalMapper,
   source: [
-    ...Object.values(fridaySetting.wechat.wechatyUserGroup).flat(),
+    ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(),
   ],
   target: [
-    ...fridaySetting.wechat.wechatyDevelopers.homeHq,
-    ...fridaySetting.wechat.wechatyDevelopers.home,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,
   ],
 })
 

@@ -8,9 +8,9 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  weChatSettings,
+  botSettings,
   MIKE_CONTACT_ID,
-}                       from '../../../../../../settings/deprecated.js'
+}                       from '../../../../../../bot-settings/deprecated.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
 import { unidirectionalMapper } from '../../unidirectional-mapper.js'
@@ -41,18 +41,18 @@ const HomeToChinesePlugin = SourceToTargetRoomConnector({
 
     const room = message.room()
     // if (message.room()?.id === HEADQUARTERS_ROOM_ID) {
-    if (room && weChatSettings.rooms.wechatyDevelopers.homeHq.includes(room.id)) {
+    if (room && botSettings.weChat.rooms.wechatyDevelopers.homeHq.includes(room.id)) {
       return unidirectionalMapper(message)
     } else {
       return bidirectionalMapper(message)
     }
   },
   source: [
-    ...weChatSettings.rooms.wechatyDevelopers.home,  // DEVELOPERS_ROOM_ID_LIST,
-    ...weChatSettings.rooms.wechatyDevelopers.homeHq, // HEADQUARTERS_ROOM_ID,
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,  // DEVELOPERS_ROOM_ID_LIST,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq, // HEADQUARTERS_ROOM_ID,
   ],
   target: [
-    ...weChatSettings.rooms.wechatyDevelopers.chinese, // DEVELOPERS_ROOM_ID_CHINESE,
+    ...botSettings.weChat.rooms.wechatyDevelopers.chinese, // DEVELOPERS_ROOM_ID_CHINESE,
   ],
 })
 

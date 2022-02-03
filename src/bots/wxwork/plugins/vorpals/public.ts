@@ -10,10 +10,10 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import { fridaySetting } from '../../../../settings/deprecated.js'
+import { botSettings } from '../../../../bot-settings/deprecated.js'
 
 const isNotChatOpsRoom = (room: Room) => !([
-  fridaySetting.wxwork.chatOpsRoomId,
+  botSettings.wxWork.chatOpsRoomId,
 ].includes(room.id))
 
 const chatopsConfig: WechatyVorpalConfig = {

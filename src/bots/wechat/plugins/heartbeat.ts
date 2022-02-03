@@ -3,7 +3,7 @@ import {
   HeartbeatConfig,
 }                   from 'wechaty-plugin-contrib'
 
-import { fridaySetting } from '../../../settings/deprecated.js'
+import { botSettings } from '../../../bot-settings/deprecated.js'
 
 const config: HeartbeatConfig = {
   emoji: {
@@ -13,7 +13,7 @@ const config: HeartbeatConfig = {
     ready     : '[拳头]',
   },
   intervalSeconds: 60 * 60,       // 1 hour
-  room: fridaySetting.wechat.chatops.heartbeat,
+  room: botSettings.weChat.rooms.chatops.heartbeat,
 }
 
 export const HeartbeatPlugin = Heartbeat(config)
