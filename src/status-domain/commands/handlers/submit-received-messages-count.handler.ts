@@ -4,7 +4,7 @@ import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 import { SubmitReceivedMessagesCountCommand } from '../impls/submit-received-messages-count.command.js'
 import type { StatusPageSettings } from '../../settings.js'
 
-import { statusPageMetricSubmitter } from './status-page.api.js'
+import { statusPageMetricSubmitter } from '../libs/status-page.api.js'
 
 @CommandHandler(SubmitReceivedMessagesCountCommand)
 export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitReceivedMessagesCountCommand> {

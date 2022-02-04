@@ -4,7 +4,7 @@ import {
 }                 from '@nestjs/common'
 import { Brolog } from 'brolog'
 
-import { Bot } from '../models/bot.model.js'
+import { Bot } from '../cqrs/models/bot.model.js'
 
 import {
   GitterBuilder,
@@ -13,21 +13,21 @@ import {
   WeChatBuilder,
   WhatsappBuilder,
   WXWorkBuilder,
-}                     from '../../bots/mod.js'
+}                     from './mod.js'
 
 @Injectable()
 export class BotRepository implements OnModuleInit {
 
-  protected bots: Bot[]
+  private bots: Bot[]
 
   constructor (
-    protected log: Brolog,
-    protected gitterBuilder   : GitterBuilder,
-    protected oaBuilder       : OABuilder,
-    protected oicqBuilder     : OicqBuilder,
-    protected wechatBuilder   : WeChatBuilder,
-    protected whatsappBuilder : WhatsappBuilder,
-    protected wxworkBuilder   : WXWorkBuilder,
+    private log: Brolog,
+    gitterBuilder   : GitterBuilder,
+    oaBuilder       : OABuilder,
+    oicqBuilder     : OicqBuilder,
+    wechatBuilder   : WeChatBuilder,
+    whatsappBuilder : WhatsappBuilder,
+    wxworkBuilder   : WXWorkBuilder,
   ) {
     this.bots = [
       new Bot(gitterBuilder.build()),
@@ -50,6 +50,10 @@ export class BotRepository implements OnModuleInit {
 
   async find (name: string): Promise<undefined | Bot> {
     return this.bots.filter(bot => bot.wechaty.name() === name)[0]
+  }
+
+  findByPuppetId (puppetId: string): undefined | Bot {
+    return this.bots.filter(bot => bot.wechaty.puppet.id === puppetId)[0]
   }
 
   async findAll (): Promise<Bot[]> {

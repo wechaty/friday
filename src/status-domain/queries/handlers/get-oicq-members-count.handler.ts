@@ -3,7 +3,7 @@ import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../cqrs/repositories/bot.repository.js'
+import type { BotRepository } from '../../../bots/mod.js'
 import { GetOicqMembersCountQuery } from '../impl/mod.js'
 import type { OicqSettings } from '../../../bot-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
@@ -14,9 +14,9 @@ export class GetOicqMembersCountHandler implements IQueryHandler<GetOicqMembersC
   protected oicqBot?: WechatyInterface
 
   constructor (
-    protected log: Brolog,
-    protected repository: BotRepository,
-    protected oicqSettings: OicqSettings,
+    private readonly log: Brolog,
+    private readonly repository: BotRepository,
+    private readonly oicqSettings: OicqSettings,
   ) {}
 
   async onModuleInit () {

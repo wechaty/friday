@@ -1,6 +1,6 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 import * as clc from 'cli-color'
-import { BotRepository } from '../../repositories/bot.repository.js'
+import { BotRepository } from '../../../bots/mod.js'
 import { KillDragonCommand } from '../impl/kill-dragon.command.js'
 
 @CommandHandler(KillDragonCommand)

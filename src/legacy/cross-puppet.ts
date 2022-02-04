@@ -7,7 +7,7 @@ import {
 }             from 'wechaty'
 import type { FileBoxInterface } from 'file-box'
 
-import { fridaySetting } from '../settings/deprecated.js'
+import { botSettings } from '../bot-settings/deprecated.js'
 
 async function connectGitterFriday (args: {
   friday : Wechaty,
@@ -16,14 +16,14 @@ async function connectGitterFriday (args: {
 }): Promise<void> {
   const { friday, gitter, qq } = args
 
-  const gitterRoom  = await gitter.Room.find({ id: fridaySetting.gitter.wechatyRoomId })
-  const qqRoom      = await qq.Room.find({ id: fridaySetting.oicq.wechatyRoomId })
+  const gitterRoom  = await gitter.Room.find({ id: botSettings.gitter.wechatyRoomId })
+  const qqRoom      = await qq.Room.find({ id: botSettings.oicq.wechatyRoomId })
 
   if (!gitterRoom) {
-    throw new Error('Gitter Room with id: ' + fridaySetting.gitter.wechatyRoomId + ' not found')
+    throw new Error('Gitter Room with id: ' + botSettings.gitter.wechatyRoomId + ' not found')
   }
   if (!qqRoom) {
-    throw new Error('QQ Group with id: ' + fridaySetting.oicq.wechatyRoomId + ' not found')
+    throw new Error('QQ Group with id: ' + botSettings.oicq.wechatyRoomId + ' not found')
   }
 
   const qqRoomSay = async (msg: string): Promise<void> => {
@@ -31,7 +31,7 @@ async function connectGitterFriday (args: {
       return
     }
 
-    const room = await qq.Room.find({ id: fridaySetting.oicq.wechatyRoomId })
+    const room = await qq.Room.find({ id: botSettings.oicq.wechatyRoomId })
     if (!room) {
       return
     }
@@ -41,8 +41,8 @@ async function connectGitterFriday (args: {
 
   const wechatRoomListAll = await Promise.all(
     [
-      ...fridaySetting.wechat.wechatyDevelopers.homeHq,
-      ...fridaySetting.wechat.wechatyDevelopers.home,
+      ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
+      ...botSettings.weChat.rooms.wechatyDevelopers.home,
     ].map(
       id => friday.Room.find({ id }),
     ),
@@ -187,20 +187,20 @@ async function connectGitterFriday (args: {
   }
 
   ;[
-    ...fridaySetting.wechat.wechatyDevelopers.home,
-    ...fridaySetting.wechat.wechatyDevelopers.homeHq,
-    ...fridaySetting.wechat.wechatyDevelopers.contributors,
-    ...Object.values(fridaySetting.wechat.wechatyUserGroup).flat(),
+    ...botSettings.weChat.rooms.wechatyDevelopers.home,
+    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
+    ...botSettings.weChat.rooms.wechatyDevelopers.contributors,
+    ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(),
 
     /**
      * Summer of Code
      */
-    ...fridaySetting.wechat.wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
+    ...botSettings.weChat.rooms.wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
 
     /**
       * BOT5.Club
       */
-    ...fridaySetting.wechat.bot5Club.rooms,
+    ...botSettings.weChat.rooms.bot5Club.rooms,
   ].forEach(forwardWechatToGitterQQ)
 
   /**

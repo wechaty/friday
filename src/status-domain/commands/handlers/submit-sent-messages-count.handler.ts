@@ -4,7 +4,7 @@ import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 import {  SubmitSentMessagesCountCommand } from '../impls/submit-sent-messages-count.command.js'
 import type { StatusPageSettings } from '../../settings.js'
 
-import { statusPageMetricSubmitter } from './status-page.api.js'
+import { statusPageMetricSubmitter } from '../libs/status-page.api.js'
 
 @CommandHandler(SubmitSentMessagesCountCommand)
 export class SubmitSentMessagesCountHandler implements ICommandHandler<SubmitSentMessagesCountCommand> {
@@ -12,8 +12,8 @@ export class SubmitSentMessagesCountHandler implements ICommandHandler<SubmitSen
   submit: (value: number) => Promise<void>
 
   constructor (
-    protected log: Brolog,
-    protected settings: StatusPageSettings,
+    protected readonly log: Brolog,
+    protected readonly settings: StatusPageSettings,
     protected readonly publisher: EventPublisher,
   ) {
     this.submit = statusPageMetricSubmitter(

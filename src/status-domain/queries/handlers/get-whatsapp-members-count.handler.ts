@@ -4,7 +4,7 @@ import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../cqrs/repositories/bot.repository.js'
+import type { BotRepository } from '../../../bots/mod.js'
 import { GetWhatsAppMembersCountQuery } from '../impl/mod.js'
 import type { WhatsAppSettings } from '../../../bot-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
@@ -15,9 +15,9 @@ export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsApp
   protected whatsAppBot?: WechatyInterface
 
   constructor (
-    protected log: Brolog,
-    protected repository: BotRepository,
-    protected whatsAppSettings: WhatsAppSettings,
+    private readonly log: Brolog,
+    private readonly repository: BotRepository,
+    private readonly whatsAppSettings: WhatsAppSettings,
   ) {}
 
   async onModuleInit () {

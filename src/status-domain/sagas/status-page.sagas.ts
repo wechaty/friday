@@ -10,8 +10,8 @@ import {
 import * as TimeConstants from 'time-constants'
 
 import { SubmitCommunityMembersCountCommand } from '../commands/impls/submit-community-members-count.command.js'
-import { SubmitMessagesReceivedCountCommand } from '../commands/impls/submit-messages-received-count.command.js'
-import { SubmitMessagesSentCountCommand } from '../commands/impls/submit-messages-sent-count.command.js'
+import { SubmitReceivedMessagesCountCommand } from '../commands/impls/submit-received-messages-count.command.js'
+import { SubmitSentMessagesCountCommand } from '../commands/impls/submit-sent-messages-count.command.js'
 import { CommunityDevelopersCountedEvent } from '../events/impls/community-developers-counted.event.js'
 import { MessageReceivedEvent, MessageSentEvent } from '../events/mod.js'
 
@@ -47,7 +47,7 @@ export class StatusPageSagas {
       }),
       tap(_ => resetCounter$.next()),
       map(count =>
-        new SubmitMessagesReceivedCountCommand(count),
+        new SubmitReceivedMessagesCountCommand(count),
       ),
     )
   }
@@ -70,7 +70,7 @@ export class StatusPageSagas {
       }),
       tap(_ => resetCounter$.next()),
       map(count =>
-        new SubmitMessagesSentCountCommand(count),
+        new SubmitSentMessagesCountCommand(count),
       ),
     )
   }
