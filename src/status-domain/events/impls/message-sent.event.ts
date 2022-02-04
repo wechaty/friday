@@ -1,7 +1,7 @@
 export class MessageSentEvent {
 
   constructor (
-    public readonly id: string,
+    public readonly messageId: string,
   ) {}
 
 }

@@ -1,4 +1,4 @@
-export class SubmitSentMessagesCountCommand {
+export class SubmitMessagesReceivedCountCommand {
 
   constructor (
     public readonly counter: number,

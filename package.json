@@ -51,6 +51,7 @@
     "read-pkg-up": "^9.0.0",
     "rxjs": "^7.5.2",
     "sheet-db": "^1.0.1",
+    "time-constants": "^1.0.3",
     "vorpal-hacker-news": "^1.0.6",
     "wechaty": "^1.13.6",
     "wechaty-bot5-assistant": "^0.2.14",
@@ -79,6 +80,7 @@
     "@types/node-cron": "^3.0.1",
     "@types/raven": "^2.5.4",
     "@types/read-pkg-up": "^6.0.0",
+    "@types/time-constants": "^1.0.0",
     "nodemon": "^2.0.15",
     "wechaty-puppet-mock": "^1.11.11"
   },
