@@ -2,10 +2,10 @@ import * as envVar from 'env-var'
 import type { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
-import type { NamedSetting } from '../named-setting.js'
+import type { NamedInterface } from '../named-interface.js'
 
 @Injectable()
-class OaSettings implements NamedSetting {
+class OaSettings implements NamedInterface {
 
   constructor (
     protected log: Brolog,

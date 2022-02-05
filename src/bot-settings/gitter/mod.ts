@@ -1,11 +1,11 @@
 import * as envVar from 'env-var'
 import type { Brolog } from 'brolog'
 
-import type { NamedSetting } from '../named-setting.js'
+import type { NamedInterface } from '../named-interface.js'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()
-class GitterSettings implements NamedSetting {
+class GitterSettings implements NamedInterface {
 
   constructor (
     protected log: Brolog,
