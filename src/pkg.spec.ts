@@ -20,9 +20,9 @@
 
 import { test } from 'tstest'
 
-import { VERSION } from './pkg.js'
+import { pkg } from './pkg.js'
 
 test('version', async t => {
-  t.ok(VERSION, 'should have VERSION')
-  t.ok(VERSION.length > 0, 'should not be empty string')
+  t.ok(pkg?.version, 'should have VERSION')
+  t.ok(pkg!.version!.length > 0, 'should not be empty string')
 })

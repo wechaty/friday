@@ -2,9 +2,11 @@ import {
   Injectable,
   OnModuleInit,
 }                 from '@nestjs/common'
+import type { EventBus } from '@nestjs/cqrs'
 import { Brolog } from 'brolog'
 
 import { Bot } from '../cqrs/models/bot.model.js'
+import { PuppetMessageEvent } from './events/mod.js'
 
 import {
   GitterBuilder,
@@ -21,13 +23,15 @@ export class BotRepository implements OnModuleInit {
   private bots: Bot[]
 
   constructor (
-    private log: Brolog,
+    private readonly log: Brolog,
+    private readonly eventBus: EventBus,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,
     oicqBuilder     : OicqBuilder,
     wechatBuilder   : WeChatBuilder,
     whatsappBuilder : WhatsappBuilder,
     wxworkBuilder   : WXWorkBuilder,
+
   ) {
     this.bots = [
       new Bot(gitterBuilder.build()),
@@ -44,6 +48,16 @@ export class BotRepository implements OnModuleInit {
     for (const bot of this.bots) {
       this.log.info('BotRepository', 'onModuleInit() bot.start() starting %s', bot.wechaty.name())
       await bot.wechaty.start()
+      /**
+       * Huan(202202): FIXME
+       *  move this logic to a better place?
+       */
+      bot.wechaty.on('message', message => this.eventBus.publish(
+        new PuppetMessageEvent(
+          message.wechaty.puppet.id,
+          message.id,
+        ),
+      ))
       this.log.info('BotRepository', 'onModuleInit() bot.start() bot %s started', bot.wechaty.name())
     }
   }

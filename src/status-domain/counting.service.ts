@@ -1,19 +1,30 @@
 import { Injectable } from '@nestjs/common'
-import type { EventBus, QueryBus } from '@nestjs/cqrs'
+import type {
+  EventBus,
+  QueryBus,
+}                     from '@nestjs/cqrs'
 import {
   Interval,
-}                   from '@nestjs/schedule'
-import { Brolog } from 'brolog'
-import { CommunityDevelopersCountedEvent } from './events/impls/community-developers-counted.event'
-import { GetGitterMembersCountQuery, GetOicqMembersCountQuery, GetWeChatMembersCountQuery, GetWhatsAppMembersCountQuery } from './queries/mod'
+}                     from '@nestjs/schedule'
+import { Brolog }     from 'brolog'
+
+import {
+  CommunityDevelopersCountedEvent,
+}                                   from './events/mod.js'
+import {
+  GetGitterMembersCountQuery,
+  GetOicqMembersCountQuery,
+  GetWeChatMembersCountQuery,
+  GetWhatsAppMembersCountQuery,
+}                                   from './queries/mod.js'
 
 @Injectable()
 export class CountingService {
 
   constructor (
-    protected log: Brolog,
-    protected eventBus: EventBus,
-    protected queryBus: QueryBus,
+    protected readonly log      : Brolog,
+    protected readonly eventBus : EventBus,
+    protected readonly queryBus : QueryBus,
   ) {}
 
   /**

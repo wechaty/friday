@@ -22,7 +22,9 @@ export class StatusPageSagas {
   communityDevelopersCounted (events$: Observable<any>): Observable<ICommand> {
     return events$
       .pipe(
-        ofType(CommunityDevelopersCountedEvent),
+        ofType(
+          CommunityDevelopersCountedEvent,
+        ),
         map(event =>
           new SubmitCommunityMembersCountCommand(event.counter),
         ),
@@ -39,11 +41,11 @@ export class StatusPageSagas {
       resetCounter$,  // send `undefined` (void) to reset the `scan` state (accumarator)
     ).pipe(
       /**
-       * If `value` is undefined (void), then reset `acc` to 0
+       * If `value` is `undefined` (void), then reset `counter` to 0
        */
       scan((counter, value) => (value ? ++counter : 0), 0),
       throttleTime(5 * TimeConstants.MINUTE, undefined, {
-        trailing: true,
+        trailing: true, // emit the last value instead of the first
       }),
       tap(_ => resetCounter$.next()),
       map(count =>
@@ -62,11 +64,11 @@ export class StatusPageSagas {
       resetCounter$,  // send `undefined` (void) to reset the `scan` state (accumarator)
     ).pipe(
       /**
-       * If `value` is undefined (void), then reset `acc` to 0
+       * If `value` is `undefined` (void), then reset `counter` to 0
        */
       scan((counter, value) => (value ? ++counter : 0), 0),
       throttleTime(5 * TimeConstants.MINUTE, undefined, {
-        trailing: true,
+        trailing: true, // emit the last value instead of the first
       }),
       tap(_ => resetCounter$.next()),
       map(count =>

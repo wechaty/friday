@@ -2,7 +2,7 @@ import { Brolog } from 'brolog'
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 
 import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
-import type { StatusPageSettings } from '../../settings.js'
+import type { StatusPageSettings } from '../../status.settings.js'
 
 import { statusPageMetricSubmitter } from '../libs/status-page.api.js'
 
