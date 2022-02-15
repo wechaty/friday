@@ -11,8 +11,8 @@ import * as TimeConstants   from 'time-constants'
 
 import { 
   SubmitCommunityMembersCountCommand,
-  SubmitReceivedMessagesCountCommand,
-  SubmitSentMessagesCountCommand,
+  SubmitMessagesMobileTerminatedCountCommand,
+  SubmitMessagesMobileOriginatedCountCommand,
 }                                         from '../commands/mod.js'
 import { 
   MessageMobileTerminatedEvent, 
@@ -54,7 +54,7 @@ export class StatusPageSagas {
       }),
       tap(_ => resetCounter$.next()),
       map(count =>
-        new SubmitReceivedMessagesCountCommand(count),
+        new SubmitMessagesMobileTerminatedCountCommand(count),
       ),
     )
   }
@@ -77,7 +77,7 @@ export class StatusPageSagas {
       }),
       tap(_ => resetCounter$.next()),
       map(count =>
-        new SubmitSentMessagesCountCommand(count),
+        new SubmitMessagesMobileOriginatedCountCommand(count),
       ),
     )
   }
