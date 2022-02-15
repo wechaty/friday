@@ -4,8 +4,8 @@ import {
   Provider,
 }             from '@nestjs/common'
 
-import { SagaHandlers } from './sagas/mod.js'
-import { CountingService } from './counting.service.js'
+import { SagaHandlers }     from './sagas/mod.js'
+import { CountingService }  from './counting.service.js'
 
 const providers: Provider[] = [
   ...SagaHandlers,
