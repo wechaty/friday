@@ -13,7 +13,7 @@ import {
 }                                   from './events/mod.js'
 import {
   GetGitterMembersCountQuery,
-  GetOicqMembersCountQuery,
+  GetQqMembersCountQuery,
   GetWeChatMembersCountQuery,
   GetWhatsAppMembersCountQuery,
 }                                   from './queries/mod.js'
@@ -39,7 +39,7 @@ export class CountingService {
     this.log.verbose('CountingService', 'countCommunityDevelopers()')
 
     const countList: number[] = [
-      await this.queryBus.execute(new GetOicqMembersCountQuery()),
+      await this.queryBus.execute(new GetQqMembersCountQuery()),
       await this.queryBus.execute(new GetWeChatMembersCountQuery()),
       await this.queryBus.execute(new GetGitterMembersCountQuery()),
       await this.queryBus.execute(new GetWhatsAppMembersCountQuery()),

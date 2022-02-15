@@ -11,7 +11,7 @@ import { PuppetMessageEvent } from './events/mod.js'
 import {
   GitterBuilder,
   OABuilder,
-  OicqBuilder,
+  QqBuilder,
   WeChatBuilder,
   WhatsappBuilder,
   WXWorkBuilder,
@@ -27,7 +27,7 @@ export class BotRepository implements OnModuleInit {
     private readonly eventBus: EventBus,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,
-    oicqBuilder     : OicqBuilder,
+    qqBuilder       : QqBuilder,
     wechatBuilder   : WeChatBuilder,
     whatsappBuilder : WhatsappBuilder,
     wxworkBuilder   : WXWorkBuilder,
@@ -36,7 +36,7 @@ export class BotRepository implements OnModuleInit {
     this.bots = [
       new Bot(gitterBuilder.build()),
       new Bot(oaBuilder.build()),
-      new Bot(oicqBuilder.build()),
+      new Bot(qqBuilder.build()),
       new Bot(wechatBuilder.build()),
       new Bot(whatsappBuilder.build()),
       new Bot(wxworkBuilder.build()),

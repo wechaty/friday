@@ -4,49 +4,49 @@ import { Brolog } from 'brolog'
 import type { WechatyInterface } from 'wechaty/impls'
 
 import type { BotRepository } from '../../../bots/mod.js'
-import { GetOicqMembersCountQuery } from '../impl/mod.js'
-import type { OicqSettings } from '../../../bot-settings/mod.js'
+import { GetQqMembersCountQuery } from '../impl/mod.js'
+import type { QqSettings } from '../../../bot-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
 
-@QueryHandler(GetOicqMembersCountQuery)
-export class GetOicqMembersCountHandler implements IQueryHandler<GetOicqMembersCountQuery>, OnModuleInit {
+@QueryHandler(GetQqMembersCountQuery)
+export class GetQqMembersCountHandler implements IQueryHandler<GetQqMembersCountQuery>, OnModuleInit {
 
-  protected oicqBot?: WechatyInterface
+  protected qqBot?: WechatyInterface
 
   constructor (
     private readonly log: Brolog,
     private readonly repository: BotRepository,
-    private readonly oicqSettings: OicqSettings,
+    private readonly qqSettings: QqSettings,
   ) {}
 
   async onModuleInit () {
-    const bot = await this.repository.find(this.oicqSettings.name)
-    this.oicqBot = bot?.wechaty
+    const bot = await this.repository.find(this.qqSettings.name)
+    this.qqBot = bot?.wechaty
   }
 
-  async execute (_query: GetOicqMembersCountQuery) {
+  async execute (_query: GetQqMembersCountQuery) {
     const ids = await this.getOicqMemberIds()
     return ids.size
   }
 
   protected async getOicqMemberIds (): Promise<Set<string>> {
     const topic = /Wechaty|BOT/i
-    const oicqSet = new Set<string>()
+    const qqSet = new Set<string>()
 
-    if (this.oicqBot?.isLoggedIn) {
-      const roomList = await this.oicqBot.Room.findAll({ topic })
+    if (this.qqBot?.isLoggedIn) {
+      const roomList = await this.qqBot.Room.findAll({ topic })
       for (const room of roomList) {
         const memberList = await room.memberAll()
-        memberList.forEach(contact => oicqSet.add(contact.id))
+        memberList.forEach(contact => qqSet.add(contact.id))
       }
-      if (oicqSet.size <= 0) {
+      if (qqSet.size <= 0) {
         this.log.error('GetOicqMembersCountHandler', 'getOicqMemberIds() got 0 members')
       }
     } else {
       this.log.error('GetOicqMembersCountHandler', 'getOicqMemberIds() bot is not logged in yet')
     }
 
-    return oicqSet
+    return qqSet
   }
 
 }

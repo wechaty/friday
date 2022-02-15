@@ -1,6 +1,6 @@
 import { GitterBuilder }    from './gitter/gitter-builder.js'
 import { OABuilder }        from './oa/oa-builder.js'
-import { OicqBuilder }      from './oicq/oicq-builder.js'
+import { QqBuilder }      from './qq/qq-builder.js'
 import { WeChatBuilder }    from './wechat/wechat-builder.js'
 import { WhatsappBuilder }  from './whatsapp/whatsapp-builder.js'
 import { WXWorkBuilder }    from './wxwork/wxwork-builder.js'
@@ -17,7 +17,7 @@ export {
   //
   GitterBuilder,
   OABuilder,
-  OicqBuilder,
+  QqBuilder,
   WeChatBuilder,
   WhatsappBuilder,
   WXWorkBuilder,

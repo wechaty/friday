@@ -5,16 +5,16 @@ import { Brolog } from 'brolog'
 import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { getPlugins } from './plugins/mod.js'
-import type { OicqSettings } from '../../bot-settings/mod.js'
+import type { QqSettings } from '../../bot-settings/mod.js'
 
 @Injectable()
-class OicqBuilder implements WECHATY.BuilderInterface {
+export class QqBuilder implements WECHATY.BuilderInterface {
 
   protected qq: number
   protected name: string
 
   constructor (
-    protected settings: OicqSettings,
+    protected settings: QqSettings,
     protected log: Brolog,
   ) {
     this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',
@@ -43,5 +43,3 @@ class OicqBuilder implements WECHATY.BuilderInterface {
   }
 
 }
-
-export { OicqBuilder }

@@ -17,13 +17,13 @@ async function connectGitterFriday (args: {
   const { friday, gitter, qq } = args
 
   const gitterRoom  = await gitter.Room.find({ id: botSettings.gitter.wechatyRoomId })
-  const qqRoom      = await qq.Room.find({ id: botSettings.oicq.wechatyRoomId })
+  const qqRoom      = await qq.Room.find({ id: botSettings.qq.wechatyRoomId })
 
   if (!gitterRoom) {
     throw new Error('Gitter Room with id: ' + botSettings.gitter.wechatyRoomId + ' not found')
   }
   if (!qqRoom) {
-    throw new Error('QQ Group with id: ' + botSettings.oicq.wechatyRoomId + ' not found')
+    throw new Error('QQ Group with id: ' + botSettings.qq.wechatyRoomId + ' not found')
   }
 
   const qqRoomSay = async (msg: string): Promise<void> => {
@@ -31,7 +31,7 @@ async function connectGitterFriday (args: {
       return
     }
 
-    const room = await qq.Room.find({ id: botSettings.oicq.wechatyRoomId })
+    const room = await qq.Room.find({ id: botSettings.qq.wechatyRoomId })
     if (!room) {
       return
     }
@@ -56,27 +56,6 @@ async function connectGitterFriday (args: {
     }
   }
 
-  const prefixStr = (from?: string) => (name: string) => {
-    return from
-      ? [
-          '[',
-          name,
-          ` @ ${from}`,
-          ']: ',
-        ].join('')
-      : `[${name}]: `
-  }
-  const prefixMd = (from?: string) => (name: string) => {
-    return from
-      ? [
-          '`',
-          name,
-          ' @ ',
-          from,
-          '`: ',
-        ].join('')
-      : '`' + name + '`: '
-  }
 
   const forwardWechatToGitterQQ = (roomId: string) => {
     friday.on('message', async (msg: Message) => {
@@ -90,8 +69,8 @@ async function connectGitterFriday (args: {
       const roomAlias = await room.alias(talker)
       const name      = roomAlias || talker.name()
 
-      const prefixMdWechatName = prefixMd('WeChat')(name)
-      const prefixStrWechatName = prefixStr('WeChat')(name)
+      const prefixMdWechatName = prefixMarkdown('WeChat')(name)
+      const prefixStrWechatName = prefixText('WeChat')(name)
 
       switch (msg.type()) {
         case types.Message.Text: {
@@ -119,7 +98,7 @@ async function connectGitterFriday (args: {
       if (msg.self()) { return }
 
       const name = msg.talker().name()
-      const prefixStrGitterName = prefixStr('Gitter')(name)
+      const prefixStrGitterName = prefixText('Gitter')(name)
 
       switch (msg.type()) {
         case types.Message.Text: {
@@ -151,8 +130,8 @@ async function connectGitterFriday (args: {
       if (msg.self()) { return }
 
       const name = msg.talker().name()
-      const prefixMdQQName  = prefixMd('QQ')(name)
-      const prefixStrQQName = prefixStr('QQ')(name)
+      const prefixMdQQName  = prefixMarkdown('QQ')(name)
+      const prefixStrQQName = prefixText('QQ')(name)
 
       log.verbose('cross-puppet', 'forwardQQToWechatGitter() qqRoom.on(message) type %s', msg.type())
 

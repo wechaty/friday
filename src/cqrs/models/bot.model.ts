@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs'
-import type { WechatyInterface } from 'wechaty/impls'
+import type * as PUPPET from 'wechaty-puppet'
+import type * as WECHATY from 'wechaty'
 import type {
   Logger,
 }           from 'brolog'
@@ -12,7 +13,7 @@ export class Bot extends AggregateRoot {
   protected log: Logger
 
   constructor (
-    public readonly wechaty: WechatyInterface,
+    public readonly wechaty: WECHATY.impls.WechatyInterface,
   ) {
     super()
     this.log = wechaty.log
@@ -35,6 +36,10 @@ export class Bot extends AggregateRoot {
     )
   }
 
+  messageSend (...args: Parameters<PUPPET.impls.PuppetInterface['messageSend']>) {
+    return this.wechaty.puppet.messageSend(...args)  
+  }
+  
   killEnemy (enemyId: string) {
     // logic
     console.info('enemyId', enemyId)

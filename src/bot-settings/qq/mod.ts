@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common'
 import type { NamedInterface } from '../named-interface.js'
 
 @Injectable()
-class OicqSettings implements NamedInterface {
+export class QqSettings implements NamedInterface {
 
   constructor (
     protected log: Brolog,
@@ -20,11 +20,7 @@ class OicqSettings implements NamedInterface {
     public wechatyRoomId = 'group_696864249', // Wechaty Developers' Home QQ
 
   ) {
-    this.log.verbose('OicqSettings', 'constructor(%s) qq=%s, wechatyRoomId=%s', this.name, qq, wechatyRoomId)
+    this.log.verbose('QqSettings', 'constructor(%s) qq=%s, wechatyRoomId=%s', this.name, qq, wechatyRoomId)
   }
 
-}
-
-export {
-  OicqSettings,
 }
