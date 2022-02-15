@@ -1,31 +1,24 @@
 import { Brolog } from 'brolog'
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
+import { 
+  CommandHandler, 
+  ICommandHandler, 
+}                   from '@nestjs/cqrs'
 
 import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
-import type { StatusPageSettings } from '../../status.settings.js'
 
-import { statusPageMetricSubmitter } from '../libs/status-page.api.js'
+import type { StatusPageApiService } from '../../status-page-api.service.js'
 
 @CommandHandler(SubmitCommunityMembersCountCommand)
 export class SubmitCommunityMembersCounterHandler implements ICommandHandler<SubmitCommunityMembersCountCommand> {
 
-  submit: (value: number) => Promise<void>
-
   constructor (
-    protected log: Brolog,
-    protected settings: StatusPageSettings,
-    protected readonly publisher: EventPublisher,
-  ) {
-    this.submit = statusPageMetricSubmitter(
-      this.settings.apiKey,
-      this.settings.pageId,
-      this.settings.members,
-    )
-  }
+    private log: Brolog,
+    private statusPageApiService: StatusPageApiService,
+  ) {}
 
   async execute (command: SubmitCommunityMembersCountCommand) {
     this.log.verbose('SubmitCommunityMembersCounterHandler', 'execute(%d)', command.counter)
-    await this.submit(command.counter)
+    await this.statusPageApiService.submitCommunityMemberCount(command.counter)
   }
 
 }

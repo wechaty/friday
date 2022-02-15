@@ -1,1 +1,1 @@
-export * from './puppet-message.event.js'
+export * from './puppet-message-received.event.js'

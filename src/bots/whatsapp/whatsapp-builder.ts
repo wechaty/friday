@@ -7,7 +7,7 @@ import type { WhatsAppSettings } from '../../bot-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
-class WhatsappBuilder implements WECHATY.BuilderInterface {
+class WhatsAppBuilder implements WECHATY.BuilderInterface {
 
   protected name: string
 
@@ -40,4 +40,4 @@ class WhatsappBuilder implements WECHATY.BuilderInterface {
 
 }
 
-export { WhatsappBuilder }
+export { WhatsAppBuilder }

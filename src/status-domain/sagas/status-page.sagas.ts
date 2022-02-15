@@ -15,8 +15,8 @@ import {
   SubmitSentMessagesCountCommand,
 }                                         from '../commands/mod.js'
 import { 
-  MessageReceivedEvent, 
-  MessageSentEvent,
+  MessageMobileTerminatedEvent, 
+  MessageMobileOriginatedEvent,
   CommunityDevelopersCountedEvent,
 }                                         from '../events/mod.js'
 
@@ -41,7 +41,7 @@ export class StatusPageSagas {
     const resetCounter$ = new Subject<void>()
     return merge(
       events$.pipe(
-        ofType(MessageReceivedEvent),
+        ofType(MessageMobileTerminatedEvent),
       ),
       resetCounter$,  // send `undefined` (void) to reset the `scan` state (accumarator)
     ).pipe(
@@ -64,7 +64,7 @@ export class StatusPageSagas {
     const resetCounter$ = new Subject<void>()
     return merge(
       events$.pipe(
-        ofType(MessageSentEvent),
+        ofType(MessageMobileOriginatedEvent),
       ),
       resetCounter$,  // send `undefined` (void) to reset the `scan` state (accumarator)
     ).pipe(

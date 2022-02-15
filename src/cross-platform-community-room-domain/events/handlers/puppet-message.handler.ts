@@ -11,11 +11,16 @@ import type {
 }                     from '../../../bot-settings/mod.js'
 
 import type { BotRepository } from '../../../bots/bot.repository.js'
-import { PuppetMessageEvent } from '../../../bots/events/mod.js'
-import { GitterCommunityMessageEvent, QqCommunityMessageEvent, WeChatCommunityMessageEvent, WhatsappCommunityMessageEvent } from '../mod.js'
+import { PuppetMessageEventReceived } from '../../../bots/events/mod.js'
+import { 
+  GitterCommunityMessageEvent, 
+  QqCommunityMessageEvent, 
+  WeChatCommunityMessageEvent, 
+  WhatsappCommunityMessageEvent, 
+}                                   from '../mod.js'
 
-@EventsHandler(PuppetMessageEvent)
-export class PuppetMessageHandler implements IEventHandler<PuppetMessageEvent> {
+@EventsHandler(PuppetMessageEventReceived)
+export class PuppetMessageHandler implements IEventHandler<PuppetMessageEventReceived> {
 
   const weChatCommunityRoomList: string[]
 
@@ -46,7 +51,7 @@ export class PuppetMessageHandler implements IEventHandler<PuppetMessageEvent> {
     ]
   }
 
-  async handle (event: PuppetMessageEvent) {
+  async handle (event: PuppetMessageEventReceived) {
     this.log.verbose('PuppetMessageHandler', 'handle({puppetId: %s, messageId: %s})', event.puppetId, event.messageId)
 
     const bot = this.repository.findByPuppetId(event.puppetId)

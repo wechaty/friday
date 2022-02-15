@@ -10,10 +10,10 @@ import {
 }                 from 'rxjs/operators'
 import * as TimeConstants from 'time-constants'
 
-import { SubmitCommunityMembersCountCommand } from '../commands/impls/submit-community-members-count.command.js'
-import { SubmitReceivedMessagesCountCommand } from '../commands/impls/submit-received-messages-count.command.js'
-import { SubmitSentMessagesCountCommand } from '../commands/impls/submit-sent-messages-count.command.js'
-import { CommunityDevelopersCountedEvent } from '../events/impls/community-developers-counted.event.js'
+import { SubmitCommunityMembersCountCommand } from '../commands/impls/submit-community-members-count.command.js.js'
+import { SubmitReceivedMessagesCountCommand } from '../commands/impls/submit-received-messages-count.command.js.js'
+import { SubmitSentMessagesCountCommand } from '../commands/impls/submit-sent-messages-count.command.js.js'
+import { CommunityDevelopersCountedEvent } from '../events/impls/community-developers-counted.event.js.js'
 import { MessageReceivedEvent, MessageSentEvent, QqCommunityMessageEvent } from '../events/mod.js'
 
 @Injectable()

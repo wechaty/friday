@@ -1,31 +1,24 @@
 import { Brolog } from 'brolog'
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
+import { 
+  CommandHandler, 
+  ICommandHandler,
+}                       from '@nestjs/cqrs'
 
-import { SubmitReceivedMessagesCountCommand } from '../impls/submit-received-messages-count.command.js'
-import type { StatusPageSettings } from '../../status.settings.js'
+import { SubmitMessagesMobileTerminatedCountCommand } from '../mod.js'
 
-import { statusPageMetricSubmitter } from '../libs/status-page.api.js'
+import type { StatusPageApiService } from '../../status-page-api.service.js'
 
-@CommandHandler(SubmitReceivedMessagesCountCommand)
-export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitReceivedMessagesCountCommand> {
-
-  submit: (value: number) => Promise<void>
+@CommandHandler(SubmitMessagesMobileTerminatedCountCommand)
+export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
 
   constructor (
-    protected log: Brolog,
-    protected settings: StatusPageSettings,
-    protected readonly publisher: EventPublisher,
-  ) {
-    this.submit = statusPageMetricSubmitter(
-      this.settings.apiKey,
-      this.settings.pageId,
-      this.settings.receivedMessages,
-    )
-  }
+    private log: Brolog,
+    private statusPageApiService: StatusPageApiService,
+  ) {}
 
-  async execute (command: SubmitReceivedMessagesCountCommand) {
+  async execute (command: SubmitMessagesMobileTerminatedCountCommand) {
     this.log.verbose('SubmitReceivedMessagesCounterHandler', 'execute(%d)', command.counter)
-    await this.submit(command.counter)
+    await this.statusPageApiService.submitMobileTerminatedMessageCount(command.counter)
   }
 
 }

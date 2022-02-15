@@ -6,14 +6,14 @@ import type { EventBus } from '@nestjs/cqrs'
 import { Brolog } from 'brolog'
 
 import { Bot } from '../cqrs/models/bot.model.js'
-import { PuppetMessageEvent } from './events/mod.js'
+import { PuppetMessageEventReceived } from './events/mod.js'
 
 import {
   GitterBuilder,
   OABuilder,
   QqBuilder,
   WeChatBuilder,
-  WhatsappBuilder,
+  WhatsAppBuilder,
   WXWorkBuilder,
 }                     from './mod.js'
 
@@ -29,7 +29,7 @@ export class BotRepository implements OnModuleInit {
     oaBuilder       : OABuilder,
     qqBuilder       : QqBuilder,
     wechatBuilder   : WeChatBuilder,
-    whatsappBuilder : WhatsappBuilder,
+    whatsAppBuilder : WhatsAppBuilder,
     wxworkBuilder   : WXWorkBuilder,
 
   ) {
@@ -38,7 +38,7 @@ export class BotRepository implements OnModuleInit {
       new Bot(oaBuilder.build()),
       new Bot(qqBuilder.build()),
       new Bot(wechatBuilder.build()),
-      new Bot(whatsappBuilder.build()),
+      new Bot(whatsAppBuilder.build()),
       new Bot(wxworkBuilder.build()),
     ]
   }
@@ -53,7 +53,7 @@ export class BotRepository implements OnModuleInit {
        *  move this logic to a better place?
        */
       bot.wechaty.on('message', message => this.eventBus.publish(
-        new PuppetMessageEvent(
+        new PuppetMessageEventReceived(
           message.wechaty.puppet.id,
           message.id,
         ),

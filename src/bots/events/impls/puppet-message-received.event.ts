@@ -1,4 +1,4 @@
-export class PuppetMessageEvent {
+export class PuppetMessageEventReceived {
 
   constructor (
     public readonly puppetId: string,
