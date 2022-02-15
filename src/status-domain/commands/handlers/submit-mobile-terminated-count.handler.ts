@@ -9,7 +9,7 @@ import { SubmitMessagesMobileTerminatedCountCommand } from '../mod.js'
 import type { StatusPageApiService } from '../../status-page-api.service.js'
 
 @CommandHandler(SubmitMessagesMobileTerminatedCountCommand)
-export class SubmitReceivedMessagesCounterHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
+export class SubmitMobileTerminatedCountHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
 
   constructor (
     private log: Brolog,

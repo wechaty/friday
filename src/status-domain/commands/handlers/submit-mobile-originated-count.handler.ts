@@ -9,7 +9,7 @@ import {  SubmitMessagesMobileOriginatedCountCommand } from '../impls/submit-mes
 import type { StatusPageApiService } from '../../status-page-api.service.js'
 
 @CommandHandler(SubmitMessagesMobileOriginatedCountCommand)
-export class SubmitSentMessagesCountHandler implements ICommandHandler<SubmitMessagesMobileOriginatedCountCommand> {
+export class SubmitMobileOriginatedCountHandler implements ICommandHandler<SubmitMessagesMobileOriginatedCountCommand> {
 
   constructor (
     private readonly log: Brolog,
