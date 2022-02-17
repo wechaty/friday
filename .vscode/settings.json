@@ -2,8 +2,11 @@
   "typescript.tsdk": "./node_modules/typescript/lib",
 
   "editor.fontFamily": "Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": true,
 
+  "editor.fontLigatures": true,
+  "markdown.styles": [
+    "https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+  ],
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
