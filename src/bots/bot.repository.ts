@@ -17,6 +17,14 @@ import {
   WXWorkBuilder,
 }                     from './mod.js'
 
+type BotName =
+  | 'Gitter'
+  | 'OfficialAccount'
+  | 'QQ'
+  | 'WeChat'
+  | 'WhatsApp'
+  | 'WXWork'
+
 @Injectable()
 export class BotRepository implements OnModuleInit {
 
@@ -62,7 +70,7 @@ export class BotRepository implements OnModuleInit {
     }
   }
 
-  async find (name: string): Promise<undefined | Bot> {
+  async find (name: BotName): Promise<undefined | Bot> {
     return this.bots.filter(bot => bot.wechaty.name() === name)[0]
   }
 

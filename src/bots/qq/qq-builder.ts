@@ -10,12 +10,12 @@ import type { QqSettings } from '../../bot-settings/mod.js'
 @Injectable()
 export class QqBuilder implements WECHATY.BuilderInterface {
 
-  protected qq: number
-  protected name: string
+  private qq: number
+  private name: string
 
   constructor (
-    protected settings: QqSettings,
-    protected log: Brolog,
+    private log: Brolog,
+    settings: QqSettings,
   ) {
     this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',
       settings.name,
@@ -30,10 +30,9 @@ export class QqBuilder implements WECHATY.BuilderInterface {
     this.log.verbose('OicqBuilder', 'build()')
 
     const puppet = new PuppetOICQ({ qq: this.qq })
-    const name = this.name
 
     const wechaty = WECHATY.WechatyBuilder.build({
-      name,
+      name: this.name,
       puppet,
     })
 

@@ -10,7 +10,7 @@ class GitterSettings implements NamedInterface {
   constructor (
     protected log: Brolog,
 
-    public name = 'friday@gitter',
+    public name = 'Gitter',
 
     public wechatyRoomId = '573324fcc43b8c60197242bf', // 'https://gitter.im/wechaty/wechaty'
 

@@ -9,7 +9,7 @@ class WhatsAppSettings implements NamedInterface {
   constructor (
     protected log: Brolog,
 
-    public name = 'friday@whatsapp',
+    public name = 'WhatsApp',
   ) {
     this.log.verbose('WhatsAppSettings', 'constructor(%s)', this.name)
   }

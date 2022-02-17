@@ -13,12 +13,12 @@ import type { GitterSettings } from '../../bot-settings/gitter/mod.js'
 @Injectable()
 class GitterBuilder implements WECHATY.BuilderInterface {
 
-  protected token:  string
-  protected name:   string
+  private token:  string
+  private name:   string
 
   constructor (
-    protected settings: GitterSettings,
-    protected log: Brolog,
+    private log: Brolog,
+    settings: GitterSettings,
   ) {
     this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s})',
       settings.name,
@@ -32,15 +32,12 @@ class GitterBuilder implements WECHATY.BuilderInterface {
   build () {
     this.log.verbose('GitterBuilder', 'build()')
 
-    const token = this.token
-    const name = this.name
-
     const puppet = new PuppetGitter({
-      token,
+      token: this.token,
     })
 
     const wechaty = WechatyBuilder.build({
-      name,
+      name: this.name,
       puppet,
     })
 

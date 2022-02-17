@@ -15,7 +15,7 @@ export class QqSettings implements NamedInterface {
       .required(true)
       .asIntPositive(),
 
-    public name = 'friday@qq',
+    public name = 'QQ',
 
     public wechatyRoomId = 'group_696864249', // Wechaty Developers' Home QQ
 

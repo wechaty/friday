@@ -15,12 +15,12 @@ import { getPlugins } from './plugins/mod.js'
 @Injectable()
 class WeChatBuilder implements WECHATY.BuilderInterface {
 
-  protected token: string
-  protected name: string
+  private token: string
+  private name: string
 
   constructor (
-    protected settings: WeChatSettings,
-    protected log: Brolog,
+    private log: Brolog,
+    settings: WeChatSettings,
   ) {
     this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',
       settings.name,
@@ -34,15 +34,14 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
   build () {
     this.log.verbose('WeChatBuilder', 'build()')
 
-    const token = this.token
-    const name = this.name
-
-    const puppet = new PuppetService({ token })
-    const memory = getMemory(name)
+    const puppet = new PuppetService({
+      token: this.token,
+    })
+    const memory = getMemory(this.name)
 
     const wechaty = WECHATY.WechatyBuilder.build({
       memory,
-      name,
+      name: this.name,
       puppet,
     })
 

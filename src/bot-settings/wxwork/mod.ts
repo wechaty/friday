@@ -15,7 +15,7 @@ class WxWorkSettings implements NamedInterface {
       .required(true)
       .asString(),
 
-    public name = 'friday@wxwork',
+    public name = 'WXWork',
 
     public heartbeatRoomId = 'R:10696051718181051',  // ChatOps - Heartbeat 💖
     public chatOpsRoomId   = 'R:10696051757179651',  // 'R:3057039320'  // ChatOps - WXWork

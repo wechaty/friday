@@ -30,7 +30,7 @@ class OaSettings implements NamedInterface {
       .required(true)
       .asString(),
 
-    public name = 'friday@oa',
+    public name = 'OfficialAccount',
 
   ) {
     this.log.verbose('OaSettings', 'constructor(%s) appId=%s, webhookProxyUrl=%s', this.name, appId, webhookProxyUrl)

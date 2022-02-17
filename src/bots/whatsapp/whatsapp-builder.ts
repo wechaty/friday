@@ -9,11 +9,11 @@ import { getPlugins } from './plugins/mod.js'
 @Injectable()
 class WhatsAppBuilder implements WECHATY.BuilderInterface {
 
-  protected name: string
+  private name: string
 
   constructor (
-    protected settings: WhatsAppSettings,
-    protected log: Brolog,
+    private log: Brolog,
+    settings: WhatsAppSettings,
   ) {
     this.log.verbose('WhatsappBuilder', 'constructor(%s)',
       settings.name,
@@ -26,10 +26,9 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
     this.log.verbose('WhatsappBuilder', 'build()')
 
     const puppet = new PuppetWhatsapp()
-    const name = this.name
 
     const wechaty = WECHATY.WechatyBuilder.build({
-      name,
+      name: this.name,
       puppet,
     })
 

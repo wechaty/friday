@@ -15,7 +15,7 @@ class WeChatSettings implements NamedInterface {
   constructor (
     protected log: Brolog,
 
-    public name = 'friday@wechat',
+    public name = 'WeChat',
 
     public token = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN')
