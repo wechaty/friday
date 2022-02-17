@@ -1,4 +1,4 @@
-export class PuppetMessageReceivedEvent {
+export class QqCommunityForwardMessageCommand {
 
   constructor (
     public readonly puppetId: string,

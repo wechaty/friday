@@ -55,10 +55,10 @@ export class StatusPageApiService {
   submitMobileTerminatedMessageCount: (value: number) => Promise<void>
 
   constructor (
-    protected readonly log     : Brolog,
-    protected readonly settings: StatusPageSettings,
-    protected readonly eventBus : EventBus,
-    protected readonly queryBus : QueryBus,
+    private readonly log     : Brolog,
+    private readonly settings: StatusPageSettings,
+    private readonly eventBus : EventBus,
+    private readonly queryBus : QueryBus,
   ) {
     this.submitMobileTerminatedMessageCount = statusPageMetricSubmitter(
       this.settings.apiKey,

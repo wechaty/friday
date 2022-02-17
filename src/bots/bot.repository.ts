@@ -6,7 +6,7 @@ import type { EventBus } from '@nestjs/cqrs'
 import { Brolog } from 'brolog'
 
 import { Bot } from '../cqrs/models/bot.model.js'
-import { PuppetMessageEventReceived } from './events/mod.js'
+import { PuppetMessageReceivedEvent } from './events/mod.js'
 
 import {
   GitterBuilder,
@@ -53,7 +53,7 @@ export class BotRepository implements OnModuleInit {
        *  move this logic to a better place?
        */
       bot.wechaty.on('message', message => this.eventBus.publish(
-        new PuppetMessageEventReceived(
+        new PuppetMessageReceivedEvent(
           message.wechaty.puppet.id,
           message.id,
         ),

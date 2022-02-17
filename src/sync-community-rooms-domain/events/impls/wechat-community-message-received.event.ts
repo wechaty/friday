@@ -1,4 +1,4 @@
-export class PuppetMessageReceivedEvent {
+export class WeChatCommunityMessageReceivedEvent {
 
   constructor (
     public readonly puppetId: string,

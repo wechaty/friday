@@ -1,4 +1,4 @@
-export class PuppetMessageReceivedEvent {
+export class WhatsAppCommunityForwardMessageCommand {
 
   constructor (
     public readonly puppetId: string,

@@ -13,8 +13,8 @@ import type { GitterSettings } from '../../bot-settings/gitter/mod.js'
 @Injectable()
 class GitterBuilder implements WECHATY.BuilderInterface {
 
-  protected token: string
-  protected name: string
+  protected token:  string
+  protected name:   string
 
   constructor (
     protected settings: GitterSettings,

@@ -1,4 +1,4 @@
-export class QqCommunityMessageEvent {
+export class GitterCommunityMessageReceivedEvent {
 
   constructor (
     public readonly puppetId: string,

@@ -1,4 +1,4 @@
-export class GitterCommunityMessageEvent {
+export class WhatsAppCommunityMessageReceivedEvent {
 
   constructor (
     public readonly puppetId: string,

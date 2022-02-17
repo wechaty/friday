@@ -1,4 +1,4 @@
-export class WeChatCommunityMessageEvent {
+export class GitterCommunityForwardMessageCommand {
 
   constructor (
     public readonly puppetId: string,

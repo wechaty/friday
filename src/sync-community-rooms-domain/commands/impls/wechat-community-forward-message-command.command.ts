@@ -1,4 +1,4 @@
-export class WhatsappCommunityMessageEvent {
+export class WeChatCommunityForwardMessageCommand {
 
   constructor (
     public readonly puppetId: string,

@@ -10,12 +10,12 @@ import type { GitterSettings } from '../../../bot-settings/mod.js'
 @QueryHandler(GetGitterMembersCountQuery)
 export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMembersCountQuery>, OnModuleInit {
 
-  protected gitterBot?: WechatyInterface
+  private gitterBot?: WechatyInterface
 
   constructor (
-    protected readonly log: Brolog,
-    protected readonly repository: BotRepository,
-    protected readonly gitterSettings: GitterSettings,
+    private readonly log: Brolog,
+    private readonly repository: BotRepository,
+    private readonly gitterSettings: GitterSettings,
   ) {}
 
   async onModuleInit () {
@@ -28,7 +28,7 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
     return ids.size
   }
 
-  protected async getGitterMemberIds (): Promise<Set<string>> {
+  private async getGitterMemberIds (): Promise<Set<string>> {
     const gitterSet = new Set<string>()
 
     if (this.gitterBot?.isLoggedIn) {

@@ -22,9 +22,9 @@ import {
 export class CountingService {
 
   constructor (
-    protected readonly log      : Brolog,
-    protected readonly eventBus : EventBus,
-    protected readonly queryBus : QueryBus,
+    private readonly log      : Brolog,
+    private readonly eventBus : EventBus,
+    private readonly queryBus : QueryBus,
   ) {}
 
   /**

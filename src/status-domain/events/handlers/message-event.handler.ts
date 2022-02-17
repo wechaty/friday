@@ -1,13 +1,13 @@
 import type { EventBus, IEventHandler } from '@nestjs/cqrs'
 import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decorator.js'
 import { Brolog } from 'brolog'
-import { PuppetMessageEventReceived } from '../../../bots/events/mod.js'
+import { PuppetMessageReceivedEvent } from '../../../bots/events/mod.js'
 
 import type { BotRepository } from '../../../bots/mod.js'
 import { MessageMobileTerminatedEvent, MessageMobileOriginatedEvent } from '../mod.js'
 
-@EventsHandler(PuppetMessageEventReceived)
-export class MessageEventHandler implements IEventHandler<PuppetMessageEventReceived> {
+@EventsHandler(PuppetMessageReceivedEvent)
+export class MessageEventHandler implements IEventHandler<PuppetMessageReceivedEvent> {
 
   constructor (
     private log: Brolog,
@@ -15,7 +15,7 @@ export class MessageEventHandler implements IEventHandler<PuppetMessageEventRece
     private eventBus: EventBus,
   ) {}
 
-  async handle (event: PuppetMessageEventReceived) {
+  async handle (event: PuppetMessageReceivedEvent) {
     this.log.verbose('MessageEventHandler', 'handle({ messageId: %s })', event.messageId)
 
     const bot = this.repository.findByPuppetId(event.puppetId)
