@@ -1,4 +1,4 @@
-export class WhatsAppCommunityForwardMessageCommand {
+export class ForwardTextMessageToGitterCommunityCommand {
 
   constructor (
     public readonly puppetId: string,

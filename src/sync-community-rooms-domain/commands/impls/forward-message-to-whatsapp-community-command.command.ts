@@ -1,4 +1,4 @@
-export class WeChatCommunityForwardMessageCommand {
+export class ForwardMessageToWhatsAppCommunityCommand {
 
   constructor (
     public readonly puppetId: string,

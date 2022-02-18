@@ -1,4 +1,4 @@
-export class GitterCommunityForwardMessageCommand {
+export class ForwardMessageToQqCommunityCommand {
 
   constructor (
     public readonly puppetId: string,
