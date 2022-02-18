@@ -1,9 +1,9 @@
 import type { EventBus, IEventHandler } from '@nestjs/cqrs'
 import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decorator.js'
 import { Brolog } from 'brolog'
-import { PuppetMessageReceivedEvent } from '../../../bots/events/mod.js'
+import { PuppetMessageReceivedEvent } from '../../../bot-repository/events/mod.js'
 
-import type { BotRepository } from '../../../bots/mod.js'
+import type { BotRepository } from '../../../bot-repository/mod.js'
 import { MessageMobileTerminatedEvent, MessageMobileOriginatedEvent } from '../mod.js'
 
 @EventsHandler(PuppetMessageReceivedEvent)

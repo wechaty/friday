@@ -3,7 +3,7 @@ import type { OnModuleInit } from '@nestjs/common'
 import { Brolog } from 'brolog'
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../bots/mod.js'
+import type { BotRepository } from '../../../bot-repository/mod.js'
 import { GetGitterMembersCountQuery } from '../impl/mod.js'
 import type { GitterSettings } from '../../../bot-settings/mod.js'
 

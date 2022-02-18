@@ -4,7 +4,7 @@ import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../bots/mod.js'
+import type { BotRepository } from '../../../bot-repository/mod.js'
 import { GetWeChatMembersCountQuery } from '../impl/mod.js'
 import type { WeChatSettings } from '../../../bot-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
