@@ -9,9 +9,13 @@ import * as PUPPET from 'wechaty-puppet'
 
 import type { BotRepository } from '../../../bot-repository/mod.js'
 
-import { ForwardTextMessageToQqCommunityCommand } from '../mod.js'
-import type { PrefixSayableService } from '../../prefix-sayable.service.js'
-import { GetMessageChannelNameQuery, GetMessageSayablesQuery, GetMessageTalkerNameQuery } from '../../queries/mod.js'
+import {
+  ForwardTextMessageToQqCommunityCommand,
+}                                           from '../mod.js'
+import {
+  GetMessageSayableQuery,
+  GetMessageSignatureQuery,
+}                             from '../../queries/mod.js'
 import { PuppetSendMessageCommand } from '../../../cqrs/commands/mod.js'
 import type { QqSettings } from '../../../bot-settings/mod.js'
 
@@ -46,28 +50,8 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
   async execute (command: ForwardTextMessageToQqCommunityCommand) {
     this.log.verbose('ForwardTextMessageToQqCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
 
-    let channelName: undefined | string = await this.queryBus.execute(
-      new GetMessageChannelNameQuery(
-        command.puppetId,
-        command.messageId,
-      )
-    )
-    if (!channelName) {
-      channelName = 'UNKNOWN_CHANNEL'
-    }
-
-    let talkerName: undefined | string = await this.queryBus.execute(
-      new GetMessageTalkerNameQuery(
-        command.puppetId,
-        command.messageId,
-      )
-    )
-    if (!talkerName) {
-      talkerName = 'UNKNOWN_TALKER'
-    }
-
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
-      new GetMessageSayablesQuery(
+      new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
       )
@@ -76,19 +60,20 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
       return
     }
 
-    const signatureText = [
-      '[',
-      talkerName || 'UNKNOWN',
-      ` @ ${channelName || 'UNKNOWN'}`,
-      ']: ',
-    ].join('')
-
     if (sayable.type !== PUPPET.types.Sayable.Text) {
       return
     }
 
+    const signature: string = await this.queryBus.execute(
+      new GetMessageSignatureQuery(
+        'plaintext',
+        command.puppetId,
+        command.messageId,
+      )
+    )
+
     sayable.payload.text = [
-      signatureText,
+      signature,
       sayable.payload.text,
     ].join('\n')
 

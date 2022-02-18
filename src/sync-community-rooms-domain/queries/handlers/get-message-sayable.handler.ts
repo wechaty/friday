@@ -4,18 +4,18 @@ import * as WECHATY from 'wechaty'
 
 import { BotRepository } from '../../../bot-repository/mod.js'
 
-import { GetMessageSayablesQuery } from '../mod.js'
+import { GetMessageSayableQuery } from '../mod.js'
 
-@QueryHandler(GetMessageSayablesQuery)
-export class GetMessageSayablesHandler implements IQueryHandler<GetMessageSayablesQuery> {
+@QueryHandler(GetMessageSayableQuery)
+export class GetMessageSayableHandler implements IQueryHandler<GetMessageSayableQuery> {
 
   constructor (
     private readonly log: Brolog,
     private readonly repository: BotRepository,
   ) {}
 
-  async execute (query: GetMessageSayablesQuery) {
-    this.log.verbose('GetMessageSayablesHandler', 'execute({puppetId: %s, messageId: %s})',
+  async execute (query: GetMessageSayableQuery) {
+    this.log.verbose('GetMessageSayableHandler', 'execute({puppetId: %s, messageId: %s})',
       query.puppetId,
       query.messageId,
     )
