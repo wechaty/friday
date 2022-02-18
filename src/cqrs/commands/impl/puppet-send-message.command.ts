@@ -1,11 +1,11 @@
 import type * as PUPPET from 'wechaty-puppet'
 
-export class SendMessageCommand {
+export class PuppetSendMessageCommand {
 
   constructor (
     public readonly puppetId: string,
     public readonly conversaionId: string,
-    public readonly payload: PUPPET.payloads.Sayable,
+    public readonly sayable: PUPPET.payloads.Sayable,
   ) {}
 
 }

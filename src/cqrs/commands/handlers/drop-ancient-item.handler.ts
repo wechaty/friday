@@ -1,6 +1,6 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs'
 import clc from 'cli-color'
-import { BotRepository } from '../../../bots/mod.js'
+import { BotRepository } from '../../../bot-repository/mod.js'
 import { DropAncientItemCommand } from '../impl/drop-ancient-item.command.js'
 
 @CommandHandler(DropAncientItemCommand)
