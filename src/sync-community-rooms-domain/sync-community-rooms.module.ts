@@ -1,7 +1,7 @@
 import { Module }     from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import { WechatyBotsModule }  from '../bots/mod.js'
+import { WechatyBotsModule }  from '../bot-repository/mod.js'
 
 import { CommandHandlers }  from './commands/mod.js'
 import { EventHandlers }    from './events/mod.js'

@@ -35,8 +35,8 @@ export class GetMessageSayablesHandler implements IQueryHandler<GetMessageSayabl
       return undefined
     }
 
-    const payloads = await WECHATY.helpers.sayableToPayloads(sayable)
-    return payloads
+    const payload = await WECHATY.helpers.sayableToPayload(sayable)
+    return payload
   }
 
 }
