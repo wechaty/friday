@@ -7,6 +7,7 @@ import { Brolog } from 'brolog'
 
 import { Bot } from '../cqrs/models/bot.model.js'
 import { PuppetMessageReceivedEvent } from './events/mod.js'
+import type { BotName } from '../bot-settings/mod.js'
 
 import {
   GitterBuilder,
@@ -17,13 +18,6 @@ import {
   WXWorkBuilder,
 }                     from './mod.js'
 
-type BotName =
-  | 'Gitter'
-  | 'OfficialAccount'
-  | 'QQ'
-  | 'WeChat'
-  | 'WhatsApp'
-  | 'WXWork'
 
 @Injectable()
 export class BotRepository implements OnModuleInit {
