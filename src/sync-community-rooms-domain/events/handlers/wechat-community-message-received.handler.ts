@@ -23,7 +23,7 @@ import {
 export class WeChatCommunityMessageReceivedHandler implements IEventHandler<WeChatCommunityMessageReceivedEvent> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}

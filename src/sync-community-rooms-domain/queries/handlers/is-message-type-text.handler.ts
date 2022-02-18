@@ -10,7 +10,7 @@ import { IsMessageTypeTextQuery } from '../mod.js'
 export class IsMessageTypeTextHandler implements IQueryHandler<IsMessageTypeTextQuery> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly repository: BotRepository,
   ) {}
 

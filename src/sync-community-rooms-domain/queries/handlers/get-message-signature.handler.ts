@@ -9,7 +9,7 @@ import { GetMessageSignatureQuery } from '../mod.js'
 export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSignatureQuery> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly repository: BotRepository,
   ) {}
 

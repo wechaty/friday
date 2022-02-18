@@ -5,7 +5,7 @@ import { setHandlers } from './set-handlers.js'
 
 import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
@@ -19,7 +19,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
   private name: string
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     settings: WeChatSettings,
   ) {
     this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',

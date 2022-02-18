@@ -10,7 +10,7 @@ class OaSettings implements NamedInterface {
   readonly name = 'OfficialAccount'
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
 
     public readonly appId = envVar
       .get('HUAN_APP_ID')

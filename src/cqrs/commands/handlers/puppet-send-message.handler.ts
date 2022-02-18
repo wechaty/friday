@@ -12,7 +12,7 @@ import { PuppetSendMessageCommand } from '../impl/mod.js'
 export class PuppetSendMessageHandler implements ICommandHandler<PuppetSendMessageCommand> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly repository: BotRepository,
   ) {}
 

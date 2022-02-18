@@ -10,7 +10,7 @@ class GitterSettings implements NamedInterface {
   readonly name = 'Gitter'
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
 
     public readonly wechatyRoomId = '573324fcc43b8c60197242bf', // 'https://gitter.im/wechaty/wechaty'
 

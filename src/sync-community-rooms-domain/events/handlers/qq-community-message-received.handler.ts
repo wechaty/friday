@@ -23,7 +23,7 @@ import {
 export class QqCommunityMessageReceivedHandler implements IEventHandler<QqCommunityMessageReceivedEvent> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}

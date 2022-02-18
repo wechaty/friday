@@ -6,7 +6,7 @@ import { Injectable } from '@nestjs/common'
 class StatusPageSettings {
 
   constructor (
-    protected log: Brolog,
+    protected log: Logger,
 
     public apiKey = envVar
       .get('STATUS_PAGE_API_KEY')

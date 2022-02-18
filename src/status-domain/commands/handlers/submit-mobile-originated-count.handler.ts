@@ -1,7 +1,7 @@
-import { Brolog } from 'brolog'
-import { 
-  CommandHandler, 
-  ICommandHandler, 
+import type { Logger } from 'brolog'
+import {
+  CommandHandler,
+  ICommandHandler,
 }                     from '@nestjs/cqrs'
 
 import {  SubmitMessagesMobileOriginatedCountCommand } from '../impls/submit-messages-mobile-originated-count.command.js'
@@ -12,7 +12,7 @@ import type { StatusPageApiService } from '../../status-page-api.service.js'
 export class SubmitMobileOriginatedCountHandler implements ICommandHandler<SubmitMessagesMobileOriginatedCountCommand> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private statusPageApiService: StatusPageApiService,
   ) {
   }

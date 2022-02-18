@@ -1,7 +1,7 @@
-import { Brolog } from 'brolog'
-import { 
-  CommandHandler, 
-  ICommandHandler, 
+import type { Logger } from 'brolog'
+import {
+  CommandHandler,
+  ICommandHandler,
 }                   from '@nestjs/cqrs'
 
 import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
@@ -12,7 +12,7 @@ import type { StatusPageApiService } from '../../status-page-api.service.js'
 export class SubmitCommunityMembersCounterHandler implements ICommandHandler<SubmitCommunityMembersCountCommand> {
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     private statusPageApiService: StatusPageApiService,
   ) {}
 

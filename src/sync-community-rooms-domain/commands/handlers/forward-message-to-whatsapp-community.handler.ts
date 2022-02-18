@@ -1,4 +1,4 @@
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 import {
   CommandBus,
   CommandHandler,
@@ -24,7 +24,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
   private roomId: string
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: BotRepository,

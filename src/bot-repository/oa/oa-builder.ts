@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import {
   WechatyBuilder,
 }             from 'wechaty'
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import { PuppetOA }  from 'wechaty-puppet-official-account'
 
@@ -22,7 +22,7 @@ class OABuilder implements WECHATY.BuilderInterface {
   private webhookProxyUrl : string
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     settings: OaSettings,
   ) {
     this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s})',

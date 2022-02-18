@@ -10,7 +10,7 @@ export class QqSettings implements NamedInterface {
   readonly name = 'QQ'
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
 
     public readonly qq = envVar
       .get('WECHATY_PUPPET_OICQ_QQ')

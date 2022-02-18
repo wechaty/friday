@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 import { PuppetWhatsapp } from 'wechaty-puppet-whatsapp'
 
 import type { WhatsAppSettings } from '../../bot-settings/mod.js'
@@ -12,7 +12,7 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
   private name: string
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     settings: WhatsAppSettings,
   ) {
     this.log.verbose('WhatsappBuilder', 'constructor(%s)',

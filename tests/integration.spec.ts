@@ -21,7 +21,10 @@
 import { test } from 'tstest'
 import 'dotenv/config'
 
-import { getFriday }  from '../src/bots/wechat/wechat-builder.js'
+import { getLogger } from 'brolog'
+
+import { WeChatBuilder }  from '../src/bot-repository/wechat/wechat-builder.js'
+import { WeChatSettings } from '../src/bot-settings/mod.js'
 
 // import { spy } from 'sinon'
 
@@ -33,7 +36,13 @@ test('smoke testing with perfect restart', async t => {
 
   process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
 
-  const wechaty = getFriday('test')
+  const logger =  getLogger()
+  const settings = new WeChatSettings(logger)
+  const builder = new WeChatBuilder(
+    logger,
+    settings,
+  )
+  const wechaty = builder.build()
   t.ok(wechaty, 'should instantiated a wecahty successfully')
 
   await wechaty.start()

@@ -10,7 +10,7 @@ class WxWorkSettings implements NamedInterface {
   readonly name = 'WXWork'
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
 
     public readonly token = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN_WXWORK')

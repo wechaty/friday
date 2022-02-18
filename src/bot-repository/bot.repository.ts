@@ -3,7 +3,7 @@ import {
   OnModuleInit,
 }                 from '@nestjs/common'
 import type { EventBus } from '@nestjs/cqrs'
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import { Bot } from '../cqrs/models/bot.model.js'
 import { PuppetMessageReceivedEvent } from './events/mod.js'
@@ -25,7 +25,7 @@ export class BotRepository implements OnModuleInit {
   private bots: Bot[]
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly eventBus: EventBus,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,

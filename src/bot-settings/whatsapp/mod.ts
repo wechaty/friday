@@ -9,7 +9,7 @@ class WhatsAppSettings implements NamedInterface {
   readonly name = 'WhatsApp'
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
   ) {
     this.log.verbose('WhatsAppSettings', 'constructor(%s)', this.name)
   }

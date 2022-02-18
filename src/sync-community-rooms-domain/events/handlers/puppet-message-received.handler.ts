@@ -28,7 +28,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
   const weChatCommunityRoomList: string[]
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly eventBus: EventBus,
     private readonly weChatSettings: WeChatSettings,
     private readonly whatsAppSettings: WhatsAppSettings,

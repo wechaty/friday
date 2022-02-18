@@ -10,7 +10,7 @@ import { GetMessageSayableQuery } from '../mod.js'
 export class GetMessageSayableHandler implements IQueryHandler<GetMessageSayableQuery> {
 
   constructor (
-    private readonly log: Brolog,
+    private readonly log: Logger,
     private readonly repository: BotRepository,
   ) {}
 

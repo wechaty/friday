@@ -1,6 +1,6 @@
-import { Brolog } from 'brolog'
-import { 
-  CommandHandler, 
+import type { Logger } from 'brolog'
+import {
+  CommandHandler,
   ICommandHandler,
 }                       from '@nestjs/cqrs'
 
@@ -12,7 +12,7 @@ import type { StatusPageApiService } from '../../status-page-api.service.js'
 export class SubmitMobileTerminatedCountHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     private statusPageApiService: StatusPageApiService,
   ) {}
 

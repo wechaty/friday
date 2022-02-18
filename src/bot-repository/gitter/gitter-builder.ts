@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import {
   WechatyBuilder,
 }             from 'wechaty'
-import { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import { PuppetGitter }  from 'wechaty-puppet-gitter'
 import type * as WECHATY from 'wechaty'
@@ -17,7 +17,7 @@ class GitterBuilder implements WECHATY.BuilderInterface {
   private name:   string
 
   constructor (
-    private log: Brolog,
+    private log: Logger,
     settings: GitterSettings,
   ) {
     this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s})',
