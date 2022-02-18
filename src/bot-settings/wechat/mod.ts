@@ -12,17 +12,17 @@ import * as chatops             from './chatops.js'
 @Injectable()
 class WeChatSettings implements NamedInterface {
 
+  readonly name = 'WeChat'
+
   constructor (
-    protected log: Brolog,
+    private readonly log: Brolog,
 
-    public name = 'WeChat',
-
-    public token = envVar
+    public readonly token = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN')
       .required(true)
       .asString(),
 
-    public rooms = {
+    public readonly rooms = {
       bot5Club,
       chatops,
       wechatyDevelopers,

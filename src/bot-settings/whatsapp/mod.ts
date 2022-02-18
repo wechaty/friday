@@ -6,10 +6,10 @@ import type { NamedInterface } from '../named-interface.js'
 @Injectable()
 class WhatsAppSettings implements NamedInterface {
 
-  constructor (
-    protected log: Brolog,
+  readonly name = 'WhatsApp'
 
-    public name = 'WhatsApp',
+  constructor (
+    private log: Brolog,
   ) {
     this.log.verbose('WhatsAppSettings', 'constructor(%s)', this.name)
   }

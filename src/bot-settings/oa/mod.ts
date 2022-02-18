@@ -7,30 +7,30 @@ import type { NamedInterface } from '../named-interface.js'
 @Injectable()
 class OaSettings implements NamedInterface {
 
-  constructor (
-    protected log: Brolog,
+  readonly name = 'OfficialAccount'
 
-    public appId = envVar
+  constructor (
+    private readonly log: Brolog,
+
+    public readonly appId = envVar
       .get('HUAN_APP_ID')
       .required(true)
       .asString(),
 
-    public appSecret = envVar
+    public readonly appSecret = envVar
       .get('HUAN_APP_SECRET')
       .required(true)
       .asString(),
 
-    public token = envVar
+    public readonly token = envVar
       .get('HUAN_TOKEN')
       .required(true)
       .asString(),
 
-    public webhookProxyUrl = envVar
+    public readonly webhookProxyUrl = envVar
       .get('HUAN_WEBHOOK_PROXY_URL')
       .required(true)
       .asString(),
-
-    public name = 'OfficialAccount',
 
   ) {
     this.log.verbose('OaSettings', 'constructor(%s) appId=%s, webhookProxyUrl=%s', this.name, appId, webhookProxyUrl)

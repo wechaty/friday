@@ -7,14 +7,14 @@ import { Injectable } from '@nestjs/common'
 @Injectable()
 class GitterSettings implements NamedInterface {
 
+  readonly name = 'Gitter'
+
   constructor (
-    protected log: Brolog,
+    private readonly log: Brolog,
 
-    public name = 'Gitter',
+    public readonly wechatyRoomId = '573324fcc43b8c60197242bf', // 'https://gitter.im/wechaty/wechaty'
 
-    public wechatyRoomId = '573324fcc43b8c60197242bf', // 'https://gitter.im/wechaty/wechaty'
-
-    public token = envVar
+    public readonly token = envVar
       .get('WECHATY_PUPPET_GITTER_TOKEN')
       .required(true)
       .asString(),
