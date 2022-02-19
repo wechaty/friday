@@ -22,8 +22,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
 
   private puppetId: string
 
-  // TODO: add the WeChat rooms logic
-  private roomId: string
+  private roomIdList: string[]
 
   constructor (
     private readonly log: Logger,
@@ -39,8 +38,11 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
 
     this.puppetId = bot.wechaty.puppet.id
 
-    // TODO: add the WeChat rooms logic
-    this.roomId = settings.rooms.bot5Club.rooms[1]
+    this.roomIdList = [
+      ...settings.rooms.wechatyDevelopers.home,
+      ...settings.rooms.wechatyDevelopers.homeHq,
+    ]
+
   }
 
   async execute (command: ForwardMessageToWeChatCommunityCommand) {
@@ -64,20 +66,22 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
       )
     )
 
-    await this.commandBus.execute(
-      new PuppetSendMessageCommand(
-        this.puppetId,
-        this.roomId,
-        PUPPET.payloads.sayable.text(signature),
-      ),
-    )
-    await this.commandBus.execute(
-      new PuppetSendMessageCommand(
-        this.puppetId,
-        this.roomId,
-        sayable,
-      ),
-    )
+    for (const roomId of this.roomIdList) {
+      await this.commandBus.execute(
+        new PuppetSendMessageCommand(
+          this.puppetId,
+          roomId,
+          PUPPET.payloads.sayable.text(signature),
+        ),
+      )
+      await this.commandBus.execute(
+        new PuppetSendMessageCommand(
+          this.puppetId,
+          roomId,
+          sayable,
+        ),
+      )
+    }
 
   }
 
