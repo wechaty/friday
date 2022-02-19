@@ -57,7 +57,7 @@ export class GitterCommunityMessageReceivedHandler implements IEventHandler<Gitt
     /**
      * Bravo! the `commandClassList` has static typing for all types that pushed earlier!
      */
-    commandClassList.forEach(Command =>
+    commandClassList.map(Command =>
       this.commandBus.execute(
         new Command(
           event.puppetId,

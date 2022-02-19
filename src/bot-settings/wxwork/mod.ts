@@ -1,5 +1,5 @@
 import * as envVar from 'env-var'
-import type { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import type { NamedInterface } from '../named-interface.js'
@@ -16,7 +16,6 @@ class WxWorkSettings implements NamedInterface {
       .get('WECHATY_PUPPET_SERVICE_TOKEN_WXWORK')
       .required(true)
       .asString(),
-
 
     public readonly heartbeatRoomId = 'R:10696051718181051',  // ChatOps - Heartbeat 💖
     public readonly chatOpsRoomId   = 'R:10696051757179651',  // 'R:3057039320'  // ChatOps - WXWork

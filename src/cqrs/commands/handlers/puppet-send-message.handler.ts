@@ -2,7 +2,7 @@ import {
   CommandHandler,
   ICommandHandler,
 }                         from '@nestjs/cqrs'
-import type { Brolog }    from 'brolog'
+import type { Logger }    from 'brolog'
 
 import { BotRepository }  from '../../../bot-repository/mod.js'
 

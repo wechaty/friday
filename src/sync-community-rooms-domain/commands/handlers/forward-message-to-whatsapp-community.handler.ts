@@ -46,7 +46,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -57,7 +57,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
         'Plaintext',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     await this.commandBus.execute(

@@ -6,7 +6,7 @@ import { WechatyBotsModule }  from '../bot-repository/mod.js'
 import { CommandHandlers }  from './commands/mod.js'
 import { EventHandlers }    from './events/mod.js'
 import { QueryHandlers }    from './queries/mod.js'
-import { SagaHandlers }     from './sagas/mod.js'
+// import { SagaHandlers }     from './sagas/mod.js'
 
 @Module({
   imports: [
@@ -17,8 +17,9 @@ import { SagaHandlers }     from './sagas/mod.js'
     ...CommandHandlers,
     ...EventHandlers,
     ...QueryHandlers,
-    ...SagaHandlers,
+    // ...SagaHandlers,
   ],
+  // eslint-disable-next-line sort-keys
   exports: [],
 })
 export class SyncCommunityRoomsModule {}

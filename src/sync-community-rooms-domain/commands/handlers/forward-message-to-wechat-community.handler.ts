@@ -52,7 +52,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -63,7 +63,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
         'Plaintext',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     for (const roomId of this.roomIdList) {

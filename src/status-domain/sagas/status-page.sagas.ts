@@ -9,13 +9,13 @@ import {
 }                           from 'rxjs/operators'
 import * as TimeConstants   from 'time-constants'
 
-import { 
+import {
   SubmitCommunityMembersCountCommand,
   SubmitMessagesMobileTerminatedCountCommand,
   SubmitMessagesMobileOriginatedCountCommand,
 }                                         from '../commands/mod.js'
-import { 
-  MessageMobileTerminatedEvent, 
+import {
+  MessageMobileTerminatedEvent,
   MessageMobileOriginatedEvent,
   CommunityDevelopersCountedEvent,
 }                                         from '../events/mod.js'

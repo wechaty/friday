@@ -48,7 +48,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -63,7 +63,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
         'Plaintext',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     sayable.payload.text = [
@@ -76,7 +76,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
         this.puppetId,
         this.roomId,
         sayable,
-      )
+      ),
     )
   }
 

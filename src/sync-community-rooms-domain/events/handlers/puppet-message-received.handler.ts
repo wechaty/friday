@@ -88,7 +88,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
     }
   }
 
-  private handleWeChatMessage(message: WECHATY.Message) {
+  private handleWeChatMessage (message: WECHATY.Message) {
     this.log.verbose('PuppetMessageReceivedHandler', 'handleWeChatMessage(%s)', message)
 
     const room = message.room()
@@ -101,11 +101,11 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       new WeChatCommunityMessageReceivedEvent(
         message.wechaty.puppet.id,
         message.id,
-      )
+      ),
     )
   }
 
-  private handleGitterMessage(message: WECHATY.Message) {
+  private handleGitterMessage (message: WECHATY.Message) {
     this.log.verbose('PuppetMessageReceivedHandler', 'handleGitterMessage(%s)', message)
 
     const room = message.room()
@@ -118,11 +118,11 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       new GitterCommunityMessageReceivedEvent(
         message.wechaty.puppet.id,
         message.id,
-      )
+      ),
     )
   }
 
-  private handleQqMessage(message: WECHATY.Message) {
+  private handleQqMessage (message: WECHATY.Message) {
     this.log.verbose('PuppetMessageReceivedHandler', 'handleQqMessage(%s)', message)
 
     const room = message.room()
@@ -135,11 +135,11 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       new QqCommunityMessageReceivedEvent(
         message.wechaty.puppet.id,
         message.id,
-      )
+      ),
     )
   }
 
-  private handleWhatsAppMessage(message: WECHATY.Message) {
+  private handleWhatsAppMessage (message: WECHATY.Message) {
     this.log.verbose('PuppetMessageReceivedHandler', 'handleWhatsAppMessage(%s)', message)
 
     const room = message.room()
@@ -154,7 +154,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       new WhatsAppCommunityMessageReceivedEvent(
         message.wechaty.puppet.id,
         message.id,
-      )
+      ),
     )
   }
 

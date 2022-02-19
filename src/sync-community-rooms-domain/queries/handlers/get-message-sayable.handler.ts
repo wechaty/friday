@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import type { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 import * as WECHATY from 'wechaty'
 
 import { BotRepository } from '../../../bot-repository/mod.js'

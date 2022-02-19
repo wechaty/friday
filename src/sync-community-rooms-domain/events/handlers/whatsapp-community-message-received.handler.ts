@@ -4,7 +4,7 @@ import {
   CommandBus,
   QueryBus,
 }                         from '@nestjs/cqrs'
-import type { Brolog }    from 'brolog'
+import type { Logger }    from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
@@ -30,7 +30,6 @@ export class WhatsAppCommunityMessageReceivedHandler implements IEventHandler<Wh
 
   async handle (event: WhatsAppCommunityMessageReceivedEvent) {
     this.log.verbose('WhatsAppCommunityMessageReceivedHandler', 'handle({puppetId: %s, messageId: %s})', event.puppetId, event.messageId)
-
 
     const isTypeText: boolean = await this.queryBus.execute(
       new IsMessageTypeTextQuery(
@@ -58,7 +57,7 @@ export class WhatsAppCommunityMessageReceivedHandler implements IEventHandler<Wh
     /**
      * Bravo! the `commandClassList` has static typing for all types that pushed earlier!
      */
-    commandClassList.forEach(Command =>
+    commandClassList.map(Command =>
       this.commandBus.execute(
         new Command(
           event.puppetId,

@@ -49,7 +49,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -64,7 +64,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
         'Plaintext',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     sayable.payload.text = [
@@ -77,7 +77,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
         this.puppetId,
         this.roomId,
         sayable,
-      )
+      ),
     )
   }
 

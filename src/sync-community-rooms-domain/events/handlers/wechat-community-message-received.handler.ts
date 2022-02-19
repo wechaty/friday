@@ -4,7 +4,7 @@ import {
   CommandBus,
   QueryBus,
 }                         from '@nestjs/cqrs'
-import type { Brolog }    from 'brolog'
+import type { Logger }    from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToQqCommunityCommand,
@@ -13,7 +13,7 @@ import {
   ForwardTextMessageToQqCommunityCommand,
   ForwardTextMessageToWhatsAppCommunityCommand,
 }                                                   from '../../commands/mod.js'
-import { IsMessageTypeTextQuery } from '../../queries/mod.js';
+import { IsMessageTypeTextQuery } from '../../queries/mod.js'
 
 import {
   WeChatCommunityMessageReceivedEvent,
@@ -57,7 +57,7 @@ export class WeChatCommunityMessageReceivedHandler implements IEventHandler<WeCh
     /**
      * Bravo! the `commandClassList` has static typing for all types that pushed earlier!
      */
-    commandClassList.forEach(Command =>
+    commandClassList.map(Command =>
       this.commandBus.execute(
         new Command(
           event.puppetId,

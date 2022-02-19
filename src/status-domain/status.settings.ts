@@ -1,5 +1,5 @@
 import * as envVar from 'env-var'
-import type { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

@@ -18,7 +18,6 @@ import {
   WXWorkBuilder,
 }                     from './mod.js'
 
-
 @Injectable()
 export class BotRepository implements OnModuleInit {
 

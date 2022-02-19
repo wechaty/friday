@@ -37,9 +37,9 @@ export class Bot extends AggregateRoot {
   }
 
   messageSend (...args: Parameters<PUPPET.impls.PuppetInterface['messageSend']>) {
-    return this.wechaty.puppet.messageSend(...args)  
+    return this.wechaty.puppet.messageSend(...args)
   }
-  
+
   killEnemy (enemyId: string) {
     // logic
     console.info('enemyId', enemyId)

@@ -46,7 +46,7 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -61,7 +61,7 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
         'Markdown',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     sayable.payload.text = [
@@ -74,7 +74,7 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
         this.puppetId,
         this.roomId,
         sayable,
-      )
+      ),
     )
   }
 

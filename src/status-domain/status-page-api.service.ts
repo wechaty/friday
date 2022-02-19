@@ -76,5 +76,5 @@ export class StatusPageApiService {
       this.settings.members,
     )
   }
-    
+
 }

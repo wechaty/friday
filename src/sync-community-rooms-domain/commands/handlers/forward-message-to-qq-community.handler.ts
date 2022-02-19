@@ -45,7 +45,7 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
       new GetMessageSayableQuery(
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
     if (!sayable) {
       return
@@ -56,7 +56,7 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
         'Plaintext',
         command.puppetId,
         command.messageId,
-      )
+      ),
     )
 
     await this.commandBus.execute(
