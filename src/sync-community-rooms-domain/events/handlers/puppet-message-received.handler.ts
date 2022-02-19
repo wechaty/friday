@@ -57,19 +57,19 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
   async handle (event: PuppetMessageReceivedEvent) {
     this.log.verbose('PuppetMessageReceivedHandler', 'handle({puppetId: %s, messageId: %s})', event.puppetId, event.messageId)
 
-    const bot = this.repository.findByPuppetId(event.puppetId)
-    if (!bot) {
+    const wechaty = this.repository.findByPuppetId(event.puppetId)
+    if (!wechaty) {
       this.log.warn('PuppetMessageReceivedHandler', 'handle({puppetId: %s}) bot not found', event.puppetId)
       return
     }
 
-    const message = await bot.wechaty.Message.find({ id: event.messageId })
+    const message = await wechaty.Message.find({ id: event.messageId })
     if (!message) {
       this.log.warn('PuppetMessageReceivedHandler', 'handle({ messageId: %s }) message not found', event.messageId)
       return
     }
 
-    const wechatyName = bot.wechaty.name()
+    const wechatyName = wechaty.name()
     switch (wechatyName) {
       case this.weChatSettings.name:
         this.handleWeChatMessage(message)

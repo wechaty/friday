@@ -16,7 +16,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { PuppetSendMessageCommand } from '../../../cqrs/commands/mod.js'
+import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
 import type { WeChatSettings } from '../../../bot-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToWeChatCommunityCommand)
@@ -33,12 +33,12 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
     private readonly repository: BotRepository,
     settings: WeChatSettings,
   ) {
-    const bot = this.repository.find('WeChat')
-    if (!bot) {
+    const wechaty = this.repository.find('WeChat')
+    if (!wechaty) {
       throw new Error('no bot for WeChat')
     }
 
-    this.puppetId = bot.wechaty.puppet.id
+    this.puppetId = wechaty.puppet.id
 
     this.roomIdList = [
       ...settings.rooms.wechatyDevelopers.home,
@@ -78,7 +78,7 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
 
     for (const roomId of this.roomIdList) {
       await this.commandBus.execute(
-        new PuppetSendMessageCommand(
+        new SendMessageCommand(
           this.puppetId,
           roomId,
           sayable,

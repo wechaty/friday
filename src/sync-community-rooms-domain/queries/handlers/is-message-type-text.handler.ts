@@ -20,12 +20,12 @@ export class IsMessageTypeTextHandler implements IQueryHandler<IsMessageTypeText
       query.messageId,
     )
 
-    const bot = await this.repository.findByPuppetId(query.puppetId)
-    if (!bot) {
+    const wechaty = await this.repository.findByPuppetId(query.puppetId)
+    if (!wechaty) {
       throw new Error('puppetId not found: ' + query.puppetId)
     }
 
-    const message = await bot.wechaty.Message.find({ id: query.messageId })
+    const message = await wechaty.Message.find({ id: query.messageId })
     if (!message) {
       throw new Error('messageId not found: ' + query.messageId)
     }

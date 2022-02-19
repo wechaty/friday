@@ -16,7 +16,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { PuppetSendMessageCommand } from '../../../cqrs/commands/mod.js'
+import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
 import type { WhatsAppSettings } from '../../../bot-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToWhatsAppCommunityCommand)
@@ -32,12 +32,12 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
     private readonly repository: BotRepository,
     settings: WhatsAppSettings,
   ) {
-    const bot = this.repository.find('WhatsApp')
-    if (!bot) {
+    const wechaty = this.repository.find('WhatsApp')
+    if (!wechaty) {
       throw new Error('no bot for WhatsApp')
     }
 
-    this.puppetId = bot.wechaty.puppet.id
+    this.puppetId = wechaty.puppet.id
 
     this.roomId = settings.wechatyRoomId
   }
@@ -73,7 +73,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
     ].join('\n')
 
     await this.commandBus.execute(
-      new PuppetSendMessageCommand(
+      new SendMessageCommand(
         this.puppetId,
         this.roomId,
         sayable,

@@ -16,7 +16,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { PuppetSendMessageCommand } from '../../../cqrs/commands/mod.js'
+import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
 import type { QqSettings } from '../../../bot-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToQqCommunityCommand)
@@ -32,12 +32,12 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
     private readonly repository: BotRepository,
     settings: QqSettings,
   ) {
-    const bot = this.repository.find('QQ')
-    if (!bot) {
-      throw new Error('no bot for QQ')
+    const wechaty = this.repository.find('QQ')
+    if (!wechaty) {
+      throw new Error('no wechaty for QQ')
     }
 
-    this.puppetId = bot.wechaty.puppet.id
+    this.puppetId = wechaty.puppet.id
     this.roomId = settings.wechatyRoomId
   }
 
@@ -72,7 +72,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
     ].join('\n')
 
     await this.commandBus.execute(
-      new PuppetSendMessageCommand(
+      new SendMessageCommand(
         this.puppetId,
         this.roomId,
         sayable,

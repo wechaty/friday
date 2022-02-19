@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { CommandBus, QueryBus } from '@nestjs/cqrs'
+import { CommandBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
 import * as CQRS from './cqrs/mod.js'
@@ -10,13 +10,14 @@ import * as CQRS from './cqrs/mod.js'
 // import { GetBotsQuery } from './cqrs/queries/impl/mod.js'
 import { VERSION } from './config.js'
 import type { WeChatSettings } from './bot-settings/mod.js'
+import type { BotRepository } from './bot-repository/bot.repository.js'
 
 @Controller('/')
 export class FridayController {
 
   constructor (
     private readonly commandBus: CommandBus,
-    private readonly queryBus: QueryBus,
+    private readonly repository: BotRepository,
     private readonly weChatSettings: WeChatSettings,
   ) {}
 
@@ -38,7 +39,7 @@ export class FridayController {
 
   @Get()
   async dashboard (): Promise<string> {
-    const bots: CQRS.models.Bot[] = await this.queryBus.execute(new CQRS.queries.GetBotsQuery())
+    const wechatyList: WECHATY.impls.WechatyInterface[] = await this.repository.findAll()
 
     const FORM_HTML = `
       <form action="/chatops/" method="post">
@@ -89,7 +90,7 @@ export class FridayController {
       return html
     }
 
-    const htmlList = bots.map(bot => wechatyHtml(bot.wechaty))
+    const htmlList = wechatyList.map(wechaty => wechatyHtml(wechaty))
     const html = htmlList.join('\n<hr />\n')
 
     return html

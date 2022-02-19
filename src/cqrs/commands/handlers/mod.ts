@@ -1,4 +1,7 @@
-import { KillDragonHandler }      from './kill-dragon.handler.js'
-import { DropAncientItemHandler } from './drop-ancient-item.handler.js'
+import { SendMessageHandler } from './send-message.handler.js'
+import { ChatopsHandler } from '../../events/mod.js'
 
-export const CommandHandlers = [KillDragonHandler, DropAncientItemHandler]
+export const CommandHandlers = [
+  SendMessageHandler,
+  ChatopsHandler,
+]

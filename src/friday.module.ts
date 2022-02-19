@@ -19,10 +19,7 @@ import { FridayController }   from './friday.controller.js'
   controllers: [FridayController],
   providers: [
     ...settings,
-    CQRS.sagas.BotsSagas,
     ...CQRS.commands.CommandHandlers,
-    ...CQRS.events.EventHandlers,
-    ...CQRS.queries.QueryHandlers,
   ],
   exports: [],
 })

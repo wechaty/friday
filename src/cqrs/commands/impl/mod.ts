@@ -1,2 +1,2 @@
 export * from './chatops.command.js'
-export * from './puppet-send-message.command.js'
+export * from './send-message.command.js'

@@ -20,12 +20,12 @@ export class GetMessageSayableHandler implements IQueryHandler<GetMessageSayable
       query.messageId,
     )
 
-    const bot = await this.repository.findByPuppetId(query.puppetId)
-    if (!bot) {
+    const wechaty = await this.repository.findByPuppetId(query.puppetId)
+    if (!wechaty) {
       return undefined
     }
 
-    const message = await bot.wechaty.Message.find({ id: query.messageId })
+    const message = await wechaty.Message.find({ id: query.messageId })
     if (!message) {
       return undefined
     }

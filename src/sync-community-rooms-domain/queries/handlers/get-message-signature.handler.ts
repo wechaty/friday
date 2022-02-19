@@ -20,17 +20,17 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
       query.messageId,
     )
 
-    const bot = await this.repository.findByPuppetId(query.puppetId)
-    if (!bot) {
+    const wechaty = await this.repository.findByPuppetId(query.puppetId)
+    if (!wechaty) {
       return undefined
     }
 
-    const message = await bot.wechaty.Message.find({ id: query.messageId })
+    const message = await wechaty.Message.find({ id: query.messageId })
     if (!message) {
       return undefined
     }
 
-    const channelName = bot.wechaty.name()
+    const channelName = wechaty.name()
     const talkerName  = message.talker().name()
 
     let signatureText: string

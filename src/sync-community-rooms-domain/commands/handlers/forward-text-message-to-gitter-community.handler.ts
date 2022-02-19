@@ -14,7 +14,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { PuppetSendMessageCommand } from '../../../cqrs/commands/mod.js'
+import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
 import type { GitterSettings } from '../../../bot-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToGitterCommunityCommand)
@@ -30,12 +30,12 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
     private readonly repository: BotRepository,
     settings: GitterSettings,
   ) {
-    const bot = this.repository.find('Gitter')
-    if (!bot) {
-      throw new Error('no bot for Gitter')
+    const wechaty = this.repository.find('Gitter')
+    if (!wechaty) {
+      throw new Error('no wechaty for Gitter')
     }
 
-    this.puppetId = bot.wechaty.puppet.id
+    this.puppetId = wechaty.puppet.id
     this.roomId = settings.wechatyRoomId
   }
 
@@ -70,7 +70,7 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
     ].join('\n')
 
     await this.commandBus.execute(
-      new PuppetSendMessageCommand(
+      new SendMessageCommand(
         this.puppetId,
         this.roomId,
         sayable,
