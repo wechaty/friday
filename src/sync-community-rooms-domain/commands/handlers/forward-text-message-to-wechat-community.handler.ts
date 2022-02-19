@@ -22,7 +22,7 @@ import type { WeChatSettings } from '../../../bot-settings/mod.js'
 @CommandHandler(ForwardTextMessageToWeChatCommunityCommand)
 export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandler<ForwardTextMessageToWeChatCommunityCommand> {
 
-  private puppetId?: string
+  private puppetId: string
 
   // TODO: add the WeChat rooms logic
   private roomId: string
@@ -34,20 +34,15 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
     private readonly repository: BotRepository,
     settings: WeChatSettings,
   ) {
-    // TODO: add the WeChat rooms logic
-    this.roomId = settings.rooms.bot5Club.rooms[1]
-  }
-
-  private async getPuppetId (): Promise<string> {
-    if (!this.puppetId) {
-      const bot = await this.repository.find('WeChat')
-      if (!bot) {
-        throw new Error('can not find bot for WeChat')
-      }
-      this.puppetId = bot.wechaty.puppet.id
+    const bot = this.repository.find('WeChat')
+    if (!bot) {
+      throw new Error('no bot for WeChat')
     }
 
-    return this.puppetId
+    this.puppetId = bot.wechaty.puppet.id
+
+    // TODO: add the WeChat rooms logic
+    this.roomId = settings.rooms.bot5Club.rooms[1]
   }
 
   async execute (command: ForwardTextMessageToWeChatCommunityCommand) {
@@ -69,7 +64,7 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
 
     const signature: string = await this.queryBus.execute(
       new GetMessageSignatureQuery(
-        'plaintext',
+        'Plaintext',
         command.puppetId,
         command.messageId,
       )
@@ -82,7 +77,7 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
 
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         sayable,
       )

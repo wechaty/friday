@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import type { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import { BotRepository } from '../../../bot-repository/mod.js'
 
@@ -35,7 +35,7 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
 
     let signatureText: string
 
-    if (query.type === 'markdown') {
+    if (query.type === 'Markdown') {
       signatureText = [
         '`',
         talkerName,

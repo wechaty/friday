@@ -20,7 +20,7 @@ import type { WeChatSettings } from '../../../bot-settings/mod.js'
 @CommandHandler(ForwardMessageToWeChatCommunityCommand)
 export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<ForwardMessageToWeChatCommunityCommand> {
 
-  private puppetId?: string
+  private puppetId: string
 
   // TODO: add the WeChat rooms logic
   private roomId: string
@@ -32,20 +32,15 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
     private readonly repository: BotRepository,
     settings: WeChatSettings,
   ) {
-    // TODO: add the WeChat rooms logic
-    this.roomId = settings.rooms.bot5Club.rooms[1]
-  }
-
-  private async getPuppetId (): Promise<string> {
-    if (!this.puppetId) {
-      const bot = await this.repository.find('WeChat')
-      if (!bot) {
-        throw new Error('can not find bot for WeChat')
-      }
-      this.puppetId = bot.wechaty.puppet.id
+    const bot = this.repository.find('WeChat')
+    if (!bot) {
+      throw new Error('no bot for WeChat')
     }
 
-    return this.puppetId
+    this.puppetId = bot.wechaty.puppet.id
+
+    // TODO: add the WeChat rooms logic
+    this.roomId = settings.rooms.bot5Club.rooms[1]
   }
 
   async execute (command: ForwardMessageToWeChatCommunityCommand) {
@@ -63,7 +58,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
 
     const signature: string = await this.queryBus.execute(
       new GetMessageSignatureQuery(
-        'plaintext',
+        'Plaintext',
         command.puppetId,
         command.messageId,
       )
@@ -71,14 +66,14 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
 
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         PUPPET.payloads.sayable.text(signature),
       ),
     )
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         sayable,
       ),

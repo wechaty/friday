@@ -1,6 +1,6 @@
 export class GetMessageSignatureQuery {
   constructor(
-    public readonly type: 'markdown' | 'plaintext',
+    public readonly type: 'Markdown' | 'Plaintext',
     public readonly puppetId: string,
     public readonly messageId: string,
   ) {}

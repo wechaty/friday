@@ -20,7 +20,7 @@ import type { GitterSettings } from '../../../bot-settings/mod.js'
 @CommandHandler(ForwardMessageToGitterCommunityCommand)
 export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<ForwardMessageToGitterCommunityCommand> {
 
-  private puppetId?: string
+  private puppetId: string
   private roomId: string
 
   constructor (
@@ -30,19 +30,13 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
     private readonly repository: BotRepository,
     settings: GitterSettings,
   ) {
-    this.roomId = settings.wechatyRoomId
-  }
-
-  private async getPuppetId (): Promise<string> {
-    if (!this.puppetId) {
-      const bot = await this.repository.find('Gitter')
-      if (!bot) {
-        throw new Error('can not find bot for Gitter')
-      }
-      this.puppetId = bot.wechaty.puppet.id
+    const bot = this.repository.find('Gitter')
+    if (!bot) {
+      throw new Error('no bot for Gitter')
     }
 
-    return this.puppetId
+    this.puppetId = bot.wechaty.puppet.id
+    this.roomId = settings.wechatyRoomId
   }
 
   async execute (command: ForwardMessageToGitterCommunityCommand) {
@@ -60,7 +54,7 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
 
     const signature: string = await this.queryBus.execute(
       new GetMessageSignatureQuery(
-        'markdown',
+        'Markdown',
         command.puppetId,
         command.messageId,
       )
@@ -68,14 +62,14 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
 
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         PUPPET.payloads.sayable.text(signature),
       ),
     )
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         sayable,
       ),

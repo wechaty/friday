@@ -3,8 +3,8 @@ import {
   type IEventHandler,
   EventsHandler,
 }                         from '@nestjs/cqrs'
-import type { Brolog }    from 'brolog'
-import * as WECHATY       from 'wechaty'
+import type { Logger }    from 'brolog'
+import type * as WECHATY       from 'wechaty'
 
 import type {
   GitterSettings,
@@ -25,7 +25,7 @@ import {
 @EventsHandler(PuppetMessageReceivedEvent)
 export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessageReceivedEvent> {
 
-  const weChatCommunityRoomList: string[]
+  readonly weChatCommunityRoomList: string[]
 
   constructor (
     private readonly log: Logger,

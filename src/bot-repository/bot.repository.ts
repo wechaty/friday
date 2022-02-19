@@ -64,7 +64,7 @@ export class BotRepository implements OnModuleInit {
     }
   }
 
-  async find (name: BotName): Promise<undefined | Bot> {
+  find (name: BotName): undefined | Bot {
     return this.bots.filter(bot => bot.wechaty.name() === name)[0]
   }
 

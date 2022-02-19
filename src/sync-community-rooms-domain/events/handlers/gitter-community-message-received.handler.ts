@@ -4,7 +4,7 @@ import {
   CommandBus,
   QueryBus,
 }                         from '@nestjs/cqrs'
-import type { Brolog }    from 'brolog'
+import type { Logger }    from 'brolog'
 import {
   ForwardMessageToQqCommunityCommand,
   ForwardTextMessageToQqCommunityCommand,
@@ -31,14 +31,14 @@ export class GitterCommunityMessageReceivedHandler implements IEventHandler<Gitt
   async handle (event: GitterCommunityMessageReceivedEvent) {
     this.log.verbose('GitterCommunityMessageReceivedHandler', 'handle({puppetId: %s, messageId: %s})', event.puppetId, event.messageId)
 
+    const commandClassList = []
+
     const isTypeText: boolean = await this.queryBus.execute(
       new IsMessageTypeTextQuery(
         event.puppetId,
         event.messageId,
       ),
     )
-
-    const commandClassList = []
 
     if (isTypeText) {
       commandClassList.push(

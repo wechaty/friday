@@ -20,7 +20,7 @@ import type { QqSettings } from '../../../bot-settings/mod.js'
 @CommandHandler(ForwardMessageToQqCommunityCommand)
 export class ForwardMessageToQqCommunityHandler implements ICommandHandler<ForwardMessageToQqCommunityCommand> {
 
-  private puppetId?: string
+  private puppetId: string
   private roomId: string
 
   constructor (
@@ -30,19 +30,13 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
     private readonly repository: BotRepository,
     settings: QqSettings,
   ) {
-    this.roomId = settings.wechatyRoomId
-  }
-
-  private async getPuppetId (): Promise<string> {
-    if (!this.puppetId) {
-      const bot = await this.repository.find('QQ')
-      if (!bot) {
-        throw new Error('can not find bot for Qq')
-      }
-      this.puppetId = bot.wechaty.puppet.id
+    const bot = this.repository.find('QQ')
+    if (!bot) {
+      throw new Error('no bot for QQ')
     }
 
-    return this.puppetId
+    this.puppetId = bot.wechaty.puppet.id
+    this.roomId = settings.wechatyRoomId
   }
 
   async execute (command: ForwardMessageToQqCommunityCommand) {
@@ -59,7 +53,7 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
 
     const signature: string = await this.queryBus.execute(
       new GetMessageSignatureQuery(
-        'plaintext',
+        'Plaintext',
         command.puppetId,
         command.messageId,
       )
@@ -67,14 +61,14 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
 
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         PUPPET.payloads.sayable.text(signature),
       ),
     )
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         sayable,
       ),

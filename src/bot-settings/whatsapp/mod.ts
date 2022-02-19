@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import type { Brolog } from 'brolog'
+import type { Logger } from 'brolog'
 
 import type { NamedInterface } from '../named-interface.js'
 
@@ -10,6 +10,7 @@ class WhatsAppSettings implements NamedInterface {
 
   constructor (
     private log: Logger,
+    public wechatyRoomId = '120363039693955850@g.us',
   ) {
     this.log.verbose('WhatsAppSettings', 'constructor(%s)', this.name)
   }

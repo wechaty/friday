@@ -20,7 +20,7 @@ import type { WhatsAppSettings } from '../../../bot-settings/mod.js'
 @CommandHandler(ForwardMessageToWhatsAppCommunityCommand)
 export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardMessageToWhatsAppCommunityCommand> {
 
-  private puppetId?: string
+  private puppetId: string
   private roomId: string
 
   constructor (
@@ -30,19 +30,13 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
     private readonly repository: BotRepository,
     settings: WhatsAppSettings,
   ) {
-    this.roomId = settings.
-  }
-
-  private async getPuppetId (): Promise<string> {
-    if (!this.puppetId) {
-      const bot = await this.repository.find('WhatsApp')
-      if (!bot) {
-        throw new Error('can not find bot for WhatsApp')
-      }
-      this.puppetId = bot.wechaty.puppet.id
+    const bot = this.repository.find('WhatsApp')
+    if (!bot) {
+      throw new Error('no bot for WhatsApp')
     }
 
-    return this.puppetId
+    this.puppetId = bot.wechaty.puppet.id
+    this.roomId = settings.wechatyRoomId
   }
 
   async execute (command: ForwardMessageToWhatsAppCommunityCommand) {
@@ -60,7 +54,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
 
     const signature: string = await this.queryBus.execute(
       new GetMessageSignatureQuery(
-        'plaintext',
+        'Plaintext',
         command.puppetId,
         command.messageId,
       )
@@ -68,14 +62,14 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
 
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         PUPPET.payloads.sayable.text(signature),
       ),
     )
     await this.commandBus.execute(
       new PuppetSendMessageCommand(
-        await this.getPuppetId(),
+        this.puppetId,
         this.roomId,
         sayable,
       ),
