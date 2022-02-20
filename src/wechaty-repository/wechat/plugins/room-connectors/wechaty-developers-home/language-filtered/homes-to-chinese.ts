@@ -7,9 +7,6 @@ import {
   matchers,
 }                                     from 'wechaty-plugin-contrib'
 
-import {
-  MIKE_CONTACT_ID,
-}                       from '../../../../../../wechaty-settings/deprecated.js'
 import type { WeChatSettings } from '../../../../../../wechaty-settings/mod.js'
 
 import { bidirectionalMapper }  from '../../bidirectional-mapper.js'
@@ -25,7 +22,7 @@ const matchChinese = matchers.languageMatcher('chinese')
 const getHomeToChinesePlugin = (settings: WeChatSettings) => {
   const HomeToChinesePlugin = SourceToTargetRoomConnector({
     blacklist: [
-      MIKE_CONTACT_ID,
+      settings.mikeId,
     ],
     map: async (message: Message) => {
       if (message.type() === types.Message.Text) {

@@ -2,9 +2,6 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import {
-  MIKE_CONTACT_ID,
-}                     from '../../../../../wechaty-settings/deprecated.js'
 import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 import { getUnidirectionalMapper }           from '../unidirectional-mapper.js'
@@ -17,7 +14,7 @@ import { getUnidirectionalMapper }           from '../unidirectional-mapper.js'
 const getHomeHqCollectingPlugin = (settings: WeChatSettings) => {
   const HomeHqCollectingPlugin = SourceToTargetRoomConnector({
     blacklist: [
-      MIKE_CONTACT_ID,
+      settings.mikeId,
     ],
     map: getUnidirectionalMapper(settings),
     source: [
@@ -38,7 +35,7 @@ const getHomeHqCollectingPlugin = (settings: WeChatSettings) => {
 const getHomeHqAnnouncingPlugin = (settings: WeChatSettings) => {
   const HomeHqAnnouncingPlugin = SourceToTargetRoomConnector({
     blacklist: [
-      MIKE_CONTACT_ID,
+      settings.mikeId,
     ],
     map: getUnidirectionalMapper(settings),
     source: [

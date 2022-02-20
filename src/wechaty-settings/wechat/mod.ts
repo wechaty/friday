@@ -13,6 +13,8 @@ import * as chatops             from './chatops.js'
 class WeChatSettings implements NamedInterface {
 
   readonly name = 'WeChat'
+  readonly mikeId = 'wxid_a8d806dzznm822'   // Mike BO
+
   readonly rooms = {
     bot5Club,
     chatops,
