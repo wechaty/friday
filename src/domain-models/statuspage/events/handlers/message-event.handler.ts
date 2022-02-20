@@ -3,7 +3,7 @@ import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decor
 import type { Logger } from 'brolog'
 import { PuppetMessageReceivedEvent } from '../../../../wechaty-repository/events/mod.js'
 
-import type { BotRepository } from '../../../../wechaty-repository/mod.js'
+import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { MessageMobileTerminatedEvent, MessageMobileOriginatedEvent } from '../mod.js'
 
 @EventsHandler(PuppetMessageReceivedEvent)
@@ -11,7 +11,7 @@ export class MessageEventHandler implements IEventHandler<PuppetMessageReceivedE
 
   constructor (
     private log: Logger,
-    private repository: BotRepository,
+    private repository: WechatyRepository,
     private eventBus: EventBus,
   ) {}
 

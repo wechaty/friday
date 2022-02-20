@@ -2,7 +2,7 @@ import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
 import type { Logger } from 'brolog'
 import * as WECHATY from 'wechaty'
 
-import { BotRepository } from '../../../wechaty-repository/mod.js.js'
+import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import { GetMessageSayableQuery } from '../mod.js'
 
@@ -11,7 +11,7 @@ export class GetMessageSayableHandler implements IQueryHandler<GetMessageSayable
 
   constructor (
     private readonly log: Logger,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
   ) {}
 
   async execute (query: GetMessageSayableQuery) {

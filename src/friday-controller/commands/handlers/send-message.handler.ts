@@ -4,7 +4,7 @@ import {
 }                         from '@nestjs/cqrs'
 import type { Logger }    from 'brolog'
 
-import { BotRepository }  from '../../../wechaty-repository/mod.js'
+import { WechatyRepository }  from '../../../wechaty-repository/mod.js'
 
 import { SendMessageCommand } from '../impl/mod.js'
 
@@ -13,7 +13,7 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
 
   constructor (
     private readonly log: Logger,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
   ) {}
 
   async execute (command: SendMessageCommand) {

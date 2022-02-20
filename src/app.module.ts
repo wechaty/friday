@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common'
-import { FridayModule } from './friday.module.js'
+import { FridayBotModule } from './friday-bot.module.js'
 
 @Module({
   imports: [
-    FridayModule,
+    FridayBotModule,
   ],
   providers: [],
 })

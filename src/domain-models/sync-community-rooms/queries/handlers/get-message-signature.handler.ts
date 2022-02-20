@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
 import type { Logger } from 'brolog'
 
-import { BotRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import { GetMessageSignatureQuery } from '../mod.js'
 
@@ -10,7 +10,7 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
 
   constructor (
     private readonly log: Logger,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
   ) {}
 
   async execute (query: GetMessageSignatureQuery) {

@@ -7,15 +7,15 @@ import {
 }                   from '@nestjs/cqrs'
 import * as PUPPET from 'wechaty-puppet'
 
-import type { BotRepository } from '../../../wechaty-repository/mod.js.js'
+import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import { ForwardMessageToWhatsAppCommunityCommand } from '../mod.js'
 import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                               from '../../queries/mod.js'
-import { SendMessageCommand } from '../../../friday-controller/commands/mod.js.js'
-import type { WhatsAppSettings } from '../../../wechaty-settings/mod.js.js'
+import { SendMessageCommand } from '../../../../friday-controller/commands/mod.js'
+import type { WhatsAppSettings } from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardMessageToWhatsAppCommunityCommand)
 export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardMessageToWhatsAppCommunityCommand> {
@@ -27,7 +27,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
     private readonly log: Logger,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
     settings: WhatsAppSettings,
   ) {
     const wechaty = this.repository.find('WhatsApp')

@@ -1,7 +1,7 @@
 import { Module }     from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import { WechatyBotsModule }  from '../wechaty-repository/mod.js.js'
+import { WechatyRepositoryModule }  from '../../wechaty-repository/mod.js'
 
 import { CommandHandlers }  from './commands/mod.js'
 import { EventHandlers }    from './events/mod.js'
@@ -11,7 +11,7 @@ import { QueryHandlers }    from './queries/mod.js'
 @Module({
   imports: [
     CqrsModule,
-    WechatyBotsModule,
+    WechatyRepositoryModule,
   ],
   providers: [
     ...CommandHandlers,

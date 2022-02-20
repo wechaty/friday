@@ -1,8 +1,8 @@
-import * as envVar from 'env-var'
 import type { Logger } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import type { NamedInterface } from '../named-interface.js'
+import { EnvVar } from '../env-var.js'
 
 import * as wechatyUserGroup    from './polyglot-wechaty-user-group.js'
 import * as wechatyDevelopers   from './wechaty-developers.js'
@@ -13,24 +13,25 @@ import * as chatops             from './chatops.js'
 class WeChatSettings implements NamedInterface {
 
   readonly name = 'WeChat'
+  readonly rooms = {
+    bot5Club,
+    chatops,
+    wechatyDevelopers,
+    wechatyUserGroup,
+  } as const
+
+  readonly token: string
 
   constructor (
     private readonly log: Logger,
-
-    public readonly token = envVar
+    envVar: EnvVar,
+  ) {
+    this.token = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN')
       .required(true)
-      .asString(),
+      .asString()
 
-    public readonly rooms = {
-      bot5Club,
-      chatops,
-      wechatyDevelopers,
-      wechatyUserGroup,
-    } as const,
-
-  ) {
-    this.log.verbose('WeChatSettings', 'constructor(%s) token=%s', this.name, token)
+    this.log.verbose('WeChatSettings', 'constructor(%s) token=%s', this.name, this.token)
   }
 
 }

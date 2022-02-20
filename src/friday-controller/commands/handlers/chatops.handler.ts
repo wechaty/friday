@@ -3,14 +3,14 @@ import {
   ICommandHandler,
 }                         from '@nestjs/cqrs'
 import * as clc from 'cli-color'
-import { BotRepository }  from '../../../wechaty-repository/mod.js'
+import { WechatyRepository }  from '../../../wechaty-repository/mod.js'
 import { ChatopsCommand } from '../impl/chatops.command.js'
 
 @CommandHandler(ChatopsCommand)
 export class ChatopsHandler implements ICommandHandler<ChatopsCommand> {
 
   constructor (
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
   ) {}
 
   async execute (command: ChatopsCommand) {

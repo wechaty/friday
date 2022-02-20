@@ -17,10 +17,9 @@
  *   limitations under the License.
  *
  */
-
 import { test } from 'tstest'
 import 'dotenv/config'
-
+import envVar from 'env-var'
 import { getLogger } from 'brolog'
 
 import { WeChatBuilder }  from '../src/wechaty-repository/wechat/wechat-builder.js'
@@ -29,6 +28,7 @@ import { WeChatSettings } from '../src/wechaty-settings/mod.js'
 // import { spy } from 'sinon'
 
 test('smoke testing with perfect restart', async t => {
+  envVar.from()
   const ORIGINAL_WECHATY_PUPPET = process.env['WECHATY_PUPPET']
 
   process.env['WECHATY_TOKEN'] = 'mock_token'

@@ -12,8 +12,8 @@ import {
 }                       from './wechaty-repository.module.js'
 
 export {
-  WechatyRepositoryModule as WechatyBotsModule,
-  WechatyRepository as BotRepository,
+  WechatyRepositoryModule,
+  WechatyRepository,
   //
   GitterBuilder,
   OABuilder,

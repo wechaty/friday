@@ -7,7 +7,7 @@ import {
 }                   from '@nestjs/cqrs'
 import * as PUPPET from 'wechaty-puppet'
 
-import type { BotRepository } from '../../../wechaty-repository/mod.js.js'
+import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import {
   ForwardTextMessageToQqCommunityCommand,
@@ -16,8 +16,8 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { SendMessageCommand } from '../../../friday-controller/commands/mod.js.js'
-import type { QqSettings } from '../../../wechaty-settings/mod.js.js'
+import { SendMessageCommand } from '../../../../friday-controller/commands/mod.js'
+import type { QqSettings }    from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToQqCommunityCommand)
 export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<ForwardTextMessageToQqCommunityCommand> {
@@ -29,7 +29,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
     private readonly log: Logger,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
     settings: QqSettings,
   ) {
     const wechaty = this.repository.find('QQ')

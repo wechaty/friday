@@ -11,10 +11,10 @@ import type {
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
-}                     from '../../../wechaty-settings/mod.js.js'
+}                     from '../../../../wechaty-settings/mod.js'
 
-import type { BotRepository }         from '../../../wechaty-repository/mod.js.js'
-import { PuppetMessageReceivedEvent } from '../../../wechaty-repository/events/mod.js.js'
+import type { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
+import { PuppetMessageReceivedEvent } from '../../../../wechaty-repository/events/mod.js'
 import {
   GitterCommunityMessageReceivedEvent,
   QqCommunityMessageReceivedEvent,
@@ -34,7 +34,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
     private readonly whatsAppSettings: WhatsAppSettings,
     private readonly qqSettings: QqSettings,
     private readonly gitterSettings: GitterSettings,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
   ) {
     this.weChatCommunityRoomList = [
       ...this.weChatSettings.rooms.wechatyDevelopers.home,

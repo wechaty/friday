@@ -3,7 +3,7 @@ import type { Logger } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../../wechaty-repository/mod.js'
+import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetQqMembersCountQuery } from '../impls/mod.js'
 import type { QqSettings } from '../../../../wechaty-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
@@ -15,7 +15,7 @@ export class GetQqMembersCountHandler implements IQueryHandler<GetQqMembersCount
 
   constructor (
     private readonly log: Logger,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
     private readonly qqSettings: QqSettings,
   ) {}
 
