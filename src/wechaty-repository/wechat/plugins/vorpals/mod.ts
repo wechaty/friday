@@ -5,16 +5,17 @@ import * as preangel      from './chatops-preangel.js'
 import * as ddr           from './chatops-ddr.js'
 import * as faq           from './qnamaker.js'
 import * as ai            from './ai.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
-const getVorpalPlugins = () => {
+const getVorpalPlugins = (settings: WeChatSettings) => {
   const vorpalPluginList = [
-    ...Object.values(friday),
-    ...Object.values(preangel),
-    ...Object.values(contributors),
-    ...Object.values(dm),
-    ...Object.values(ddr),
-    ...Object.values(faq),
-    ...Object.values(ai),
+    ...Object.values(friday).map(get => get(settings)),
+    ...Object.values(preangel).map(get => get(settings)),
+    ...Object.values(contributors).map(get => get(settings)),
+    ...Object.values(dm).map(get => get(settings)),
+    ...Object.values(ddr).map(get => get(settings)),
+    ...Object.values(faq).map(get => get(settings)),
+    ...Object.values(ai).map(get => get(settings)),
   ]
 
   return vorpalPluginList

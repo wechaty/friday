@@ -1,5 +1,7 @@
+import { Injectable } from '@nestjs/common'
 import envVar from 'env-var'
 
+@Injectable()
 export class EnvVar {
 
   private envVar: typeof envVar

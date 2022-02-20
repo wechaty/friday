@@ -2,9 +2,9 @@ import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                        from 'wechaty-vorpal'
-import { Faq  }           from 'wechaty-qnamaker'
+// import { Faq  }           from 'wechaty-qnamaker'
 
-import { configCeibs } from '../qnamaker.js'
+// import { configCeibs } from '../qnamaker.js'
 
 const faqConfig: WechatyVorpalConfig = {
   contact : true,
@@ -13,7 +13,7 @@ const faqConfig: WechatyVorpalConfig = {
   silent  : true,
 
   use: [
-    Faq(configCeibs),
+    // Faq(configCeibs),
   ],
 }
 

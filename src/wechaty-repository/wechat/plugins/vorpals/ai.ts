@@ -6,21 +6,26 @@ import {
 // import { Chitchat }     from '../../ml/chitchat.js'
 // import { Gpt }          from '../../ml/gpt.js'
 import { Dreamily }     from '../../../../ai-lib/dreamily.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
-const aiConfig: WechatyVorpalConfig = {
-  contact : true,
-  mention : true,
-  room    : true,
-  silent  : true,
+const getAiVorpalPlugin = (_settings: WeChatSettings) => {
+  const aiConfig: WechatyVorpalConfig = {
+    contact : true,
+    mention : true,
+    room    : true,
+    silent  : true,
 
-  use : [
-    // Chitchat(),
-    // Gpt(),
-    Dreamily(),
-  ],
+    use : [
+      // Chitchat(),
+      // Gpt(),
+      Dreamily(),
+    ],
+  }
+
+  const AiVorpalPlugin = WechatyVorpal(aiConfig)
+  return AiVorpalPlugin
 }
-const AiVorpalPlugin = WechatyVorpal(aiConfig)
 
 export {
-  AiVorpalPlugin,
+  getAiVorpalPlugin,
 }

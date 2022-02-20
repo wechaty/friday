@@ -7,9 +7,9 @@ import {
 }                                     from 'wechaty-plugin-contrib'
 
 import {
-  botSettings,
   MIKE_CONTACT_ID,
 }                         from '../../../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 import { bidirectionalMapper }            from '../bidirectional-mapper.js'
 
@@ -18,19 +18,22 @@ import { bidirectionalMapper }            from '../bidirectional-mapper.js'
  * Many to Many
  *
  */
-const blacklist = [
-  async (message: Message) => message.type() !== types.Message.Text,
-  MIKE_CONTACT_ID,
-]
+const getManyToManyPlugin = (settings: WeChatSettings) => {
+  const blacklist = [
+    async (message: Message) => message.type() !== types.Message.Text,
+    MIKE_CONTACT_ID,
+  ]
 
-const ManyToManyPlugin = ManyToManyRoomConnector({
-  blacklist,
-  many: [
-    ...botSettings.weChat.rooms.wechatyDevelopers.home,
-  ],
-  map: bidirectionalMapper,
-})
+  const ManyToManyPlugin = ManyToManyRoomConnector({
+    blacklist,
+    many: [
+      ...settings.rooms.wechatyDevelopers.home,
+    ],
+    map: bidirectionalMapper,
+  })
+  return ManyToManyPlugin
+}
 
 export {
-  ManyToManyPlugin,
+  getManyToManyPlugin,
 }

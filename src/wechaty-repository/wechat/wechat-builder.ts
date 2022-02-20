@@ -1,5 +1,5 @@
 import { getMemory }   from './get-memory.js'
-import { setupFinis }  from './setup-finis.js'
+import { getSetupFinis }  from './setup-finis.js'
 import { getIoClient } from './get-io-client.js'
 import { setHandlers } from './set-handlers.js'
 
@@ -9,6 +9,7 @@ import type { Logger } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
+import type { EnvVar } from '../../wechaty-settings/env-var.js'
 import type { WeChatSettings } from '../../wechaty-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
@@ -20,7 +21,8 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
 
   constructor (
     private log: Logger,
-    settings: WeChatSettings,
+    private envVar: EnvVar,
+    private settings: WeChatSettings,
   ) {
     this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',
       settings.name,
@@ -37,7 +39,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
     const puppet = new PuppetService({
       token: this.token,
     })
-    const memory = getMemory(this.name)
+    const memory = getMemory(this.name, this.envVar)
 
     const wechaty = WECHATY.WechatyBuilder.build({
       memory,
@@ -48,9 +50,9 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
     /**
      * Huan(202201) TODO: use FridayConfig for the hard coded environment variables
      */
-    wechaty.use(getPlugins({}))
+    wechaty.use(getPlugins(this.settings))
 
-    setHandlers(wechaty)
+    setHandlers(wechaty, this.settings)
 
     const ioClient = getIoClient(wechaty)
 
@@ -63,6 +65,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
     /**
      * Finis Hook
      */
+    const setupFinis = getSetupFinis(this.settings)
     setupFinis(wechaty)
       .catch(e => {
         this.log.error('getWechaty', 'setupFinis() rejection: %s', e)

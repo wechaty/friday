@@ -7,7 +7,7 @@ import {
 import {
   VERSION,
 }                   from '../../config.js'
-import { botSettings } from '../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../wechaty-settings/mod.js'
 
 const BOT_NAME = 'Friday.BOT'
 
@@ -17,77 +17,81 @@ const EXIT_ANNOUNCEMENT   = `Der! I'm going to exit now, see you, bye!\n${BOT_NA
 
 let bot: undefined | Wechaty
 
-export async function setupFinis (wechaty: Wechaty): Promise<void> {
-  if (bot) {
-    throw new Error('startFinis should only init once')
-  }
-  bot = wechaty
+export const getSetupFinis = (settings: WeChatSettings) => {
+  /**
+   *
+   * SIGTERM
+   *
+   */
+  let FINIS_QUITING = false
 
-  bot.on('login',   wechaty.wrapAsync(async () => {
-    const room = await wechaty.Room.find({ id: botSettings.weChat.rooms.chatops.friday })
-    if (!room) {
-      throw new Error('room id: ' + botSettings.weChat.rooms.chatops.friday + ' not found')
+  finis(async (code, signal) => {
+    if (!bot) {
+      log.warn('RestartReporter', 'finis() no bot set, exit')
+      process.exit(1)
     }
-    await room.say(LOGIN_ANNOUNCEMENT)
-  }))
-  bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
-}
 
-/**
- *
- * SIGTERM
- *
- */
-let FINIS_QUITING = false
+    if (FINIS_QUITING) {
+      log.warn('RestartReporter', 'finis(%s, %s) called again when quiting... hard exit', code, signal)
+      process.exit(1)
+    }
 
-finis(async (code, signal) => {
-  if (!bot) {
-    log.warn('RestartReporter', 'finis() no bot set, exit')
-    process.exit(1)
-  }
+    FINIS_QUITING = true
+    log.info('RestartReporter', 'finis(%s, %s)', code, signal)
 
-  if (FINIS_QUITING) {
-    log.warn('RestartReporter', 'finis(%s, %s) called again when quiting... hard exit', code, signal)
-    process.exit(1)
-  }
-
-  FINIS_QUITING = true
-  log.info('RestartReporter', 'finis(%s, %s)', code, signal)
-
-  if (bot.isLoggedIn) {
-    log.info('RestartReporter', 'finis() announce exiting')
-    try {
-      // log.level('silly')
-      const room = await bot.Room.find({ id: botSettings.weChat.rooms.chatops.friday })
-      if (!room) {
-        throw new Error('room id: ' + botSettings.weChat.rooms.chatops.friday + ' not found')
+    if (bot.isLoggedIn) {
+      log.info('RestartReporter', 'finis() announce exiting')
+      try {
+        // log.level('silly')
+        const room = await bot.Room.find({ id: settings.rooms.chatops.friday })
+        if (!room) {
+          throw new Error('room id: ' + settings.rooms.chatops.friday + ' not found')
+        }
+        await room.say(EXIT_ANNOUNCEMENT)
+        log.info('startFinis', 'finis() chatops() done')
+        await bot.say(EXIT_ANNOUNCEMENT)
+        log.info('startFinis', 'finis() bot.say() done')
+        await new Promise(resolve => setTimeout(resolve, 1 * 1000))
+        log.info('startFinis', 'finis() sleep 10s done')
+      } catch (e) {
+        log.error('RestartReporter', 'finis() exception: %s', e)
       }
-      await room.say(EXIT_ANNOUNCEMENT)
-      log.info('startFinis', 'finis() chatops() done')
-      await bot.say(EXIT_ANNOUNCEMENT)
-      log.info('startFinis', 'finis() bot.say() done')
-      await new Promise(resolve => setTimeout(resolve, 1 * 1000))
-      log.info('startFinis', 'finis() sleep 10s done')
-    } catch (e) {
-      log.error('RestartReporter', 'finis() exception: %s', e)
+    } else {
+      log.info('RestartReporter', 'finis() bot had been logout-ed')
     }
-  } else {
-    log.info('RestartReporter', 'finis() bot had been logout-ed')
+
+    setTimeout(() => {
+      log.info('RestartReporter', 'finis() hard exit')
+      setImmediate(() => process.exit(code))
+    }, 5 * 1000)
+    log.info('RestartReporter', 'finis() setTimeoutprocess.exit(), 5 * 1000)')
+
+    try {
+      log.info('RestartReporter', 'finis() setTimeout() going to exit with %d', code)
+      await bot.stop()
+    } catch (e) {
+      log.error('RestartReporter', 'finis() setTimeout() exception: %s', e)
+    } finally {
+      log.info('RestartReporter', 'finis() soft exit')
+      setImmediate(() => process.exit(code))
+    }
+  })
+
+  async function setupFinis (wechaty: Wechaty): Promise<void> {
+    if (bot) {
+      throw new Error('startFinis should only init once')
+    }
+    bot = wechaty
+
+    bot.on('login',   wechaty.wrapAsync(async () => {
+      const room = await wechaty.Room.find({ id: settings.rooms.chatops.friday })
+      if (!room) {
+        throw new Error('room id: ' + settings.rooms.chatops.friday + ' not found')
+      }
+      await room.say(LOGIN_ANNOUNCEMENT)
+    }))
+    bot.on('logout',  user => log.info('RestartReporter', 'startFinis() bot %s logout', user))
   }
 
-  setTimeout(() => {
-    log.info('RestartReporter', 'finis() hard exit')
-    setImmediate(() => process.exit(code))
-  }, 5 * 1000)
-  log.info('RestartReporter', 'finis() setTimeoutprocess.exit(), 5 * 1000)')
-
-  try {
-    log.info('RestartReporter', 'finis() setTimeout() going to exit with %d', code)
-    await bot.stop()
-  } catch (e) {
-    log.error('RestartReporter', 'finis() setTimeout() exception: %s', e)
-  } finally {
-    log.info('RestartReporter', 'finis() soft exit')
-    setImmediate(() => process.exit(code))
-  }
-})
+  return setupFinis
+}

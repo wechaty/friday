@@ -9,8 +9,7 @@ import {
 import type {
   talkers,
 }                   from 'wechaty-plugin-contrib'
-
-import { botSettings } from '../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../wechaty-settings/mod'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',
@@ -40,33 +39,40 @@ const repeat: talkers.RoomTalkerOptions = [
   'You can only vote {{ votee }} for once.',
 ]
 
-const config: VoteOutConfig = {
-  room: [
-    /^Wechaty Developers/i,
-    /^Youth fed the/i,
-    /^Wechaty Plugin Developers/i,
-    /^Wechaty Testing$/,
-    ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
-  ],
-  threshold: 3,
-  kick,
-  repeat,
-  warn,
-  downEmoji: [
-    '[ThumbsDown]',
-    '[弱]',
-    '/:MMWeak',
-    '<img class="qqemoji qqemoji80" text="[弱]_web" src="/zh_CN/htmledition/v2/images/spacer.gif" />',
-  ],
-  upEmoji: [
-    '[ThumbsUp]',
-    '[强]',
-    '/:MMStrong',
-    '< img class="qqemoji qqemoji79" text="[强]_web" src="/zh_CN/htmledition/v2/images/spacer.gif”>',
-  ],
-  whitelist: [
-    'lizhuohuan',
-  ],
+const getVoteOutPlugin = (settings: WeChatSettings) => {
+  const config: VoteOutConfig = {
+    room: [
+      /^Wechaty Developers/i,
+      /^Youth fed the/i,
+      /^Wechaty Plugin Developers/i,
+      /^Wechaty Testing$/,
+      ...Object.values(settings.rooms.wechatyUserGroup).flat(), // MULTI_LANG_ROOM_ID,
+    ],
+    threshold: 3,
+    kick,
+    repeat,
+    warn,
+    downEmoji: [
+      '[ThumbsDown]',
+      '[弱]',
+      '/:MMWeak',
+      '<img class="qqemoji qqemoji80" text="[弱]_web" src="/zh_CN/htmledition/v2/images/spacer.gif" />',
+    ],
+    upEmoji: [
+      '[ThumbsUp]',
+      '[强]',
+      '/:MMStrong',
+      '< img class="qqemoji qqemoji79" text="[强]_web" src="/zh_CN/htmledition/v2/images/spacer.gif”>',
+    ],
+    whitelist: [
+      'lizhuohuan',
+    ],
+  }
+
+  const VoteOutPlugin = VoteOut(config)
+  return VoteOutPlugin
 }
 
-export const VoteOutPlugin = VoteOut(config)
+export {
+  getVoteOutPlugin,
+}

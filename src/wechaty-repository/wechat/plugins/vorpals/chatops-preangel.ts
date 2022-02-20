@@ -5,21 +5,23 @@ import {
 import {
   UrlLink,
 }                         from 'wechaty-vorpal-contrib'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+const getPreAngelVorpalPlugin = (settings: WeChatSettings) => {
+  const config: WechatyVorpalConfig = {
+    contact : false,
+    mention : false,
+    room    : settings.rooms.chatops.preangel,
+    silent  : true,
 
-const config: WechatyVorpalConfig = {
-  contact : false,
-  mention : false,
-  room    : botSettings.weChat.rooms.chatops.preangel,
-  silent  : true,
-
-  use: [
-    UrlLink(),
-  ],
+    use: [
+      UrlLink(),
+    ],
+  }
+  const PreAngelVorpalPlugin = WechatyVorpal(config)
+  return PreAngelVorpalPlugin
 }
-const PreAngelVorpalPlugin = WechatyVorpal(config)
 
 export {
-  PreAngelVorpalPlugin,
+  getPreAngelVorpalPlugin,
 }

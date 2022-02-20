@@ -1,9 +1,9 @@
 /* eslint-disable sort-keys */
 import {
   Module,
-}             from '@nestjs/common'
+}                 from '@nestjs/common'
 
-import { EnvVar } from './env-var.js'
+import { EnvVar }     from './env-var.js'
 
 import { QqSettings }       from './qq/mod.js'
 import { GitterSettings }   from './gitter/mod.js'
@@ -30,4 +30,8 @@ const settings = [
     ...settings,
   ],
 })
-export class WechatySettingsModule {}
+export class WechatySettingsModule {
+
+  constructor () {}
+
+}

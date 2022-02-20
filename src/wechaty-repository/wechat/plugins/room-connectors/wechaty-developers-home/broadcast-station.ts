@@ -1,33 +1,35 @@
 import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
-import { botSettings } from '../../../../../wechaty-settings/deprecated.js'
-
-import { unidirectionalMapper } from '../unidirectional-mapper.js'
+import { getUnidirectionalMapper } from '../unidirectional-mapper.js'
 
 /**
  *
  * Announcement
  *
  */
-const exceptBroadcastStation = (roomId: string) => !botSettings.weChat.rooms.wechatyDevelopers.broadcastStation.includes(roomId)
+const getHeadquartersBroadcastStationPlugin = (settings: WeChatSettings) => {
+  const exceptBroadcastStation = (roomId: string) => !settings.rooms.wechatyDevelopers.broadcastStation.includes(roomId)
 
-const allUserGroups = Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat()
-const allHomes      = Object.values(botSettings.weChat.rooms.wechatyDevelopers).flat()
-  .filter(exceptBroadcastStation)
+  const allUserGroups = Object.values(settings.rooms.wechatyUserGroup).flat()
+  const allHomes      = Object.values(settings.rooms.wechatyDevelopers).flat()
+    .filter(exceptBroadcastStation)
 
-const HeadquartersBroadcastStationPlugin = SourceToTargetRoomConnector({
-  map: unidirectionalMapper,
-  source: [
-    ...botSettings.weChat.rooms.wechatyDevelopers.broadcastStation,
-  ],
-  target: [
-    ...allUserGroups,
-    ...allHomes,
-  ],
-})
+  const HeadquartersBroadcastStationPlugin = SourceToTargetRoomConnector({
+    map: getUnidirectionalMapper(settings),
+    source: [
+      ...settings.rooms.wechatyDevelopers.broadcastStation,
+    ],
+    target: [
+      ...allUserGroups,
+      ...allHomes,
+    ],
+  })
+  return HeadquartersBroadcastStationPlugin
+}
 
 export {
-  HeadquartersBroadcastStationPlugin,
+  getHeadquartersBroadcastStationPlugin,
 }

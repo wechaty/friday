@@ -1,16 +1,18 @@
 import {
   ChatOps,
 }             from 'wechaty-plugin-contrib'
+import type { WeChatSettings } from '../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../wechaty-settings/deprecated.js'
-
-const ChatOpsPlugin = ChatOps({
-  blacklist: [
-    'bot-sentry',
-  ],
-  room: botSettings.weChat.rooms.chatops.friday,
-})
+const getChatOpsPlugin = (settings: WeChatSettings) => {
+  const ChatOpsPlugin = ChatOps({
+    blacklist: [
+      'bot-sentry',
+    ],
+    room: settings.rooms.chatops.friday,
+  })
+  return ChatOpsPlugin
+}
 
 export {
-  ChatOpsPlugin,
+  getChatOpsPlugin,
 }

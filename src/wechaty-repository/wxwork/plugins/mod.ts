@@ -11,26 +11,22 @@ import {
 import { getHeartbeatPlugin } from './heartbeat.js'
 import { getChatOpsPlugin } from './chatops.js'
 
-import { vorpalPluginList } from './vorpals/mod.js'
+import { getVorpalPluginList } from './vorpals/mod.js'
+import type { WxWorkSettings } from '../../../wechaty-settings/mod.js'
 
-interface PluginOptions {
-  chatOpsRoomId: string,
-  heartbeatRoomId: string,
-}
-
-const getPlugins = (options: PluginOptions) => {
+const getPlugins = (settings: WxWorkSettings) => {
 
   const pluginList = [
-    getChatOpsPlugin(options.chatOpsRoomId),
+    getChatOpsPlugin(settings.chatOpsRoomId),
     DingDong(),
     EventLogger(),
-    getHeartbeatPlugin(options.heartbeatRoomId),
+    getHeartbeatPlugin(settings.heartbeatRoomId),
     QRCodeTerminal(),
   ]
 
   return [
     ...pluginList,
-    ...vorpalPluginList,
+    ...getVorpalPluginList(settings),
   ]
 }
 

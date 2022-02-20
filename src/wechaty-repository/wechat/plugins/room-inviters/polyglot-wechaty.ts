@@ -1,8 +1,7 @@
 import {
   RoomInviter,
 }                       from 'wechaty-plugin-contrib'
-
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 import {
   repeat,
@@ -39,44 +38,48 @@ const welcome = (language: string) => [
   'Please go ahead to introduce yourself to the group.',
 ].join('\n')
 
-const config = (language: keyof typeof botSettings.weChat.rooms.wechatyUserGroup) => ({
-  password : [
-    new RegExp(`^\\s*${language.toLowerCase()}\\s*(wechaty)*\\s*$`, 'i'),
-    // /^\s*python\s*(wechaty)*\s*$/i,
-  ],
-  repeat,
-  room    : botSettings.weChat.rooms.wechatyUserGroup[language],
-  rule    : rule(language),
-  welcome : welcome(language),
-})
+const getInviterPluginList = (settings: WeChatSettings) => {
+  const config = (language: keyof typeof settings.rooms.wechatyUserGroup) => ({
+    password : [
+      new RegExp(`^\\s*${language.toLowerCase()}\\s*(wechaty)*\\s*$`, 'i'),
+      // /^\s*python\s*(wechaty)*\s*$/i,
+    ],
+    repeat,
+    room    : settings.rooms.wechatyUserGroup[language],
+    rule    : rule(language),
+    welcome : welcome(language),
+  })
 
-const InviterPluginList = []
+  const InviterPluginList = []
 
-for (const language of (
-  Object.keys(botSettings.weChat.rooms.wechatyUserGroup) as (keyof typeof botSettings.weChat.rooms.wechatyUserGroup)[]
-)) {
-  const configObj = config(language)
-  /**
-   * Alias JavaScript -> TypeScript
-   */
-  if (language === 'typescript') {
-    configObj.password.push(
-      /^\s*javascript\s*(wechaty)*\s*$/i,
-    )
+  for (const language of (
+    Object.keys(settings.rooms.wechatyUserGroup) as (keyof typeof settings.rooms.wechatyUserGroup)[]
+  )) {
+    const configObj = config(language)
+    /**
+     * Alias JavaScript -> TypeScript
+     */
+    if (language === 'typescript') {
+      configObj.password.push(
+        /^\s*javascript\s*(wechaty)*\s*$/i,
+      )
+    }
+    /**
+     * Alias gRPC -> Puppet
+     */
+    if (language === 'grpc') {
+      configObj.password.push(
+        /^\s*puppet\s*(wechaty)*\s*$/i,
+      )
+    }
+
+    const InviterPlugin = RoomInviter(configObj)
+    InviterPluginList.push(InviterPlugin)
   }
-  /**
-   * Alias gRPC -> Puppet
-   */
-  if (language === 'grpc') {
-    configObj.password.push(
-      /^\s*puppet\s*(wechaty)*\s*$/i,
-    )
-  }
 
-  const InviterPlugin = RoomInviter(configObj)
-  InviterPluginList.push(InviterPlugin)
+  return InviterPluginList
 }
 
 export {
-  InviterPluginList,
+  getInviterPluginList,
 }

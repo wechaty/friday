@@ -2,8 +2,7 @@ import {
   RoomInviter,
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
-
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 import {
   repeat,
@@ -11,19 +10,22 @@ import {
   WECHATY_DEVELOPERS_ROOM_WELCOME,
 }                                       from './config.js'
 
-const wechatyEnglishConfig: RoomInviterConfig = {
-  password : [
-    /^wechaty english$/i,
-    /^english$/i,
-  ],
-  repeat,
-  room: botSettings.weChat.rooms.wechatyDevelopers.english,
-  rule: WECHATY_DEVELOPERS_ROOM_RULES,
-  welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
+const getWechatyEnglishRoomInviter = (settings: WeChatSettings) => {
+  const wechatyEnglishConfig: RoomInviterConfig = {
+    password : [
+      /^wechaty english$/i,
+      /^english$/i,
+    ],
+    repeat,
+    room: settings.rooms.wechatyDevelopers.english,
+    rule: WECHATY_DEVELOPERS_ROOM_RULES,
+    welcome: WECHATY_DEVELOPERS_ROOM_WELCOME,
+  }
+
+  const WechatyEnglishRoomInviter = RoomInviter(wechatyEnglishConfig)
+  return WechatyEnglishRoomInviter
 }
 
-const WechatyEnglishRoomInviter = RoomInviter(wechatyEnglishConfig)
-
 export {
-  WechatyEnglishRoomInviter,
+  getWechatyEnglishRoomInviter,
 }

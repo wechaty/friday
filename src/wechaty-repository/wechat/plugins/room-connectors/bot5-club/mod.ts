@@ -2,34 +2,36 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import { botSettings } from '../../../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
-import { unidirectionalMapper } from '../unidirectional-mapper.js'
+import { getUnidirectionalMapper } from '../unidirectional-mapper.js'
 
 /**
  *
  * BOT5 Club
  *
  */
+const getBot5OneToManyPlugin = (settings: WeChatSettings) => {
+  /**
+   * - first club room in the array is the latest room (current year)
+   * - second club room in the array (and all the following)
+   *    is the previous room (previous year).
+   */
+  const [next, current, ...previous] =  settings.rooms.bot5Club.rooms
 
-/**
- * - first club room in the array is the latest room (current year)
- * - second club room in the array (and all the following)
- *    is the previous room (previous year).
- */
-const [next, current, ...previous] =  botSettings.weChat.rooms.bot5Club.rooms
-
-const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
-  map: unidirectionalMapper,
-  source: [
-    next,
-    current,
-  ],
-  target: [
-    ...previous,
-  ],
-})
+  const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
+    map: getUnidirectionalMapper(settings),
+    source: [
+      next,
+      current,
+    ],
+    target: [
+      ...previous,
+    ],
+  })
+  return Bot5OneToManyPlugin
+}
 
 export {
-  Bot5OneToManyPlugin,
+  getBot5OneToManyPlugin,
 }

@@ -1,18 +1,20 @@
 import {
   Bot5Assistant,
 }                 from 'wechaty-bot5-assistant'
+import type { WeChatSettings } from '../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../wechaty-settings/deprecated.js'
+const getBot5AssistantPlugin = (settings: WeChatSettings) => {
+  const [_next, current, ..._previous] = settings.rooms.bot5Club.rooms
 
-const [_next, current, ..._previous] = botSettings.weChat.rooms.bot5Club.rooms
-
-const Bot5AssistantPlugin = Bot5Assistant({
-  room: [
-    current,
-    /^BOT5 Assistant/i,       // room topic
-  ],
-})
+  const Bot5AssistantPlugin = Bot5Assistant({
+    room: [
+      current,
+      /^BOT5 Assistant/i,       // room topic
+    ],
+  })
+  return Bot5AssistantPlugin
+}
 
 export {
-  Bot5AssistantPlugin,
+  getBot5AssistantPlugin,
 }

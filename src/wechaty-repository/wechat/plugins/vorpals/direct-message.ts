@@ -9,6 +9,7 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import hackerNews from 'vorpal-hacker-news'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod'
 
 const dmConfig: WechatyVorpalConfig = {
   contact : true,
@@ -27,8 +28,11 @@ const dmConfig: WechatyVorpalConfig = {
   ],
 }
 
-const DirectMessageVorpalPlugin = WechatyVorpal(dmConfig)
+const getDirectMessageVorpalPlugin = (_settings: WeChatSettings) => {
+  const DirectMessageVorpalPlugin = WechatyVorpal(dmConfig)
+  return DirectMessageVorpalPlugin
+}
 
 export {
-  DirectMessageVorpalPlugin,
+  getDirectMessageVorpalPlugin,
 }

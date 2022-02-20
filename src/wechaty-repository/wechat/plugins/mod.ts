@@ -8,9 +8,9 @@ import {
   DingDong,
 }                    from 'wechaty-plugin-contrib'
 
-import { VoteOutPlugin }                  from './vote-out.js'
+import { getVoteOutPlugin }                  from './vote-out.js'
 import { FriendshipAccepterPlugin }       from './friendship-accepter.js'
-import { ChatOpsPlugin }                  from './chatops.js'
+import { getChatOpsPlugin }                  from './chatops.js'
 import { RoomInvitationAccepterPlugin }   from './room-invitation-accepter.js'
 // import { Bot5AssistantPlugin }            from './bot5-assistant.js'
 
@@ -29,17 +29,15 @@ import { RoomInvitationAccepterPlugin }   from './room-invitation-accepter.js'
  */
 // import { WechatyDingDongPlugin } from './ding-dong/mod.js'
 
-import { HeartbeatPlugin }          from './heartbeat.js'
+import { getHeartbeatPlugin }          from './heartbeat.js'
 import * as RoomInviterPluginMod    from './room-inviters/mod.js'
 import * as RoomConnectorPluginMod  from './room-connectors/mod.js'
 
 import { getVorpalPlugins } from './vorpals/mod.js'
-
-interface PluginOptions {
-}
+import type { WeChatSettings } from '../../../wechaty-settings/mod.js'
 
 const getPlugins = (
-  _options: PluginOptions,
+  settings: WeChatSettings,
 ) => {
   const pluginList = [
     // Bot5AssistantPlugin,
@@ -50,7 +48,7 @@ const getPlugins = (
         contact.id !== 'wxid_5nmxxj32x1qz22', // 张三
     }),
     FriendshipAccepterPlugin,
-    VoteOutPlugin,
+    getVoteOutPlugin(settings),
     RoomInvitationAccepterPlugin,
     // IntercomPlugin,
     // FreshdeskPlugin,
@@ -65,16 +63,16 @@ const getPlugins = (
      */
     // WechatyDingDongPlugin,
 
-    HeartbeatPlugin,
-    ChatOpsPlugin,
+    getHeartbeatPlugin(settings),
+    getChatOpsPlugin(settings),
 
-    ...Object.values(RoomInviterPluginMod).flat(),
-    ...Object.values(RoomConnectorPluginMod),
+    ...Object.values(RoomInviterPluginMod).map(get => get(settings)).flat(),
+    ...Object.values(RoomConnectorPluginMod).map(get => get(settings)),
   ]
 
   return [
     ...pluginList,
-    ...getVorpalPlugins(),
+    ...getVorpalPlugins(settings),
   ]
 }
 

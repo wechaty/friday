@@ -36,9 +36,11 @@ test('smoke testing with perfect restart', async t => {
   process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
 
   const logger =  getLogger()
+  const envVar = new EnvVar()
   const settings = new WeChatSettings(logger, new EnvVar())
   const builder = new WeChatBuilder(
     logger,
+    envVar,
     settings,
   )
   const wechaty = builder.build()

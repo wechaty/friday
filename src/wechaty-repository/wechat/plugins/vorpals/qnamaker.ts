@@ -2,34 +2,36 @@ import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
-import { Faq  }           from 'wechaty-qnamaker'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod'
+// import { Faq  }           from 'wechaty-qnamaker'
 
-import {
-  configChinese,
-  configEnglish,
-}                         from '../qnamaker.js'
+// import {
+//   configChinese,
+//   configEnglish,
+// }                         from '../qnamaker.js'
 
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+const getFaqVorpalPlugin = (settings: WeChatSettings) => {
+  const faqConfig: WechatyVorpalConfig = {
+    contact : false,
+    mention : false,
+    room    : [
+      settings.rooms.chatops.friday,
+      ...settings.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+    ],
+    silent  : true,
 
-const faqConfig: WechatyVorpalConfig = {
-  contact : false,
-  mention : false,
-  room    : [
-    botSettings.weChat.rooms.chatops.friday,
-    ...botSettings.weChat.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
-  ],
-  silent  : true,
+    use: [
+      // Faq([
+      //   configChinese,
+      //   configEnglish,
+      // ]),
+    ],
+  }
 
-  use: [
-    Faq([
-      configChinese,
-      configEnglish,
-    ]),
-  ],
+  const FaqVorpalPlugin = WechatyVorpal(faqConfig)
+  return FaqVorpalPlugin
 }
 
-const FaqVorpalPlugin = WechatyVorpal(faqConfig)
-
 export {
-  FaqVorpalPlugin,
+  getFaqVorpalPlugin,
 }

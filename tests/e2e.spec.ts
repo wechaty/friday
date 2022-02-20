@@ -31,6 +31,7 @@ import * as FridayController from '../src/friday-controller/mod.js'
 import { FridayBotModule } from '../src/friday-bot.module.js'
 import { CommandBus } from '@nestjs/cqrs'
 import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
+import { EnvVar } from '../src/wechaty-settings/env-var.js'
 
 test('Friday Controler', async t => {
   let app: INestApplication
@@ -39,9 +40,17 @@ test('Friday Controler', async t => {
 
   t.beforeEach(async t => {
     sandbox = sinon.createSandbox()
-    testingModule = await Test.createTestingModule({
+    const builder = Test.createTestingModule({
       imports: [FridayBotModule],
-    }).compile()
+    })
+    builder
+      .overrideProvider(EnvVar)
+      .useValue(new EnvVar({
+        WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY: 'x',
+        WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS: 'x',
+        WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CEIBS: 'x',
+      }))
+    testingModule = await builder.compile()
 
     const commandBus = testingModule.get(CommandBus)
     const spy = sandbox.spy(commandBus, 'execute')

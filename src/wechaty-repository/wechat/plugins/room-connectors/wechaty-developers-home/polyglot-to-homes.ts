@@ -1,8 +1,7 @@
 import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
-
-import { botSettings } from '../../../../../wechaty-settings/deprecated.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 import { bidirectionalMapper }           from '../bidirectional-mapper.js'
 
@@ -11,17 +10,20 @@ import { bidirectionalMapper }           from '../bidirectional-mapper.js'
  * OneToMany
  *
  */
-const SourceToTargetPlugin = SourceToTargetRoomConnector({
-  map: bidirectionalMapper,
-  source: [
-    ...Object.values(botSettings.weChat.rooms.wechatyUserGroup).flat(),
-  ],
-  target: [
-    ...botSettings.weChat.rooms.wechatyDevelopers.homeHq,
-    ...botSettings.weChat.rooms.wechatyDevelopers.home,
-  ],
-})
+const getSourceToTargetPlugin = (settings: WeChatSettings) => {
+  const SourceToTargetPlugin = SourceToTargetRoomConnector({
+    map: bidirectionalMapper,
+    source: [
+      ...Object.values(settings.rooms.wechatyUserGroup).flat(),
+    ],
+    target: [
+      ...settings.rooms.wechatyDevelopers.homeHq,
+      ...settings.rooms.wechatyDevelopers.home,
+    ],
+  })
+  return SourceToTargetPlugin
+}
 
 export {
-  SourceToTargetPlugin,
+  getSourceToTargetPlugin,
 }

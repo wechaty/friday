@@ -1,7 +1,8 @@
 import type { Wechaty } from 'wechaty'
+import type { WeChatSettings } from '../../wechaty-settings/mod.js'
 
 import onError        from './handlers/on-error.js'
-import onFriendship   from './handlers/on-friendship.js'
+import { getOnFriendship }   from './handlers/on-friendship.js'
 import onLogin        from './handlers/on-login.js'
 import onLogout       from './handlers/on-logout.js'
 import onMessage      from './handlers/on-message.js'
@@ -11,9 +12,9 @@ import onRoomLeave    from './handlers/on-room-leave.js'
 import onRoomTopic    from './handlers/on-room-topic.js'
 import onScan         from './handlers/on-scan.js'
 
-const setHandlers = (wechaty: Wechaty) => {
+const setHandlers = (wechaty: Wechaty, settings: WeChatSettings) => {
   wechaty.on('error',       onError)
-  wechaty.on('friendship',  onFriendship)
+  wechaty.on('friendship',  getOnFriendship(settings))
   wechaty.on('login',       onLogin)
   wechaty.on('logout',      onLogout)
   wechaty.on('message',     onMessage)

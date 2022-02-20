@@ -23,8 +23,8 @@ class WeChatSettings implements NamedInterface {
   readonly token: string
 
   constructor (
-    private readonly log: Logger,
-    envVar: EnvVar,
+    readonly log: Logger,
+    readonly envVar: EnvVar,
   ) {
     this.token = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN')

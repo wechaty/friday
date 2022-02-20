@@ -5,23 +5,25 @@ import {
 import {
   Ddr,
 }                         from 'wechaty-vorpal-contrib'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+const getDdrVorpalPlugin = (settings: WeChatSettings) => {
+  const donutConfig: WechatyVorpalConfig = {
+    contact : false,
+    mention : false,
+    room    : [
+      settings.rooms.chatops.ddr,
+    ],
+    silent  : true,
 
-const donutConfig: WechatyVorpalConfig = {
-  contact : false,
-  mention : false,
-  room    : [
-    botSettings.weChat.rooms.chatops.ddr,
-  ],
-  silent  : true,
-
-  use  : [
-    Ddr(),
-  ],
+    use  : [
+      Ddr(),
+    ],
+  }
+  const DdrVorpalPlugin = WechatyVorpal(donutConfig)
+  return DdrVorpalPlugin
 }
-const DdrVorpalPlugin = WechatyVorpal(donutConfig)
 
 export {
-  DdrVorpalPlugin,
+  getDdrVorpalPlugin,
 }

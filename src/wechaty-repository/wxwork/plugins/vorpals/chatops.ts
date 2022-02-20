@@ -13,30 +13,32 @@ import {
   Version,
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
+import type { WxWorkSettings } from '../../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+const getChatopsVorpalPlugin = (settings: WxWorkSettings) => {
+  const chatopsConfig: WechatyVorpalConfig = {
+    contact : false,
+    mention : false,
+    room    : settings.chatOpsRoomId,
+    silent  : true,
 
-const chatopsConfig: WechatyVorpalConfig = {
-  contact : false,
-  mention : false,
-  room    : botSettings.wxWork.chatOpsRoomId,
-  silent  : true,
+    use: [
+      Ding(),
+      Eval(),
+      Cash(),
+      UrlLink(),
+      Announce(),
+      Find(),
+      MathMaster(),
+      Whoru(),
+      Version(),
+    ],
+  }
 
-  use: [
-    Ding(),
-    Eval(),
-    Cash(),
-    UrlLink(),
-    Announce(),
-    Find(),
-    MathMaster(),
-    Whoru(),
-    Version(),
-  ],
+  const ChatopsVorpalPlugin = WechatyVorpal(chatopsConfig)
+  return ChatopsVorpalPlugin
 }
 
-const ChatopsVorpalPlugin = WechatyVorpal(chatopsConfig)
-
 export {
-  ChatopsVorpalPlugin,
+  getChatopsVorpalPlugin,
 }

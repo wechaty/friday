@@ -11,12 +11,10 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
 
   private name: string
   private token: string
-  private heartbeatRoom: string
-  private chatOpsRoom: string
 
   constructor (
     private log: Logger,
-    settings: WxWorkSettings,
+    private settings: WxWorkSettings,
   ) {
     this.log.verbose('WXWorkBuilder', 'constructor(%s, %s)',
       settings.name,
@@ -25,8 +23,6 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
 
     this.name = settings.name
     this.token = settings.token
-    this.heartbeatRoom = settings.heartbeatRoomId
-    this.chatOpsRoom = settings.chatOpsRoomId
   }
 
   build () {
@@ -41,10 +37,7 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
       puppet,
     })
 
-    wechaty.use(getPlugins({
-      chatOpsRoomId: this.chatOpsRoom,
-      heartbeatRoomId: this.heartbeatRoom,
-    }))
+    wechaty.use(getPlugins(this.settings))
 
     return wechaty
   }

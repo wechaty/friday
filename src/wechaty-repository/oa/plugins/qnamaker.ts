@@ -1,30 +1,32 @@
-/* eslint-disable sort-keys */
-import {
-  WechatyQnAMaker,
-  WechatyQnAMakerConfig,
-}                           from 'wechaty-qnamaker'
+// /* eslint-disable sort-keys */
+// import {
+//   WechatyQnAMaker,
+//   WechatyQnAMakerConfig,
+// }                           from 'wechaty-qnamaker'
+// import { getEnvVar } from '../../../wechaty-settings/deprecated.js'
 
-const skipMessage = [
-  /^wechaty$/i,
-]
+// const skipMessage = [
+//   /^wechaty$/i,
+// ]
 
-const scoreThreshold = 10
+// const scoreThreshold = 10
 
-const configCeibs: WechatyQnAMakerConfig = {
-  language: ['chinese'],
+// const configCeibs: WechatyQnAMakerConfig = {
+//   language: ['chinese'],
 
-  skipMessage,
-  contact: true,
-  scoreThreshold,
+//   skipMessage,
+//   contact: true,
+//   scoreThreshold,
 
-  endpointKey     : process.env['WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CEIBS'],
-  knowledgeBaseId : process.env['WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS'],
-  resourceName    : process.env['WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CEIBS'],
-}
+//   endpointKey     : getEnvVar().get('WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY_CEIBS').asString(),
+//   knowledgeBaseId : getEnvVar().get('WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS').asString(),
+//   resourceName    : getEnvVar().get('WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CEIBS').asString(),
+// }
 
-const QnAMakerCeibsPlugin = WechatyQnAMaker(configCeibs)
+// const QnAMakerCeibsPlugin = WechatyQnAMaker(configCeibs)
 
-export {
-  QnAMakerCeibsPlugin,
-  configCeibs,
-}
+// export {
+//   QnAMakerCeibsPlugin,
+//   // configCeibs,
+// }
+export {}

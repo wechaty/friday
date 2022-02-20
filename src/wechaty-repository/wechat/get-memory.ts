@@ -4,20 +4,24 @@ import {
 import {
   MemoryCard,
 }                 from 'memory-card'
+import type { EnvVar } from '../../wechaty-settings/env-var'
 
 export let memory: undefined | MemoryCard
 
-export function getMemory (name: string): MemoryCard {
+export function getMemory (
+  name: string,
+  envVar: EnvVar,
+): MemoryCard {
   log.verbose('getMemory', 'getMemory(%s)', name)
 
   if (memory) {
     return memory
   }
 
-  const AWS_ACCESS_KEY_ID     = process.env['AWS_ACCESS_KEY_ID'] as string
-  const AWS_SECRET_ACCESS_KEY = process.env['AWS_SECRET_ACCESS_KEY'] as string
-  const AWS_REGION            = process.env['AWS_REGION'] as string
-  const AWS_S3_BUCKET         = process.env['AWS_S3_BUCKET'] as string
+  const AWS_ACCESS_KEY_ID     = envVar.get('AWS_ACCESS_KEY_ID').asString()
+  const AWS_SECRET_ACCESS_KEY = envVar.get('AWS_SECRET_ACCESS_KEY').asString()
+  const AWS_REGION            = envVar.get('AWS_REGION').asString()
+  const AWS_S3_BUCKET         = envVar.get('AWS_S3_BUCKET').asString()
 
   if (AWS_ACCESS_KEY_ID
     && AWS_REGION

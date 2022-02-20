@@ -9,26 +9,28 @@ import {
   Version,
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod'
 
-import { botSettings } from '../../../../wechaty-settings/deprecated.js'
+const getContributorsVorpalPlugin = (settings: WeChatSettings) => {
+  const contributorsConfig: WechatyVorpalConfig = {
+    contact : false,
+    mention : true,
+    room    : settings.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+    silent  : true,
 
-const contributorsConfig: WechatyVorpalConfig = {
-  contact : false,
-  mention : true,
-  room    : botSettings.weChat.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
-  silent  : true,
+    use  : [
+      UrlLink(),
+      Find(),
+      MathMaster(),
+      Whoru(),
+      Version(),
+    ],
+  }
 
-  use  : [
-    UrlLink(),
-    Find(),
-    MathMaster(),
-    Whoru(),
-    Version(),
-  ],
+  const ContributorsVorpalPlugin  = WechatyVorpal(contributorsConfig)
+  return ContributorsVorpalPlugin
 }
 
-const ContributorsVorpalPlugin  = WechatyVorpal(contributorsConfig)
-
 export {
-  ContributorsVorpalPlugin,
+  getContributorsVorpalPlugin,
 }

@@ -1,6 +1,13 @@
-export * from './home-mixer.js'
-export * from './home-hq.js'
-export * from './broadcast-station.js'
-export * from './polyglot-to-homes.js'
+export { getManyToManyPlugin }  from './home-mixer.js'
+export {
+  getHomeHqAnnouncingPlugin,
+  getHomeHqCollectingPlugin,
+}                               from './home-hq.js'
+export { getHeadquartersBroadcastStationPlugin } from './broadcast-station.js'
+export { getSourceToTargetPlugin } from './polyglot-to-homes.js'
 
-export * from './language-filtered/mod.js'
+export {
+  getHomeToChinesePlugin,
+  getHomeToEnglishPlugin,
+  getLanguageToHomePlugin,
+}                             from './language-filtered/mod.js'
