@@ -72,6 +72,28 @@ graph LR
 
 ## Command Saga: Domain to Application
 
+### Text Message
+
+```mermaid
+graph LR
+  subgraph Community Send Message Command Saga
+    classDef event fill:DarkGoldenRod
+    classDef command fill:blue
+    classDef query fill:green
+
+    CSC[CommunitySendTextMessageCommand]:::command
+    SMC_S[fa:fa-signature SendMessageCommand Signature + Text]:::command
+    
+    TNQ[GetTalkerNameQuery]:::query
+    CNQ[GetChannelNameQuery]:::query
+
+    CSC-->CNQ & TNQ
+    CNQ & TNQ --> SMC_S
+  end
+```
+
+## Non-text Message
+
 ```mermaid
 graph LR
   subgraph Community Send Message Command Saga
@@ -80,22 +102,15 @@ graph LR
     classDef query fill:green
 
     CSC[CommunitySendMessageCommand]:::command
-    SMC_T[fa:fa-align-left PuppetSendMessageCommand Text]:::command
-    SMC_S[fa:fa-signature PuppetSendMessageCommand Signature]:::command
-    SMC_N[fa:fa-photo-film PuppetSendMessageCommand Non-text]:::command
+    SMC_S[fa:fa-signature SendMessageCommand Signature]:::command
+    SMC_N[fa:fa-photo-film SendMessageCommand Non-text]:::command
     
     TNQ[GetTalkerNameQuery]:::query
     CNQ[GetChannelNameQuery]:::query
-    MTQ[GetMessageTypeQuery]:::query
-
-    TD{isText}
 
     CSC-->CNQ & TNQ
-    CSC-->MTQ
-    MTQ --> TD
     CNQ & TNQ --> SMC_S
-    TD --Yes--> SMC_T
-    TD --No--> SMC_N
+    CSC-->SMC_N
   end
 ```
 
@@ -106,12 +121,12 @@ sequenceDiagram
     participant User
     participant Application
     participant Domain
-    User->>Application: receive message
+    User->>Application: original message
     Application->>Domain: PuppetMessageReceivedEvent
     Domain->>Domain: XXXCommunityMessageReceivedEvent
     Domain->>Domain: XXXCommunitySendMessageCommand
     Domain->>Application: XXXQuery
     Application->>Domain: 
     Domain->>Application: PuppetSendMessageCommand
-    Application->>User: send message
+    Application->>User: forwarded message
 ```
