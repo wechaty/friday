@@ -5,7 +5,7 @@ import {
 
 // import { Chitchat }     from '../../ml/chitchat.js'
 // import { Gpt }          from '../../ml/gpt.js'
-import { Dreamily }     from '../../../../legacy/dreamily.js'
+import { Dreamily }     from '../../../../ai-lib/dreamily.js'
 
 const aiConfig: WechatyVorpalConfig = {
   contact : true,
