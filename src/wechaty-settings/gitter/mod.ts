@@ -21,7 +21,11 @@ class GitterSettings implements NamedInterface {
       .required(true)
       .asString()
 
-    this.log.verbose('GitterSettings', 'constructor(%s) token=%s, wechatyRoomId=%s', this.name, this.token, wechatyRoomId)
+    this.log.verbose('GitterSettings', 'constructor(%s) token=%s, wechatyRoomId=%s',
+      this.name,
+      this.token,
+      this.wechatyRoomId,
+    )
   }
 
 }
