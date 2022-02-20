@@ -2,7 +2,10 @@ import { log } from 'wechaty-puppet'
 import {
   WeChatSettings,
   WxWorkSettings,
+  EnvVar,
 }                   from './mod.js'
+
+const envVar = new EnvVar()
 
 /**
  * Huan(202201): This is a temporary solution to pass config
@@ -11,8 +14,8 @@ import {
  * @deprecated: use injection in the future
  */
 const botSettings = {
-  weChat: new WeChatSettings(log),
-  wxWork: new WxWorkSettings(log),
+  weChat: new WeChatSettings(log, envVar),
+  wxWork: new WxWorkSettings(log, envVar),
 }
 
 // const HEARTBEAT_ROOM_ID = '17376996519@chatroom'  // WeChat: ChatOps - Heartbeat 💖

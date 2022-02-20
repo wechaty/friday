@@ -19,16 +19,15 @@
  */
 import { test } from 'tstest'
 import 'dotenv/config'
-import envVar from 'env-var'
 import { getLogger } from 'brolog'
 
 import { WeChatBuilder }  from '../src/wechaty-repository/wechat/wechat-builder.js'
-import { WeChatSettings } from '../src/wechaty-settings/mod.js'
-
-// import { spy } from 'sinon'
+import {
+  WeChatSettings,
+  EnvVar,
+}                   from '../src/wechaty-settings/mod.js'
 
 test('smoke testing with perfect restart', async t => {
-  envVar.from()
   const ORIGINAL_WECHATY_PUPPET = process.env['WECHATY_PUPPET']
 
   process.env['WECHATY_TOKEN'] = 'mock_token'
@@ -37,7 +36,7 @@ test('smoke testing with perfect restart', async t => {
   process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
 
   const logger =  getLogger()
-  const settings = new WeChatSettings(logger)
+  const settings = new WeChatSettings(logger, new EnvVar())
   const builder = new WeChatBuilder(
     logger,
     settings,
