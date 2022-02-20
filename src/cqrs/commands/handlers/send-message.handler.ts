@@ -4,7 +4,7 @@ import {
 }                         from '@nestjs/cqrs'
 import type { Logger }    from 'brolog'
 
-import { BotRepository }  from '../../../bot-repository/mod.js'
+import { BotRepository }  from '../../../wechaty-repository/mod.js'
 
 import { SendMessageCommand } from '../impl/mod.js'
 

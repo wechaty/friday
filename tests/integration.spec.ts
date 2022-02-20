@@ -23,8 +23,8 @@ import 'dotenv/config'
 
 import { getLogger } from 'brolog'
 
-import { WeChatBuilder }  from '../src/bot-repository/wechat/wechat-builder.js'
-import { WeChatSettings } from '../src/bot-settings/mod.js'
+import { WeChatBuilder }  from '../src/wechaty-repository/wechat/wechat-builder.js'
+import { WeChatSettings } from '../src/wechaty-settings/mod.js'
 
 // import { spy } from 'sinon'
 

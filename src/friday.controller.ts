@@ -9,15 +9,15 @@ import * as CQRS from './cqrs/mod.js'
 // import type { Bot } from './cqrs/models/bot.model.js'
 // import { GetBotsQuery } from './cqrs/queries/impl/mod.js'
 import { VERSION } from './config.js'
-import type { WeChatSettings } from './bot-settings/mod.js'
-import type { BotRepository } from './bot-repository/bot.repository.js'
+import type { WeChatSettings } from './wechaty-settings/mod.js'
+import type { WechatyRepository } from './wechaty-repository/wechaty.repository.js'
 
 @Controller('/')
 export class FridayController {
 
   constructor (
     private readonly commandBus: CommandBus,
-    private readonly repository: BotRepository,
+    private readonly repository: WechatyRepository,
     private readonly weChatSettings: WeChatSettings,
   ) {}
 

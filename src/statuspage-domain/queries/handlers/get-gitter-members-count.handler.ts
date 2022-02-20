@@ -3,9 +3,9 @@ import type { OnModuleInit } from '@nestjs/common'
 import type { Logger } from 'brolog'
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../bot-repository/mod.js'
+import type { BotRepository } from '../../../wechaty-repository/mod.js'
 import { GetGitterMembersCountQuery } from '../impls/mod.js'
-import type { GitterSettings } from '../../../bot-settings/mod.js'
+import type { GitterSettings } from '../../../wechaty-settings/mod.js'
 
 @QueryHandler(GetGitterMembersCountQuery)
 export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMembersCountQuery>, OnModuleInit {

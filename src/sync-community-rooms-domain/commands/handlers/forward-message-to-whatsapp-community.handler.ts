@@ -7,7 +7,7 @@ import {
 }                   from '@nestjs/cqrs'
 import * as PUPPET from 'wechaty-puppet'
 
-import type { BotRepository } from '../../../bot-repository/mod.js'
+import type { BotRepository } from '../../../wechaty-repository/mod.js'
 
 import { ForwardMessageToWhatsAppCommunityCommand } from '../mod.js'
 import {
@@ -15,7 +15,7 @@ import {
   GetMessageSignatureQuery,
 }                               from '../../queries/mod.js'
 import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
-import type { WhatsAppSettings } from '../../../bot-settings/mod.js'
+import type { WhatsAppSettings } from '../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardMessageToWhatsAppCommunityCommand)
 export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardMessageToWhatsAppCommunityCommand> {

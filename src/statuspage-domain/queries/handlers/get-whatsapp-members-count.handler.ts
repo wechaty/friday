@@ -4,9 +4,9 @@ import type { Logger } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { BotRepository } from '../../../bot-repository/mod.js'
+import type { BotRepository } from '../../../wechaty-repository/mod.js'
 import { GetWhatsAppMembersCountQuery } from '../impls/mod.js'
-import type { WhatsAppSettings } from '../../../bot-settings/mod.js'
+import type { WhatsAppSettings } from '../../../wechaty-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
 
 @QueryHandler(GetWhatsAppMembersCountQuery)

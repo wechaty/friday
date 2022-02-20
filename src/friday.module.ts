@@ -5,8 +5,8 @@ import { ScheduleModule } from '@nestjs/schedule'
 
 import * as CQRS from './cqrs/mod.js'
 
-import { WechatyBotsModule }  from './bot-repository/mod.js'
-import { settings }           from './bot-settings/mod.js'
+import { WechatyBotsModule }  from './wechaty-repository/mod.js'
+import { settings }           from './wechaty-settings/mod.js'
 
 import { FridayController }   from './friday.controller.js'
 

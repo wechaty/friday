@@ -3,7 +3,7 @@ import {
   ICommandHandler,
 }                         from '@nestjs/cqrs'
 import * as clc from 'cli-color'
-import { BotRepository }  from '../../../bot-repository/mod.js'
+import { BotRepository }  from '../../../wechaty-repository/mod.js'
 import { ChatopsCommand } from '../impl/chatops.command.js'
 
 @CommandHandler(ChatopsCommand)
