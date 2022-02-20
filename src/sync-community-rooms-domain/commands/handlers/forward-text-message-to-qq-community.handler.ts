@@ -16,7 +16,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { SendMessageCommand } from '../../../cqrs/commands/mod.js'
+import { SendMessageCommand } from '../../../friday-controller/commands/mod.js'
 import type { QqSettings } from '../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToQqCommunityCommand)
