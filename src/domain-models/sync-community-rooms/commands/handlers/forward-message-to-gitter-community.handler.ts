@@ -14,7 +14,7 @@ import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { SendMessageCommand } from '../../../../friday-controller/commands/mod.js'
+import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
 import type { GitterSettings } from '../../../../wechaty-repository/settings/mod.js'
 
 @CommandHandler(ForwardMessageToGitterCommunityCommand)

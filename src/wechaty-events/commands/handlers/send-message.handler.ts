@@ -6,7 +6,7 @@ import type { Logger }    from 'brolog'
 
 import { WechatyRepository }  from '../../../wechaty-repository/mod.js'
 
-import { SendMessageCommand } from '../impl/mod.js'
+import { SendMessageCommand } from '../impls/mod.js'
 
 @CommandHandler(SendMessageCommand)
 export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {

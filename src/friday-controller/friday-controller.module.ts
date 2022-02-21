@@ -3,20 +3,20 @@ import {
   Module,
 }                 from '@nestjs/common'
 
-import { CommandHandlers }  from './commands/mod.js'
+import { WechatyEventsModule } from '../wechaty-events/mod.js'
+import { WechatyRepositoryModule } from '../wechaty-repository/mod.js'
+
+// import { CommandHandlers }  from './commands/mod.js'
 import { FridayController } from './friday.controller.js'
 
 @Module({
-  providers: [
-    ...CommandHandlers,
+  imports: [
+    WechatyEventsModule,
+    WechatyRepositoryModule,
   ],
+  // providers: [
+  //   ...CommandHandlers,
+  // ],
   controllers: [FridayController],
-  exports: [
-    ...CommandHandlers,
-  ],
 })
-export class FridayControllerModule {
-
-  constructor () {}
-
-}
+export class FridayControllerModule {}

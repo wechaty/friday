@@ -3,33 +3,20 @@ import {
   Module,
 }             from '@nestjs/common'
 
-import { WechatySettingsModule } from './settings/wechaty-settings.module.js'
+import { WechatyBuilders }    from './builders/mod.js'
+import { WechatySettings }    from './settings/mod.js'
 
-import {
-  GitterBuilder,
-  OABuilder,
-  QqBuilder,
-  WeChatBuilder,
-  WhatsAppBuilder,
-  WXWorkBuilder,
-}                   from './builders/mod.js'
-
-import { WechatyRepository } from './wechaty.repository.js'
+import { WechatyRepository }  from './wechaty.repository.js'
 
 @Module({
-  imports: [
-    WechatySettingsModule,
-  ],
   providers: [
-    GitterBuilder,
-    OABuilder,
-    QqBuilder,
-    WeChatBuilder,
-    WhatsAppBuilder,
-    WXWorkBuilder,
+    WechatyRepository,
+    ...WechatyBuilders,
+    ...WechatySettings,
   ],
   exports: [
     WechatyRepository,
+    ...WechatySettings,
   ],
 })
 export class WechatyRepositoryModule {}

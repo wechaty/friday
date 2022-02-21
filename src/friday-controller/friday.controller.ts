@@ -2,7 +2,8 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
-import * as CQRS from './mod.js'
+import { ChatopsCommand } from './commands/mod.js'
+import type { ChatopsDto } from './interfaces/mod.js'
 
 // import { ChatopsCommand } from './cqrs/commands/impl/chatops.command.js'
 // import type { ChatopsDto } from './cqrs/interfaces/chatops-dto.interface.js'
@@ -23,7 +24,7 @@ export class FridayController {
 
   @Post('chatops/:roomId')
   async chatops (
-    @Body() dto: CQRS.interfaces.ChatopsDto,
+    @Body() dto: ChatopsDto,
     @Param('roomId') roomId: undefined | string,
   ) {
     console.info(dto)
@@ -33,7 +34,7 @@ export class FridayController {
     }
 
     return this.commandBus.execute(
-      new CQRS.commands.ChatopsCommand(roomId, dto.text),
+      new ChatopsCommand(roomId, dto.text),
     )
   }
 

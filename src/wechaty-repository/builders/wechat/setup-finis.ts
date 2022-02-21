@@ -6,7 +6,7 @@ import {
 
 import {
   VERSION,
-}                   from '../../config.js'
+}                   from '../../../config.js'
 import type { WeChatSettings } from '../../settings/mod.js'
 
 const BOT_NAME = 'Friday.BOT'

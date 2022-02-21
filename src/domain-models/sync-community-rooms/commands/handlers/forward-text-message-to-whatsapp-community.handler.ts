@@ -17,7 +17,7 @@ import {
   GetMessageSignatureQuery,
 }                                 from '../../queries/mod.js'
 
-import { SendMessageCommand }     from '../../../../friday-controller/commands/mod.js'
+import { SendMessageCommand }     from '../../../../wechaty-events/mod.js'
 import type { WhatsAppSettings }  from '../../../../wechaty-repository/settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToWhatsAppCommunityCommand)

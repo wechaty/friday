@@ -1,32 +1,38 @@
+import type { Logger } from 'brolog'
 import {
+  CommandBus,
   CommandHandler,
   ICommandHandler,
 }                         from '@nestjs/cqrs'
-import * as clc from 'cli-color'
-import { WechatyRepository }  from '../../../wechaty-repository/mod.js'
-import { ChatopsCommand } from '../impl/chatops.command.js'
+
+import * as PUPPET from 'wechaty-puppet'
+
+import { ChatopsCommand } from '../impls/chatops.command.js'
+import { SendMessageCommand } from '../../../wechaty-events/commands/mod.js'
+import type { WeChatSettings } from '../../../wechaty-repository/settings/mod.js'
 
 @CommandHandler(ChatopsCommand)
 export class ChatopsHandler implements ICommandHandler<ChatopsCommand> {
 
   constructor (
-    private readonly repository: WechatyRepository,
+    private readonly log: Logger,
+    private readonly commandBus: CommandBus,
+    private readonly settings: WeChatSettings,
   ) {}
 
   async execute (command: ChatopsCommand) {
-    console.info(clc.greenBright('ChatopsCommand...'))
+    this.log.verbose('ChatopsHandler', 'execute({roomId:%s, text:%s})',
+      command.roomId,
+      command.text,
+    )
 
-    const { roomId, text } = command
-    const wechaty = await this.repository.find('WeChat')
-    if (!wechaty) {
-      console.error(clc.greenBright('ChatopsCommand... wechaty not found'))
-      return
-    }
-
-    const room = await wechaty.Room.find({ id: roomId })
-    if (room) {
-      await room.say(text)
-    }
+    await this.commandBus.execute(
+      new SendMessageCommand(
+        this.settings.rooms.chatops.friday,
+        command.roomId,
+        PUPPET.payloads.sayable.text(command.text),
+      ),
+    )
   }
 
 }

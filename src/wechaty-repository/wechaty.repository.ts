@@ -7,7 +7,6 @@ import type { Logger } from 'brolog'
 import type * as WECHATY from 'wechaty'
 
 import { PuppetMessageReceivedEvent } from './events/mod.js'
-import type { BotName } from './settings/mod.js'
 
 import {
   GitterBuilder,
@@ -16,7 +15,9 @@ import {
   WeChatBuilder,
   WhatsAppBuilder,
   WXWorkBuilder,
-}                     from './mod.js'
+}                     from './builders/mod.js'
+
+import type { BotName } from './named-interface.js'
 
 @Injectable()
 export class WechatyRepository implements OnModuleInit {
