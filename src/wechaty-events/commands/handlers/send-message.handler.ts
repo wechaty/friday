@@ -1,8 +1,8 @@
 import {
   CommandHandler,
   ICommandHandler,
-}                         from '@nestjs/cqrs'
-import type { Logger }    from 'brolog'
+}                       from '@nestjs/cqrs'
+import { Brolog }       from 'brolog'
 
 import { WechatyRepository }  from '../../../wechaty-repository/mod.js'
 
