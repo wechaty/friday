@@ -1,5 +1,7 @@
-import type { Logger } from 'brolog'
-import { Injectable } from '@nestjs/common'
+import {
+  Injectable,
+  Logger,
+}               from '@nestjs/common'
 
 import { EnvVar }               from '../../env-var.js'
 import type { NamedInterface }  from '../../named-interface.js'

@@ -40,9 +40,11 @@ test('Friday Controler', async t => {
 
   t.beforeEach(async t => {
     sandbox = sinon.createSandbox()
+
     const builder = Test.createTestingModule({
       imports: [FridayBotModule],
     })
+
     builder
       .overrideProvider(EnvVar)
       .useValue(new EnvVar({
@@ -50,6 +52,7 @@ test('Friday Controler', async t => {
         WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS: 'x',
         WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CEIBS: 'x',
       }))
+
     testingModule = await builder.compile()
 
     const commandBus = testingModule.get(CommandBus)

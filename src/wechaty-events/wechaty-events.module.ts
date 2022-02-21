@@ -3,12 +3,12 @@ import {
   Module,
 }                 from '@nestjs/common'
 
-import { CommandHandlers }  from './commands/mod.js'
-import { EventHandlers } from './events/mod.js'
+// import { CommandHandlers }  from './commands/mod.js'
+import { EventHandlers }    from './events/mod.js'
 
 @Module({
   providers: [
-    ...CommandHandlers,
+    // ...CommandHandlers,
     ...EventHandlers,
   ],
   exports: [

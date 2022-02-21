@@ -1,26 +1,26 @@
-import { QqSettings }       from './qq/mod.js'
 import { GitterSettings }   from './gitter/mod.js'
-import { WhatsAppSettings } from './whatsapp/mod.js'
 import { OaSettings }       from './oa/mod.js'
-import { WxWorkSettings }   from './wxwork/mod.js'
+import { QqSettings }       from './qq/mod.js'
 import { WeChatSettings }   from './wechat/mod.js'
+import { WhatsAppSettings } from './whatsapp/mod.js'
+import { WxWorkSettings }   from './wxwork/mod.js'
 
 const WechatySettings = [
-  QqSettings,
   GitterSettings,
-  WhatsAppSettings,
   OaSettings,
-  WxWorkSettings,
+  QqSettings,
   WeChatSettings,
+  WhatsAppSettings,
+  WxWorkSettings,
 ]
 
 export {
   WechatySettings,
 
-  QqSettings,
   GitterSettings,
-  WhatsAppSettings,
   OaSettings,
-  WxWorkSettings,
+  QqSettings,
   WeChatSettings,
+  WhatsAppSettings,
+  WxWorkSettings,
 }

@@ -2,6 +2,7 @@
 import {
   Module,
 }             from '@nestjs/common'
+import { WechatyEventsModule } from '../wechaty-events/wechaty-events.module.js'
 
 import { WechatySettingsModule } from '../wechaty-settings/mod.js'
 
@@ -11,6 +12,7 @@ import { WechatyRepository }  from './wechaty.repository.js'
 
 @Module({
   imports: [
+    WechatyEventsModule,
     WechatySettingsModule,
   ],
   providers: [
