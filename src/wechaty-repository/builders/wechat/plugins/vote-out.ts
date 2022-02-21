@@ -9,7 +9,7 @@ import {
 import type {
   talkers,
 }                   from 'wechaty-plugin-contrib'
-import type { WeChatSettings } from '../../../settings/mod'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 const warn: talkers.RoomTalkerOptions = [
   '{{ downEmoji }}-{{ downNum }}{{#upNum}} | +{{ upNum }}{{ upEmoji }}{{/upNum}}',

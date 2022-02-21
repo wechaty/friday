@@ -2,7 +2,7 @@ import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
-import type { WeChatSettings } from '../../../../settings/mod'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 // import { Faq  }           from 'wechaty-qnamaker'
 
 // import {

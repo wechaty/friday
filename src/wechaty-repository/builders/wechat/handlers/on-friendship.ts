@@ -3,7 +3,7 @@ import {
   Friendship,
   Wechaty,
 }             from 'wechaty'
-import type { WeChatSettings } from '../../../settings/mod'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 const getOnFriendship = (settings: WeChatSettings) => {
   return async function onFriendship (

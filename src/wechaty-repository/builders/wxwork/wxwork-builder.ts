@@ -3,7 +3,7 @@ import * as WECHATY from 'wechaty'
 import type { Logger } from 'brolog'
 import { PuppetService } from 'wechaty-puppet-service'
 
-import type { WxWorkSettings } from '../../settings/mod.js'
+import type { WxWorkSettings } from '../../../wechaty-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()

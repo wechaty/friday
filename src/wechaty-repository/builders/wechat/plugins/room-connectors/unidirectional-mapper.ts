@@ -2,7 +2,7 @@ import {
   Message,
   types,
 }             from 'wechaty'
-import type { WeChatSettings } from '../../../../settings/mod.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 import { abbrRoomTopicForAll } from './abbr-room-topic-by-regex.js'
 import { senderDisplayName }              from './sender-display-name.js'

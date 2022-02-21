@@ -34,7 +34,7 @@ import * as RoomInviterPluginMod    from './room-inviters/mod.js'
 import * as RoomConnectorPluginMod  from './room-connectors/mod.js'
 
 import { getVorpalPlugins } from './vorpals/mod.js'
-import type { WeChatSettings } from '../../../settings/mod.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 const getPlugins = (
   settings: WeChatSettings,

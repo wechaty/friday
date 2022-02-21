@@ -1,4 +1,4 @@
-import type { WxWorkSettings } from '../../../../settings/mod.js'
+import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
 import * as chatops from './chatops.js'
 import * as pub     from './public.js'
 import * as faq     from './qnamaker.js'

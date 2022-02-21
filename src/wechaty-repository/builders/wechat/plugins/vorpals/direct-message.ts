@@ -9,7 +9,7 @@ import {
 }                         from 'wechaty-vorpal-contrib'
 
 import hackerNews from 'vorpal-hacker-news'
-import type { WeChatSettings } from '../../../../settings/mod'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const dmConfig: WechatyVorpalConfig = {
   contact : true,

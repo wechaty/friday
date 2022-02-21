@@ -8,8 +8,8 @@ import {
 import * as PUPPET from 'wechaty-puppet'
 
 import { ChatopsCommand } from '../impls/chatops.command.js'
-import { SendMessageCommand } from '../../../wechaty-events/commands/mod.js'
-import type { WeChatSettings } from '../../../wechaty-repository/settings/mod.js'
+import { SendMessageCommand } from '../../../wechaty-events/mod.js'
+import type { WeChatSettings } from '../../../wechaty-settings/mod.js'
 
 @CommandHandler(ChatopsCommand)
 export class ChatopsHandler implements ICommandHandler<ChatopsCommand> {

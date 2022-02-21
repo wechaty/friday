@@ -2,7 +2,7 @@ import {
   SourceToTargetRoomConnector,
 }                                     from 'wechaty-plugin-contrib'
 
-import type { WeChatSettings } from '../../../../../settings/mod.js'
+import type { WeChatSettings } from '../../../../../../wechaty-settings/mod.js'
 
 import { getUnidirectionalMapper }           from '../unidirectional-mapper.js'
 

@@ -5,7 +5,7 @@ import type { Logger } from 'brolog'
 import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { getPlugins } from './plugins/mod.js'
-import type { QqSettings } from '../../settings/mod.js'
+import type { QqSettings } from '../../../wechaty-settings/mod.js'
 
 @Injectable()
 export class QqBuilder implements WECHATY.BuilderInterface {

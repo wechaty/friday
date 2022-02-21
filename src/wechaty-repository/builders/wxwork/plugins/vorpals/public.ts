@@ -9,7 +9,7 @@ import {
   Version,
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
-import type { WxWorkSettings } from '../../../../settings/mod'
+import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getChatopsVorpalPlugin = (settings: WxWorkSettings) => {
   const isNotChatOpsRoom = (room: Room) => !([

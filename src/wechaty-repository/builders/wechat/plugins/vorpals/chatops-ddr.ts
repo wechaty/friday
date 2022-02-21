@@ -5,7 +5,7 @@ import {
 import {
   Ddr,
 }                         from 'wechaty-vorpal-contrib'
-import type { WeChatSettings } from '../../../../settings/mod'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getDdrVorpalPlugin = (settings: WeChatSettings) => {
   const donutConfig: WechatyVorpalConfig = {

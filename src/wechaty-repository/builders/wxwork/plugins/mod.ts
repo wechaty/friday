@@ -12,7 +12,7 @@ import { getHeartbeatPlugin } from './heartbeat.js'
 import { getChatOpsPlugin } from './chatops.js'
 
 import { getVorpalPluginList } from './vorpals/mod.js'
-import type { WxWorkSettings } from '../../../settings/mod.js'
+import type { WxWorkSettings } from '../../../../wechaty-settings/mod.js'
 
 const getPlugins = (settings: WxWorkSettings) => {
 

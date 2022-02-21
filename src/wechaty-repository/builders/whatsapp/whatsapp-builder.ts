@@ -3,7 +3,7 @@ import * as WECHATY from 'wechaty'
 import type { Logger } from 'brolog'
 import { PuppetWhatsapp } from 'wechaty-puppet-whatsapp'
 
-import type { WhatsAppSettings } from '../../settings/mod.js'
+import type { WhatsAppSettings } from '../../../wechaty-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()

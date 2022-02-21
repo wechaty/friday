@@ -5,7 +5,7 @@ import {
 import {
   UrlLink,
 }                         from 'wechaty-vorpal-contrib'
-import type { WeChatSettings } from '../../../../settings/mod'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getPreAngelVorpalPlugin = (settings: WeChatSettings) => {
   const config: WechatyVorpalConfig = {

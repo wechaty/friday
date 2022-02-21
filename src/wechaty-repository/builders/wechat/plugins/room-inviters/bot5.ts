@@ -2,7 +2,7 @@ import {
   RoomInviter,
   RoomInviterConfig,
 }                       from 'wechaty-plugin-contrib'
-import type { WeChatSettings } from '../../../../settings/mod'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getBot5RoomInviter = (settings: WeChatSettings) => {
   const bot5Config: RoomInviterConfig = {

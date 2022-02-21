@@ -5,7 +5,7 @@ import * as preangel      from './chatops-preangel.js'
 import * as ddr           from './chatops-ddr.js'
 import * as faq           from './qnamaker.js'
 import * as ai            from './ai.js'
-import type { WeChatSettings } from '../../../../settings/mod.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getVorpalPlugins = (settings: WeChatSettings) => {
   const vorpalPluginList = [

@@ -1,7 +1,7 @@
 import {
   ChatOps,
 }             from 'wechaty-plugin-contrib'
-import type { WeChatSettings } from '../../../settings/mod'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 const getChatOpsPlugin = (settings: WeChatSettings) => {
   const ChatOpsPlugin = ChatOps({

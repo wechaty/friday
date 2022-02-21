@@ -2,7 +2,7 @@ import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                        from 'wechaty-vorpal'
-import type { WxWorkSettings } from '../../../../settings/mod'
+import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
 // import { Faq  }           from 'wechaty-qnamaker'
 
 // import {

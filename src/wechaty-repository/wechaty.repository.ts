@@ -17,7 +17,7 @@ import {
   WXWorkBuilder,
 }                     from './builders/mod.js'
 
-import type { BotName } from './named-interface.js'
+import type { BotName } from '../wechaty-settings/mod.js'
 
 @Injectable()
 export class WechatyRepository implements OnModuleInit {

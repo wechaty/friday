@@ -1,5 +1,5 @@
 import type { Wechaty } from 'wechaty'
-import type { WeChatSettings } from '../../settings/mod.js'
+import type { WeChatSettings } from '../../../wechaty-settings/mod.js'
 
 import onError        from './handlers/on-error.js'
 import { getOnFriendship }   from './handlers/on-friendship.js'

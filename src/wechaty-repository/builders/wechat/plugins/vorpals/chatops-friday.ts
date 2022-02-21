@@ -14,7 +14,7 @@ import {
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
 
-import type { WeChatSettings } from '../../../../settings/mod.js'
+import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getChatopsVorpalPlugin = (settings: WeChatSettings) => {
   const chatopsConfig: WechatyVorpalConfig = {
