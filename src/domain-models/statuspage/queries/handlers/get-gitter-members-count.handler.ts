@@ -5,7 +5,7 @@ import type { WechatyInterface } from 'wechaty/impls'
 
 import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetGitterMembersCountQuery } from '../impls/mod.js'
-import type { GitterSettings } from '../../../../wechaty-settings/mod.js'
+import type { GitterSettings } from '../../../../wechaty-repository/settings/mod.js'
 
 @QueryHandler(GetGitterMembersCountQuery)
 export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMembersCountQuery>, OnModuleInit {

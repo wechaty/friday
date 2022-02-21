@@ -11,7 +11,7 @@ import type {
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
-}                     from '../../../../wechaty-settings/mod.js'
+}                     from '../../../../wechaty-repository/settings/mod.js'
 
 import type { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
 import { PuppetMessageReceivedEvent } from '../../../../wechaty-repository/events/mod.js'

@@ -1,24 +1,31 @@
-import { GitterBuilder }    from './gitter/gitter-builder.js'
-import { OABuilder }        from './oa/oa-builder.js'
-import { QqBuilder }      from './qq/qq-builder.js'
-import { WeChatBuilder }    from './wechat/wechat-builder.js'
-import { WhatsAppBuilder }  from './whatsapp/whatsapp-builder.js'
-import { WXWorkBuilder }    from './wxwork/wxwork-builder.js'
+// import {
+//   GitterBuilder,
+//   OABuilder,
+//   QqBuilder,
+//   WeChatBuilder,
+//   WhatsAppBuilder,
+//   WXWorkBuilder,
+// }                         from './builders/mod.js'
 
 import { WechatyRepository } from './wechaty.repository.js'
 
 import {
   WechatyRepositoryModule,
-}                       from './wechaty-repository.module.js'
+}                           from './wechaty-repository.module.js'
+import { EnvVar }           from './env-var.js'
+import type { BotName }     from './named-interface.js'
 
 export {
+  BotName,
+  EnvVar,
+
   WechatyRepositoryModule,
   WechatyRepository,
   //
-  GitterBuilder,
-  OABuilder,
-  QqBuilder,
-  WeChatBuilder,
-  WhatsAppBuilder,
-  WXWorkBuilder,
+  // GitterBuilder,
+  // OABuilder,
+  // QqBuilder,
+  // WeChatBuilder,
+  // WhatsAppBuilder,
+  // WXWorkBuilder,
 }

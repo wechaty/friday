@@ -6,7 +6,7 @@ import type { WechatyInterface } from 'wechaty/impls'
 
 import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetWhatsAppMembersCountQuery } from '../impls/mod.js'
-import type { WhatsAppSettings } from '../../../../wechaty-settings/mod.js'
+import type { WhatsAppSettings } from '../../../../wechaty-repository/settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
 
 @QueryHandler(GetWhatsAppMembersCountQuery)

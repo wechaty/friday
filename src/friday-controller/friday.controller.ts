@@ -9,7 +9,7 @@ import * as CQRS from './mod.js'
 // import type { Bot } from './cqrs/models/bot.model.js'
 // import { GetBotsQuery } from './cqrs/queries/impl/mod.js'
 import { VERSION } from '../config.js'
-import type { WeChatSettings } from '../wechaty-settings/mod.js'
+import type { WeChatSettings } from '../wechaty-repository/settings/mod.js'
 import type { WechatyRepository } from '../wechaty-repository/wechaty.repository.js'
 
 @Controller('/')

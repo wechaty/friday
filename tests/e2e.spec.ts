@@ -31,7 +31,7 @@ import * as FridayController from '../src/friday-controller/mod.js'
 import { FridayBotModule } from '../src/friday-bot.module.js'
 import { CommandBus } from '@nestjs/cqrs'
 import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
-import { EnvVar } from '../src/wechaty-settings/env-var.js'
+import { EnvVar } from '../src/wechaty-repository/env-var.js'
 
 test('Friday Controler', async t => {
   let app: INestApplication

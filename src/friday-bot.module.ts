@@ -2,17 +2,22 @@
 import { Module }     from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import * as CQRS from './friday-controller/mod.js'
+import { FridayControllerModule }   from './friday-controller/mod.js'
+import { WechatyRepositoryModule }  from './wechaty-repository/mod.js'
 
-import { FridayController }   from './friday-controller/mod.js'
+import {
+  StatuspageModule,
+  SyncCommunityRoomsModule,
+}                                 from './domain-models/mod.js'
 
 @Module({
   imports: [
     CqrsModule,
+    FridayControllerModule,
+    StatuspageModule,
+    SyncCommunityRoomsModule,
   ],
-  controllers: [FridayController],
   providers: [
-    ...CQRS.commands.CommandHandlers,
   ],
   exports: [],
 })

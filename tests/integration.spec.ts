@@ -25,7 +25,7 @@ import { WeChatBuilder }  from '../src/wechaty-repository/wechat/wechat-builder.
 import {
   WeChatSettings,
   EnvVar,
-}                   from '../src/wechaty-settings/mod.js'
+}                   from '../src/wechaty-repository/settings/mod.js'
 
 test('smoke testing with perfect restart', async t => {
   const ORIGINAL_WECHATY_PUPPET = process.env['WECHATY_PUPPET']

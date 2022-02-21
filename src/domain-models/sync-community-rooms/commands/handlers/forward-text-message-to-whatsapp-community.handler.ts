@@ -18,7 +18,7 @@ import {
 }                                 from '../../queries/mod.js'
 
 import { SendMessageCommand }     from '../../../../friday-controller/commands/mod.js'
-import type { WhatsAppSettings }  from '../../../../wechaty-settings/mod.js'
+import type { WhatsAppSettings }  from '../../../../wechaty-repository/settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToWhatsAppCommunityCommand)
 export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardTextMessageToWhatsAppCommunityCommand> {
