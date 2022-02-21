@@ -2,8 +2,8 @@ import {
   Injectable,
   OnModuleInit,
 }                 from '@nestjs/common'
-import type { EventBus } from '@nestjs/cqrs'
-import type { Logger } from 'brolog'
+import { EventBus } from '@nestjs/cqrs'
+import { Brolog } from 'brolog'
 import type * as WECHATY from 'wechaty'
 
 import { PuppetMessageReceivedEvent } from '../wechaty-events/mod.js'
@@ -25,7 +25,7 @@ export class WechatyRepository implements OnModuleInit {
   private wechatyList: WECHATY.impls.WechatyInterface[]
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly eventBus: EventBus,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,

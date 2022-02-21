@@ -1,6 +1,6 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
 import type { OnModuleInit } from '@nestjs/common'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import type { WechatyInterface } from 'wechaty/impls'
 
 import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
@@ -13,7 +13,7 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
   private wechaty?: WechatyInterface
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly repository: WechatyRepository,
     private readonly gitterSettings: GitterSettings,
   ) {}

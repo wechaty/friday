@@ -3,8 +3,8 @@ import {
   EventsHandler,
   CommandBus,
   QueryBus,
-}                         from '@nestjs/cqrs'
-import type { Logger }    from 'brolog'
+}                       from '@nestjs/cqrs'
+import { Brolog }       from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
@@ -23,7 +23,7 @@ import {
 export class WhatsAppCommunityMessageReceivedHandler implements IEventHandler<WhatsAppCommunityMessageReceivedEvent> {
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}

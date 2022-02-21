@@ -12,7 +12,7 @@ import { SendMessageCommand } from '../impls/mod.js'
 export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly repository: WechatyRepository,
   ) {}
 

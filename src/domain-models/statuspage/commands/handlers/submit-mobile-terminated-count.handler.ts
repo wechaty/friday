@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import {
   CommandHandler,
   ICommandHandler,
@@ -12,7 +12,7 @@ import type { StatuspageApiService } from '../../statuspage-api.service.js'
 export class SubmitMobileTerminatedCountHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
 
   constructor (
-    private log: Logger,
+    private readonly log: Brolog,
     private statusPageApiService: StatuspageApiService,
   ) {}
 

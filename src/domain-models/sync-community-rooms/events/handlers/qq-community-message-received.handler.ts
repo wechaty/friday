@@ -4,7 +4,7 @@ import {
   CommandBus,
   QueryBus,
 }                         from '@nestjs/cqrs'
-import type { Logger }    from 'brolog'
+import { Brolog }         from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
@@ -23,7 +23,7 @@ import {
 export class QqCommunityMessageReceivedHandler implements IEventHandler<QqCommunityMessageReceivedEvent> {
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly commandBus: CommandBus,
     private readonly queryBus: QueryBus,
   ) {}

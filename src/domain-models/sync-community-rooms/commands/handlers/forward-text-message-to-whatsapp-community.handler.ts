@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import {
   CommandBus,
   CommandHandler,
@@ -7,7 +7,7 @@ import {
 }                   from '@nestjs/cqrs'
 import * as PUPPET from 'wechaty-puppet'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import {
   ForwardTextMessageToWhatsAppCommunityCommand,
@@ -15,10 +15,10 @@ import {
 import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
-}                                 from '../../queries/mod.js'
+}                               from '../../queries/mod.js'
 
-import { SendMessageCommand }     from '../../../../wechaty-events/mod.js'
-import type { WhatsAppSettings }  from '../../../../wechaty-settings/mod.js'
+import { SendMessageCommand }   from '../../../../wechaty-events/mod.js'
+import { WhatsAppSettings }     from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToWhatsAppCommunityCommand)
 export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardTextMessageToWhatsAppCommunityCommand> {
@@ -27,7 +27,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
   private roomId: string
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,

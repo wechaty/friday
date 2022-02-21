@@ -1,7 +1,7 @@
 import {
   Injectable,
-  Logger,
 }               from '@nestjs/common'
+import { Brolog } from 'brolog'
 
 import { EnvVar }               from '../../env-var.js'
 import type { NamedInterface }  from '../../named-interface.js'
@@ -15,7 +15,7 @@ export class QqSettings implements NamedInterface {
   readonly qq: number
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     envVar: EnvVar,
   ) {
     this.qq = envVar

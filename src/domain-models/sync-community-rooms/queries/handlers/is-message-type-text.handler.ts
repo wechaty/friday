@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import * as PUPPET from 'wechaty-puppet'
 
 import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
@@ -10,7 +10,7 @@ import { IsMessageTypeTextQuery } from '../mod.js'
 export class IsMessageTypeTextHandler implements IQueryHandler<IsMessageTypeTextQuery> {
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly repository: WechatyRepository,
   ) {}
 

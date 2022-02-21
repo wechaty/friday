@@ -46,6 +46,7 @@ test('Friday Controler', async t => {
     })
 
     builder
+      .setLogger(console)
       .overrideProvider(EnvVar)
       .useValue(new EnvVar({
         WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY: 'x',

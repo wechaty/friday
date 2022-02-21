@@ -1,19 +1,19 @@
 import {
-  type EventBus,
+  EventBus,
   type IEventHandler,
   EventsHandler,
 }                         from '@nestjs/cqrs'
-import type { Logger }    from 'brolog'
-import type * as WECHATY       from 'wechaty'
+import { Brolog }         from 'brolog'
+import type * as WECHATY  from 'wechaty'
 
-import type {
+import {
   GitterSettings,
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
 }                     from '../../../../wechaty-settings/mod.js'
 
-import type { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
 import { PuppetMessageReceivedEvent } from '../../../../wechaty-events/events/mod.js'
 import {
   GitterCommunityMessageReceivedEvent,
@@ -28,7 +28,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
   readonly weChatCommunityRoomList: string[]
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly eventBus: EventBus,
     private readonly weChatSettings: WeChatSettings,
     private readonly whatsAppSettings: WhatsAppSettings,

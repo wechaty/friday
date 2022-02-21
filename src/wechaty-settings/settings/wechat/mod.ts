@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import type { NamedInterface }  from '../../named-interface.js'
@@ -25,7 +25,7 @@ class WeChatSettings implements NamedInterface {
   readonly token: string
 
   constructor (
-    readonly log: Logger,
+    readonly log: Brolog,
     readonly envVar: EnvVar,
   ) {
     this.token = envVar

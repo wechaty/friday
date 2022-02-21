@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import { PuppetService } from 'wechaty-puppet-service'
 
-import type { WxWorkSettings } from '../../../wechaty-settings/mod.js'
+import { WxWorkSettings } from '../../../wechaty-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
@@ -13,7 +13,7 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
   private token: string
 
   constructor (
-    private log: Logger,
+    private readonly log: Brolog,
     private settings: WxWorkSettings,
   ) {
     this.log.verbose('WXWorkBuilder', 'constructor(%s, %s)',

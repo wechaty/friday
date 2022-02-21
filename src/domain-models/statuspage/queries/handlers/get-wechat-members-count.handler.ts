@@ -1,6 +1,6 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
 import clc from 'cli-color'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
@@ -15,7 +15,7 @@ export class GetWeChatMembersCountHandler implements IQueryHandler<GetWeChatMemb
   protected wechaty?: WechatyInterface
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly repository: WechatyRepository,
     private readonly weChatSettings: WeChatSettings,
   ) {}

@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
@@ -14,7 +14,7 @@ export class GetQqMembersCountHandler implements IQueryHandler<GetQqMembersCount
   protected wechaty?: WechatyInterface
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly repository: WechatyRepository,
     private readonly qqSettings: QqSettings,
   ) {}

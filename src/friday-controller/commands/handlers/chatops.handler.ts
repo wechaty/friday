@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import {
   CommandBus,
   CommandHandler,
@@ -15,7 +15,7 @@ import type { WeChatSettings } from '../../../wechaty-settings/mod.js'
 export class ChatopsHandler implements ICommandHandler<ChatopsCommand> {
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly commandBus: CommandBus,
     private readonly settings: WeChatSettings,
   ) {}

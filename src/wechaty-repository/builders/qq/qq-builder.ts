@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 
 import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { getPlugins } from './plugins/mod.js'
-import type { QqSettings } from '../../../wechaty-settings/mod.js'
+import { QqSettings } from '../../../wechaty-settings/mod.js'
 
 @Injectable()
 export class QqBuilder implements WECHATY.BuilderInterface {
@@ -14,7 +14,7 @@ export class QqBuilder implements WECHATY.BuilderInterface {
   private name: string
 
   constructor (
-    private log: Logger,
+    private readonly log: Brolog,
     settings: QqSettings,
   ) {
     this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',

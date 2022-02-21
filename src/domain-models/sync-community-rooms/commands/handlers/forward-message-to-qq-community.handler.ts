@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import {
   CommandBus,
   CommandHandler,
@@ -7,15 +7,15 @@ import {
 }                   from '@nestjs/cqrs'
 import * as PUPPET from 'wechaty-puppet'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository }  from '../../../../wechaty-repository/mod.js'
+import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
+import { QqSettings }         from '../../../../wechaty-settings/mod.js'
 
 import { ForwardMessageToQqCommunityCommand } from '../mod.js'
 import {
   GetMessageSayableQuery,
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
-import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
-import type { QqSettings } from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardMessageToQqCommunityCommand)
 export class ForwardMessageToQqCommunityHandler implements ICommandHandler<ForwardMessageToQqCommunityCommand> {
@@ -24,7 +24,7 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
   private roomId: string
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,

@@ -3,17 +3,22 @@ import {
   Module,
 }             from '@nestjs/common'
 
-import { WechatySettings } from './settings/mod.js'
+import { InfrastructureModule } from '../infrastructure/mod.js'
 
-import { EnvVar } from './env-var.js'
+import { WechatySettings }  from './settings/mod.js'
+import { EnvVar }           from './env-var.js'
 
 @Module({
+  imports: [
+    InfrastructureModule,
+  ],
   providers: [
     ...WechatySettings,
     EnvVar,
   ],
   exports: [
     ...WechatySettings,
+    EnvVar,
   ],
 })
 export class WechatySettingsModule {}

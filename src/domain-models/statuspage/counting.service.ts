@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import type {
+import {
   EventBus,
   QueryBus,
 }                     from '@nestjs/cqrs'
@@ -22,8 +22,8 @@ import {
 export class CountingService {
 
   constructor (
-    private readonly log      : Brolog,
     private readonly eventBus : EventBus,
+    private readonly log      : Brolog,
     private readonly queryBus : QueryBus,
   ) {}
 

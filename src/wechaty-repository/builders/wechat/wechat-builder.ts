@@ -5,11 +5,11 @@ import { setHandlers } from './set-handlers.js'
 
 import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
-import type {
+import {
   WeChatSettings,
   EnvVar,
 }                     from '../../../wechaty-settings/mod.js'
@@ -23,7 +23,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
   private name: string
 
   constructor (
-    private log: Logger,
+    private readonly log: Brolog,
     private envVar: EnvVar,
     private settings: WeChatSettings,
   ) {

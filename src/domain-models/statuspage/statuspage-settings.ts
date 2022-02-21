@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import { EnvVar } from '../../wechaty-settings/mod.js'
@@ -13,7 +13,7 @@ class StatuspageSettings {
   public readonly sentMessages: string
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     envVar: EnvVar,
   ) {
     this.log.verbose('StatusPageSettings', 'constructor()')

@@ -1,4 +1,4 @@
-import type { Logger } from 'brolog'
+import { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import { EnvVar }               from '../../env-var.js'
@@ -15,7 +15,7 @@ class OaSettings implements NamedInterface {
   readonly webhookProxyUrl: string
 
   constructor (
-    private readonly log: Logger,
+    private readonly log: Brolog,
     envVar: EnvVar,
   ) {
     this.appId = envVar
@@ -38,7 +38,7 @@ class OaSettings implements NamedInterface {
       .required(true)
       .asString()
 
-    this.log.verbose('OaSettings', 'constructor(%s) appId=%s, webhookProxyUrl=%s', this.name, this.appId, this.webhookProxyUrl)
+    this.log.verbose('OaSettings', 'constructor() %s: appId=%s, webhookProxyUrl=%s', this.name, this.appId, this.webhookProxyUrl)
   }
 
 }
