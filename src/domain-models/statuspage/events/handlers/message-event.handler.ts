@@ -1,7 +1,7 @@
 import type { EventBus, IEventHandler } from '@nestjs/cqrs'
 import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decorator.js'
 import type { Logger } from 'brolog'
-import { PuppetMessageReceivedEvent } from '../../../../wechaty-repository/events/mod.js'
+import { PuppetMessageReceivedEvent } from '../../../../wechaty-events/events/mod.js'
 
 import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { MessageMobileTerminatedEvent, MessageMobileOriginatedEvent } from '../mod.js'

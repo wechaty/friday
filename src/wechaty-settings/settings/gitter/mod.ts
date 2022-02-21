@@ -1,8 +1,8 @@
+import { Injectable } from '@nestjs/common'
 import type { Logger } from 'brolog'
 
-import { EnvVar } from '../../env-var.js'
-import type { NamedInterface } from '../named-interface.js'
-import { Injectable } from '@nestjs/common'
+import { EnvVar }               from '../../env-var.js'
+import type { NamedInterface }  from '../../named-interface.js'
 
 @Injectable()
 class GitterSettings implements NamedInterface {

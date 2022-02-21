@@ -1,7 +1,7 @@
 import type { Logger } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
-import { EnvVar } from '../../wechaty-repository/settings/mod.js'
+import { EnvVar } from '../../wechaty-settings/mod.js'
 
 @Injectable()
 class StatuspageSettings {

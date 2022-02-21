@@ -15,7 +15,7 @@ import {
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
 import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
-import type { QqSettings } from '../../../../wechaty-repository/settings/mod.js'
+import type { QqSettings } from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardMessageToQqCommunityCommand)
 export class ForwardMessageToQqCommunityHandler implements ICommandHandler<ForwardMessageToQqCommunityCommand> {

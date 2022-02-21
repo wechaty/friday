@@ -3,20 +3,22 @@ import {
   Module,
 }             from '@nestjs/common'
 
+import { WechatySettingsModule } from '../wechaty-settings/mod.js'
+
 import { WechatyBuilders }    from './builders/mod.js'
-import { WechatySettings }    from './settings/mod.js'
 
 import { WechatyRepository }  from './wechaty.repository.js'
 
 @Module({
+  imports: [
+    WechatySettingsModule,
+  ],
   providers: [
     WechatyRepository,
     ...WechatyBuilders,
-    ...WechatySettings,
   ],
   exports: [
     WechatyRepository,
-    ...WechatySettings,
   ],
 })
 export class WechatyRepositoryModule {}

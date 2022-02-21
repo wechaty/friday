@@ -26,12 +26,12 @@ import {
   sinon,
 }             from 'tstest'
 
-import * as FridayController from '../src/friday-controller/mod.js'
+import { ChatopsCommand } from '../src/friday-controller/mod.js'
 
 import { FridayBotModule } from '../src/friday-bot.module.js'
 import { CommandBus } from '@nestjs/cqrs'
 import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
-import { EnvVar } from '../src/wechaty-repository/env-var.js'
+import { EnvVar } from '../src/wechaty-settings/env-var.js'
 
 test('Friday Controler', async t => {
   let app: INestApplication
@@ -83,7 +83,7 @@ test('Friday Controler', async t => {
     )
     t.equal(t.context.spy.calledOnce(), 'get called once')
 
-    const command = new FridayController.commands.ChatopsCommand(
+    const command = new ChatopsCommand(
       EXPECTED_ROOM_ID,
       EXPECTED_TEXT,
     )

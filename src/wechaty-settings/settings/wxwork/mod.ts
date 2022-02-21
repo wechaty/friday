@@ -1,8 +1,8 @@
 import type { Logger } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
-import { EnvVar } from '../../env-var.js'
-import type { NamedInterface } from '../named-interface.js'
+import { EnvVar }               from '../../env-var.js'
+import type { NamedInterface }  from '../../named-interface.js'
 
 @Injectable()
 class WxWorkSettings implements NamedInterface {

@@ -6,7 +6,7 @@ import type { EventBus } from '@nestjs/cqrs'
 import type { Logger } from 'brolog'
 import type * as WECHATY from 'wechaty'
 
-import { PuppetMessageReceivedEvent } from './events/mod.js'
+import { PuppetMessageReceivedEvent } from '../wechaty-events/mod.js'
 
 import {
   GitterBuilder,

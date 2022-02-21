@@ -5,7 +5,7 @@ import type { WechatyInterface } from 'wechaty/impls'
 
 import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetQqMembersCountQuery } from '../impls/mod.js'
-import type { QqSettings } from '../../../../wechaty-repository/settings/mod.js'
+import type { QqSettings } from '../../../../wechaty-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
 
 @QueryHandler(GetQqMembersCountQuery)

@@ -15,7 +15,7 @@ import {
   GetMessageSignatureQuery,
 }                             from '../../queries/mod.js'
 import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
-import type { GitterSettings } from '../../../../wechaty-repository/settings/mod.js'
+import type { GitterSettings } from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardTextMessageToGitterCommunityCommand)
 export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandler<ForwardTextMessageToGitterCommunityCommand> {

@@ -9,7 +9,7 @@ import type { Logger } from 'brolog'
 
 import { PuppetService }  from 'wechaty-puppet-service'
 
-import type { EnvVar } from '../../env-var.js'
+import type { EnvVar } from '../../../wechaty-settings/env-var.js'
 import type { WeChatSettings } from '../../settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
 

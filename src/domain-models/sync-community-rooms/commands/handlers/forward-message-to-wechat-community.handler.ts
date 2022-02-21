@@ -15,7 +15,7 @@ import {
   GetMessageSignatureQuery,
 }                               from '../../queries/mod.js'
 import { SendMessageCommand } from '../../../../wechaty-events/mod.js'
-import type { WeChatSettings } from '../../../../wechaty-repository/settings/mod.js'
+import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 @CommandHandler(ForwardMessageToWeChatCommunityCommand)
 export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<ForwardMessageToWeChatCommunityCommand> {
