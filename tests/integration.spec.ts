@@ -19,7 +19,7 @@
  */
 import { test } from 'tstest'
 import 'dotenv/config'
-import { getLogger } from 'brolog'
+import { log } from 'brolog'
 
 import { WeChatBuilder }  from '../src/wechaty-repository/builders/wechat/wechat-builder.js'
 import {
@@ -35,11 +35,10 @@ test('smoke testing with perfect restart', async t => {
 
   process.env['WECHATY_PUPPET'] = 'wechaty-puppet-mock'
 
-  const logger =  getLogger()
   const envVar = new EnvVar()
-  const settings = new WeChatSettings(logger, new EnvVar())
+  const settings = new WeChatSettings(log, new EnvVar())
   const builder = new WeChatBuilder(
-    logger,
+    log,
     envVar,
     settings,
   )
