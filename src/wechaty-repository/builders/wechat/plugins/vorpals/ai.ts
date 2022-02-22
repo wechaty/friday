@@ -5,7 +5,7 @@ import {
 
 // import { Chitchat }     from '../../ml/chitchat.js'
 // import { Gpt }          from '../../ml/gpt.js'
-import { Dreamily }     from '../../../../../ai-lib/dreamily.js'
+import { Dreamily }     from '../../../../../application/ai-lib/dreamily.js'
 import type { WeChatSettings } from '../../../../../wechaty-settings/mod.js'
 
 const getAiVorpalPlugin = (_settings: WeChatSettings) => {

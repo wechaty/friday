@@ -3,7 +3,7 @@ import {
 }                 from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import { DomainModelModules }       from '../domain-models/mod.js'
+import { DomainModelModules }       from '../core/mod.js'
 
 import { InfrastructureModule }     from '../infrastructure/mod.js'
 import { WechatyEventsModule }      from '../wechaty-events/mod.js'
