@@ -13,12 +13,12 @@ export class SubmitCommunityMembersCounterHandler implements ICommandHandler<Sub
 
   constructor (
     private readonly log: Brolog,
-    private readonly statusPageApiService: StatuspageService,
+    private readonly statuspageService: StatuspageService,
   ) {}
 
   async execute (command: SubmitCommunityMembersCountCommand) {
     this.log.verbose('SubmitCommunityMembersCounterHandler', 'execute(%d)', command.counter)
-    await this.statusPageApiService.submitCommunityMemberCount(command.counter)
+    await this.statuspageService.submitCommunityMemberCount(command.counter)
   }
 
 }
