@@ -5,7 +5,7 @@ import {
   ICommandHandler,
 }                       from '@nestjs/cqrs'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 
 import {
   MessageMobileOriginatedEvent,

@@ -14,5 +14,5 @@
     "scripts/**/*.ts",
     "src/**/*.ts",
     "tests/**/*.spec.ts",
-  ],
+  ],, "src/core/statuspage/commands/impls/generate-mo-mt/.command.ts"
 }

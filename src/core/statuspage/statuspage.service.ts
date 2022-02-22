@@ -1,7 +1,7 @@
 import https from 'https'
 import { Injectable } from '@nestjs/common'
 
-import { StatuspageSettings } from './statuspage-settings.js'
+import { StatuspageSettings } from './statuspage.settings.js'
 
 /**
  * Atlassian's status page metric submitter
@@ -43,7 +43,7 @@ const statuspageMetricSubmitter = (apiKey: string, pageId: string, metricId: str
 }
 
 @Injectable()
-export class StatuspageApiService {
+export class StatuspageService {
 
   submitCommunityMemberCount:         (value: number) => Promise<void>
   submitMobileOriginatedMessageCount: (value: number) => Promise<void>

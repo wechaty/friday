@@ -12,8 +12,8 @@ import { QueryHandlers }    from './queries/mod.js'
 import { SagaHandlers }     from './sagas/mod.js'
 
 import { CountingService }      from './counting.service.js'
-import { StatuspageApiService } from './statuspage-api.service.js'
-import { StatuspageSettings }   from './statuspage-settings.js'
+import { StatuspageService } from './statuspage.service.js'
+import { StatuspageSettings }   from './statuspage.settings.js'
 
 @Module({
   imports: [
@@ -29,7 +29,7 @@ import { StatuspageSettings }   from './statuspage-settings.js'
     ...QueryHandlers,
     ...SagaHandlers,
     CountingService,
-    StatuspageApiService,
+    StatuspageService,
     StatuspageSettings,
   ],
 })
