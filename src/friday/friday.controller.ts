@@ -30,9 +30,13 @@ export class FridayController {
       roomId = this.weChatSettings.rooms.chatops.friday
     }
 
-    return this.commandBus.execute(
+    await this.commandBus.execute(
       new ChatopsCommand(roomId, dto.text),
     )
+
+    return {
+      status: 'ok',
+    }
   }
 
   @Get()
@@ -88,7 +92,9 @@ export class FridayController {
       return html
     }
 
-    const htmlList = wechatyList.map(wechaty => wechatyHtml(wechaty))
+    const htmlList = await Promise.all(
+      wechatyList.map(wechaty => wechatyHtml(wechaty)),
+    )
     const html = htmlList.join('\n<hr />\n')
 
     return html
