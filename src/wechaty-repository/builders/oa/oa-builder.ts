@@ -15,17 +15,11 @@ import { getPlugins } from './plugins/mod.js'
 @Injectable()
 class OABuilder implements WECHATY.BuilderInterface {
 
-  private name            : string
-  private appId           : string
-  private appSecret       : string
-  private token           : string
-  private webhookProxyUrl : string
-
   disabled: boolean
 
   constructor (
     private readonly log: Brolog,
-    settings: OaSettings,
+    private readonly settings: OaSettings,
   ) {
     this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s}) %s',
       settings.name,
@@ -34,25 +28,20 @@ class OABuilder implements WECHATY.BuilderInterface {
     )
 
     this.disabled        = settings.disabled
-    this.appId           = settings.appId
-    this.appSecret       = settings.appSecret
-    this.name            = settings.name
-    this.token           = settings.token
-    this.webhookProxyUrl = settings.webhookProxyUrl
   }
 
   build () {
     this.log.verbose('OABuilder', 'build()')
 
     const puppet = new PuppetOA({
-      appId           : this.appId,
-      appSecret       : this.appSecret,
-      token           : this.token,
-      webhookProxyUrl : this.webhookProxyUrl,
+      appId           : this.settings.appId,
+      appSecret       : this.settings.appSecret,
+      token           : this.settings.token,
+      webhookProxyUrl : this.settings.webhookProxyUrl,
     })
 
     const wechaty = WechatyBuilder.build({
-      name: this.name,
+      name: this.settings.name,
       puppet,
     })
 

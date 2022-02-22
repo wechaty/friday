@@ -9,14 +9,11 @@ import { getPlugins } from './plugins/mod.js'
 @Injectable()
 class WXWorkBuilder implements WECHATY.BuilderInterface {
 
-  private name: string
-  private token: string
-
   readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
-    private settings: WxWorkSettings,
+    private readonly settings: WxWorkSettings,
   ) {
     this.log.verbose('WXWorkBuilder', 'constructor(%s, %s) %s',
       settings.name,
@@ -25,19 +22,17 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
     )
 
     this.disabled = settings.disabled
-    this.name     = settings.name
-    this.token    = settings.token
   }
 
   build () {
     this.log.verbose('WXWorkBuilder', 'build()')
 
     const puppet = new PuppetService({
-      token: this.token,
+      token: this.settings.token,
     })
 
     const wechaty = WECHATY.WechatyBuilder.build({
-      name: this.name,
+      name: this.settings.name,
       puppet,
     })
 
