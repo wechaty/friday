@@ -64,7 +64,7 @@
     "wechaty-puppet-service": "^1.11.2",
     "wechaty-puppet-whatsapp": "^1.13.1",
     "wechaty-qnamaker": "^1.11.1",
-    "wechaty-vorpal": "^1.11.4",
+    "wechaty-vorpal": "^1.13.1",
     "wechaty-vorpal-contrib": "^1.11.5",
     "wechaty-voteout": "^1.11.1"
   },

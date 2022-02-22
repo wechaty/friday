@@ -1,5 +1,5 @@
-import { StatusPageSagas } from './status-page.sagas.js'
+import { StatusPageSaga } from './status-page.saga.js'
 
 export const SagaHandlers = [
-  StatusPageSagas,
+  StatusPageSaga,
 ]

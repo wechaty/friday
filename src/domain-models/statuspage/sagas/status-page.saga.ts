@@ -21,10 +21,10 @@ import {
 }                                               from '../events/mod.js'
 
 @Injectable()
-export class StatusPageSagas {
+export class StatusPageSaga {
 
   @Saga()
-  communityDevelopersCounted (events$: Observable<any>): Observable<ICommand> {
+  communityDevelopersCounted = (events$: Observable<any>): Observable<ICommand> => {
     return events$
       .pipe(
         ofType(
@@ -37,7 +37,7 @@ export class StatusPageSagas {
   }
 
   @Saga()
-  messageReceived (events$: Observable<any>): Observable<ICommand> {
+  messageReceived = (events$: Observable<any>): Observable<ICommand> => {
     const resetCounter$ = new Subject<void>()
     return merge(
       events$.pipe(
@@ -60,7 +60,7 @@ export class StatusPageSagas {
   }
 
   @Saga()
-  messageSent (events$: Observable<any>): Observable<ICommand> {
+  messageSent = (events$: Observable<any>): Observable<ICommand> => {
     const resetCounter$ = new Subject<void>()
     return merge(
       events$.pipe(
