@@ -4,7 +4,7 @@ import {
   ICommandHandler,
 }                     from '@nestjs/cqrs'
 
-import {  SubmitMessagesMobileOriginatedCountCommand } from '../impls/submit-messages-mobile-originated-count.command.js'
+import {  SubmitMessagesMobileOriginatedCountCommand } from '../impls/mod.js'
 
 import { StatuspageApiService } from '../../statuspage-api.service.js'
 

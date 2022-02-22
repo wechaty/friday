@@ -21,7 +21,7 @@ import {
 }                                               from '../events/mod.js'
 
 @Injectable()
-export class StatusPageSaga {
+export class StatuspageSaga {
 
   @Saga()
   communityDevelopersCounted = (events$: Observable<any>): Observable<ICommand> => {

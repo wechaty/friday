@@ -5,9 +5,8 @@ import {
   SyncCommunityRoomsModule,
 }                             from './sync-community-rooms/mod.js'
 
-void StatuspageModule
 const DomainModelModules = [
-  // StatuspageModule,
+  StatuspageModule,
   SyncCommunityRoomsModule,
 ]
 

@@ -4,7 +4,7 @@ import {
   ICommandHandler,
 }                   from '@nestjs/cqrs'
 
-import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
+import { SubmitCommunityMembersCountCommand } from '../impls/mod.js'
 
 import { StatuspageApiService } from '../../statuspage-api.service.js'
 

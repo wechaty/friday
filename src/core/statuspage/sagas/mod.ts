@@ -1,5 +1,7 @@
-import { StatusPageSaga } from './status-page.saga.js'
+import { ClassifyMoMtSaga } from './classify-mo-mt.saga.js'
+import { StatuspageSaga }   from './statuspage.saga.js'
 
 export const SagaHandlers = [
-  StatusPageSaga,
+  ClassifyMoMtSaga,
+  StatuspageSaga,
 ]
