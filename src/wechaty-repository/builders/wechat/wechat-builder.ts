@@ -7,8 +7,6 @@ import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 
-import { PuppetService }  from 'wechaty-puppet-service'
-
 import {
   WeChatSettings,
   EnvVar,
@@ -18,9 +16,6 @@ import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
 class WeChatBuilder implements WECHATY.BuilderInterface {
-
-  private token: string
-  private name: string
 
   disabled: boolean
 
@@ -36,18 +31,16 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
     )
 
     this.disabled = settings.disabled
-    this.name     = settings.name
-    this.token    = settings.wechatyPuppetToken
   }
 
   build () {
     this.log.verbose('WeChatBuilder', 'build()')
 
-    const memory = getMemory(this.name, this.envVar)
+    const memory = getMemory(this.settings.name, this.envVar)
 
     const wechaty = WECHATY.WechatyBuilder.build({
       memory,
-      name: this.name,
+      name: this.settings.name,
       puppet: this.settings.wechatyPuppet as any,
       puppetOptions: {
         endpoint : this.settings.wechatyPuppetEndpoint,
