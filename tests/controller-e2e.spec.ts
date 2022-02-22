@@ -31,10 +31,10 @@ import { INestApplication, Logger } from '@nestjs/common'
 
 import * as PUPPET from 'wechaty-puppet'
 
-import { EnvVar } from '../src/infrastructure/mod.js'
+import { FridayModule } from '../src/friday/mod.js'
+import { EnvVar }       from '../src/infrastructure/mod.js'
 
-import { FridayBotModule } from '../src/friday-bot.module.js'
-import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
+import type { ChatopsDto } from '../src/friday/interfaces/chatops-dto.interface.js'
 
 import envFixture from './fixtures/env.js'
 import { WechatyRepository } from '../src/wechaty-repository/wechaty.repository.js'
@@ -49,7 +49,7 @@ test('Friday Controler', async t => {
     sandbox = sinon.createSandbox()
 
     const builder = Test.createTestingModule({
-      imports: [FridayBotModule],
+      imports: [FridayModule],
     })
 
     builder

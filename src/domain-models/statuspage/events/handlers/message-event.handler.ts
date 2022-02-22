@@ -11,7 +11,7 @@ import { WechatyRepository }          from '../../../../wechaty-repository/mod.j
 import {
   MessageMobileTerminatedEvent,
   MessageMobileOriginatedEvent,
-}                                   from '../mod.js'
+}                                   from '../impls/mod.js'
 
 @EventsHandler(PuppetMessageReceivedEvent)
 export class MessageEventHandler implements IEventHandler<PuppetMessageReceivedEvent> {
@@ -37,15 +37,19 @@ export class MessageEventHandler implements IEventHandler<PuppetMessageReceivedE
     }
 
     if (message.self()) {
-      this.eventBus.publish(new MessageMobileOriginatedEvent(
-        event.puppetId,
-        event.messageId,
-      ))
+      this.eventBus.publish(
+        new MessageMobileOriginatedEvent(
+          event.puppetId,
+          event.messageId,
+        ),
+      )
     } else {
-      this.eventBus.publish(new MessageMobileTerminatedEvent(
-        event.puppetId,
-        event.messageId,
-      ))
+      this.eventBus.publish(
+        new MessageMobileTerminatedEvent(
+          event.puppetId,
+          event.messageId,
+        ),
+      )
     }
   }
 

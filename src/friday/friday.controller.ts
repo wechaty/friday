@@ -2,16 +2,13 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
 import type * as WECHATY from 'wechaty'
 
-import { ChatopsCommand } from './commands/mod.js'
-import type { ChatopsDto } from './interfaces/mod.js'
+import { WeChatSettings }     from '../wechaty-settings/mod.js'
+import { WechatyRepository }  from '../wechaty-repository/mod.js'
 
-// import { ChatopsCommand } from './cqrs/commands/impl/chatops.command.js'
-// import type { ChatopsDto } from './cqrs/interfaces/chatops-dto.interface.js'
-// import type { Bot } from './cqrs/models/bot.model.js'
-// import { GetBotsQuery } from './cqrs/queries/impl/mod.js'
 import { VERSION } from '../config.js'
-import { WeChatSettings } from '../wechaty-settings/mod.js'
-import { WechatyRepository } from '../wechaty-repository/wechaty.repository.js'
+
+import { ChatopsCommand }   from './commands/mod.js'
+import type { ChatopsDto }  from './interfaces/mod.js'
 
 @Controller('/')
 export class FridayController {
