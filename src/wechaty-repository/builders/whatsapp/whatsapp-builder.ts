@@ -9,13 +9,11 @@ import { getPlugins } from './plugins/mod.js'
 @Injectable()
 class WhatsAppBuilder implements WECHATY.BuilderInterface {
 
-  private name: string
-
   readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
-    settings: WhatsAppSettings,
+    private readonly settings: WhatsAppSettings,
   ) {
     this.log.verbose('WhatsappBuilder', 'constructor(%s) %s',
       settings.name,
@@ -23,7 +21,6 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
     )
 
     this.disabled = settings.disabled
-    this.name     = settings.name
   }
 
   build () {
@@ -32,7 +29,7 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
     const puppet = new PuppetWhatsapp()
 
     const wechaty = WECHATY.WechatyBuilder.build({
-      name: this.name,
+      name: this.settings.name,
       puppet,
     })
 
