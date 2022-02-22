@@ -1,12 +1,17 @@
 import {
   Injectable,
+  OnModuleDestroy,
   OnModuleInit,
-}                 from '@nestjs/common'
-import { EventBus } from '@nestjs/cqrs'
-import { Brolog } from 'brolog'
-import type * as WECHATY from 'wechaty'
+}                         from '@nestjs/common'
+import { EventBus }       from '@nestjs/cqrs'
+import { Brolog }         from 'brolog'
+import type * as WECHATY  from 'wechaty'
 
-import { PuppetMessageReceivedEvent } from '../wechaty-events/mod.js'
+/**
+ * Huan(20220222) deep import for solve circular dependency temporary
+ */
+import { PuppetMessageReceivedEvent } from '../wechaty-events/events/impls/puppet-message-received.event.js'
+import type { BotName }               from '../wechaty-settings/mod.js'
 
 import {
   GitterBuilder,
@@ -17,10 +22,8 @@ import {
   WXWorkBuilder,
 }                     from './builders/mod.js'
 
-import type { BotName } from '../wechaty-settings/mod.js'
-
 @Injectable()
-export class WechatyRepository implements OnModuleInit {
+export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
 
   private wechatyList: WECHATY.impls.WechatyInterface[]
 
@@ -50,7 +53,7 @@ export class WechatyRepository implements OnModuleInit {
   }
 
   async onModuleInit () {
-    this.log.verbose('BotRepository', 'onModuleInit()')
+    this.log.verbose('WechatyRepository', 'onModuleInit()')
 
     for (const wechaty of this.wechatyList) {
       /**
@@ -64,13 +67,23 @@ export class WechatyRepository implements OnModuleInit {
         ),
       ))
 
-      this.log.info('BotRepository', 'onModuleInit() bot.start() %s is starting ...', wechaty.name())
+      this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s is starting ...', wechaty.name())
       await wechaty.start()
-      this.log.info('BotRepository', 'onModuleInit() bot.start() %s is started', wechaty.name())
+      this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s is started', wechaty.name())
     }
   }
 
-  find (name: BotName): undefined | WECHATY.impls.WechatyInterface {
+  async onModuleDestroy () {
+    this.log.verbose('WechatyRepository', 'onModuleDestroy()')
+
+    for (const wechaty of this.wechatyList) {
+      this.log.info('WechatyRepository', 'onModuleDestroy() bot.stop() %s is stopping ...', wechaty.name())
+      await wechaty.stop()
+      this.log.info('WechatyRepository', 'onModuleDestroy() bot.stop() %s is stopped', wechaty.name())
+    }
+  }
+
+  findByName (name: BotName): undefined | WECHATY.impls.WechatyInterface {
     return this.wechatyList.filter(wechaty => wechaty.name() === name)[0]
   }
 

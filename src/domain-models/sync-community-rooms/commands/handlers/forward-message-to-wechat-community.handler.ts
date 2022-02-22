@@ -31,7 +31,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
   async execute (command: ForwardMessageToWeChatCommunityCommand) {
     this.log.verbose('ForwardMessageToWeChatCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
 
-    const wechaty = this.repository.find('WeChat')
+    const wechaty = this.repository.findByName('WeChat')
     if (!wechaty) {
       this.log.warn('ForwardMessageToWeChatCommunityHandler', 'execute() no WeChat wechaty found')
       return

@@ -27,7 +27,7 @@ export class FridayController {
     @Body() dto: ChatopsDto,
     @Param('roomId') roomId: undefined | string,
   ) {
-    console.info(dto)
+    // console.info(dto)
 
     if (!roomId) {
       roomId = this.weChatSettings.rooms.chatops.friday

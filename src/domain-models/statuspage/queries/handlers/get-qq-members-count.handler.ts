@@ -20,7 +20,7 @@ export class GetQqMembersCountHandler implements IQueryHandler<GetQqMembersCount
   ) {}
 
   async onModuleInit () {
-    this.wechaty = await this.repository.find(this.qqSettings.name)
+    this.wechaty = await this.repository.findByName(this.qqSettings.name)
   }
 
   async execute (_query: GetQqMembersCountQuery) {

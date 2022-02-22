@@ -34,7 +34,7 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
   async execute (command: ForwardTextMessageToWhatsAppCommunityCommand) {
     this.log.verbose('ForwardTextMessageToWhatsAppCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
 
-    const wechaty = this.repository.find('WhatsApp')
+    const wechaty = this.repository.findByName('WhatsApp')
     if (!wechaty) {
       this.log.warn('ForwardTextMessageToWhatsAppCommunityHandler', 'execute() no WhatsApp wechaty found')
       return

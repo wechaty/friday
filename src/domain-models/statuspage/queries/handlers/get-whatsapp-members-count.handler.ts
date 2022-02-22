@@ -21,7 +21,7 @@ export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsApp
   ) {}
 
   async onModuleInit () {
-    this.wechaty = await this.repository.find(this.whatsAppSettings.name)
+    this.wechaty = await this.repository.findByName(this.whatsAppSettings.name)
   }
 
   async execute (_query: GetWhatsAppMembersCountQuery) {

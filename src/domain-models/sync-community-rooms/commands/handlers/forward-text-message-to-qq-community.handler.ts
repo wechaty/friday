@@ -33,7 +33,7 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
   async execute (command: ForwardTextMessageToQqCommunityCommand) {
     this.log.verbose('ForwardTextMessageToQqCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
 
-    const wechaty = this.repository.find('QQ')
+    const wechaty = this.repository.findByName('QQ')
     if (!wechaty) {
       this.log.warn('ForwardTextMessageToQqCommunityHandler', 'execute() no QQ wechaty found')
       return

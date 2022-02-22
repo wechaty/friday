@@ -29,7 +29,7 @@ export class ChatopsHandler implements ICommandHandler<ChatopsCommand> {
       command.text,
     )
 
-    const wechaty = this.repository.find('WeChat')
+    const wechaty = this.repository.findByName('WeChat')
     if (!wechaty) {
       this.log.warn('ChatopsHandler', 'execute() no wechaty found')
       return

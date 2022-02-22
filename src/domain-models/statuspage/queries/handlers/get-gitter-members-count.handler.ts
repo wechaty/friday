@@ -19,7 +19,7 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
   ) {}
 
   async onModuleInit () {
-    this.wechaty = await this.repository.find(this.gitterSettings.name)
+    this.wechaty = await this.repository.findByName(this.gitterSettings.name)
   }
 
   async execute (_query: GetGitterMembersCountQuery) {

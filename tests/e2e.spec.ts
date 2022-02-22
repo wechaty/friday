@@ -61,6 +61,7 @@ test('Friday Controler', async t => {
         WECHATY_DISABLE_QQ       : 'true',
         WECHATY_DISABLE_WHATSAPP : 'true',
         WECHATY_DISABLE_WXWORK   : 'true',
+        // WECHATY_DISABLE_WECHAT   : 'true',
       }))
 
     testingModule = await builder.compile()
@@ -69,16 +70,17 @@ test('Friday Controler', async t => {
     await app.init()
 
     const repository = testingModule.get<WechatyRepository>(WechatyRepository)
-    const weChatWechaty = repository.find('WeChat')
+    const weChatWechaty = repository.findByName('WeChat')
     if (!weChatWechaty) {
       throw new Error('no WeChat wechaty')
     }
 
-    spy = sandbox.spy()
-    sandbox.stub(weChatWechaty.puppet, 'messageSend').callsFake(spy)
+    spy = sandbox.fake.resolves(undefined)
+    sandbox.replace(weChatWechaty.puppet, 'messageSend', spy)
   })
 
   t.afterEach(async () => {
+    await app.close()
     await testingModule.close()
     sandbox.restore()
   })
@@ -104,6 +106,5 @@ test('Friday Controler', async t => {
   })
 
   t.teardown(async () => {
-    await app.close()
   })
 })

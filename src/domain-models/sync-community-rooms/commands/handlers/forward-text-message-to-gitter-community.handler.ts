@@ -30,7 +30,7 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
 
   async execute (command: ForwardTextMessageToGitterCommunityCommand) {
     this.log.verbose('ForwardTextMessageToGitterCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
-    const wechaty = this.repository.find('Gitter')
+    const wechaty = this.repository.findByName('Gitter')
     if (!wechaty) {
       this.log.warn('ForwardTextMessageToGitterCommunityHandler', 'execute() no Gitter wechaty found')
       return
