@@ -22,27 +22,22 @@ import { QqSettings }    from '../../../../wechaty-settings/mod.js'
 @CommandHandler(ForwardTextMessageToQqCommunityCommand)
 export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<ForwardTextMessageToQqCommunityCommand> {
 
-  private puppetId: string
-  private roomId: string
-
   constructor (
     private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,
-    settings: QqSettings,
-  ) {
-    const wechaty = this.repository.find('QQ')
-    if (!wechaty) {
-      throw new Error('no wechaty for QQ')
-    }
-
-    this.puppetId = wechaty.puppet.id
-    this.roomId = settings.wechatyRoomId
-  }
+    private readonly settings: QqSettings,
+  ) {}
 
   async execute (command: ForwardTextMessageToQqCommunityCommand) {
     this.log.verbose('ForwardTextMessageToQqCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
+
+    const wechaty = this.repository.find('QQ')
+    if (!wechaty) {
+      this.log.warn('ForwardTextMessageToQqCommunityHandler', 'execute() no QQ wechaty found')
+      return
+    }
 
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
       new GetMessageSayableQuery(
@@ -71,10 +66,13 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
       sayable.payload.text,
     ].join('\n')
 
+    const puppetId  = wechaty.puppet.id
+    const roomId    = this.settings.wechatyRoomId
+
     await this.commandBus.execute(
       new SendMessageCommand(
-        this.puppetId,
-        this.roomId,
+        puppetId,
+        roomId,
         sayable,
       ),
     )

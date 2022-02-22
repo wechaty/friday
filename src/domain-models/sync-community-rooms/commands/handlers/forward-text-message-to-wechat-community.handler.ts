@@ -23,32 +23,22 @@ import { WeChatSettings }  from '../../../../wechaty-settings/mod.js'
 @CommandHandler(ForwardTextMessageToWeChatCommunityCommand)
 export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandler<ForwardTextMessageToWeChatCommunityCommand> {
 
-  private puppetId: string
-
-  private roomIdList: string[]
-
   constructor (
     private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,
-    settings: WeChatSettings,
-  ) {
-    const wechaty = this.repository.find('WeChat')
-    if (!wechaty) {
-      throw new Error('no bot for WeChat')
-    }
-
-    this.puppetId = wechaty.puppet.id
-
-    this.roomIdList = [
-      ...settings.rooms.wechatyDevelopers.home,
-      ...settings.rooms.wechatyDevelopers.homeHq,
-    ]
-  }
+    private readonly settings: WeChatSettings,
+  ) {}
 
   async execute (command: ForwardTextMessageToWeChatCommunityCommand) {
     this.log.verbose('ForwardTextMessageToWeChatCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
+
+    const wechaty = this.repository.find('WeChat')
+    if (!wechaty) {
+      this.log.warn('ForwardTextMessageToWeChatCommunityHandler', 'execute() no WeChat wechaty found')
+      return
+    }
 
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
       new GetMessageSayableQuery(
@@ -77,10 +67,16 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
       sayable.payload.text,
     ].join('\n')
 
-    for (const roomId of this.roomIdList) {
+    const puppetId = wechaty.puppet.id
+    const roomIdList = [
+      ...this.settings.rooms.wechatyDevelopers.home,
+      ...this.settings.rooms.wechatyDevelopers.homeHq,
+    ]
+
+    for (const roomId of roomIdList) {
       await this.commandBus.execute(
         new SendMessageCommand(
-          this.puppetId,
+          puppetId,
           roomId,
           sayable,
         ),

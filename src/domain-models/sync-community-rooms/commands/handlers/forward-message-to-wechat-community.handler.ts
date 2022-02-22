@@ -20,33 +20,22 @@ import {
 @CommandHandler(ForwardMessageToWeChatCommunityCommand)
 export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<ForwardMessageToWeChatCommunityCommand> {
 
-  private puppetId: string
-
-  private roomIdList: string[]
-
   constructor (
     private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,
-    settings: WeChatSettings,
-  ) {
-    const wechaty = this.repository.find('WeChat')
-    if (!wechaty) {
-      throw new Error('no wechaty for WeChat')
-    }
-
-    this.puppetId = wechaty.puppet.id
-
-    this.roomIdList = [
-      ...settings.rooms.wechatyDevelopers.home,
-      ...settings.rooms.wechatyDevelopers.homeHq,
-    ]
-
-  }
+    private readonly settings: WeChatSettings,
+  ) {}
 
   async execute (command: ForwardMessageToWeChatCommunityCommand) {
     this.log.verbose('ForwardMessageToWeChatCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
+
+    const wechaty = this.repository.find('WeChat')
+    if (!wechaty) {
+      this.log.warn('ForwardMessageToWeChatCommunityHandler', 'execute() no WeChat wechaty found')
+      return
+    }
 
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
       new GetMessageSayableQuery(
@@ -66,17 +55,23 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
       ),
     )
 
-    for (const roomId of this.roomIdList) {
+    const puppetId = wechaty.puppet.id
+    const roomIdList = [
+      ...this.settings.rooms.wechatyDevelopers.home,
+      ...this.settings.rooms.wechatyDevelopers.homeHq,
+    ]
+
+    for (const roomId of roomIdList) {
       await this.commandBus.execute(
         new SendMessageCommand(
-          this.puppetId,
+          puppetId,
           roomId,
           PUPPET.payloads.sayable.text(signature),
         ),
       )
       await this.commandBus.execute(
         new SendMessageCommand(
-          this.puppetId,
+          puppetId,
           roomId,
           sayable,
         ),

@@ -35,21 +35,24 @@ export class WechatyRepository implements OnModuleInit {
     wxworkBuilder   : WXWorkBuilder,
 
   ) {
-    this.wechatyList = [
-      gitterBuilder.build(),
-      oaBuilder.build(),
-      qqBuilder.build(),
-      wechatBuilder.build(),
-      whatsAppBuilder.build(),
-      wxworkBuilder.build(),
+    const builders = [
+      gitterBuilder,
+      oaBuilder,
+      qqBuilder,
+      wechatBuilder,
+      whatsAppBuilder,
+      wxworkBuilder,
     ]
+
+    this.wechatyList = builders
+      .filter(builder => builder.disabled === false)
+      .map(Builder => Builder.build())
   }
 
   async onModuleInit () {
     this.log.verbose('BotRepository', 'onModuleInit()')
+
     for (const wechaty of this.wechatyList) {
-      this.log.info('BotRepository', 'onModuleInit() bot.start() starting %s', wechaty.name())
-      await wechaty.start()
       /**
        * Huan(202202): FIXME
        *  move this logic to a better place?
@@ -60,7 +63,10 @@ export class WechatyRepository implements OnModuleInit {
           message.id,
         ),
       ))
-      this.log.info('BotRepository', 'onModuleInit() bot.start() bot %s started', wechaty.name())
+
+      this.log.info('BotRepository', 'onModuleInit() bot.start() %s is starting ...', wechaty.name())
+      await wechaty.start()
+      this.log.info('BotRepository', 'onModuleInit() bot.start() %s is started', wechaty.name())
     }
   }
 

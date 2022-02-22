@@ -16,17 +16,21 @@ class GitterBuilder implements WECHATY.BuilderInterface {
   private token:  string
   private name:   string
 
+  disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     settings: GitterSettings,
   ) {
-    this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s})',
+    this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s}) %s',
       settings.name,
       settings.token,
+      settings.disabled ? 'DISABLED' : '',
     )
 
-    this.name  = settings.name
-    this.token = settings.token
+    this.disabled = settings.disabled
+    this.name     = settings.name
+    this.token    = settings.token
   }
 
   build () {

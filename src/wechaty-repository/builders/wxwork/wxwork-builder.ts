@@ -12,17 +12,21 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
   private name: string
   private token: string
 
+  readonly disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     private settings: WxWorkSettings,
   ) {
-    this.log.verbose('WXWorkBuilder', 'constructor(%s, %s)',
+    this.log.verbose('WXWorkBuilder', 'constructor(%s, %s) %s',
       settings.name,
       settings.token,
+      settings.disabled ? 'DISABLED' : '',
     )
 
-    this.name = settings.name
-    this.token = settings.token
+    this.disabled = settings.disabled
+    this.name     = settings.name
+    this.token    = settings.token
   }
 
   build () {

@@ -21,15 +21,19 @@ class OABuilder implements WECHATY.BuilderInterface {
   private token           : string
   private webhookProxyUrl : string
 
+  disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     settings: OaSettings,
   ) {
-    this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s})',
+    this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s}) %s',
       settings.name,
       settings.webhookProxyUrl,
+      settings.disabled ? 'DISABLED' : '',
     )
 
+    this.disabled        = settings.disabled
     this.appId           = settings.appId
     this.appSecret       = settings.appSecret
     this.name            = settings.name

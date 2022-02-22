@@ -2,26 +2,21 @@ import {
   Wechaty,
   log,
   IoClient,
-}                 from 'wechaty'
-import envVar from 'env-var'
+}                   from 'wechaty'
 import type {
   IoClientOptions,
 }                   from 'wechaty/dist/esm/src/io-client.js'
 
-function getIoClient (wechaty: Wechaty) {
+import type { WeChatSettings }  from '../../../wechaty-settings/mod'
+
+function getIoClient (
+  wechaty: Wechaty,
+  settings: WeChatSettings,
+) {
   log.verbose('getWechaty', 'getIoClient(%s)', wechaty)
 
-  const token = envVar
-    .get('WECHATY_TOKEN')
-    .asString()
-
-  if (!token) {
-    throw new Error('token not found: please set WECHATY_TOKEN in environment before start')
-  }
-
-  const port = envVar.get('WECHATY_PUPPET_SERVER_PORT')
-    .default(0)
-    .asPortNumber()
+  const token = settings.wechatyToken
+  const port  = settings.wechatyPuppetServerPort
 
   if (!port) {
     throw new Error('port not found: please set WECHATY_PUPPET_SERVER_PORT in environment before start')

@@ -24,6 +24,7 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
 
     const wechaty = await this.repository.findByPuppetId(command.puppetId)
     if (!wechaty) {
+      this.log.warn('SendMessageHandler', 'execute() no wechaty found for puppetId: %s', command.puppetId)
       return
     }
 

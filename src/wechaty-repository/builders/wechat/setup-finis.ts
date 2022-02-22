@@ -83,7 +83,7 @@ export const getSetupFinis = (settings: WeChatSettings) => {
     }
     bot = wechaty
 
-    bot.on('login',   wechaty.wrapAsync(async () => {
+    bot.on('login', wechaty.wrapAsync(async () => {
       const room = await wechaty.Room.find({ id: settings.rooms.chatops.friday })
       if (!room) {
         throw new Error('room id: ' + settings.rooms.chatops.friday + ' not found')

@@ -20,27 +20,21 @@ import { GitterSettings } from '../../../../wechaty-settings/mod.js'
 @CommandHandler(ForwardTextMessageToGitterCommunityCommand)
 export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandler<ForwardTextMessageToGitterCommunityCommand> {
 
-  private puppetId: string
-  private roomId: string
-
   constructor (
     private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,
-    settings: GitterSettings,
-  ) {
-    const wechaty = this.repository.find('Gitter')
-    if (!wechaty) {
-      throw new Error('no wechaty for Gitter')
-    }
-
-    this.puppetId = wechaty.puppet.id
-    this.roomId = settings.wechatyRoomId
-  }
+    private readonly settings: GitterSettings,
+  ) {}
 
   async execute (command: ForwardTextMessageToGitterCommunityCommand) {
     this.log.verbose('ForwardTextMessageToGitterCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
+    const wechaty = this.repository.find('Gitter')
+    if (!wechaty) {
+      this.log.warn('ForwardTextMessageToGitterCommunityHandler', 'execute() no Gitter wechaty found')
+      return
+    }
 
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
       new GetMessageSayableQuery(
@@ -69,10 +63,13 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
       sayable.payload.text,
     ].join('\n')
 
+    const puppetId  = wechaty.puppet.id
+    const roomId    = this.settings.wechatyRoomId
+
     await this.commandBus.execute(
       new SendMessageCommand(
-        this.puppetId,
-        this.roomId,
+        puppetId,
+        roomId,
         sayable,
       ),
     )

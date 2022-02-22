@@ -13,17 +13,27 @@ export class QqSettings implements NamedInterface {
   readonly wechatyRoomId = 'group_696864249' // Wechaty Developers' Home QQ
 
   readonly qq: number
+  readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
     envVar: EnvVar,
   ) {
+    this.disabled = envVar
+      .get('WECHATY_DISABLE_QQ')
+      .default(0)
+      .asBool()
     this.qq = envVar
       .get('WECHATY_PUPPET_OICQ_QQ')
       .required(true)
       .asIntPositive()
 
-    this.log.verbose('QqSettings', 'constructor(%s) qq=%s, wechatyRoomId=%s', this.name, this.qq, this.wechatyRoomId)
+    this.log.verbose('QqSettings', 'constructor() %s%s: qq=%s, wechatyRoomId=%s',
+      this.disabled ? 'DISABLED ' : '',
+      this.name,
+      this.qq,
+      this.wechatyRoomId,
+    )
   }
 
 }

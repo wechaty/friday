@@ -13,17 +13,21 @@ export class QqBuilder implements WECHATY.BuilderInterface {
   private qq: number
   private name: string
 
+  disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     settings: QqSettings,
   ) {
-    this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',
+    this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s}) %s',
       settings.name,
       settings.qq,
+      settings.disabled ? 'DISABLED' : '',
     )
 
-    this.name = settings.name
-    this.qq   = settings.qq
+    this.disabled = settings.disabled
+    this.name     = settings.name
+    this.qq       = settings.qq
   }
 
   build () {

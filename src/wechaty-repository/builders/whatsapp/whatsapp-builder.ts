@@ -11,15 +11,19 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
 
   private name: string
 
+  readonly disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     settings: WhatsAppSettings,
   ) {
-    this.log.verbose('WhatsappBuilder', 'constructor(%s)',
+    this.log.verbose('WhatsappBuilder', 'constructor(%s) %s',
       settings.name,
+      settings.disabled ? 'DISABLED' : '',
     )
 
-    this.name = settings.name
+    this.disabled = settings.disabled
+    this.name     = settings.name
   }
 
   build () {

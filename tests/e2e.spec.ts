@@ -17,28 +17,34 @@
  *   limitations under the License.
  *
  */
-import request from 'supertest'
-import { Test, TestingModule } from '@nestjs/testing'
-import type { INestApplication } from '@nestjs/common'
-
 import {
   test,
   sinon,
 }             from 'tstest'
 
-import { ChatopsCommand } from '../src/friday-controller/mod.js'
+import request from 'supertest'
+import {
+  Test,
+  TestingModule,
+}                   from '@nestjs/testing'
+import type { INestApplication } from '@nestjs/common'
+
+import * as PUPPET from 'wechaty-puppet'
 
 import { FridayBotModule } from '../src/friday-bot.module.js'
-import { CommandBus } from '@nestjs/cqrs'
 import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
 import { EnvVar } from '../src/wechaty-settings/env-var.js'
+
+import envFixture from './fixtures/env.js'
+import { WechatyRepository } from '../src/wechaty-repository/wechaty.repository.js'
 
 test('Friday Controler', async t => {
   let app: INestApplication
   let testingModule: TestingModule
   let sandbox: sinon.SinonSandbox
+  let spy: sinon.SinonSpy
 
-  t.beforeEach(async t => {
+  t.beforeEach(async () => {
     sandbox = sinon.createSandbox()
 
     const builder = Test.createTestingModule({
@@ -49,31 +55,38 @@ test('Friday Controler', async t => {
       .setLogger(console)
       .overrideProvider(EnvVar)
       .useValue(new EnvVar({
-        WECHATY_PLUGIN_QNAMAKER_ENDPOINT_KEY: 'x',
-        WECHATY_PLUGIN_QNAMAKER_KNOWLEDGE_BASE_ID_CEIBS: 'x',
-        WECHATY_PLUGIN_QNAMAKER_RESOURCE_NAME_CEIBS: 'x',
+        ...envFixture as any,
+        WECHATY_DISABLE_GITTER   : 'true',
+        WECHATY_DISABLE_OA       : 'true',
+        WECHATY_DISABLE_QQ       : 'true',
+        WECHATY_DISABLE_WHATSAPP : 'true',
+        WECHATY_DISABLE_WXWORK   : 'true',
       }))
 
     testingModule = await builder.compile()
 
-    const commandBus = testingModule.get(CommandBus)
-    const spy = sandbox.spy(commandBus, 'execute')
-
     app = testingModule.createNestApplication()
     await app.init()
 
-    t.context.spy = spy
+    const repository = testingModule.get<WechatyRepository>(WechatyRepository)
+    const weChatWechaty = repository.find('WeChat')
+    if (!weChatWechaty) {
+      throw new Error('no WeChat wechaty')
+    }
+
+    spy = sandbox.spy()
+    sandbox.stub(weChatWechaty.puppet, 'messageSend').callsFake(spy)
   })
 
-  t.afterEach(async t => {
+  t.afterEach(async () => {
     await testingModule.close()
     sandbox.restore()
-    t.context.spy.resetHistory()
   })
 
   await t.test('POST chatops/:roomId', async t => {
     const EXPECTED_ROOM_ID  = 'expected-room-id'
     const EXPECTED_TEXT     = 'expected-text'
+    const EXPECTED_SAYABLE = PUPPET.payloads.sayable.text(EXPECTED_TEXT)
 
     const dto: ChatopsDto = {
       text: EXPECTED_TEXT,
@@ -83,16 +96,11 @@ test('Friday Controler', async t => {
       () => request(app.getHttpServer())
         .post(`/chatops/${EXPECTED_ROOM_ID}`)
         .send(dto)
-        .expect(200),
+        .expect(201),
     )
-    t.equal(t.context.spy.calledOnce(), 'get called once')
+    t.ok(spy.calledOnce, 'get called once')
 
-    const command = new ChatopsCommand(
-      EXPECTED_ROOM_ID,
-      EXPECTED_TEXT,
-    )
-
-    t.same(t.context.spy.args[0][0], command, 'received chatops command')
+    t.same(spy.args[0]![1], EXPECTED_SAYABLE, 'received chatops message send call')
   })
 
   t.teardown(async () => {

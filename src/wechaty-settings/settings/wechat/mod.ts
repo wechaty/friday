@@ -22,18 +22,54 @@ class WeChatSettings implements NamedInterface {
     wechatyUserGroup,
   } as const
 
-  readonly token: string
+  readonly wechatyPuppet: string
+  readonly wechatyPuppetToken: string
+  readonly wechatyPuppetEndpoint?: string
+
+  readonly wechatyToken: string
+  readonly wechatyPuppetServerPort: number
+
+  readonly disabled: boolean
 
   constructor (
     readonly log: Brolog,
     readonly envVar: EnvVar,
   ) {
-    this.token = envVar
+    this.disabled = envVar
+      .get('WECHATY_DISABLE_WECHAT')
+      .default(0)
+      .asBool()
+
+    this.wechatyPuppet = envVar
+      .get('WECHATY_PUPPET')
+      .required(true)
+      .asString()
+
+    this.wechatyPuppetToken = envVar
       .get('WECHATY_PUPPET_SERVICE_TOKEN')
       .required(true)
       .asString()
 
-    this.log.verbose('WeChatSettings', 'constructor(%s) token=%s', this.name, this.token)
+    this.wechatyPuppetEndpoint = envVar
+      .get('WECHATY_PUPPET_ENDPOINT')
+      .asString()
+
+    this.wechatyToken = envVar
+      .get('WECHATY_TOKEN')
+      .required()
+      .asString()
+
+    this.wechatyPuppetServerPort = envVar
+      .get('WECHATY_PUPPET_SERVER_PORT')
+      .default(0)
+      .asPortNumber()
+
+    this.log.verbose('WeChatSettings', 'constructor() %s%s: wechatyToken=%s wechatyPuppetServiceToken=%s',
+      this.disabled ? 'DISABLED ' : '',
+      this.name,
+      this.wechatyToken,
+      this.wechatyPuppetToken,
+    )
   }
 
 }

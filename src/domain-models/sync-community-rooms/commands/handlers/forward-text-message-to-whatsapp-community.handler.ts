@@ -23,28 +23,22 @@ import { WhatsAppSettings }     from '../../../../wechaty-settings/mod.js'
 @CommandHandler(ForwardTextMessageToWhatsAppCommunityCommand)
 export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHandler<ForwardTextMessageToWhatsAppCommunityCommand> {
 
-  private puppetId: string
-  private roomId: string
-
   constructor (
     private readonly log: Brolog,
     private readonly queryBus: QueryBus,
     private readonly commandBus: CommandBus,
     private readonly repository: WechatyRepository,
-    settings: WhatsAppSettings,
-  ) {
-    const wechaty = this.repository.find('WhatsApp')
-    if (!wechaty) {
-      throw new Error('no bot for WhatsApp')
-    }
-
-    this.puppetId = wechaty.puppet.id
-
-    this.roomId = settings.wechatyRoomId
-  }
+    private readonly settings: WhatsAppSettings,
+  ) {}
 
   async execute (command: ForwardTextMessageToWhatsAppCommunityCommand) {
     this.log.verbose('ForwardTextMessageToWhatsAppCommunityHandler', 'execute({puppetId: %s, messageId: %s})', command.puppetId, command.messageId)
+
+    const wechaty = this.repository.find('WhatsApp')
+    if (!wechaty) {
+      this.log.warn('ForwardTextMessageToWhatsAppCommunityHandler', 'execute() no WhatsApp wechaty found')
+      return
+    }
 
     const sayable: undefined | PUPPET.payloads.Sayable = await this.queryBus.execute(
       new GetMessageSayableQuery(
@@ -73,10 +67,13 @@ export class ForwardTextMessageToWhatsAppCommunityHandler implements ICommandHan
       sayable.payload.text,
     ].join('\n')
 
+    const puppetId = wechaty.puppet.id
+    const roomId   = this.settings.wechatyRoomId
+
     await this.commandBus.execute(
       new SendMessageCommand(
-        this.puppetId,
-        this.roomId,
+        puppetId,
+        roomId,
         sayable,
       ),
     )

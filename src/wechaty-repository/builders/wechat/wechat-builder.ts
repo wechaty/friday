@@ -22,32 +22,37 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
   private token: string
   private name: string
 
+  disabled: boolean
+
   constructor (
     private readonly log: Brolog,
     private envVar: EnvVar,
     private settings: WeChatSettings,
   ) {
-    this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',
+    this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s}) %s',
       settings.name,
-      settings.token,
+      settings.wechatyPuppetToken,
+      settings.disabled ? 'DISABLED' : '',
     )
 
-    this.name   = settings.name
-    this.token  = settings.token
+    this.disabled = settings.disabled
+    this.name     = settings.name
+    this.token    = settings.wechatyPuppetToken
   }
 
   build () {
     this.log.verbose('WeChatBuilder', 'build()')
 
-    const puppet = new PuppetService({
-      token: this.token,
-    })
     const memory = getMemory(this.name, this.envVar)
 
     const wechaty = WECHATY.WechatyBuilder.build({
       memory,
       name: this.name,
-      puppet,
+      puppet: this.settings.wechatyPuppet as any,
+      puppetOptions: {
+        endpoint : this.settings.wechatyPuppetEndpoint,
+        token    : this.settings.wechatyPuppetToken,
+      },
     })
 
     /**
@@ -57,7 +62,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
 
     setHandlers(wechaty, this.settings)
 
-    const ioClient = getIoClient(wechaty)
+    const ioClient = getIoClient(wechaty, this.settings)
 
     /**
      * Io Client Hook
