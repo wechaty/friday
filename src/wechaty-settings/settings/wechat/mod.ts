@@ -2,7 +2,7 @@ import { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
 import type { NamedInterface }  from '../../named-interface.js'
-import { EnvVar }               from '../../env-var.js'
+import { EnvVar }               from '../../../infrastructure/mod.js'
 
 import * as wechatyUserGroup    from './polyglot-wechaty-user-group.js'
 import * as wechatyDevelopers   from './wechaty-developers.js'

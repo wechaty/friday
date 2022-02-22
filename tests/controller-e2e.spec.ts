@@ -27,13 +27,14 @@ import {
   Test,
   TestingModule,
 }                   from '@nestjs/testing'
-import type { INestApplication } from '@nestjs/common'
+import { INestApplication, Logger } from '@nestjs/common'
 
 import * as PUPPET from 'wechaty-puppet'
 
+import { EnvVar } from '../src/infrastructure/mod.js'
+
 import { FridayBotModule } from '../src/friday-bot.module.js'
 import type { ChatopsDto } from '../src/friday-controller/interfaces/chatops-dto.interface.js'
-import { EnvVar } from '../src/wechaty-settings/env-var.js'
 
 import envFixture from './fixtures/env.js'
 import { WechatyRepository } from '../src/wechaty-repository/wechaty.repository.js'
@@ -52,7 +53,7 @@ test('Friday Controler', async t => {
     })
 
     builder
-      .setLogger(console)
+      .setLogger(new Logger('E2ETesting'))
       .overrideProvider(EnvVar)
       .useValue(new EnvVar({
         ...envFixture as any,

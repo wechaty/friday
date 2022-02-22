@@ -3,9 +3,9 @@ import type { OnModuleInit } from '@nestjs/common'
 import { Brolog } from 'brolog'
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetGitterMembersCountQuery } from '../impls/mod.js'
-import type { GitterSettings } from '../../../../wechaty-settings/mod.js'
+import { GitterSettings } from '../../../../wechaty-settings/mod.js'
 
 @QueryHandler(GetGitterMembersCountQuery)
 export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMembersCountQuery>, OnModuleInit {
@@ -23,27 +23,22 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
   }
 
   async execute (_query: GetGitterMembersCountQuery) {
-    const ids = await this.getGitterMemberIds()
-    return ids.size
-  }
-
-  private async getGitterMemberIds (): Promise<Set<string>> {
-    const gitterSet = new Set<string>()
+    const idSet = new Set<string>()
 
     if (this.wechaty?.isLoggedIn) {
       const gitterRoom = await this.wechaty.Room.find({ id: this.gitterSettings.wechatyRoomId })
       if (gitterRoom) {
         const gitterRoomMemberList = await gitterRoom.memberAll()
-        gitterRoomMemberList.forEach(contact => gitterSet.add(contact.id))
+        gitterRoomMemberList.forEach(contact => idSet.add(contact.id))
       }
-      if (gitterSet.size <= 0) {
-        this.log.error('CountingService', 'getGitterMemberIds() got 0 members')
+      if (idSet.size <= 0) {
+        this.log.error('GetGitterMembersCountHandler', 'getGitterMemberIds() got 0 members')
       }
     } else {
-      this.log.error('CountingService', 'getGitterMemberIds() bot is not logged in')
+      this.log.error('GetGitterMembersCountHandler', 'getGitterMemberIds() bot is not logged in')
     }
 
-    return gitterSet
+    return idSet.size
   }
 
 }

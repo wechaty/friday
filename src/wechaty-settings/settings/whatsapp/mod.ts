@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { Brolog } from 'brolog'
-import { EnvVar } from '../../env-var.js'
 
-// import { EnvVar } from '../env-var.js'
+import { EnvVar } from '../../../infrastructure/mod.js'
+
 import type { NamedInterface } from '../../named-interface.js'
 
 @Injectable()

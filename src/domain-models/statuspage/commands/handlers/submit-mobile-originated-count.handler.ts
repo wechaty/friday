@@ -6,14 +6,14 @@ import {
 
 import {  SubmitMessagesMobileOriginatedCountCommand } from '../impls/submit-messages-mobile-originated-count.command.js'
 
-import type { StatuspageApiService } from '../../statuspage-api.service.js'
+import { StatuspageApiService } from '../../statuspage-api.service.js'
 
 @CommandHandler(SubmitMessagesMobileOriginatedCountCommand)
 export class SubmitMobileOriginatedCountHandler implements ICommandHandler<SubmitMessagesMobileOriginatedCountCommand> {
 
   constructor (
     private readonly log: Brolog,
-    private statusPageApiService: StatuspageApiService,
+    private readonly statusPageApiService: StatuspageApiService,
   ) {
   }
 

@@ -1,7 +1,7 @@
 import https from 'https'
 import { Injectable } from '@nestjs/common'
 
-import type { StatuspageSettings } from './statuspage-settings.js'
+import { StatuspageSettings } from './statuspage-settings.js'
 
 /**
  * Atlassian's status page metric submitter

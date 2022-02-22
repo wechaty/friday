@@ -6,14 +6,14 @@ import {
 
 import { SubmitMessagesMobileTerminatedCountCommand } from '../mod.js'
 
-import type { StatuspageApiService } from '../../statuspage-api.service.js'
+import { StatuspageApiService } from '../../statuspage-api.service.js'
 
 @CommandHandler(SubmitMessagesMobileTerminatedCountCommand)
 export class SubmitMobileTerminatedCountHandler implements ICommandHandler<SubmitMessagesMobileTerminatedCountCommand> {
 
   constructor (
     private readonly log: Brolog,
-    private statusPageApiService: StatuspageApiService,
+    private readonly statusPageApiService: StatuspageApiService,
   ) {}
 
   async execute (command: SubmitMessagesMobileTerminatedCountCommand) {

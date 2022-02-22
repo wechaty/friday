@@ -8,20 +8,18 @@ import { WechatySettingsModule }    from '../../wechaty-settings/mod.js'
 import { CommandHandlers }  from './commands/mod.js'
 import { EventHandlers }    from './events/mod.js'
 import { QueryHandlers }    from './queries/mod.js'
-// import { SagaHandlers }     from './sagas/mod.js'
 
 @Module({
   imports: [
     CqrsModule,
-    WechatySettingsModule,
     InfrastructureModule,
     WechatyRepositoryModule,
+    WechatySettingsModule,
   ],
   providers: [
     ...CommandHandlers,
     ...EventHandlers,
     ...QueryHandlers,
-    // ...SagaHandlers,
   ],
 })
 export class SyncCommunityRoomsModule {}

@@ -6,7 +6,6 @@ import {
 import { InfrastructureModule } from '../infrastructure/mod.js'
 
 import { WechatySettings }  from './settings/mod.js'
-import { EnvVar }           from './env-var.js'
 
 @Module({
   imports: [
@@ -14,11 +13,9 @@ import { EnvVar }           from './env-var.js'
   ],
   providers: [
     ...WechatySettings,
-    EnvVar,
   ],
   exports: [
     ...WechatySettings,
-    EnvVar,
   ],
 })
 export class WechatySettingsModule {}

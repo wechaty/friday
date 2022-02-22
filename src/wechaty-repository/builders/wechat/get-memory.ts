@@ -4,7 +4,7 @@ import {
 import {
   MemoryCard,
 }                 from 'memory-card'
-import type { EnvVar } from '../../../wechaty-settings/env-var'
+import type { EnvVar } from '../../../infrastructure/mod.js'
 
 export let memory: undefined | MemoryCard
 

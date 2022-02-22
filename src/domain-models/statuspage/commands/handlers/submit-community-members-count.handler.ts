@@ -6,14 +6,14 @@ import {
 
 import { SubmitCommunityMembersCountCommand } from '../impls/submit-community-members-count.command.js'
 
-import type { StatuspageApiService } from '../../statuspage-api.service.js'
+import { StatuspageApiService } from '../../statuspage-api.service.js'
 
 @CommandHandler(SubmitCommunityMembersCountCommand)
 export class SubmitCommunityMembersCounterHandler implements ICommandHandler<SubmitCommunityMembersCountCommand> {
 
   constructor (
     private readonly log: Brolog,
-    private statusPageApiService: StatuspageApiService,
+    private readonly statusPageApiService: StatuspageApiService,
   ) {}
 
   async execute (command: SubmitCommunityMembersCountCommand) {

@@ -1,5 +1,4 @@
 import { getMemory }   from './get-memory.js'
-import { getSetupFinis }  from './setup-finis.js'
 import { getIoClient } from './get-io-client.js'
 import { setHandlers } from './set-handlers.js'
 
@@ -7,10 +6,8 @@ import { Injectable } from '@nestjs/common'
 import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 
-import {
-  WeChatSettings,
-  EnvVar,
-}                     from '../../../wechaty-settings/mod.js'
+import { WeChatSettings } from '../../../wechaty-settings/mod.js'
+import { EnvVar }         from '../../../infrastructure/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
 
@@ -62,15 +59,6 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
      */
     wechaty.on('start', () => ioClient.start())
     wechaty.on('stop',  () => ioClient.stop())
-
-    /**
-     * Finis Hook
-     */
-    const setupFinis = getSetupFinis(this.settings)
-    setupFinis(wechaty)
-      .catch(e => {
-        this.log.error('getWechaty', 'setupFinis() rejection: %s', e)
-      })
 
     return wechaty
   }

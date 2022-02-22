@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys */
 import {
   Module,
 }                 from '@nestjs/common'
@@ -17,9 +16,6 @@ import { EventHandlers }    from './events/mod.js'
   providers: [
     ...CommandHandlers,
     ...EventHandlers,
-  ],
-  exports: [
-    ...CommandHandlers,
   ],
 })
 export class WechatyEventsModule {}

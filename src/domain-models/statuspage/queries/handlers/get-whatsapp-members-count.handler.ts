@@ -4,9 +4,10 @@ import { Brolog } from 'brolog'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
+import { WechatyRepository }  from '../../../../wechaty-repository/mod.js'
+import { WhatsAppSettings }   from '../../../../wechaty-settings/mod.js'
+
 import { GetWhatsAppMembersCountQuery } from '../impls/mod.js'
-import type { WhatsAppSettings } from '../../../../wechaty-settings/mod.js'
 import type { OnModuleInit } from '@nestjs/common'
 
 @QueryHandler(GetWhatsAppMembersCountQuery)
@@ -25,29 +26,25 @@ export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsApp
   }
 
   async execute (_query: GetWhatsAppMembersCountQuery) {
-    console.info(clc.yellowBright('Async GetHeroesQuery...'))
-    const ids = await this.getWhatsAppMemberIds()
-    return ids.size
-  }
+    console.info(clc.yellowBright('Async GetWhatsAppMembersCountQuery...'))
 
-  protected async getWhatsAppMemberIds (): Promise<Set<string>> {
     const topic = /Wechaty|BOT/i
-    const whatsAppSet = new Set<string>()
+    const idSet = new Set<string>()
 
     if (this.wechaty?.isLoggedIn) {
       const roomList = await this.wechaty.Room.findAll({ topic })
       for (const room of roomList) {
         const memberList = await room.memberAll()
-        memberList.forEach(contact => whatsAppSet.add(contact.id))
+        memberList.forEach(contact => idSet.add(contact.id))
       }
-      if (whatsAppSet.size <= 0) {
+      if (idSet.size <= 0) {
         this.log.error('GetWhatsAppMembersCountHandler', 'getWhatsAppMemberIds() got 0 members')
       }
     } else {
       this.log.error('GetWhatsAppMembersCountHandler', 'getWhatsAppMemberIds() bot is not logged in yet')
     }
 
-    return whatsAppSet
+    return idSet.size
   }
 
 }

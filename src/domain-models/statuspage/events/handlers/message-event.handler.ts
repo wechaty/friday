@@ -1,18 +1,25 @@
-import type { EventBus, IEventHandler } from '@nestjs/cqrs'
-import { EventsHandler } from '@nestjs/cqrs/dist/decorators/events-handler.decorator.js'
-import { Brolog } from 'brolog'
-import { PuppetMessageReceivedEvent } from '../../../../wechaty-events/events/mod.js'
+import {
+  type IEventHandler,
+  EventBus,
+  EventsHandler,
+}                         from '@nestjs/cqrs'
+import { Brolog }         from 'brolog'
 
-import type { WechatyRepository } from '../../../../wechaty-repository/mod.js'
-import { MessageMobileTerminatedEvent, MessageMobileOriginatedEvent } from '../mod.js'
+import { PuppetMessageReceivedEvent } from '../../../../wechaty-events/events/mod.js'
+import { WechatyRepository }          from '../../../../wechaty-repository/mod.js'
+
+import {
+  MessageMobileTerminatedEvent,
+  MessageMobileOriginatedEvent,
+}                                   from '../mod.js'
 
 @EventsHandler(PuppetMessageReceivedEvent)
 export class MessageEventHandler implements IEventHandler<PuppetMessageReceivedEvent> {
 
   constructor (
     private readonly log: Brolog,
-    private repository: WechatyRepository,
-    private eventBus: EventBus,
+    private readonly repository: WechatyRepository,
+    private readonly eventBus: EventBus,
   ) {}
 
   async handle (event: PuppetMessageReceivedEvent) {

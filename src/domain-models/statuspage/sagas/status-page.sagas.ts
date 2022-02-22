@@ -13,12 +13,12 @@ import {
   SubmitCommunityMembersCountCommand,
   SubmitMessagesMobileTerminatedCountCommand,
   SubmitMessagesMobileOriginatedCountCommand,
-}                                         from '../commands/mod.js'
+}                                               from '../commands/mod.js'
 import {
   MessageMobileTerminatedEvent,
   MessageMobileOriginatedEvent,
   CommunityDevelopersCountedEvent,
-}                                         from '../events/mod.js'
+}                                               from '../events/mod.js'
 
 @Injectable()
 export class StatusPageSagas {

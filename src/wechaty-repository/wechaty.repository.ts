@@ -10,8 +10,15 @@ import type * as WECHATY  from 'wechaty'
 /**
  * Huan(20220222) deep import for solve circular dependency temporary
  */
-import { PuppetMessageReceivedEvent } from '../wechaty-events/events/impls/puppet-message-received.event.js'
-import type { BotName }               from '../wechaty-settings/mod.js'
+import {
+  PuppetMessageReceivedEvent,
+}                               from '../wechaty-events/events/impls/puppet-message-received.event.js'
+
+import { getSetupFinis }        from '../infrastructure/mod.js'
+import {
+  type BotName,
+  WeChatSettings,
+}                               from '../wechaty-settings/mod.js'
 
 import {
   GitterBuilder,
@@ -30,6 +37,7 @@ export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
   constructor (
     private readonly log: Brolog,
     private readonly eventBus: EventBus,
+    private readonly weChatSettings: WeChatSettings,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,
     qqBuilder       : QqBuilder,
@@ -71,6 +79,18 @@ export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
       await wechaty.start()
       this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s is started', wechaty.name())
     }
+
+    /**
+     * Finis Hook
+     */
+    const weChatWechaty = this.findByName('WeChat')
+    if (weChatWechaty) {
+      const setupFinis = getSetupFinis(this.weChatSettings)
+      await setupFinis(weChatWechaty)
+    } else {
+      this.log.warn('WechatyRepository', 'onModuleInit() no WeChat bot found')
+    }
+
   }
 
   async onModuleDestroy () {
