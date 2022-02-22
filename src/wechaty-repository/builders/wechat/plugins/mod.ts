@@ -70,9 +70,11 @@ const getPlugins = (
     ...Object.values(RoomConnectorPluginMod).map(get => get(settings)),
   ]
 
+  void pluginList
+  void getVorpalPlugins
   return [
-    ...pluginList,
-    ...getVorpalPlugins(settings),
+    // ...pluginList,
+    // ...getVorpalPlugins(settings),
   ]
 }
 
