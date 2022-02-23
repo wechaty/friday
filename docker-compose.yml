@@ -26,3 +26,4 @@ services:
       start_period: 40s
 volumes:
   .wechaty:
+  data:
