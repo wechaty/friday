@@ -37,6 +37,8 @@ async function dreamilyApi (options: DreamilyApiOptions): Promise<string> {
   }
   // console.info('payload:', payload)
 
+  // Huan(202202)
+  // FIXME: change axios -> fetch
   const response = await Axios.post<typeof payload & {
     data?: any
   }>(

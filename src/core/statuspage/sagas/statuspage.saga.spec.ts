@@ -44,22 +44,22 @@ test.only('messageReceived()', async t => {
     const PUPPET_ID   = 'PUPPET_ID'
     const MESSAGE_ID  = 'MESSAGE_ID'
 
-    const EVENT0   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 0)
-    const EVENT1   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 1)
-    const EVENT2   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 2)
+    const EVENT_0   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 0)
+    const EVENT_1   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 1)
+    const EVENT_2   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 2)
 
-    const COMMAND0 = new SubmitMessagesMobileTerminatedCountCommand(0)
-    const COMMAND1 = new SubmitMessagesMobileTerminatedCountCommand(1)
-    const COMMAND2 = new SubmitMessagesMobileTerminatedCountCommand(2)
+    const COMMAND_0 = new SubmitMessagesMobileTerminatedCountCommand(0)
+    const COMMAND_1 = new SubmitMessagesMobileTerminatedCountCommand(1)
+    const COMMAND_2 = new SubmitMessagesMobileTerminatedCountCommand(2)
 
     const values = {
-      a: EVENT0,
-      b: EVENT1,
-      c: EVENT2,
+      a: EVENT_0,
+      b: EVENT_1,
+      c: EVENT_2,
 
-      x: COMMAND0,
-      y: COMMAND1,
-      z: COMMAND2,
+      x: COMMAND_0,
+      y: COMMAND_1,
+      z: COMMAND_2,
     }
 
     const actual    = 'a - b - 4m 59s 996ms     - c'
