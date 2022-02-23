@@ -18,7 +18,11 @@ export class SubmitMobileTerminatedCountHandler implements ICommandHandler<Submi
 
   async execute (command: SubmitMessagesMobileTerminatedCountCommand) {
     this.log.verbose('SubmitReceivedMessagesCounterHandler', 'execute(%d)', command.counter)
-    await this.statusPageApiService.submitMobileTerminatedMessageCount(command.counter)
+    try {
+      await this.statusPageApiService.submitMobileTerminatedMessageCount(command.counter)
+    } catch (e) {
+      this.log.error('SubmitReceivedMessagesCounterHandler', 'execute() submitMobileTerminatedMessageCount exception: %s', (e as Error).message)
+    }
   }
 
 }

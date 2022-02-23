@@ -19,7 +19,11 @@ export class SubmitMobileOriginatedCountHandler implements ICommandHandler<Submi
 
   async execute (command: SubmitMessagesMobileOriginatedCountCommand) {
     this.log.verbose('SubmitSentMessagesCounterHandler', 'execute(%d)', command.counter)
-    await this.statuspageService.submitMobileOriginatedMessageCount(command.counter)
+    try {
+      await this.statuspageService.submitMobileOriginatedMessageCount(command.counter)
+    } catch (e) {
+      this.log.error('SubmitSentMessagesCounterHandler', 'execute() submitMobileOriginatedMessageCount exception: %s', (e as Error).message)
+    }
   }
 
 }
