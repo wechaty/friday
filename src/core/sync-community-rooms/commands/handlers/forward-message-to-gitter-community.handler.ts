@@ -67,7 +67,7 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
           ' : ',
           sayable.payload.url,
           ' - ',
-          sayable.payload.title,
+          sayable.payload.title.replace(/^#\d+\s*/, ''),
         ].join('')
 
         await this.commandBus.execute(
