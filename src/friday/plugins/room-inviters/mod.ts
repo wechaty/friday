@@ -1,6 +1,0 @@
-export * from './aidog.js'
-export * from './bot5.js'
-export * from './wechaty.js'
-export * from './wechaty-chinese.js'
-export * from './wechaty-english.js'
-export * from './polyglot-wechaty.js'

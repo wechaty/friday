@@ -30,7 +30,23 @@ You can visit the staging system at <http://friday.chatie.io/>
 
 ## History
 
-### master v0.11
+### master v1.13 Jan 29, 2022
+
+Use [NestJS](https://docs.nestjs.com/recipes/cqrs) to build the server.
+
+#### DDD & CQS
+
+- Effective Aggregate Design
+  - [Part I: Modeling a Single Aggregate](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_1.pdf)
+  - [Part II: Making Aggregates Work Together](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_2.pdf)
+  - [Part III: Gining Insight Through Discovery](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_3.pdf)
+
+#### Tips & Troubleshooting
+
+1. Do not use `import type {} from 'xxx'` to import a Injectable. Use `import {} from 'xxx'` instead to import the values.
+1. Every `Handlers`, `Commands`, `Queries` classe must have a `Handler` class because NestJS requires the decorator `@{Command,Events,Query}Handler()` to register those classes. You will get error `TypeError: Cannot read properties of undefined (reading 'id') at EventBus.defaultGetEventId [as getEventId]` if you forget to register the handler class.
+
+## v0.11 (Dec 2021)
 
 1. ES Module support
 

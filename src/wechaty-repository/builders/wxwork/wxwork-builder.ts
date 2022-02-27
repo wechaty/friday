@@ -1,0 +1,62 @@
+import { Injectable } from '@nestjs/common'
+import * as WECHATY from 'wechaty'
+import { Brolog } from 'brolog'
+import { PuppetService } from 'wechaty-puppet-service'
+
+import { WxWorkSettings } from '../../../wechaty-settings/mod.js'
+import { getPlugins } from './plugins/mod.js'
+
+@Injectable()
+class WXWorkBuilder implements WECHATY.BuilderInterface {
+
+  readonly disabled: boolean
+
+  constructor (
+    private readonly log: Brolog,
+    private readonly settings: WxWorkSettings,
+  ) {
+    this.log.verbose('WXWorkBuilder', 'constructor(%s, %s) %s',
+      settings.name,
+      settings.token,
+      settings.disabled ? 'DISABLED' : '',
+    )
+
+    this.disabled = settings.disabled
+  }
+
+  build () {
+    this.log.verbose('WXWorkBuilder', 'build()')
+
+    const puppet = new PuppetService({
+      token: this.settings.token,
+    })
+
+    const wechaty = WECHATY.WechatyBuilder.build({
+      name: this.settings.name,
+      puppet,
+    })
+
+    wechaty.use(getPlugins(this.settings))
+
+    return wechaty
+  }
+
+}
+
+/**
+ * Huan(20201201): Wechaty Developers' Home 9
+ *  R:10696051635011175
+ */
+
+// const oaTestChatOps = async (message: Message) => {
+//   if (!workBot) { return }
+
+//   const ROOM_ID = 'R:10696051746184005' // ChatOps - OA
+//   const room = await workBot.Room.find({ id: ROOM_ID })
+//   if (!room) {
+//     throw new Error('Room id: ' + ROOM_ID + ' not found')
+//   }
+//   await room.say(message.toString())
+// }
+
+export { WXWorkBuilder }
