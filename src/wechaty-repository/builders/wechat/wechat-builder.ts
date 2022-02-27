@@ -57,8 +57,8 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
     /**
      * Io Client Hook
      */
-    wechaty.on('start', () => ioClient.start())
-    wechaty.on('stop',  () => ioClient.stop())
+    wechaty.on('start', () => wechaty.wrapAsync(ioClient.start()))
+    wechaty.on('stop',  () => wechaty.wrapAsync(ioClient.stop()))
 
     return wechaty
   }
