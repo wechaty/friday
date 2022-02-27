@@ -35,13 +35,13 @@ export class GetWeChatMembersCountHandler implements IQueryHandler<GetWeChatMemb
 
   }
 
-  async execute (_query: GetWeChatMembersCountQuery) {
+  async execute (_query: GetWeChatMembersCountQuery): Promise<number> {
     // console.info(clc.greenBright('GetWeChatMembersCountQuery...'))
     this.log.verbose(clc.greenBright('GetWeChatMembersCount') + 'Handler', 'execute()')
 
     if (!this.wechaty?.isLoggedIn) {
       this.log.error('GetWeChatMembersCountHandler', 'getWeChatMemberIds() bot is not logged in yet')
-      return
+      return 0
     }
 
     const roomList = await this.wechaty.Room.findAll({ topic: /Wechaty|BOT/i })

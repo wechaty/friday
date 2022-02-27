@@ -44,9 +44,9 @@ export class FridayController {
     const wechatyList: WECHATY.impls.WechatyInterface[] = await this.repository.findAll()
 
     const FORM_HTML = `
-      <form action="/chatops/" method="post">
+      <form action="/chatops/123" method="post">
         <label for="chatops">ChatOps: </label>
-        <input id="chatops" type="text" name="chatops" value="Hello, BOT5.">
+        <input id="text_id" type="text" name="text" value="Hello, BOT5.">
         <input type="submit" value="ChatOps">
       </form>
     `
