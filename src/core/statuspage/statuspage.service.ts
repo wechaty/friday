@@ -18,12 +18,15 @@ const statuspageMetricSubmitter = (
 
   const apiBase = 'https://api.statuspage.io/v1'
 
-  const url = apiBase + '/pages/' + pageId + '/metrics/' + metricId + '/data.json'
-  const authHeader = {
-    Authorization: 'OAuth ' + apiKey,
-  }
+  const url               = apiBase + '/pages/' + pageId + '/metrics/' + metricId + '/data.json'
+  const authHeader        = { Authorization: 'OAuth ' + apiKey }
+  const contentTypeHeader = { 'Content-Type': 'application/json' }
+
   const requestOptions = {
-    headers: authHeader,
+    headers: {
+      ...authHeader,
+      ...contentTypeHeader,
+    },
     method: 'POST',
   }
 
@@ -41,26 +44,15 @@ const statuspageMetricSubmitter = (
       body: JSON.stringify({ data }),
     })
 
-    console.info(new Error().stack)
-
     if (response.statusText === 'Unauthorized') {
-      log.error('Please ensure that your page code and authorization key are correct.')
+      log.error('StatuspageService', 'submit(%d) please ensure that your page code and authorization key are correct.', value)
       return
     }
-    return response.json()
 
-    // return new Promise<void>((resolve, reject) => {
-    //   const request = https.request(url, requestOptions, function (res) {
-    //     if (res.statusMessage === 'Unauthorized') {
-    //       const error = new Error('Please ensure that your page code and authorization key are correct.')
-    //       return reject(error)
-    //     }
-    //     res.on('error', reject)
-    //     res.on('data', resolve)
-    //   })
-    //   const str = JSON.stringify({ data })
-    //   request.end(str)
-    // })
+    if (!response.ok) {
+      log.error('StatuspageService', 'submit() fetch request fail', response.statusText)
+      console.error(response)
+    }
   }
 }
 

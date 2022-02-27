@@ -28,10 +28,14 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
       return
     }
 
-    await wechaty.puppet.messageSend(
-      command.conversaionId,
-      command.sayable,
-    )
+    try {
+      await wechaty.puppet.messageSend(
+        command.conversaionId,
+        command.sayable,
+      )
+    } catch (e) {
+      this.log.error('SendMessageHandler', 'execute() puppet.messageSend() exception: %s', e)
+    }
   }
 
 }

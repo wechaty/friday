@@ -75,9 +75,16 @@ export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
         ),
       ))
 
-      this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s is starting ...', wechaty.name())
-      await wechaty.start()
-      this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s is started', wechaty.name())
+      try {
+        this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s starting ...', wechaty.name())
+        await wechaty.start()
+        this.log.info('WechatyRepository', 'onModuleInit() bot.start() %s starting ... done', wechaty.name())
+      } catch (e) {
+        this.log.error('WechatyRepository', 'onModuleInit() bot.start() %s starting ... rejected',
+          wechaty.name(),
+          (e as Error).message,
+        )
+      }
     }
 
     /**

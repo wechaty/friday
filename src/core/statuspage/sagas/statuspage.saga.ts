@@ -5,6 +5,7 @@ import type {
 }                     from 'rxjs'
 import {
   map,
+  tap,
 }                      from 'rxjs/operators'
 
 import {
@@ -41,8 +42,11 @@ export class StatuspageSaga {
 
   @Saga()
   messageSent = (events$: Observable<any>): Observable<ICommand> => events$.pipe(
+    tap(e => console.info('### Saga messageSent Event:', e)),
     ofType(MessageMobileOriginatedEvent),
+    tap(e => console.info('### Saga messageSent MessageMobileOriginatedEvent:', e)),
     countTime(),
+    tap(e => console.info('### Saga MessageMobileOriginatedEvent count:', e)),
     map(count => new SubmitMessagesMobileOriginatedCountCommand(count)),
   )
 

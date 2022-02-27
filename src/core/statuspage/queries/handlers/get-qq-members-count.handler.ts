@@ -1,5 +1,9 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import { Brolog } from 'brolog'
+import {
+  IQueryHandler,
+  QueryHandler,
+}                   from '@nestjs/cqrs'
+import { Brolog }   from 'brolog'
+import clc          from 'cli-color'
 
 import type { WechatyInterface } from 'wechaty/impls'
 
@@ -25,6 +29,8 @@ export class GetQqMembersCountHandler implements IQueryHandler<GetQqMembersCount
   }
 
   async execute (_query: GetQqMembersCountQuery) {
+    this.log.verbose(clc.greenBright('GetQqMembersCount') + 'Handler', 'execute()')
+
     const topic = /Wechaty|BOT/i
     const idSet = new Set<string>()
 

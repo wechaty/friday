@@ -1,7 +1,11 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import type { OnModuleInit } from '@nestjs/common'
-import { Brolog } from 'brolog'
-import type { WechatyInterface } from 'wechaty/impls'
+import {
+  IQueryHandler,
+  QueryHandler,
+}                                 from '@nestjs/cqrs'
+import clc                        from 'cli-color'
+import type { OnModuleInit }      from '@nestjs/common'
+import { Brolog }                 from 'brolog'
+import type { WechatyInterface }  from 'wechaty/impls'
 
 import { WechatyRepository } from '../../../../wechaty-repository/mod.js'
 import { GetGitterMembersCountQuery } from '../impls/mod.js'
@@ -23,6 +27,8 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
   }
 
   async execute (_query: GetGitterMembersCountQuery) {
+    this.log.verbose(clc.greenBright('GetGitterMembersCount') + 'Handler', 'execute()')
+
     const idSet = new Set<string>()
 
     if (this.wechaty?.isLoggedIn) {

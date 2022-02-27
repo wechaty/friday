@@ -14,7 +14,12 @@ async function bootstrap () {
     .default(8788)
     .asPortNumber()
 
-  await app.listen(port, () => console.info(`Friday BOT v${VERSION} is listening on port ${port}.`))
+  console.info(`Friday BOT v${VERSION}`)
+
+  console.info(`Listening on port ${port} ...`)
+  await app.listen(port, () =>
+    console.info(`Listening on port ${port} ... done`),
+  )
 }
 
 bootstrap()

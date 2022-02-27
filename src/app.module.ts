@@ -6,7 +6,6 @@ import { FridayModule } from './friday/mod.js'
   imports: [
     FridayModule,
   ],
-  providers: [],
 })
 export class ApplicationModule {
 

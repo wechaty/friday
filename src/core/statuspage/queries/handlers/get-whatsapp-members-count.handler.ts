@@ -1,14 +1,17 @@
-import { IQueryHandler, QueryHandler } from '@nestjs/cqrs'
-import clc from 'cli-color'
-import { Brolog } from 'brolog'
+import type { OnModuleInit }      from '@nestjs/common'
+import {
+  IQueryHandler,
+  QueryHandler,
+}                                 from '@nestjs/cqrs'
+import clc                        from 'cli-color'
+import { Brolog }                 from 'brolog'
 
-import type { WechatyInterface } from 'wechaty/impls'
+import type { WechatyInterface }  from 'wechaty/impls'
 
 import { WechatyRepository }  from '../../../../wechaty-repository/mod.js'
 import { WhatsAppSettings }   from '../../../../wechaty-settings/mod.js'
 
 import { GetWhatsAppMembersCountQuery } from '../impls/mod.js'
-import type { OnModuleInit } from '@nestjs/common'
 
 @QueryHandler(GetWhatsAppMembersCountQuery)
 export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsAppMembersCountQuery>, OnModuleInit {
@@ -26,7 +29,7 @@ export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsApp
   }
 
   async execute (_query: GetWhatsAppMembersCountQuery) {
-    console.info(clc.yellowBright('Async GetWhatsAppMembersCountQuery...'))
+    this.log.verbose(clc.greenBright('GetWhatsAppMembersCount') + 'Handler', 'execute()')
 
     const topic = /Wechaty|BOT/i
     const idSet = new Set<string>()
