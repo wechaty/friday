@@ -17,75 +17,86 @@
  *   limitations under the License.
  *
  */
-import { test } from 'tstest'
 import {
-  TestScheduler,
-}                 from 'rxjs/testing'
+  test,
+  testSchedulerRunner,
+}                       from 'tstest'
 
-import { StatuspageSaga } from './statuspage.saga.js'
-import { MessageMobileTerminatedEvent } from '../events/mod.js'
-import { SubmitMessagesMobileTerminatedCountCommand } from '../commands/mod.js'
-import { throttleTime } from 'rxjs'
+import {
+  MessageMobileOriginatedEvent,
+  MessageMobileTerminatedEvent,
+}                                               from '../events/mod.js'
+import {
+  SubmitMessagesMobileOriginatedCountCommand,
+  SubmitMessagesMobileTerminatedCountCommand,
+}                                               from '../commands/mod.js'
+
+import { StatuspageSaga }               from './statuspage.saga.js'
 
 /**
  * See: https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md
  * See Also: https://github.com/ohjames/rxjs-websockets/blob/master/src/index.spec.ts
  */
-test.only('messageReceived()', async t => {
-  const scheduler = new TestScheduler((actual, expected) => {
-    for (let i = 0; i < actual.length; i++) {
-      t.same(actual[i], expected[i], `the marbals of actual is expected as ${expected[i].frame}/${expected[i].notification.kind}:${JSON.stringify(expected[i].notification.value)}`)
-    }
-  })
+test('messageReceived()', testSchedulerRunner(m => {
+  const saga = new StatuspageSaga()
 
-  scheduler.run(m => {
-    const saga = new StatuspageSaga()
+  const PUPPET_ID   = 'PUPPET_ID'
+  const MESSAGE_ID  = 'MESSAGE_ID'
 
-    const PUPPET_ID   = 'PUPPET_ID'
-    const MESSAGE_ID  = 'MESSAGE_ID'
+  const EVENT_0   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 0)
+  const EVENT_1   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 1)
+  const EVENT_2   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 2)
 
-    const EVENT_0   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 0)
-    const EVENT_1   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 1)
-    const EVENT_2   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 2)
+  const COMMAND_1 = new SubmitMessagesMobileTerminatedCountCommand(1)
+  const COMMAND_2 = new SubmitMessagesMobileTerminatedCountCommand(2)
 
-    const COMMAND_0 = new SubmitMessagesMobileTerminatedCountCommand(0)
-    const COMMAND_1 = new SubmitMessagesMobileTerminatedCountCommand(1)
-    const COMMAND_2 = new SubmitMessagesMobileTerminatedCountCommand(2)
+  const values = {
+    1: COMMAND_1,
+    2: COMMAND_2,
 
-    const values = {
-      a: EVENT_0,
-      b: EVENT_1,
-      c: EVENT_2,
+    a: EVENT_0,
+    b: EVENT_1,
+    c: EVENT_2,
+  }
 
-      x: COMMAND_0,
-      y: COMMAND_1,
-      z: COMMAND_2,
-    }
+  const actual    = '--a-b 995ms 59s 4m    -c------ 1m |   '
+  const expected  = '                5m    2------- 1m (1|)'
 
-    const actual    = 'a - b - 4m 59s 996ms     - c'
-    const expected  = '                  5m     z 4m 59s 999ms      y 4m 59s 999ms  x'
+  const source$ = saga.messageReceived(
+    m.hot(actual, values),
+  )
 
-    const source$ = saga.messageReceived(
-      m.hot(actual, values),
-    )
+  m.expectObservable(source$).toBe(expected, values)
+}))
 
-    m.expectObservable(source$).toBe(expected, values)
-  })
-})
+test('messageSent()', testSchedulerRunner(m => {
+  const saga = new StatuspageSaga()
 
-test('test', async t => {
-  const scheduler = new TestScheduler((actual, expected) => {
-    t.same(actual, expected, 'the marbals of actual is expected')
-  })
+  const PUPPET_ID   = 'PUPPET_ID'
+  const MESSAGE_ID  = 'MESSAGE_ID'
 
-  scheduler.run(m => {
-    const time = 200
-    const operation = throttleTime(time, undefined, { trailing: true })
-    const actual   = 'abcdef'
-    const expected = '200ms f'
+  const EVENT_0   = new MessageMobileOriginatedEvent(PUPPET_ID, MESSAGE_ID + 0)
+  const EVENT_1   = new MessageMobileOriginatedEvent(PUPPET_ID, MESSAGE_ID + 1)
+  const EVENT_2   = new MessageMobileOriginatedEvent(PUPPET_ID, MESSAGE_ID + 2)
 
-    m.expectObservable(
-      m.cold(actual).pipe(operation),
-    ).toBe(expected)
-  })
-})
+  const COMMAND_1 = new SubmitMessagesMobileOriginatedCountCommand(1)
+  const COMMAND_2 = new SubmitMessagesMobileOriginatedCountCommand(2)
+
+  const values = {
+    1: COMMAND_1,
+    2: COMMAND_2,
+
+    a: EVENT_0,
+    b: EVENT_1,
+    c: EVENT_2,
+  }
+
+  const actual    = '--a-b 995ms 59s 4m    -c------ 1m |   '
+  const expected  = '                5m    2------- 1m (1|)'
+
+  const source$ = saga.messageSent(
+    m.hot(actual, values),
+  )
+
+  m.expectObservable(source$).toBe(expected, values)
+}))
