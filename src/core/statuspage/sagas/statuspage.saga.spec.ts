@@ -47,10 +47,12 @@ test('messageReceived()', testSchedulerRunner(m => {
   const EVENT_1   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 1)
   const EVENT_2   = new MessageMobileTerminatedEvent(PUPPET_ID, MESSAGE_ID + 2)
 
+  const COMMAND_0 = new SubmitMessagesMobileTerminatedCountCommand(0)
   const COMMAND_1 = new SubmitMessagesMobileTerminatedCountCommand(1)
   const COMMAND_2 = new SubmitMessagesMobileTerminatedCountCommand(2)
 
   const values = {
+    0: COMMAND_0,
     1: COMMAND_1,
     2: COMMAND_2,
 
@@ -59,8 +61,8 @@ test('messageReceived()', testSchedulerRunner(m => {
     c: EVENT_2,
   }
 
-  const actual    = '--a-b 995ms 59s 4m    -c------ 1m |   '
-  const expected  = '                5m    2------- 1m (1|)'
+  const actual    = '5m     --a-b 995ms 59s 4m    -c 998ms 59s 4m    - 999ms 59s 4m    5m                 |   '
+  const expected  = '5m     0---- 995ms 59s 4m    2- 998ms 59s 4m    1 999ms 59s 4m    0 999ms 59s 4m     (0|)'
 
   const source$ = saga.messageReceived(
     m.hot(actual, values),

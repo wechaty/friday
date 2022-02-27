@@ -33,15 +33,8 @@ import {
  * See Also: https://github.com/ohjames/rxjs-websockets/blob/master/src/index.spec.ts
  */
 test('RxJS operator: countTime()', testSchedulerRunner(m => {
-  /**
-   * Huan(202202):
-   *
-   * The expected has 3 waves
-   *  because the `resetSubject` will emit `undefined` (void)
-   * to reset the `scan` state (accumarator)
-   */
-  const actual    = '-0-0 996ms 59s 4m    0-0-0- 99ms |'
-  const expected  = '               5m    2----- 99ms (3|)'
+  const actual    = '-0-0 996ms 59s 4m    0-0-0- 994ms 59s 4m     - 999ms 59s 4m    - 999ms 59s 4m    |   '
+  const expected  = '               5m    2----- 994ms 59s 4m     3 999ms 59s 4m    0 999ms 59s 4m    (0|)'
 
   const result$ = m.cold(actual).pipe(
     countTime(5 * TimeConstants.MINUTE),
