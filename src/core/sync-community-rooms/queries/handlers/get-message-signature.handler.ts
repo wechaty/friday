@@ -20,18 +20,31 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
       query.messageId,
     )
 
-    const wechaty = await this.repository.findByPuppetId(query.puppetId)
-    if (!wechaty) {
-      return undefined
-    }
+    let channelName
+    let talkerName
 
-    const message = await wechaty.Message.find({ id: query.messageId })
-    if (!message) {
-      return undefined
-    }
+    try {
+      const wechaty = await this.repository.findByPuppetId(query.puppetId)
+      if (!wechaty) {
+        throw new Error('no wechaty for puppetId: ' + query.puppetId)
+      }
 
-    const channelName = wechaty.name()
-    const talkerName  = message.talker().name()
+      const message = await wechaty.Message.find({ id: query.messageId })
+      if (!message) {
+        throw new Error('no message for messageId: ' + query.messageId)
+      }
+
+      channelName = wechaty.name()
+      talkerName  = message.talker().name()
+    } catch (e) {
+      this.log.error('GetMessageSignatureHandler', 'execute() exception: %s', (e as Error).message)
+      if (!channelName) {
+        channelName = 'unknown'
+      }
+      if (!talkerName) {
+        talkerName = 'unknown'
+      }
+    }
 
     let signatureText: string
 
