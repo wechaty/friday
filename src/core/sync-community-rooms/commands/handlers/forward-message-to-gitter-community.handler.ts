@@ -60,20 +60,49 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
     const puppetId  = wechaty.puppet.id
     const roomId    = this.settings.wechatyRoomId
 
-    await this.commandBus.execute(
-      new SendMessageCommand(
-        puppetId,
-        roomId,
-        PUPPET.payloads.sayable.text(signature),
-      ),
-    )
-    await this.commandBus.execute(
-      new SendMessageCommand(
-        puppetId,
-        roomId,
-        sayable,
-      ),
-    )
+    switch (sayable.type) {
+      case PUPPET.types.Sayable.Url: {
+        const text = [
+          signature,
+          ' : ',
+          sayable.payload.url,
+          ' - ',
+          sayable.payload.title,
+        ].join('')
+
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            PUPPET.payloads.sayable.text(text),
+          ),
+        )
+
+        break
+      }
+
+      case PUPPET.types.Sayable.Image: {
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            PUPPET.payloads.sayable.text(signature),
+          ),
+        )
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            sayable,
+          ),
+        )
+
+        break
+      }
+
+      default:
+        this.log.silly('ForwardMessageToGitterCommunityHandler', 'execute() skip non-image & non-url message: %s', sayable.type)
+    }
 
   }
 

@@ -34,7 +34,8 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
         command.sayable,
       )
     } catch (e) {
-      this.log.error('SendMessageHandler', 'execute() puppet.messageSend() exception: %s', e)
+      this.log.error('SendMessageHandler', 'execute() puppet.messageSend() exception: %s', (e as Error).message)
+      console.error(e)
     }
   }
 

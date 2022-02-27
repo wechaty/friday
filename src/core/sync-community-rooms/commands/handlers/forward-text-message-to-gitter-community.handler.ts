@@ -42,11 +42,14 @@ export class ForwardTextMessageToGitterCommunityHandler implements ICommandHandl
         command.messageId,
       ),
     )
+
     if (!sayable) {
+      this.log.warn('ForwardTextMessageToGitterCommunityHandler', 'execute() no sayable found for messageId: %s', command.messageId)
       return
     }
 
     if (sayable.type !== PUPPET.types.Sayable.Text) {
+      this.log.silly('ForwardTextMessageToGitterCommunityHandler', 'execute() skip non-text message: %s', sayable.type)
       return
     }
 
