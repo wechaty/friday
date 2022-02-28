@@ -60,6 +60,10 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
 
     switch (sayable.type) {
       case PUPPET.types.Sayable.Url: {
+        /**
+         * TODO: support UrlLink send API for Puppet Oicq
+         *  @link https://github.com/wechaty/puppet-oicq/issues/28
+         */
         break
       }
 
