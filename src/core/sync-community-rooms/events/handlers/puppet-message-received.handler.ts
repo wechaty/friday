@@ -12,6 +12,7 @@ import {
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
+  WxWorkSettings,
 }                     from '../../../../wechaty-settings/mod.js'
 
 import { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
@@ -33,10 +34,11 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
   constructor (
     private readonly log: Brolog,
     private readonly eventBus: EventBus,
+    private readonly gitterSettings: GitterSettings,
+    private readonly qqSettings: QqSettings,
     private readonly weChatSettings: WeChatSettings,
     private readonly whatsAppSettings: WhatsAppSettings,
-    private readonly qqSettings: QqSettings,
-    private readonly gitterSettings: GitterSettings,
+    private readonly wxWorkSettings: WxWorkSettings,
     private readonly repository: WechatyRepository,
   ) {
     this.weChatCommunityRoomList = [
@@ -94,6 +96,9 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
         break
       case this.whatsAppSettings.name:
         this.handleWhatsAppMessage(message)
+        break
+      case this.wxWorkSettings.name:
+        this.handleWxWorkMessage(message)
         break
       default:
         this.log.warn('PuppetMessageReceivedHandler', 'handle() bot name "%s" unknown', wechatyName)
@@ -161,6 +166,13 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
         message.id,
       ),
     )
+  }
+
+  private handleWxWorkMessage (message: WECHATY.Message): void {
+    this.log.verbose('PuppetMessageReceivedHandler', 'handleWxWorkMessage(%s)', message)
+
+    // TODO: enable WxWork message sync
+    // Huan(20220228)
   }
 
   private handleQqMessage (message: WECHATY.Message) {
