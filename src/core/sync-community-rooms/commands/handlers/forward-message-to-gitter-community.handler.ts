@@ -89,6 +89,11 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
             PUPPET.payloads.sayable.text(signature),
           ),
         )
+
+        /**
+         * FIXME: the puppet gitter send image api is not working
+         *  @link https://github.com/wechaty/puppet-gitter/issues/8
+         */
         await this.commandBus.execute(
           new SendMessageCommand(
             puppetId,
