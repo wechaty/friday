@@ -64,8 +64,9 @@ export class ForwardTextMessageToWeChatCommunityHandler implements ICommandHandl
 
     sayable.payload.text = [
       signature,
+      ' : ',
       sayable.payload.text,
-    ].join('\n')
+    ].join('')
 
     const puppetId = wechaty.puppet.id
     const roomIdList = [

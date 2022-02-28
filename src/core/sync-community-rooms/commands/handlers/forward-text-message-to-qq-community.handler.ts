@@ -63,8 +63,9 @@ export class ForwardTextMessageToQqCommunityHandler implements ICommandHandler<F
 
     sayable.payload.text = [
       signature,
+      ' : ',
       sayable.payload.text,
-    ].join('\n')
+    ].join('')
 
     const puppetId  = wechaty.puppet.id
     const roomId    = this.settings.wechatyRoomId

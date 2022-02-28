@@ -54,7 +54,7 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
         talkerName,
         ' @ ',
         channelName,
-        '`: ',
+        '`',
       ].join('')
     } else {
       signatureText = [
@@ -62,7 +62,7 @@ export class GetMessageSignatureHandler implements IQueryHandler<GetMessageSigna
         talkerName,
         ' @ ',
         channelName,
-        ']: ',
+        ']',
       ].join('')
     }
 

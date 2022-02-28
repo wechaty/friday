@@ -66,7 +66,7 @@ export class ForwardMessageToWeChatCommunityHandler implements ICommandHandler<F
         new SendMessageCommand(
           puppetId,
           roomId,
-          PUPPET.payloads.sayable.text(signature),
+          PUPPET.payloads.sayable.text(signature + ' : '),
         ),
       )
       await this.commandBus.execute(

@@ -62,7 +62,7 @@ export class ForwardMessageToWhatsAppCommunityHandler implements ICommandHandler
       new SendMessageCommand(
         puppetId,
         roomId,
-        PUPPET.payloads.sayable.text(signature),
+        PUPPET.payloads.sayable.text(signature + ' : '),
       ),
     )
     await this.commandBus.execute(

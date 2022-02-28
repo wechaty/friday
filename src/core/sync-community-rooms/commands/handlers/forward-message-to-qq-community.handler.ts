@@ -64,6 +64,22 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
          * TODO: support UrlLink send API for Puppet Oicq
          *  @link https://github.com/wechaty/puppet-oicq/issues/28
          */
+        const text = [
+          signature,
+          ' : ',
+          sayable.payload.url,
+          ' - ',
+          sayable.payload.title.replace(/^#\d+\s*/, ''),
+        ].join('')
+
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            PUPPET.payloads.sayable.text(text),
+          ),
+        )
+
         break
       }
 
