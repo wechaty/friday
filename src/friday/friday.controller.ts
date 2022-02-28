@@ -57,15 +57,19 @@ export class FridayController {
         <div>
           <ul>
             <li>
-              ${wechaty} - wechaty@${wechaty.version()}: ${wechaty.id}
+              ${wechaty}
             </li>
             <li>
+              wechaty@${wechaty.version()}: ${wechaty.id}
             </li>
             <li>
-              ${wechaty.puppet} - puppet@${wechaty.puppet.version}: ${wechaty.puppet.id}
+              ${wechaty.puppet}
             </li>
             <li>
-              Bot - ${wechaty.isLoggedIn ? wechaty.currentUser.name() : 'please scan the QR Code below to login:'}
+              puppet@${wechaty.puppet.version()}: ${wechaty.puppet.id}
+            </li>
+            <li>
+              ${wechaty.isLoggedIn ? wechaty.currentUser.name() : 'please scan the QR Code below to login:'}
             </li>
           </ul>
         </div>
