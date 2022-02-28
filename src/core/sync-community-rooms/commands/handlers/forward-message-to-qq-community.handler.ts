@@ -58,20 +58,36 @@ export class ForwardMessageToQqCommunityHandler implements ICommandHandler<Forwa
     const puppetId = wechaty.puppet.id
     const roomId   = this.settings.wechatyRoomId
 
-    await this.commandBus.execute(
-      new SendMessageCommand(
-        puppetId,
-        roomId,
-        PUPPET.payloads.sayable.text(signature),
-      ),
-    )
-    await this.commandBus.execute(
-      new SendMessageCommand(
-        puppetId,
-        roomId,
-        sayable,
-      ),
-    )
+    switch (sayable.type) {
+      case PUPPET.types.Sayable.Url: {
+        break
+      }
+
+      case PUPPET.types.Sayable.Image: {
+        /**
+         * TODO: support image send api for Puppet Oicq
+         *  @link https://github.com/wechaty/puppet-oicq/issues/27
+         */
+        break
+      }
+
+      default:
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            PUPPET.payloads.sayable.text(signature),
+          ),
+        )
+        await this.commandBus.execute(
+          new SendMessageCommand(
+            puppetId,
+            roomId,
+            sayable,
+          ),
+        )
+        break
+    }
 
   }
 
