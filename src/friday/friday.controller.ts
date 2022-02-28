@@ -53,7 +53,22 @@ export class FridayController {
 
     const wechatyHtml = async (wechaty: WECHATY.impls.WechatyInterface): Promise<string> => {
 
-      let html = `<h1>BOT5 v${VERSION} ${wechaty} v${wechaty.version()}</h1>`
+      let html = `
+        <h1>BOT5 v${VERSION}</h1>
+        <div>
+          <ul>
+            <li>
+              ${wechaty} v${wechaty.version()}
+            </li>
+            <li>
+              ${wechaty.puppet} v${wechaty.puppet.version()}
+            </li>
+            <li>
+              ${wechaty.isLoggedIn ? wechaty.currentUser : 'Please scan the QR Code below to login:'}
+            </li>
+          </ul>
+        </div>
+      `
 
       if (wechaty.authQrCode) {
         html += [
@@ -78,8 +93,7 @@ export class FridayController {
         roomHtml = roomHtml + '</ol>'
 
         html += [
-          `<p> User ${wechaty.currentUser} logged in. </p>`,
-          FORM_HTML,
+          `<p> User ${wechaty.currentUser.name()} logged in. </p>`,
           `<div>${roomHtml}</div>`,
         ].join('')
 
@@ -95,7 +109,10 @@ export class FridayController {
     const htmlList = await Promise.all(
       wechatyList.map(wechaty => wechatyHtml(wechaty)),
     )
-    const html = htmlList.join('\n<hr />\n')
+    const html = [
+      FORM_HTML,
+      ...htmlList,
+    ].join('\n<hr />\n')
 
     return html
   }

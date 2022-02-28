@@ -4,6 +4,7 @@ import { Brolog } from 'brolog'
 import { PuppetService } from 'wechaty-puppet-service'
 
 import { WxWorkSettings } from '../../../wechaty-settings/mod.js'
+
 import { getPlugins } from './plugins/mod.js'
 
 @Injectable()
