@@ -28,6 +28,12 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
     this.log.verbose('WXWorkBuilder', 'build()')
 
     const puppet = new PuppetService({
+      /**
+       * Huan(20220228): workaround for disable TLS temporary for upgrade from Juzi.BOT
+       */
+      tls: {
+        disable: true,
+      },
       token: this.settings.token,
     })
 
