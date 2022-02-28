@@ -15,7 +15,7 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
     private readonly log: Brolog,
     private readonly settings: WhatsAppSettings,
   ) {
-    this.log.verbose('WhatsappBuilder', 'constructor(%s) %s',
+    this.log.verbose('WhatsAppBuilder', 'constructor(%s) %s',
       settings.name,
       settings.disabled ? 'DISABLED' : '',
     )
@@ -24,7 +24,7 @@ class WhatsAppBuilder implements WECHATY.BuilderInterface {
   }
 
   build () {
-    this.log.verbose('WhatsappBuilder', 'build()')
+    this.log.verbose('WhatsAppBuilder', 'build()')
 
     const puppet = new PuppetWhatsapp()
 

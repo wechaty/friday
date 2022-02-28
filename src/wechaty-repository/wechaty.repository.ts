@@ -95,7 +95,7 @@ export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
       const setupFinis = getSetupFinis(this.weChatSettings)
       await setupFinis(weChatWechaty)
     } else {
-      this.log.warn('WechatyRepository', 'onModuleInit() no WeChat bot found')
+      this.log.warn('WechatyRepository', 'onModuleInit() no WeChat bot found for setupFinis()')
     }
 
   }
