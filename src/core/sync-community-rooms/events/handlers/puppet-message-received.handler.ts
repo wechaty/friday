@@ -72,9 +72,13 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       return
     }
 
-    if (await this.isDuplicatedMessage(message)) {
-      this.log.warn('PuppetMessageReceivedHandler', 'handle({ messageId: %s }) skip duplicated message', event.messageId)
-      return
+    try {
+      if (await this.isDuplicatedMessage(message)) {
+        this.log.warn('PuppetMessageReceivedHandler', 'handle({ messageId: %s }) skip duplicated message', event.messageId)
+        return
+      }
+    } catch (e) {
+      this.log.error('PuppetMessageReceivedHandler', 'handle({ messageId: %s }) isDuplicatedMessage() exception: %s', event.messageId, e)
     }
 
     const wechatyName = wechaty.name()

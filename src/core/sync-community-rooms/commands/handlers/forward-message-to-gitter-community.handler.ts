@@ -62,21 +62,22 @@ export class ForwardMessageToGitterCommunityHandler implements ICommandHandler<F
 
     switch (sayable.type) {
       case PUPPET.types.Sayable.Url: {
-        const text = [
-          signature,
-          ' : ',
-          sayable.payload.url,
-          ' - ',
-          sayable.payload.title.replace(/^#\d+\s*/, ''),
-        ].join('')
+        // Huan(202228): skip UrlLink for now
+        // const text = [
+        //   signature,
+        //   ' : ',
+        //   sayable.payload.url,
+        //   ' - ',
+        //   sayable.payload.title.replace(/^#\d+\s*/, ''),
+        // ].join('')
 
-        await this.commandBus.execute(
-          new SendMessageCommand(
-            puppetId,
-            roomId,
-            PUPPET.payloads.sayable.text(text),
-          ),
-        )
+        // await this.commandBus.execute(
+        //   new SendMessageCommand(
+        //     puppetId,
+        //     roomId,
+        //     PUPPET.payloads.sayable.text(text),
+        //   ),
+        // )
 
         break
       }
