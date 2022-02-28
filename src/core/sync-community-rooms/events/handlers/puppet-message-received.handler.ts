@@ -4,7 +4,8 @@ import {
   EventsHandler,
 }                         from '@nestjs/cqrs'
 import { Brolog }         from 'brolog'
-import type * as WECHATY  from 'wechaty'
+import * as WECHATY  from 'wechaty'
+import crypto from 'crypto'
 
 import {
   GitterSettings,
@@ -25,7 +26,9 @@ import {
 @EventsHandler(PuppetMessageReceivedEvent)
 export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessageReceivedEvent> {
 
-  readonly weChatCommunityRoomList: string[]
+  private readonly weChatCommunityRoomList: string[]
+
+  private lastMessageHash?: string
 
   constructor (
     private readonly log: Brolog,
@@ -69,6 +72,11 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       return
     }
 
+    if (await this.isDuplicatedMessage(message)) {
+      this.log.warn('PuppetMessageReceivedHandler', 'handle({ messageId: %s }) skip duplicated message', event.messageId)
+      return
+    }
+
     const wechatyName = wechaty.name()
     switch (wechatyName) {
       case this.weChatSettings.name:
@@ -86,6 +94,35 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       default:
         this.log.warn('PuppetMessageReceivedHandler', 'handle() bot name "%s" unknown', wechatyName)
     }
+  }
+
+  /**
+   * TODO: make sure it works as expected
+   * Huan(20220228)
+   */
+  private async isDuplicatedMessage (message: WECHATY.Message): Promise<boolean> {
+    this.log.verbose('PuppetMessageReceivedHandler', 'isDuplicatedMessage(%s)', message.id)
+
+    const sayable = await WECHATY.helpers.messageToSayable(message)
+    if (typeof sayable === 'undefined') {
+      return false
+    }
+
+    const payload = await WECHATY.helpers.sayableToPayload(sayable)
+    if (typeof payload === 'undefined') {
+      return false
+    }
+
+    const hash = crypto.createHash('sha256').update(
+      JSON.stringify(payload),
+    ).digest('hex')
+
+    if (this.lastMessageHash === hash) {
+      return true
+    }
+
+    this.lastMessageHash = hash
+    return false
   }
 
   private handleWeChatMessage (message: WECHATY.Message) {
