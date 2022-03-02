@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 import { CommandBus } from '@nestjs/cqrs'
-import type * as WECHATY from 'wechaty'
+import * as WECHATY from 'wechaty'
 
 import { WeChatSettings }     from '../wechaty-settings/mod.js'
 import { WechatyRepository }  from '../wechaty-repository/mod.js'
@@ -61,7 +61,7 @@ export class FridayController {
         <div>
           <ul>
             <li>
-            wechaty@${wechaty.version()}: ${wechaty}
+            ${wechaty}
             </li>
             <li>
               puppet@${wechaty.puppet.version()}: ${wechaty.puppet.id}
@@ -111,6 +111,7 @@ export class FridayController {
     )
     const html = [
       `<h1>BOT5 v${VERSION}</h1>`,
+      `wechaty@${WECHATY.VERSION}`,
       FORM_HTML,
       ...htmlList,
     ].join('\n<hr />\n')
