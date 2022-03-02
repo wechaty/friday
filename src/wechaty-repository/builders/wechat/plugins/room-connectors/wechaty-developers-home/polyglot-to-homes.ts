@@ -14,7 +14,8 @@ const getSourceToTargetPlugin = (settings: WeChatSettings) => {
   const SourceToTargetPlugin = SourceToTargetRoomConnector({
     map: bidirectionalMapper,
     source: [
-      ...Object.values(settings.rooms.wechatyUserGroup).flat(),
+      ...Object.values(settings.rooms.polyglotUserGroup).flat(),
+      ...Object.values(settings.rooms.puppetUserGroup).flat(),
     ],
     target: [
       ...settings.rooms.wechatyDevelopers.homeHq,

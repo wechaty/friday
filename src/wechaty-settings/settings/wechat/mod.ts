@@ -4,10 +4,11 @@ import { Injectable } from '@nestjs/common'
 import type { NamedInterface }  from '../../named-interface.js'
 import { EnvVar }               from '../../../infrastructure/mod.js'
 
-import * as wechatyUserGroup    from './polyglot-wechaty-user-group.js'
-import * as wechatyDevelopers   from './wechaty-developers.js'
-import * as bot5Club            from './bot5.js'
-import * as chatops             from './chatops.js'
+import * as polyglotUserGroup   from './rooms/polyglot-user-group.js'
+import * as puppetUserGroup     from './rooms/puppet-user-group.js'
+import * as wechatyDevelopers   from './rooms/wechaty-developers.js'
+import * as bot5Club            from './rooms/bot5.js'
+import * as chatops             from './rooms/chatops.js'
 
 @Injectable()
 class WeChatSettings implements NamedInterface {
@@ -18,8 +19,9 @@ class WeChatSettings implements NamedInterface {
   readonly rooms = {
     bot5Club,
     chatops,
+    polyglotUserGroup,
+    puppetUserGroup,
     wechatyDevelopers,
-    wechatyUserGroup,
   } as const
 
   readonly wechatyPuppet: string

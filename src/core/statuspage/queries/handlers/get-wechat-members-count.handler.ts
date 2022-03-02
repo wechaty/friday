@@ -25,7 +25,7 @@ export class GetWeChatMembersCountHandler implements IQueryHandler<GetWeChatMemb
       ...new Set([
         ...Object.values(weChatSettings.rooms.bot5Club).flat(),
         ...Object.values(weChatSettings.rooms.wechatyDevelopers).flat(),
-        ...Object.values(weChatSettings.rooms.wechatyUserGroup).flat(),
+        ...Object.values(weChatSettings.rooms.polyglotUserGroup).flat(),
       ]),
     ]
   }

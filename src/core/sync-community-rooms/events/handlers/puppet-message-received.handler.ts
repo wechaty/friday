@@ -45,8 +45,8 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       ...this.weChatSettings.rooms.wechatyDevelopers.home,
       ...this.weChatSettings.rooms.wechatyDevelopers.homeHq,
       ...this.weChatSettings.rooms.wechatyDevelopers.contributors,
-      ...Object.values(this.weChatSettings.rooms.wechatyUserGroup).flat(),
-
+      ...Object.values(this.weChatSettings.rooms.polyglotUserGroup).flat(),
+      ...Object.values(this.weChatSettings.rooms.puppetUserGroup).flat(),
       /**
        * Summer of Code
        */

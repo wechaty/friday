@@ -39,13 +39,13 @@ const welcome = (language: string) => [
 ].join('\n')
 
 const getInviterPluginList = (settings: WeChatSettings) => {
-  const config = (language: keyof typeof settings.rooms.wechatyUserGroup) => ({
+  const config = (language: keyof typeof settings.rooms.polyglotUserGroup) => ({
     password : [
       new RegExp(`^\\s*${language.toLowerCase()}\\s*(wechaty)*\\s*$`, 'i'),
       // /^\s*python\s*(wechaty)*\s*$/i,
     ],
     repeat,
-    room    : settings.rooms.wechatyUserGroup[language],
+    room    : settings.rooms.polyglotUserGroup[language],
     rule    : rule(language),
     welcome : welcome(language),
   })
@@ -53,7 +53,7 @@ const getInviterPluginList = (settings: WeChatSettings) => {
   const InviterPluginList = []
 
   for (const language of (
-    Object.keys(settings.rooms.wechatyUserGroup) as (keyof typeof settings.rooms.wechatyUserGroup)[]
+    Object.keys(settings.rooms.polyglotUserGroup) as (keyof typeof settings.rooms.polyglotUserGroup)[]
   )) {
     const configObj = config(language)
     /**
