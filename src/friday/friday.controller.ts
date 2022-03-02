@@ -110,8 +110,12 @@ export class FridayController {
       wechatyList.map(wechaty => wechatyHtml(wechaty)),
     )
     const html = [
-      `<h1>BOT5 v${VERSION}</h1>`,
-      `wechaty@${WECHATY.VERSION}`,
+      `
+        <h1>BOT5 v${VERSION}</h1>
+        <div>
+          wechaty@${WECHATY.VERSION}
+        </div>
+      `,
       FORM_HTML,
       ...htmlList,
     ].join('\n<hr />\n')
