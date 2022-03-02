@@ -54,22 +54,17 @@ export class FridayController {
     const wechatyHtml = async (wechaty: WECHATY.impls.WechatyInterface): Promise<string> => {
 
       let html = `
+        <h2>
+          ${wechaty.puppet}
+        </h2>
+
         <div>
           <ul>
             <li>
-              ${wechaty}
-            </li>
-            <li>
-              wechaty@${wechaty.version()}: ${wechaty.id}
-            </li>
-            <li>
-              ${wechaty.puppet}
+            wechaty@${wechaty.version()}: ${wechaty}
             </li>
             <li>
               puppet@${wechaty.puppet.version()}: ${wechaty.puppet.id}
-            </li>
-            <li>
-              ${wechaty.isLoggedIn ? wechaty.currentUser.name() : 'please scan the QR Code below to login:'}
             </li>
           </ul>
         </div>
