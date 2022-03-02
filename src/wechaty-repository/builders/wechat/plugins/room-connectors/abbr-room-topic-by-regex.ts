@@ -21,24 +21,24 @@ function abbrRoomTopicByRegex (matcher: RegExp) {
 /**
  * "Wechaty Developers' Home 8" -> "Home 8"
  */
-const abbrRoomTopicForDevelopersHome = abbrRoomTopicByRegex(/^Wechaty\s+.*?([^\s]+\s*(\d+)?)$/)
+const abbrRoomTopicForDevelopersHome = abbrRoomTopicByRegex(/^Wechaty\s+.*?([^\s]+\s*(\d+)?)$/i)
 /**
  * "Python Wechaty User Group" -> "Python"
  */
-const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)\s+Wechaty User Group$/)
+const abbrRoomTopicForPolyglot = abbrRoomTopicByRegex(/^\s*([^\s]+)\s+Wechaty User Group$/i)
 
 /**
  * "Wechaty Puppet WhatsApp" -> "WhatsApp"
  */
-const abbrRoomTopicForPuppet = abbrRoomTopicByRegex(/^Wechaty Puppet ([^\s]+)$/)
+const abbrRoomTopicForPuppet = abbrRoomTopicByRegex(/^Wechaty Puppet ([^\s]+)$/i)
 
 const abbrRoomTopicForBot5 = abbrRoomTopicByRegex(/^(BOT5) /)
 
 const abbrRoomTopicForAll = async (message: Message) => {
-  return await abbrRoomTopicForPolyglot(message)
-    || await abbrRoomTopicForBot5(message)
+  return await abbrRoomTopicForDevelopersHome(message)
+    || await abbrRoomTopicForPolyglot(message)
     || await abbrRoomTopicForPuppet(message)
-    || await abbrRoomTopicForDevelopersHome(message)
+    || await abbrRoomTopicForBot5(message)
 }
 
 export {
