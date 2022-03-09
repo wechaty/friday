@@ -31,9 +31,18 @@ export class ClassifyMoMtHandler implements ICommandHandler<ClassifyMoMtCommand>
       this.log.warn('ClassifyMoMtHandler', 'execute({ messageId: %s }) puppetId "%s" not found', command.messageId, command.puppetId)
       return
     }
-    const message = await wechaty.Message.find({ id: command.messageId })
-    if (!message) {
-      this.log.warn('ClassifyMoMtHandler', 'execute({ messageId: %s }) message not found', command.messageId)
+
+    let message
+
+    try {
+      message = await wechaty.Message.find({ id: command.messageId })
+      if (!message) {
+        this.log.warn('ClassifyMoMtHandler', 'execute({ messageId: %s }) message not found', command.messageId)
+        return
+      }
+    } catch (e) {
+      this.log.warn('ClassifyMoMtHandler', 'execute({ messageId: %s }) Message.find() rejection:', command.messageId, (e as Error).message)
+      console.error(e)
       return
     }
 
