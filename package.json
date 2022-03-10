@@ -54,7 +54,7 @@
     "sheet-db": "^1.0.1",
     "time-constants": "^1.0.3",
     "vorpal-hacker-news": "^1.0.6",
-    "wechaty": "^1.13.19",
+    "wechaty": "^1.15.1",
     "wechaty-bot5-assistant": "^0.2.14",
     "wechaty-freshdesk": "^1.0.2",
     "wechaty-intercom": "^1.0.1",
