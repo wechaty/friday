@@ -3,7 +3,7 @@ import {
 }               from '@nestjs/common'
 import { Brolog } from 'brolog'
 
-import { EnvVar }               from '../../../infrastructure/mod.js'
+import { EnvVar }               from '../../../infrastructures/mod.js'
 
 import type { NamedInterface }  from '../../named-interface.js'
 

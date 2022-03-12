@@ -3,21 +3,21 @@ import {
 }                 from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import { DomainModelModules }       from '../core/mod.js'
+import { DomainModules }       from '../domains/mod.js'
 
-import { InfrastructureModule }     from '../infrastructure/mod.js'
+import { InfrastructureModule }     from '../infrastructures/mod.js'
 import { WechatyEventsModule }      from '../wechaty-events/mod.js'
 import { WechatyRepositoryModule }  from '../wechaty-repository/mod.js'
 import { WechatySettingsModule }    from '../wechaty-settings/mod.js'
 
 import { CommandHandlers }  from './commands/mod.js'
 
-import { FridayController } from './friday.controller.js'
+import { PresentationController } from './presentation.controller.js'
 
 @Module({
-  controllers: [FridayController],
+  controllers: [PresentationController],
   imports: [
-    ...DomainModelModules,
+    ...DomainModules,
     CqrsModule,
     InfrastructureModule,
     WechatyEventsModule,
@@ -28,4 +28,4 @@ import { FridayController } from './friday.controller.js'
     ...CommandHandlers,
   ],
 })
-export class FridayModule {}
+export class PresentationModule {}

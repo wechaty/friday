@@ -14,7 +14,7 @@ import {
   PuppetMessageReceivedEvent,
 }                               from '../wechaty-events/events/impls/puppet-message-received.event.js'
 
-import { getSetupFinis }        from '../infrastructure/mod.js'
+import { getSetupFinis }        from '../infrastructures/mod.js'
 import {
   type BotName,
   WeChatSettings,

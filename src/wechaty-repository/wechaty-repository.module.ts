@@ -6,7 +6,7 @@ import {
   CqrsModule,
 }                     from '@nestjs/cqrs'
 
-import { InfrastructureModule }   from '../infrastructure/infrastructure.module.js'
+import { InfrastructureModule }   from '../infrastructures/infrastructure.module.js'
 import { WechatySettingsModule }  from '../wechaty-settings/mod.js'
 
 import { WechatyBuilders }    from './builders/mod.js'

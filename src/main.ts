@@ -3,7 +3,7 @@ import { ApplicationModule } from './app.module.js'
 
 import { VERSION } from './config.js'
 
-import { EnvVar } from './infrastructure/mod.js'
+import { EnvVar } from './infrastructures/mod.js'
 
 async function bootstrap () {
   const app     = await NestFactory.create(ApplicationModule)

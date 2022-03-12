@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common'
 
-import { FridayModule } from './friday/mod.js'
+import { PresentationModule } from './presentations/mod.js'
 
 @Module({
   imports: [
-    FridayModule,
+    PresentationModule,
   ],
 })
 export class ApplicationModule {

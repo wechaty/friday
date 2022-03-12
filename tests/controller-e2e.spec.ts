@@ -32,7 +32,7 @@ import { INestApplication, Logger } from '@nestjs/common'
 import * as PUPPET from 'wechaty-puppet'
 
 import { FridayModule } from '../src/friday/mod.js'
-import { EnvVar }       from '../src/infrastructure/mod.js'
+import { EnvVar }       from '../src/infrastructures/mod.js'
 
 import type { ChatopsDto } from '../src/friday/interfaces/chatops-dto.interface.js'
 

@@ -5,11 +5,11 @@ import {
   SyncCommunityRoomsModule,
 }                             from './sync-community-rooms/mod.js'
 
-const DomainModelModules = [
+const DomainModules = [
   StatuspageModule,
   SyncCommunityRoomsModule,
 ]
 
 export {
-  DomainModelModules,
+  DomainModules,
 }

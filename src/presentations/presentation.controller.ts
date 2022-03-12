@@ -11,7 +11,7 @@ import { ChatopsCommand }   from './commands/mod.js'
 import type { ChatopsDto }  from './interfaces/mod.js'
 
 @Controller('/')
-export class FridayController {
+export class PresentationController {
 
   constructor (
     private readonly commandBus: CommandBus,

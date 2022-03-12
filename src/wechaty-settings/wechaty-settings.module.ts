@@ -3,7 +3,7 @@ import {
   Module,
 }             from '@nestjs/common'
 
-import { InfrastructureModule } from '../infrastructure/mod.js'
+import { InfrastructureModule } from '../infrastructures/mod.js'
 
 import { WechatySettings }  from './settings/mod.js'
 

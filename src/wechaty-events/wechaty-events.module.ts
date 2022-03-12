@@ -2,7 +2,7 @@ import {
   Module,
 }                 from '@nestjs/common'
 
-import { InfrastructureModule }     from '../infrastructure/mod.js'
+import { InfrastructureModule }     from '../infrastructures/mod.js'
 import { WechatyRepositoryModule }  from '../wechaty-repository/mod.js'
 
 import { CommandHandlers }  from './commands/mod.js'

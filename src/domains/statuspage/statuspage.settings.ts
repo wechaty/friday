@@ -1,7 +1,7 @@
 import { Brolog } from 'brolog'
 import { Injectable } from '@nestjs/common'
 
-import { EnvVar } from '../../infrastructure/mod.js'
+import { EnvVar } from '../../infrastructures/mod.js'
 
 @Injectable()
 class StatuspageSettings {

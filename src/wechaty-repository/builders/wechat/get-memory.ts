@@ -4,7 +4,7 @@ import {
 import {
   MemoryCard,
 }                 from 'memory-card'
-import type { EnvVar } from '../../../infrastructure/mod.js'
+import type { EnvVar } from '../../../infrastructures/mod.js'
 
 export let memory: undefined | MemoryCard
 

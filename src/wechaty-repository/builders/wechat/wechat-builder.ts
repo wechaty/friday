@@ -7,7 +7,7 @@ import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 
 import { WeChatSettings } from '../../../wechaty-settings/mod.js'
-import { EnvVar }         from '../../../infrastructure/mod.js'
+import { EnvVar }         from '../../../infrastructures/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
 
