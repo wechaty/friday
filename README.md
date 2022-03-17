@@ -17,6 +17,11 @@ We are current DevOps the master branch from the repo to Heroku under the protec
 
 You can visit the staging system at <http://friday.chatie.io/>
 
+## DDD & CQRS
+
+- [Refactoring Friday BOT with NestJS, Domain-driven Design (DDD), and CQRS, @huan, Feb 27, 2022](https://wechaty.js.org/2022/02/27/refactoring-friday-bot-with-nestjs-ddd-cqrs/)
+- [CQRS Wechaty](https://github.com/wechaty/cqrs): An event-driven architecture wrapper for Wechaty that applies the CQS principle by using separate Query and Command messages to retrieve and modify the bot state, respectively.
+
 ## Contributors
 
 [![contributor](https://sourcerer.io/fame/huan/wechaty/friday/images/0)](https://sourcerer.io/fame/huan/wechaty/friday/links/0)
