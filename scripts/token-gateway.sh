@@ -2,6 +2,7 @@
 
 set -e
 
+# https://stackoverflow.com/a/60406814/1123955
 export $(grep -v ^\# .env | xargs)
 
 #
