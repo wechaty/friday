@@ -1,5 +1,5 @@
 import { getMemory }   from './get-memory.js'
-import { getIoClient } from './get-io-client.js'
+// import { getIoClient } from './get-io-client.js'
 import { setHandlers } from './set-handlers.js'
 
 import { Injectable } from '@nestjs/common'
@@ -52,13 +52,13 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
 
     setHandlers(wechaty, this.settings)
 
-    const ioClient = getIoClient(wechaty, this.settings)
+    // const ioClient = getIoClient(wechaty, this.settings)
 
-    /**
-     * Io Client Hook
-     */
-    wechaty.on('start', () => wechaty.wrapAsync(ioClient.start()))
-    wechaty.on('stop',  () => wechaty.wrapAsync(ioClient.stop()))
+    // /**
+    //  * Io Client Hook
+    //  */
+    // wechaty.on('start', () => wechaty.wrapAsync(ioClient.start()))
+    // wechaty.on('stop',  () => wechaty.wrapAsync(ioClient.stop()))
 
     return wechaty
   }
