@@ -18,6 +18,7 @@ const java = [
 
 const python = [
   '20771403027@chatroom', // Python Wechaty User Group
+  'R:10696051131033249',  // Huan(202205): the same room as above id
 ]
 
 const rust = [
