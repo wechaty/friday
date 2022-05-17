@@ -29,7 +29,6 @@ class WeChatSettings implements NamedInterface {
   readonly wechatyPuppetEndpoint?: string
 
   readonly wechatyToken: string
-  readonly wechatyPuppetServerPort: number
 
   readonly disabled: boolean
 
@@ -48,23 +47,14 @@ class WeChatSettings implements NamedInterface {
       .asString()
 
     this.wechatyPuppetToken = envVar
-      .get('WECHATY_PUPPET_SERVICE_TOKEN')
+      .get('WECHATY_PUPPET_TOKEN')
       .required(true)
-      .asString()
-
-    this.wechatyPuppetEndpoint = envVar
-      .get('WECHATY_PUPPET_ENDPOINT')
       .asString()
 
     this.wechatyToken = envVar
       .get('WECHATY_TOKEN')
       .required()
       .asString()
-
-    this.wechatyPuppetServerPort = envVar
-      .get('WECHATY_PUPPET_SERVER_PORT')
-      .default(0)
-      .asPortNumber()
 
     this.log.verbose('WeChatSettings', 'constructor() %s%s: wechatyToken=%s wechatyPuppetServiceToken=%s',
       this.disabled ? 'DISABLED ' : '',

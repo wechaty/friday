@@ -40,7 +40,7 @@ class WeChatBuilder implements WECHATY.BuilderInterface {
       name: this.settings.name,
       puppet: this.settings.wechatyPuppet as any,
       puppetOptions: {
-        endpoint : this.settings.wechatyPuppetEndpoint,
+        // endpoint : this.settings.wechatyPuppetEndpoint,
         token    : this.settings.wechatyPuppetToken,
       },
     })
