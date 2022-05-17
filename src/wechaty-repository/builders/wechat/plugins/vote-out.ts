@@ -46,6 +46,7 @@ const getVoteOutPlugin = (settings: WeChatSettings) => {
       /^Youth fed the/i,
       /^Wechaty Plugin Developers/i,
       /^Wechaty Testing$/,
+      /Wechaty User Group$/,
       ...Object.values(settings.rooms.polyglotUserGroup).flat(),
       ...Object.values(settings.rooms.puppetUserGroup).flat(),
     ],
