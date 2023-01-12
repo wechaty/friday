@@ -43,8 +43,10 @@ export function stringFilterFactory (filter?: string) {
   // console.info('pickFilterList', pickFilterList)
   // console.info('skipFilterList', skipFilterList)
 
-  const pickRegex = getPickRegex(pickFilterList)
-  const skipRegex = getSkipRegex(skipFilterList)
+  const isPick = (str: string) => getPickRegex(pickFilterList).test(str)
+  const isSkip = skipFilterList.length === 0
+    ? (_: string) => false
+    : (str: string) => getSkipRegex(skipFilterList).test(str)
 
-  return (str: string) => !skipRegex.test(str) && pickRegex.test(str)
+  return (str: string) => !isSkip(str) && isPick(str)
 }
