@@ -15,6 +15,7 @@ import {
   GetGitterMembersCountQuery,
   GetQqMembersCountQuery,
   GetWeChatMembersCountQuery,
+  GetWorkProMembersCountQuery,
   GetWhatsAppMembersCountQuery,
 }                                   from './queries/mod.js'
 
@@ -41,6 +42,7 @@ export class CountingService {
     const countList: number[] = [
       await this.queryBus.execute(new GetQqMembersCountQuery()),
       await this.queryBus.execute(new GetWeChatMembersCountQuery()),
+      await this.queryBus.execute(new GetWorkProMembersCountQuery()),
       await this.queryBus.execute(new GetGitterMembersCountQuery()),
       await this.queryBus.execute(new GetWhatsAppMembersCountQuery()),
     ]
