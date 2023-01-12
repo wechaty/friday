@@ -41,10 +41,12 @@ const envFixture = {
 
   WECHATY_PUPPET_SERVER_PORT: '18788',
 
-  WECHATY_PUPPET: 'wechaty-puppet-mock',
+  WECHATY_PUPPET_WECHAT: 'wechaty-puppet-mock',
+  WECHATY_PUPPET_WECHAT_TOKEN: 'blabla',
+
   WECHATY_PUPPET_SERVICE_TOKEN: 'puppet_donut',
 
-  WECHATY_PUPPET_SERVICE_TOKEN_WXWORK: 'puppet_wxwork',
+  WECHATY_PUPPET_SERVICE_TOKEN_WORKPRO: 'puppet_wxwork',
 
   WECHATY_TOKEN: '179',
 

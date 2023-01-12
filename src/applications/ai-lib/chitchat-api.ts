@@ -6,7 +6,7 @@ async function chatApi (gossip: string): Promise<string> {
 
   const gossipTokenList = gossip.split('')
   const json = {
-    instances: [{
+    instances: [ {
       length: gossipTokenList.length + 3,
       tokens: [
         '<S1>',
@@ -14,7 +14,7 @@ async function chatApi (gossip: string): Promise<string> {
         '</S1>',
         '<S2>',
       ],
-    }],
+    } ],
   }
 
   const ret = await Axios.post<typeof json & {

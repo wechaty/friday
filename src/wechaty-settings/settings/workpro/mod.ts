@@ -5,31 +5,24 @@ import { EnvVar }               from '../../../infrastructures/mod.js'
 import type { NamedInterface }  from '../../named-interface.js'
 
 @Injectable()
-class WxWorkSettings implements NamedInterface {
+class WorkProSettings implements NamedInterface {
 
-  readonly name = 'WXWork'
+  readonly name = 'WorkPro'
   readonly heartbeatRoomId = 'R:10696051718181051'  // ChatOps - Heartbeat 💖
-  readonly chatOpsRoomId   = 'R:10696051757179651'  // 'R:3057039320'  // ChatOps - WXWork
+  readonly chatOpsRoomId   = 'R:10696051757179651'  // 'R:3057039320'  // ChatOps - WorkPro
 
   readonly token: string
-  readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
     envVar: EnvVar,
   ) {
-    this.disabled = envVar
-      .get('WECHATY_DISABLE_WXWORK')
-      .default(0)
-      .asBool()
-
     this.token = envVar
-      .get('WECHATY_PUPPET_SERVICE_TOKEN_WXWORK')
+      .get('WECHATY_PUPPET_SERVICE_TOKEN_WORKPRO')
       .required(true)
       .asString()
 
-    this.log.verbose('WxWorkSettings', 'constructor() %s%s: token=%s chatOpsRoomId=%s',
-      this.disabled ? 'DISABLED ' : '',
+    this.log.verbose('WorkProSettings', 'constructor() %s: token=%s chatOpsRoomId=%s',
       this.name,
       this.token,
       this.chatOpsRoomId,
@@ -39,5 +32,5 @@ class WxWorkSettings implements NamedInterface {
 }
 
 export {
-  WxWorkSettings,
+  WorkProSettings,
 }

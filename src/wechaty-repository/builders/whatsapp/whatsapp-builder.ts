@@ -5,22 +5,18 @@ import { PuppetWhatsapp } from 'wechaty-puppet-whatsapp'
 
 import { WhatsAppSettings } from '../../../wechaty-settings/mod.js'
 import { getPlugins } from './plugins/mod.js'
+import type { Builder } from '../builder.js'
 
 @Injectable()
-class WhatsAppBuilder implements WECHATY.BuilderInterface {
-
-  readonly disabled: boolean
+class WhatsAppBuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
-    private readonly settings: WhatsAppSettings,
+    public readonly settings: WhatsAppSettings,
   ) {
-    this.log.verbose('WhatsAppBuilder', 'constructor(%s) %s',
+    this.log.verbose('WhatsAppBuilder', 'constructor(%s)',
       settings.name,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled = settings.disabled
   }
 
   build () {

@@ -14,7 +14,6 @@ class GitterSettings implements NamedInterface {
   readonly wechatyRoomId = '573324fcc43b8c60197242bf' // 'https://gitter.im/wechaty/wechaty'
 
   readonly token: string
-  readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
@@ -25,13 +24,7 @@ class GitterSettings implements NamedInterface {
       .required(true)
       .asString()
 
-    this.disabled = envVar
-      .get('WECHATY_DISABLE_GITTER')
-      .default(0)
-      .asBool()
-
-    this.log.verbose('GitterSettings', 'constructor() %s%s token=%s, wechatyRoomId=%s',
-      this.disabled ? 'DISABLED ' : '',
+    this.log.verbose('GitterSettings', 'constructor() %s token=%s, wechatyRoomId=%s',
       this.name,
       this.token,
       this.wechatyRoomId,

@@ -15,7 +15,7 @@ import { CommandHandlers }  from './commands/mod.js'
 import { PresentationController } from './presentation.controller.js'
 
 @Module({
-  controllers: [PresentationController],
+  controllers: [ PresentationController ],
   imports: [
     ...DomainModules,
     CqrsModule,

@@ -17,7 +17,7 @@ const getBot5OneToManyPlugin = (settings: WeChatSettings) => {
    * - second club room in the array (and all the following)
    *    is the previous room (previous year).
    */
-  const [next, current, ...previous] =  settings.rooms.bot5Club.rooms
+  const [ next, current, ...previous ] =  settings.rooms.bot5Club.rooms
 
   const Bot5OneToManyPlugin = SourceToTargetRoomConnector({
     map: getUnidirectionalMapper(settings),

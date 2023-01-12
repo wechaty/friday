@@ -2,7 +2,7 @@ import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                        from 'wechaty-vorpal'
-import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
+import type { WorkProSettings } from '../../../../../wechaty-settings/mod.js'
 // import { Faq  }           from 'wechaty-qnamaker'
 
 // import {
@@ -10,7 +10,7 @@ import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
 //   configEnglish,
 // }                         from '../../../wechat/plugins/qnamaker.js'
 
-const getFaqVorpalPlugin = (_settings: WxWorkSettings) => {
+const getFaqVorpalPlugin = (_settings: WorkProSettings) => {
   const faqConfig: WechatyVorpalConfig = {
     contact : true,
     mention : true,

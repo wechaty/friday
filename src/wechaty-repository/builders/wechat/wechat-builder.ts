@@ -10,24 +10,20 @@ import { WeChatSettings } from '../../../wechaty-settings/mod.js'
 import { EnvVar }         from '../../../infrastructures/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
+import type { Builder } from '../builder.js'
 
 @Injectable()
-class WeChatBuilder implements WECHATY.BuilderInterface {
-
-  disabled: boolean
+class WeChatBuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
     private envVar: EnvVar,
-    private settings: WeChatSettings,
+    public settings: WeChatSettings,
   ) {
-    this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s}) %s',
+    this.log.verbose('WeChatBuilder', 'constructor({name: %s, token: %s})',
       settings.name,
       settings.wechatyPuppetToken,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled = settings.disabled
   }
 
   build () {

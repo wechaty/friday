@@ -1,31 +1,25 @@
-import { Injectable } from '@nestjs/common'
-import {
-  WechatyBuilder,
-}             from 'wechaty'
-import { Brolog } from 'brolog'
+import { Injectable }       from '@nestjs/common'
+import { WechatyBuilder }   from 'wechaty'
+import { Brolog }           from 'brolog'
+import { PuppetGitter }     from 'wechaty-puppet-gitter'
 
-import { PuppetGitter }  from 'wechaty-puppet-gitter'
-import type * as WECHATY from 'wechaty'
-
-import { getPlugins } from './plugins/mod.js'
 import { GitterSettings } from '../../../wechaty-settings/mod.js'
 
-@Injectable()
-class GitterBuilder implements WECHATY.BuilderInterface {
+import type { Builder } from '../builder.js'
 
-  disabled: boolean
+import { getPlugins } from './plugins/mod.js'
+
+@Injectable()
+class GitterBuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
-    private readonly settings: GitterSettings,
+    public readonly settings: GitterSettings,
   ) {
-    this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s}) %s',
+    this.log.verbose('GitterBuilder', 'constructor({name: %s, token: %s})',
       settings.name,
       settings.token,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled = settings.disabled
   }
 
   build () {

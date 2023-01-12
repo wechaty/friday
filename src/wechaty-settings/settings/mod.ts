@@ -3,7 +3,7 @@ import { OaSettings }       from './oa/mod.js'
 import { QqSettings }       from './qq/mod.js'
 import { WeChatSettings }   from './wechat/mod.js'
 import { WhatsAppSettings } from './whatsapp/mod.js'
-import { WxWorkSettings }   from './wxwork/mod.js'
+import { WorkProSettings }   from './workpro/mod.js'
 
 const WechatySettings = [
   GitterSettings,
@@ -11,7 +11,7 @@ const WechatySettings = [
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
-  WxWorkSettings,
+  WorkProSettings,
 ]
 
 export {
@@ -22,5 +22,5 @@ export {
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
-  WxWorkSettings,
+  WorkProSettings,
 }

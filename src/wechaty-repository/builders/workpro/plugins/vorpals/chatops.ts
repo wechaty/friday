@@ -1,28 +1,34 @@
-import type { Room } from 'wechaty'
 import {
   WechatyVorpal,
   WechatyVorpalConfig,
 }                         from 'wechaty-vorpal'
 import {
   Ding,
+  Eval,
+  Cash,
+  UrlLink,
+  Announce,
+  Find,
   MathMaster,
   Version,
   Whoru,
 }                         from 'wechaty-vorpal-contrib'
-import type { WxWorkSettings } from '../../../../../wechaty-settings/mod.js'
+import type { WorkProSettings } from '../../../../../wechaty-settings/mod.js'
 
-const getChatopsVorpalPlugin = (settings: WxWorkSettings) => {
-  const isNotChatOpsRoom = (room: Room) => !([
-    settings.chatOpsRoomId,
-  ].includes(room.id))
-
+const getChatopsVorpalPlugin = (settings: WorkProSettings) => {
   const chatopsConfig: WechatyVorpalConfig = {
-    contact : true,
-    room    : isNotChatOpsRoom,
+    contact : false,
+    mention : false,
+    room    : settings.chatOpsRoomId,
     silent  : true,
 
     use: [
       Ding(),
+      Eval(),
+      Cash(),
+      UrlLink(),
+      Announce(),
+      Find(),
       MathMaster(),
       Whoru(),
       Version(),

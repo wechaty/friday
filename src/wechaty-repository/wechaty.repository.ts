@@ -14,7 +14,10 @@ import {
   PuppetMessageReceivedEvent,
 }                               from '../wechaty-events/events/impls/puppet-message-received.event.js'
 
-import { getSetupFinis }        from '../infrastructures/mod.js'
+import {
+  EnvVar,
+  getSetupFinis,
+}                               from '../infrastructures/mod.js'
 import {
   type BotName,
   WeChatSettings,
@@ -26,24 +29,26 @@ import {
   QqBuilder,
   WeChatBuilder,
   WhatsAppBuilder,
-  WXWorkBuilder,
+  WorkProBuilder,
 }                     from './builders/mod.js'
+import { stringFilterFactory } from '../pures/string-filter.js'
 
 @Injectable()
 export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
 
-  private wechatyList: WECHATY.impls.WechatyInterface[]
+  private wechatyList: WECHATY.impls.WechatyInterface[] = []
 
   constructor (
     private readonly log: Brolog,
     private readonly eventBus: EventBus,
     private readonly weChatSettings: WeChatSettings,
+    readonly envVar: EnvVar,
     gitterBuilder   : GitterBuilder,
     oaBuilder       : OABuilder,
     qqBuilder       : QqBuilder,
     wechatBuilder   : WeChatBuilder,
     whatsAppBuilder : WhatsAppBuilder,
-    wxworkBuilder   : WXWorkBuilder,
+    workProBuilder   : WorkProBuilder,
 
   ) {
     const builders = [
@@ -52,12 +57,21 @@ export class WechatyRepository implements OnModuleInit, OnModuleDestroy {
       qqBuilder,
       wechatBuilder,
       whatsAppBuilder,
-      wxworkBuilder,
+      workProBuilder,
     ]
 
-    this.wechatyList = builders
-      .filter(builder => builder.disabled === false)
-      .map(Builder => Builder.build())
+    const WECHATY_REPOSITORY = envVar.get('WECHATY_REPOSITORY').asString()
+    log.verbose('WechatyRepository', 'constructor() WECHATY_REPOSITORY="%s"', WECHATY_REPOSITORY)
+    const nameEnabled = stringFilterFactory(WECHATY_REPOSITORY)
+
+    for (const builder of builders) {
+      if (nameEnabled(builder.settings.name)) {
+        log.verbose('WechatyRepository', 'constructor() %s enabled', builder.settings.name)
+        this.wechatyList.push(builder.build())
+      } else {
+        log.verbose('WechatyRepository', 'constructor() %s disabled', builder.settings.name)
+      }
+    }
   }
 
   async onModuleInit () {

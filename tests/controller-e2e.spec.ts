@@ -49,7 +49,7 @@ test('Friday Controler', async t => {
     sandbox = sinon.createSandbox()
 
     const builder = Test.createTestingModule({
-      imports: [PresentationModule],
+      imports: [ PresentationModule ],
     })
 
     builder
@@ -57,12 +57,8 @@ test('Friday Controler', async t => {
       .overrideProvider(EnvVar)
       .useValue(new EnvVar({
         ...envFixture as any,
-        WECHATY_DISABLE_GITTER   : 'true',
-        WECHATY_DISABLE_OA       : 'true',
-        WECHATY_DISABLE_QQ       : 'true',
-        WECHATY_DISABLE_WHATSAPP : 'true',
-        WECHATY_DISABLE_WXWORK   : 'true',
-        // WECHATY_DISABLE_WECHAT   : 'true',
+        // WECHATY_REPOSITORY: '*,-gitter,-oa,-qq,-whatsapp,-workpro',
+        WECHATY_REPOSITORY: 'wechat',
       }))
 
     testingModule = await builder.compile()
