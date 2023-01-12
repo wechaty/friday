@@ -7,7 +7,7 @@ export class EnvVar {
   private envVar: typeof envVar
 
   constructor (
-    env?: typeof process.env,
+    env?: typeof process.env, // <-- testing purpose
   ) {
     const ev = env ? envVar.from(env) : envVar
     this.envVar = ev as any as typeof envVar

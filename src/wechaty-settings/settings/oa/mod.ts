@@ -14,17 +14,11 @@ class OaSettings implements NamedInterface {
   readonly appSecret: string
   readonly token: string
   readonly webhookProxyUrl: string
-  readonly disabled: boolean
 
   constructor (
     private readonly log: Brolog,
     envVar: EnvVar,
   ) {
-    this.disabled = envVar
-      .get('WECHATY_DISABLE_OA')
-      .default(0)
-      .asBool()
-
     this.appId = envVar
       .get('HUAN_APP_ID')
       .required(true)
@@ -45,8 +39,7 @@ class OaSettings implements NamedInterface {
       .required(true)
       .asString()
 
-    this.log.verbose('OaSettings', 'constructor() %s%s: appId=%s, webhookProxyUrl=%s',
-      this.disabled ? 'DISABLED ' : '',
+    this.log.verbose('OaSettings', 'constructor() %s: appId=%s, webhookProxyUrl=%s',
       this.name,
       this.appId,
       this.webhookProxyUrl,

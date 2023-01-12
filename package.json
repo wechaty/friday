@@ -1,11 +1,11 @@
 {
   "name": "friday.bot",
-  "version": "1.14.3",
+  "version": "1.14.5",
   "description": "Friday Bot is designed for serving the Wechaty community purpose.",
   "type": "module",
   "engines": {
-    "node": ">=16",
-    "npm": ">=7"
+    "node": ">=18",
+    "npm": ">=9"
   },
   "scripts": {
     "build": "tsc",
@@ -71,9 +71,9 @@
     "wechaty-voteout": "^1.11.1"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^1.0.4",
+    "@chatie/eslint-config": "^1.2.2",
     "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^4.6.3",
+    "@chatie/tsconfig": "^4.6.4",
     "@nestjs/cli": "^8.2.6",
     "@nestjs/schematics": "^8.0.11",
     "@nestjs/testing": "^8.4.6",

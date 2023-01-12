@@ -6,28 +6,22 @@ import { Brolog } from 'brolog'
 
 import { PuppetOA }  from 'wechaty-puppet-official-account'
 
-import type * as WECHATY from 'wechaty'
-
 import { OaSettings } from '../../../wechaty-settings/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
+import type { Builder } from '../builder.js'
 
 @Injectable()
-class OABuilder implements WECHATY.BuilderInterface {
-
-  disabled: boolean
+class OABuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
-    private readonly settings: OaSettings,
+    public readonly settings: OaSettings,
   ) {
-    this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s}) %s',
+    this.log.verbose('OABuilder', 'constructor({name: %s, webhookProxyUrl: %s})',
       settings.name,
       settings.webhookProxyUrl,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled        = settings.disabled
   }
 
   build () {

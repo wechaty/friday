@@ -4,7 +4,7 @@ export type BotName =
   | 'QQ'
   | 'WeChat'
   | 'WhatsApp'
-  | 'WXWork'
+  | 'WorkPro'
 
 export interface NamedInterface {
   name: BotName

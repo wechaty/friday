@@ -30,36 +30,30 @@ class WeChatSettings implements NamedInterface {
 
   readonly wechatyToken: string
 
-  readonly disabled: boolean
-
   constructor (
     readonly log: Brolog,
     readonly envVar: EnvVar,
   ) {
-    this.disabled = envVar
-      .get('WECHATY_DISABLE_WECHAT')
-      .default(0)
-      .asBool()
-
     this.wechatyPuppet = envVar
-      .get('WECHATY_PUPPET')
+      .get('WECHATY_PUPPET_WECHAT')
       .required(true)
       .asString()
 
     this.wechatyPuppetToken = envVar
-      .get('WECHATY_PUPPET_TOKEN')
+      .get('WECHATY_PUPPET_WECHAT_TOKEN')
       .required(true)
       .asString()
 
+    /**
+     * Huan(202301): `wechatyToken` is for re-publish the Wechaty Puppet Service to others
+     */
     this.wechatyToken = envVar
       .get('WECHATY_TOKEN')
       .required()
       .asString()
 
-    this.log.verbose('WeChatSettings', 'constructor() %s%s: wechatyToken=%s wechatyPuppetServiceToken=%s',
-      this.disabled ? 'DISABLED ' : '',
+    this.log.verbose('WeChatSettings', 'constructor() %s: wechatyPuppetServiceToken=%s',
       this.name,
-      this.wechatyToken,
       this.wechatyPuppetToken,
     )
   }

@@ -12,7 +12,7 @@ import {
   QqSettings,
   WeChatSettings,
   WhatsAppSettings,
-  WxWorkSettings,
+  WorkProSettings,
 }                     from '../../../../wechaty-settings/mod.js'
 
 import { WechatyRepository }     from '../../../../wechaty-repository/mod.js'
@@ -38,7 +38,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
     private readonly qqSettings: QqSettings,
     private readonly weChatSettings: WeChatSettings,
     private readonly whatsAppSettings: WhatsAppSettings,
-    private readonly wxWorkSettings: WxWorkSettings,
+    private readonly wxWorkSettings: WorkProSettings,
     private readonly repository: WechatyRepository,
   ) {
     this.weChatCommunityRoomList = [

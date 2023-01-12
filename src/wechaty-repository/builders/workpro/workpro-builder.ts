@@ -3,30 +3,26 @@ import * as WECHATY from 'wechaty'
 import { Brolog } from 'brolog'
 import { PuppetService } from 'wechaty-puppet-service'
 
-import { WxWorkSettings } from '../../../wechaty-settings/mod.js'
+import { WorkProSettings } from '../../../wechaty-settings/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
+import type { Builder } from '../builder.js'
 
 @Injectable()
-class WXWorkBuilder implements WECHATY.BuilderInterface {
-
-  readonly disabled: boolean
+class WorkProBuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
-    private readonly settings: WxWorkSettings,
+    public readonly settings: WorkProSettings,
   ) {
-    this.log.verbose('WXWorkBuilder', 'constructor(%s, %s) %s',
+    this.log.verbose('WorkProBuilder', 'constructor(%s, %s)',
       settings.name,
       settings.token,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled = settings.disabled
   }
 
   build () {
-    this.log.verbose('WXWorkBuilder', 'build()')
+    this.log.verbose('WorkProBuilder', 'build()')
 
     const puppet = new PuppetService({
       /**
@@ -66,4 +62,4 @@ class WXWorkBuilder implements WECHATY.BuilderInterface {
 //   await room.say(message.toString())
 // }
 
-export { WXWorkBuilder }
+export { WorkProBuilder }

@@ -71,3 +71,4 @@ t.*
 dist/
 .wechaty/
 data/
+.wwebjs_auth/

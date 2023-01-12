@@ -4,7 +4,7 @@ import {
 import type { WeChatSettings } from '../../../../wechaty-settings/mod.js'
 
 const getBot5AssistantPlugin = (settings: WeChatSettings) => {
-  const [_next, current, ..._previous] = settings.rooms.bot5Club.rooms
+  const [ _next, current, ..._previous ] = settings.rooms.bot5Club.rooms
 
   const Bot5AssistantPlugin = Bot5Assistant({
     room: [

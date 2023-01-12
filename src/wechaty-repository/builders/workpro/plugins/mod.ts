@@ -8,13 +8,13 @@ import {
   QRCodeTerminal,
 }                 from 'wechaty-plugin-contrib'
 
-import type { WxWorkSettings } from '../../../../wechaty-settings/mod.js'
+import type { WorkProSettings } from '../../../../wechaty-settings/mod.js'
 
 import { getHeartbeatPlugin }   from './heartbeat.js'
 import { getChatOpsPlugin }     from './chatops.js'
 import { getVorpalPluginList }  from './vorpals/mod.js'
 
-const getPlugins = (settings: WxWorkSettings) => {
+const getPlugins = (settings: WorkProSettings) => {
 
   const pluginList = [
     getChatOpsPlugin(settings.chatOpsRoomId),

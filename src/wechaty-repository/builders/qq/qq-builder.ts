@@ -6,23 +6,19 @@ import { PuppetOICQ }  from 'wechaty-puppet-oicq'
 
 import { getPlugins } from './plugins/mod.js'
 import { QqSettings } from '../../../wechaty-settings/mod.js'
+import type { Builder } from '../builder.js'
 
 @Injectable()
-export class QqBuilder implements WECHATY.BuilderInterface {
-
-  disabled: boolean
+export class QqBuilder implements Builder {
 
   constructor (
     private readonly log: Brolog,
-    private readonly settings: QqSettings,
+    public readonly settings: QqSettings,
   ) {
-    this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s}) %s',
+    this.log.verbose('OicqBuilder', 'constructor({name: %s, qq: %s})',
       settings.name,
       settings.qq,
-      settings.disabled ? 'DISABLED' : '',
     )
-
-    this.disabled = settings.disabled
   }
 
   build () {
