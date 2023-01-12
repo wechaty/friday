@@ -1,20 +1,23 @@
 import {
   WechatyVorpal,
   WechatyVorpalConfig,
-}                        from 'wechaty-vorpal'
+}                         from 'wechaty-vorpal'
 import type { WorkProSettings } from '../../../../../wechaty-settings/mod.js'
 // import { Faq  }           from 'wechaty-qnamaker'
 
 // import {
 //   configChinese,
 //   configEnglish,
-// }                         from '../../../wechat/plugins/qnamaker.js'
+// }                         from '../qnamaker.js'
 
-const getFaqVorpalPlugin = (_settings: WorkProSettings) => {
+const getFaqVorpalPlugin = (settings: WorkProSettings) => {
   const faqConfig: WechatyVorpalConfig = {
-    contact : true,
-    mention : true,
-    room    : true,
+    contact : false,
+    mention : false,
+    room    : [
+      settings.rooms.chatops.friday,
+      ...settings.rooms.wechatyDevelopers.contributors, // CONTRIBUTORS_ROOM_ID,
+    ],
     silent  : true,
 
     use: [

@@ -7,6 +7,7 @@ import { WorkProSettings } from '../../../wechaty-settings/mod.js'
 
 import { getPlugins } from './plugins/mod.js'
 import type { Builder } from '../builder.js'
+import { setHandlers } from './set-handlers.js'
 
 @Injectable()
 class WorkProBuilder implements Builder {
@@ -40,6 +41,7 @@ class WorkProBuilder implements Builder {
     })
 
     wechaty.use(getPlugins(this.settings))
+    setHandlers(wechaty, this.settings)
 
     return wechaty
   }

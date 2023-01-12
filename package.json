@@ -73,7 +73,7 @@
   "devDependencies": {
     "@chatie/eslint-config": "^1.2.2",
     "@chatie/git-scripts": "^0.6.2",
-    "@chatie/tsconfig": "^4.6.4",
+    "@chatie/tsconfig": "^4.9.1",
     "@nestjs/cli": "^8.2.6",
     "@nestjs/schematics": "^8.0.11",
     "@nestjs/testing": "^8.4.6",
