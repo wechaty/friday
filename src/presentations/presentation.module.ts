@@ -3,8 +3,6 @@ import {
 }                 from '@nestjs/common'
 import { CqrsModule } from '@nestjs/cqrs'
 
-import { DomainModules }       from '../domains/mod.js'
-
 import { InfrastructureModule }     from '../infrastructures/mod.js'
 import { WechatyEventsModule }      from '../wechaty-events/mod.js'
 import { WechatyRepositoryModule }  from '../wechaty-repository/mod.js'
@@ -17,7 +15,6 @@ import { PresentationController } from './presentation.controller.js'
 @Module({
   controllers: [ PresentationController ],
   imports: [
-    ...DomainModules,
     CqrsModule,
     InfrastructureModule,
     WechatyEventsModule,
