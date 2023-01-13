@@ -66,9 +66,7 @@ export class GetWeChatMembersCountHandler implements IQueryHandler<GetWeChatMemb
       // console.info('###', 'GetWeChatMembersCountQuery', await room.topic(), memberList.length)
     }
 
-    if (idSet.size <= 0) {
-      this.log.error('GetWeChatMembersCountHandler', 'getWeChatMemberIds() got 0 members')
-    }
+    this.log.verbose('GetWeChatMembersCountHandler', 'getWeChatMemberIds() got %d members', idSet.size)
 
     // console.info('######## idSet.size', idSet.size)
     return idSet.size

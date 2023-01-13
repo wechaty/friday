@@ -37,9 +37,7 @@ export class GetGitterMembersCountHandler implements IQueryHandler<GetGitterMemb
         const gitterRoomMemberList = await gitterRoom.memberAll()
         gitterRoomMemberList.forEach(contact => idSet.add(contact.id))
       }
-      if (idSet.size <= 0) {
-        this.log.error('GetGitterMembersCountHandler', 'getGitterMemberIds() got 0 members')
-      }
+      this.log.verbose('GetGitterMembersCountHandler', 'getGitterMemberIds() got %d members', idSet.size)
     } else {
       this.log.error('GetGitterMembersCountHandler', 'getGitterMemberIds() bot is not logged in')
     }

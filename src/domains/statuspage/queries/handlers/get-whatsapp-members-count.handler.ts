@@ -40,9 +40,7 @@ export class GetWhatsAppMembersCountHandler implements IQueryHandler<GetWhatsApp
         const memberList = await room.memberAll()
         memberList.forEach(contact => idSet.add(contact.id))
       }
-      if (idSet.size <= 0) {
-        this.log.error('GetWhatsAppMembersCountHandler', 'getWhatsAppMemberIds() got 0 members')
-      }
+      this.log.verbose('GetWhatsAppMembersCountHandler', 'getWhatsAppMemberIds() got %d members', idSet.size)
     } else {
       this.log.error('GetWhatsAppMembersCountHandler', 'getWhatsAppMemberIds() bot is not logged in yet')
     }

@@ -19,20 +19,19 @@ export class GetWorkProMembersCountHandler implements IQueryHandler<GetWorkProMe
   constructor (
     private readonly log: Brolog,
     private readonly repository: WechatyRepository,
-    private readonly workProSettings: WorkProSettings,
+    private readonly settings: WorkProSettings,
   ) {
     this.roomIdList = [
       ...new Set([
-        ...Object.values(workProSettings.rooms.bot5Club).flat(),
-        ...Object.values(workProSettings.rooms.wechatyDevelopers).flat(),
-        ...Object.values(workProSettings.rooms.polyglotUserGroup).flat(),
+        ...Object.values(settings.rooms.bot5Club).flat(),
+        ...Object.values(settings.rooms.wechatyDevelopers).flat(),
+        ...Object.values(settings.rooms.polyglotUserGroup).flat(),
       ]),
     ]
   }
 
   async onModuleInit () {
-    this.wechaty = await this.repository.findByName(this.workProSettings.name)
-
+    this.wechaty = await this.repository.findByName(this.settings.name)
   }
 
   async execute (_query: GetWorkProMembersCountQuery): Promise<number> {
@@ -66,9 +65,7 @@ export class GetWorkProMembersCountHandler implements IQueryHandler<GetWorkProMe
       // console.info('###', 'GetWorkProMembersCountQuery', await room.topic(), memberList.length)
     }
 
-    if (idSet.size <= 0) {
-      this.log.error('GetWorkProMembersCountHandler', 'getWorkProMemberIds() got 0 members')
-    }
+    this.log.verbose('GetWorkProMembersCountHandler', 'getWorkProMemberIds() got %d members', idSet.size)
 
     // console.info('######## idSet.size', idSet.size)
     return idSet.size
