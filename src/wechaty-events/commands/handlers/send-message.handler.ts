@@ -28,6 +28,11 @@ export class SendMessageHandler implements ICommandHandler<SendMessageCommand> {
       return
     }
 
+    if (!wechaty.isLoggedIn) {
+      this.log.warn('SendMessageHandler', 'execute() wechaty is not logged in for puppetId: %s', command.puppetId)
+      return
+    }
+
     try {
       await wechaty.puppet.messageSend(
         command.conversaionId,
