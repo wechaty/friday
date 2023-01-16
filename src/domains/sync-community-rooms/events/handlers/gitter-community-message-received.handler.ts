@@ -9,7 +9,9 @@ import {
   ForwardMessageToQqCommunityCommand,
   ForwardTextMessageToQqCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
+  ForwardMessageToWorkProCommunityCommand,
   ForwardTextMessageToWeChatCommunityCommand,
+  ForwardTextMessageToWorkProCommunityCommand,
   ForwardMessageToWhatsAppCommunityCommand,
   ForwardTextMessageToWhatsAppCommunityCommand,
 }                                               from '../../commands/mod.js'
@@ -44,12 +46,14 @@ export class GitterCommunityMessageReceivedHandler implements IEventHandler<Gitt
       commandClassList.push(
         ForwardTextMessageToQqCommunityCommand,
         ForwardTextMessageToWeChatCommunityCommand,
+        ForwardTextMessageToWorkProCommunityCommand,
         ForwardTextMessageToWhatsAppCommunityCommand,
       )
     } else {
       commandClassList.push(
         ForwardMessageToQqCommunityCommand,
         ForwardMessageToWeChatCommunityCommand,
+        ForwardMessageToWorkProCommunityCommand,
         ForwardMessageToWhatsAppCommunityCommand,
       )
     }

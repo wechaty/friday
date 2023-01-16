@@ -8,9 +8,11 @@ import { Brolog }         from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
+  ForwardMessageToWorkProCommunityCommand,
   ForwardMessageToWhatsAppCommunityCommand,
   ForwardTextMessageToGitterCommunityCommand,
   ForwardTextMessageToWeChatCommunityCommand,
+  ForwardTextMessageToWorkProCommunityCommand,
   ForwardTextMessageToWhatsAppCommunityCommand,
 }                                                   from '../../commands/mod.js'
 import { IsMessageTypeTextQuery }                   from '../../queries/mod.js'
@@ -44,12 +46,14 @@ export class QqCommunityMessageReceivedHandler implements IEventHandler<QqCommun
       commandClassList.push(
         ForwardTextMessageToGitterCommunityCommand,
         ForwardTextMessageToWeChatCommunityCommand,
+        ForwardTextMessageToWorkProCommunityCommand,
         ForwardTextMessageToWhatsAppCommunityCommand,
       )
     } else {
       commandClassList.push(
         ForwardMessageToGitterCommunityCommand,
         ForwardMessageToWeChatCommunityCommand,
+        ForwardMessageToWorkProCommunityCommand,
         ForwardMessageToWhatsAppCommunityCommand,
       )
     }

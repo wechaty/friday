@@ -8,9 +8,11 @@ import { Brolog }       from 'brolog'
 import {
   ForwardMessageToGitterCommunityCommand,
   ForwardMessageToWeChatCommunityCommand,
+  ForwardMessageToWorkProCommunityCommand,
   ForwardMessageToQqCommunityCommand,
   ForwardTextMessageToGitterCommunityCommand,
   ForwardTextMessageToWeChatCommunityCommand,
+  ForwardTextMessageToWorkProCommunityCommand,
   ForwardTextMessageToQqCommunityCommand,
 }                                                   from '../../commands/mod.js'
 import { IsMessageTypeTextQuery } from '../../queries/mod.js'
@@ -43,6 +45,7 @@ export class WhatsAppCommunityMessageReceivedHandler implements IEventHandler<Wh
     if (isTypeText) {
       commandClassList.push(
         ForwardTextMessageToGitterCommunityCommand,
+        ForwardTextMessageToWorkProCommunityCommand,
         ForwardTextMessageToWeChatCommunityCommand,
         ForwardTextMessageToQqCommunityCommand,
       )
@@ -50,6 +53,7 @@ export class WhatsAppCommunityMessageReceivedHandler implements IEventHandler<Wh
       commandClassList.push(
         ForwardMessageToGitterCommunityCommand,
         ForwardMessageToWeChatCommunityCommand,
+        ForwardMessageToWorkProCommunityCommand,
         ForwardMessageToQqCommunityCommand,
       )
     }

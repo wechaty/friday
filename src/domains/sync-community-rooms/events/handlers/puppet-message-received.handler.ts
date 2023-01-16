@@ -21,6 +21,7 @@ import {
   GitterCommunityMessageReceivedEvent,
   QqCommunityMessageReceivedEvent,
   WeChatCommunityMessageReceivedEvent,
+  WorkProCommunityMessageReceivedEvent,
   WhatsAppCommunityMessageReceivedEvent,
 }                                         from '../mod.js'
 
@@ -28,6 +29,7 @@ import {
 export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessageReceivedEvent> {
 
   private readonly weChatCommunityRoomList: string[]
+  private readonly workProCommunityRoomList: string[]
 
   private lastMessageHash?: string
 
@@ -38,7 +40,7 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
     private readonly qqSettings: QqSettings,
     private readonly weChatSettings: WeChatSettings,
     private readonly whatsAppSettings: WhatsAppSettings,
-    private readonly wxWorkSettings: WorkProSettings,
+    private readonly workProSettings: WorkProSettings,
     private readonly repository: WechatyRepository,
   ) {
     this.weChatCommunityRoomList = [
@@ -57,6 +59,24 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
         */
       ...this.weChatSettings.rooms.bot5Club.rooms,
     ]
+
+    this.workProCommunityRoomList = [
+      ...this.workProSettings.rooms.wechatyDevelopers.home,
+      ...this.workProSettings.rooms.wechatyDevelopers.homeHq,
+      ...this.workProSettings.rooms.wechatyDevelopers.contributors,
+      ...Object.values(this.workProSettings.rooms.polyglotUserGroup).flat(),
+      ...Object.values(this.workProSettings.rooms.puppetUserGroup).flat(),
+      /**
+       * Summer of Code
+       */
+      ...this.workProSettings.rooms.wechatyDevelopers.summer, // SUMMER_OF_CODE_ROOM_ID,
+
+      /**
+        * BOT5.Club
+        */
+      ...this.workProSettings.rooms.bot5Club.rooms,
+    ]
+
   }
 
   async handle (event: PuppetMessageReceivedEvent) {
@@ -97,8 +117,8 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
       case this.whatsAppSettings.name:
         this.handleWhatsAppMessage(message)
         break
-      case this.wxWorkSettings.name:
-        this.handleWxWorkMessage(message)
+      case this.workProSettings.name:
+        this.handleWorkProMessage(message)
         break
       default:
         this.log.warn('PuppetMessageReceivedHandler', 'handle() bot name "%s" unknown', wechatyName)
@@ -168,11 +188,21 @@ export class PuppetMessageReceivedHandler implements IEventHandler<PuppetMessage
     )
   }
 
-  private handleWxWorkMessage (message: WECHATY.Message): void {
-    this.log.verbose('PuppetMessageReceivedHandler', 'handleWxWorkMessage(%s)', message)
+  private handleWorkProMessage (message: WECHATY.Message): void {
+    this.log.verbose('PuppetMessageReceivedHandler', 'handleWorkProMessage(%s)', message)
 
-    // TODO: enable WxWork message sync
-    // Huan(20220228)
+    const room = message.room()
+
+    if (message.self())                                     { return }
+    if (!room)                                              { return }
+    if (!this.workProCommunityRoomList.includes(room.id))   { return }
+
+    this.eventBus.publish(
+      new WorkProCommunityMessageReceivedEvent(
+        message.wechaty.puppet.id,
+        message.id,
+      ),
+    )
   }
 
   private handleQqMessage (message: WECHATY.Message) {
