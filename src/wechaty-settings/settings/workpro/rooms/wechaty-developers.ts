@@ -7,7 +7,7 @@ const homeHq = [
 ]
 
 const monitor = [
-  'R:10696051635011175', // Wechaty Developers' Home 0
+  'R:10699121424455226', // Wechaty Developers' Home 0
 ]
 
 const home = [
