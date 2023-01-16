@@ -59,7 +59,7 @@
     "wechaty-freshdesk": "^1.0.2",
     "wechaty-intercom": "^1.0.1",
     "wechaty-plugin-contrib": "^1.11.1",
-    "wechaty-puppet-gitter": "^1.10.1",
+    "wechaty-puppet-gitter": "^1.21.3",
     "wechaty-puppet-official-account": "^1.10.3",
     "wechaty-puppet-oicq": "^1.10.2",
     "wechaty-puppet-padlocal": "^1.20.1",
