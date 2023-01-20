@@ -74,6 +74,7 @@ test('Friday Controler', async t => {
 
     spy = sandbox.fake.resolves(undefined)
     sandbox.replace(weChatWechaty.puppet, 'messageSend', spy)
+    sandbox.replaceGetter(weChatWechaty.puppet, 'isLoggedIn', () => true)
   })
 
   t.afterEach(async () => {

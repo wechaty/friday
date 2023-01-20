@@ -71,7 +71,7 @@
     "wechaty-voteout": "^1.11.1"
   },
   "devDependencies": {
-    "@chatie/eslint-config": "^1.2.2",
+    "@chatie/eslint-config": "^1.4.1",
     "@chatie/git-scripts": "^0.6.2",
     "@chatie/tsconfig": "^4.9.1",
     "@nestjs/cli": "^8.2.6",
