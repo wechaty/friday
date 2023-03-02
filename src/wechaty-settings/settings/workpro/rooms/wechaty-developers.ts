@@ -11,15 +11,16 @@ const monitor = [
 ]
 
 const home = [
-  'R:10752005378712795',   // Wechaty Developers' Home 9 (former Polyglot Wechaty)
-  'R:10706326751384512',   // Wechaty Developers' Home 8
-  'R:10745797260099492',   // Wechaty Developers' Home 7
-  'R:10924600702550989',   // Wechaty Developers' Home 6
-  'R:10855009180534640',   // Wechaty Developers' Home 5
-  'R:10787187106053549',   // Wechaty Developers' Home 4
-  'R:10939022299083370',    // Wechaty Developers' Home 3
-  'R:10921234531988235',    // Wechaty Developers' Home 2
-  'R:10708787256496235',    // Wechaty Developers' Home 1
+  'R:10735648038885101',  // Wechaty Developers’s Home 10 (202302 Friday Bot / Huan)
+  'R:10752005378712795',  // Wechaty Developers' Home 9 (former Polyglot Wechaty)
+  'R:10706326751384512',  // Wechaty Developers' Home 8
+  'R:10745797260099492',  // Wechaty Developers' Home 7
+  'R:10924600702550989',  // Wechaty Developers' Home 6
+  'R:10855009180534640',  // Wechaty Developers' Home 5
+  'R:10787187106053549',  // Wechaty Developers' Home 4
+  'R:10939022299083370',  // Wechaty Developers' Home 3
+  'R:10921234531988235',  // Wechaty Developers' Home 2
+  'R:10708787256496235',  // Wechaty Developers' Home 1
 ]
 
 const chinese = [
