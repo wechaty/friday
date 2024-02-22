@@ -101,6 +101,10 @@ Friday Bot initialized by BOT5.Club members.
 
 See: <https://github.com/orgs/wechaty/teams/chairs/members>
 
+## Sponsors
+
+1. Google Cloud credits are provided for this project. #GeminiSprint
+
 ## Copyright & License
 
 - Code & Docs © 2019-now Wechaty Contributors
